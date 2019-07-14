@@ -38,6 +38,13 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool)
     {
+        
+        animate_startup()
+    }
+    
+    
+    func animate_startup()
+    {
         let screenRect = UIScreen.main.bounds
         let screenWidth = screenRect.size.width
         
@@ -57,11 +64,7 @@ class ViewController: UIViewController{
                 UIView.animate(withDuration: 0.5, animations: {self.login.alpha=1})
             })
         })
-        
     }
-    
-    
-    
     
     func test_api()
     {
