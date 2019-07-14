@@ -10,50 +10,68 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-var list=["banana","portocala","ciucamba"]
 
 
 
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+class ViewController: UIViewController{
+ 
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var login: UIButton!
+    @IBAction func login(_ sender: Any)
     {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        cell.textLabel?.text = list[indexPath.row]
-        return cell;
     }
     
-
-    override func viewDidLoad() {
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
-        tbv1.dataSource = self
-        tbv1.delegate = self
+        self.email.placeholder="email"
+        self.password.placeholder="password"
+       
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        let screenRect = UIScreen.main.bounds
+        let screenWidth = screenRect.size.width
         
-
+        var t = CGAffineTransform.identity
+        t = t.translatedBy(x: -screenWidth, y: 0)
+        self.email.transform=t
+        self.password.transform=t
+        self.login.alpha=0
+        
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.email.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
+        }, completion: { _ in
+            UIView.animate(withDuration: 1, animations: {
+                self.password.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5, animations: {self.login.alpha=1})
+            })
+        })
+        
+    }
+    
+    
+    
+    
+    func test_api()
+    {
         let ref = Database.database().reference(withPath: "items")
         let elem = ref.child("balon_rosu").child("intervals").child("2")
         
         elem.setValue("12-26 August")
         
-
-        
-        
-        //ref.child("items").child("balon_rosu").setValue("maaaa")
-    }
-    
-    @IBOutlet weak var bt1: UIButton!
-    @IBAction func bt1(_ sender: Any)
-    {
-        
     }
 
-    @IBOutlet weak var tbv1: UITableView!
     
 }
 
