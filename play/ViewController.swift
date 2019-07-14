@@ -25,15 +25,35 @@ class ViewController: UIViewController{
         
     }
     
+    @IBOutlet weak var signup: UIButton!
+    @IBAction func signup(_ sender: Any)
+    {
+        
+    }
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+       
+        setupUI()
+       
+       
+    }
+    
+    func setupUI()
+    {
         self.email.placeholder="email"
         self.password.placeholder="password"
-       
-       
+        self.signup.layer.cornerRadius=20
+        self.signup.layer.borderColor=UIColor.gray.cgColor
+        self.signup.layer.borderWidth=1
+        
+        self.login.layer.cornerRadius=18
+        self.login.layer.borderColor=UIColor.gray.cgColor
+        self.login.layer.borderWidth=1
+
     }
     
     override func viewWillAppear(_ animated: Bool)

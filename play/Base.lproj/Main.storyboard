@@ -40,14 +40,21 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M56-rV-iXS">
-                                <rect key="frame" x="165" y="283" width="45" height="45"/>
+                                <rect key="frame" x="154" y="283" width="67.5" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="M56-rV-iXS" secondAttribute="height" id="Ndh-43-DEX"/>
+                                    <constraint firstAttribute="width" secondItem="M56-rV-iXS" secondAttribute="height" multiplier="3/2" id="Ndh-43-DEX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ltH-b4-pdE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YZ-SF-pnM">
+                                <rect key="frame" x="220" y="602" width="135" height="45"/>
+                                <state key="normal" title="Cont nou?"/>
+                                <connections>
+                                    <action selector="signup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qjw-0Z-cU8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,13 +65,17 @@
                             <constraint firstItem="9Et-Lw-WHv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="5S6-pD-UkC"/>
                             <constraint firstItem="9Et-Lw-WHv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="DXe-dw-Mri"/>
                             <constraint firstItem="9ip-3I-SNz" firstAttribute="width" secondItem="xsy-Wy-d7T" secondAttribute="width" id="MXq-wJ-qOa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7YZ-SF-pnM" secondAttribute="bottom" constant="20" id="MsR-M2-vd4"/>
                             <constraint firstItem="M56-rV-iXS" firstAttribute="top" secondItem="9ip-3I-SNz" secondAttribute="bottom" constant="20" id="N9H-uf-wuS"/>
                             <constraint firstItem="xsy-Wy-d7T" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NT7-NK-mke"/>
                             <constraint firstItem="9ip-3I-SNz" firstAttribute="height" secondItem="xsy-Wy-d7T" secondAttribute="height" id="PQH-6H-dhu"/>
                             <constraint firstItem="xsy-Wy-d7T" firstAttribute="width" secondItem="9Et-Lw-WHv" secondAttribute="width" id="QZq-gP-SNQ"/>
                             <constraint firstItem="xsy-Wy-d7T" firstAttribute="top" secondItem="9Et-Lw-WHv" secondAttribute="bottom" constant="70" id="ZEg-li-YJQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7YZ-SF-pnM" secondAttribute="trailing" constant="20" id="ZwX-rs-QTK"/>
                             <constraint firstItem="M56-rV-iXS" firstAttribute="height" secondItem="9ip-3I-SNz" secondAttribute="height" id="aAG-qI-9gv"/>
+                            <constraint firstItem="7YZ-SF-pnM" firstAttribute="height" secondItem="M56-rV-iXS" secondAttribute="height" id="fpR-LE-F41"/>
                             <constraint firstItem="9ip-3I-SNz" firstAttribute="top" secondItem="xsy-Wy-d7T" secondAttribute="bottom" constant="25" id="hTW-rq-E5V"/>
+                            <constraint firstItem="7YZ-SF-pnM" firstAttribute="width" secondItem="M56-rV-iXS" secondAttribute="width" multiplier="2" id="hbF-qM-EL8"/>
                             <constraint firstItem="M56-rV-iXS" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ipP-qe-K06"/>
                             <constraint firstItem="xsy-Wy-d7T" firstAttribute="height" secondItem="9Et-Lw-WHv" secondAttribute="height" id="tTc-uN-ERR"/>
                         </constraints>
@@ -74,6 +85,7 @@
                         <outlet property="email" destination="xsy-Wy-d7T" id="c2R-tY-zjF"/>
                         <outlet property="login" destination="M56-rV-iXS" id="vdk-Wp-cZb"/>
                         <outlet property="password" destination="9ip-3I-SNz" id="xRP-0r-xVK"/>
+                        <outlet property="signup" destination="7YZ-SF-pnM" id="d7x-sF-gak"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
