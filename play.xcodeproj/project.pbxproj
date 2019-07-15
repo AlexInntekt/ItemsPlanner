@@ -21,6 +21,7 @@
 		FA3CD82E22DA533800BE5558 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */; };
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
+		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
+		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
 				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
 				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
+				FAD3C92322DCACAC0068E52D /* utils.swift */,
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
 				FA13923322D8ED94006D64B4 /* Assets.xcassets */,
 				FA13923522D8ED94006D64B4 /* LaunchScreen.storyboard */,
@@ -402,6 +405,7 @@
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FA13923222D8ED93006D64B4 /* play.xcdatamodeld in Sources */,
+				FAD3C92422DCACAC0068E52D /* utils.swift in Sources */,
 				FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */,
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
 			);

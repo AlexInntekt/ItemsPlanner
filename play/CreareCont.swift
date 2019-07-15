@@ -52,32 +52,45 @@ class CreareCont: UIViewController, UITextFieldDelegate
                     
                     self.send_verification_email()
                 }
-                
-                
+            
             })
             
-            
-            
         }
-        
-        
-        
         
     }
     
     
     func send_verification_email()
     {
-        self.signup.frame.size.width = 30
         
         Auth.auth().currentUser?.sendEmailVerification { (error) in
             if error != nil
             {
                 print("Error in sending verification email. Finding code: w8hgf0qhg02h3g ", error)
+                
+                alert(UIVC: self, title: "eroare", message: error as! String)
+            }
+            else
+            {
+                self.alert_confirmation(UIVC: self, title: "Urmatorul pas", message: "Un email de verificare a fost trimis pentru validarea contului. Urmariti link-ul pentru finalizare")
             }
             
         }
     }
+    
+    
+    
+    
+    func alert_confirmation(UIVC: UIViewController ,title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+            self.performSegue(withIdentifier: "homeSegue", sender: nil)
+        }))
+        UIVC.present(alert, animated: true)
+    }
+    
+
     
     func setupUI()
     {

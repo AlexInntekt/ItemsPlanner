@@ -184,7 +184,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAK-Ua-8Ia">
                                 <rect key="frame" x="23" y="30" width="22" height="22"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="K1u-WA-VCh"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" id="K1u-WA-VCh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nume de utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-To-gWg">
