@@ -58,6 +58,37 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    
+    
+    @IBOutlet weak var passwordReset: UIButton!
+    @IBAction func passwordReset(_ sender: Any)
+    {
+        
+        if ((self.email.text != nil) && (self.email.text != ""))
+        {
+            let email=self.email.text!
+            
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let error=error
+                {
+                    alert(UIVC: self, title: "eroare", message: error as! String)
+                    
+                }
+            } //end Auth.auth()
+            
+            alert(UIVC: self, title: "Confirmat", message: "Un link de resetare a parolei v-a fost trimis prin email, pe adresa \(email)")
+        } //end if
+        else
+        {
+            
+            alert(UIVC: self, title: "Câmp gol", message: "Introduceți adresa de email in câmpul de email și apăsați din nou resetare pentru resetarea parolei")
+        }
+        
+       
+    }//end passwordReset
+    
+    
+    
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
     {
@@ -82,11 +113,16 @@ class ViewController: UIViewController, UITextFieldDelegate{
     {
         self.email.placeholder="email"
         self.password.placeholder="password"
+        
         self.signup.layer.cornerRadius=20
         self.signup.layer.borderColor=UIColor.gray.cgColor
         self.signup.layer.borderWidth=1
         
-        self.login.layer.cornerRadius=18
+        self.passwordReset.layer.cornerRadius=16
+        self.passwordReset.layer.borderColor=UIColor.gray.cgColor
+        self.passwordReset.layer.borderWidth=1
+        
+        self.login.layer.cornerRadius=16
         self.login.layer.borderColor=UIColor.gray.cgColor
         self.login.layer.borderWidth=1
 
