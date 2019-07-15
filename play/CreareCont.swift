@@ -10,7 +10,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreareCont: UIViewController
+class CreareCont: UIViewController, UITextFieldDelegate
 {
     
     @IBOutlet weak var label1: UILabel!
@@ -34,7 +34,7 @@ class CreareCont: UIViewController
                     print("Error detected. Finding in console: g7i23h49fofou23go ",error)
                 }
                 else
-                { 
+                {
                     let user = Auth.auth().currentUser
                     if let user = user {
                         let changeRequest = user.createProfileChangeRequest()
@@ -94,7 +94,18 @@ class CreareCont: UIViewController
         
         print("CreareCont este deschis")
         
+        self.email.delegate = self
+        self.password.delegate = self
+        self.username.delegate = self
        
         setupUI()
     }
+    
+    //dissmis the keyboard after tapping on 'return' from the textField:
+    func textFieldShouldReturn(_ titleTextfield: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return true
+    }
+    
 }

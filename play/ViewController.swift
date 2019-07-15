@@ -14,7 +14,7 @@ import FirebaseAuth
 
 
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UITextFieldDelegate{
  
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -33,10 +33,22 @@ class ViewController: UIViewController{
                 {
                     print("Error occured in signing user in. Finding code: fhw0fgiofhojouyy ", error)
                 }
-                else
+                else if let user=Auth.auth().currentUser
                 {
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    if(!user.isEmailVerified)
+                    {
+                        let unverified = UIAlertController(title: "Contul nu este validat", message: "Contul este creat, dar nu a fost verificat folosind emailul primit!", preferredStyle: UIAlertController.Style.alert)
+                        unverified.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                            //Cancel Action
+                        }))
+                        self.present(unverified, animated: true, completion: nil)
+                    }
+                    else
+                    {
+                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    }
                 }
+    
                 
             }
             
@@ -57,11 +69,14 @@ class ViewController: UIViewController{
     {
         super.viewDidLoad()
         
-       
+        email.delegate = self
+        password.delegate = self
+        
         setupUI()
        
        
     }
+
     
     func setupUI()
     {
@@ -115,10 +130,15 @@ class ViewController: UIViewController{
         
         //elem.setValue("12-26 August")
         
-        
-        
     }
-
+    
+  
+    //dissmis the keyboard after tapping on 'return' from the textField:
+    func textFieldShouldReturn(_ titleTextfield: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return true
+    }
     
 }
 
