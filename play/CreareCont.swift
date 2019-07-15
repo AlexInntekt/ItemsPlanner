@@ -16,13 +16,14 @@ class CreareCont: UIViewController
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var username: UITextField!
     
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
     {
         self.signup.setTitle("Se procesează..", for: .normal)
         
-        if ((email.text != nil) &&  (password.text != nil))
+        if ((email.text != nil) &&  (password.text != nil) && (username.text != nil))
         {
             
             Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
@@ -33,12 +34,12 @@ class CreareCont: UIViewController
                     print("Error detected. Finding in console: g7i23h49fofou23go ",error)
                 }
                 else
-                {
+                { 
                     let user = Auth.auth().currentUser
                     if let user = user {
                         let changeRequest = user.createProfileChangeRequest()
                         
-                        changeRequest.displayName = "Regele Clatitelor"
+                        changeRequest.displayName = self.username.text!
                         
                         changeRequest.commitChanges { error in
                             if let error = error {
