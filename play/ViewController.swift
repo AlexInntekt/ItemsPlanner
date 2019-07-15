@@ -23,6 +23,27 @@ class ViewController: UIViewController{
     @IBAction func login(_ sender: Any)
     {
         
+        if(email.text != nil && password.text != nil)
+        {
+            
+            Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+                
+                print("\n\n # Trying to sign in...\n")
+                if error != nil
+                {
+                    print("Error occured in signing user in. Finding code: fhw0fgiofhojouyy ", error)
+                }
+                else
+                {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                }
+                
+            }
+            
+            
+            
+        }
+        
     }
     
     @IBOutlet weak var signup: UIButton!
@@ -58,6 +79,7 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool)
     {
+        test_api()
         
         animate_startup()
     }
@@ -75,13 +97,13 @@ class ViewController: UIViewController{
         self.login.alpha=0
         
         
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.7, animations: {
             self.email.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
         }, completion: { _ in
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.7, animations: {
                 self.password.transform = CGAffineTransform.identity.translatedBy(x: 0, y: 0)
             }, completion: { _ in
-                UIView.animate(withDuration: 0.5, animations: {self.login.alpha=1})
+                UIView.animate(withDuration: 1.2, animations: {self.login.alpha=1})
             })
         })
     }
@@ -91,7 +113,9 @@ class ViewController: UIViewController{
         let ref = Database.database().reference(withPath: "items")
         let elem = ref.child("balon_rosu").child("intervals").child("2")
         
-        elem.setValue("12-26 August")
+        //elem.setValue("12-26 August")
+        
+        
         
     }
 

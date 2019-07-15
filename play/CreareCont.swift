@@ -32,11 +32,34 @@ class CreareCont: UIViewController
                 {
                     print("Error detected. Finding in console: g7i23h49fofou23go ",error)
                 }
+                else
+                {
+                    let user = Auth.auth().currentUser
+                    if let user = user {
+                        let changeRequest = user.createProfileChangeRequest()
+                        
+                        changeRequest.displayName = "Regele Clatitelor"
+                        
+                        changeRequest.commitChanges { error in
+                            if let error = error {
+                                // An error happened.
+                            } else {
+                                // Profile updated.
+                            }
+                        }
+                    }
+                    
+                    self.send_verification_email()
+                }
                 
-                self.send_verification_email()
                 
             })
+            
+            
+            
         }
+        
+        
         
         
     }
@@ -44,6 +67,8 @@ class CreareCont: UIViewController
     
     func send_verification_email()
     {
+        self.signup.frame.size.width = 30
+        
         Auth.auth().currentUser?.sendEmailVerification { (error) in
             if error != nil
             {
@@ -58,6 +83,7 @@ class CreareCont: UIViewController
         self.signup.layer.borderWidth=1
         self.signup.layer.borderColor=UIColor.gray.cgColor
         self.signup.layer.cornerRadius=17
+        //self.signup.frame.size.width=130
     }
     
     override func viewDidLoad()
@@ -65,7 +91,7 @@ class CreareCont: UIViewController
         super.viewDidLoad()
         
         
-        print("CreareCont este in deschis")
+        print("CreareCont este deschis")
         
        
         setupUI()

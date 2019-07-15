@@ -87,6 +87,7 @@
                         <outlet property="login" destination="M56-rV-iXS" id="vdk-Wp-cZb"/>
                         <outlet property="password" destination="9ip-3I-SNz" id="xRP-0r-xVK"/>
                         <outlet property="signup" destination="7YZ-SF-pnM" id="d7x-sF-gak"/>
+                        <segue destination="ez9-8c-EE8" kind="presentation" identifier="loginSegue" id="sSZ-AL-SgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,14 +103,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-bL-r3L">
-                                <rect key="frame" x="16" y="37" width="55" height="30"/>
+                                <rect key="frame" x="16" y="35" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logout:" destination="ez9-8c-EE8" eventType="touchUpInside" id="QjT-PC-M7b"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-2X-HUs">
+                                <rect key="frame" x="46" y="84" width="262.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
+                            <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
+                            <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wDp-vI-vB1"/>
                     </view>
+                    <connections>
+                        <outlet property="logout" destination="Ufp-bL-r3L" id="KVF-sa-xtW"/>
+                        <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="Ih1-mP-Va3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -199,4 +219,7 @@
             <point key="canvasLocation" x="853" y="873"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ih1-mP-Va3"/>
+    </inferredMetricsTieBreakers>
 </document>
