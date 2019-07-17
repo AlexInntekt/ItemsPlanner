@@ -10,6 +10,8 @@
 		3BA619AC80279C193FAF2165 /* Pods_playTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */; };
 		AB71B4D1E04A30BCF1F65B24 /* Pods_playUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B200D14C1F02B4FBA866CFDB /* Pods_playUITests.framework */; };
 		D7C352889A2B265D0AE07869 /* Pods_play.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D82D0F7D16388A7F371525 /* Pods_play.framework */; };
+		FA01152322DF84E800F8234A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01152222DF84E800F8234A /* Models.swift */; };
+		FA01152522DF851B00F8234A /* Fetchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01152422DF851B00F8234A /* Fetchers.swift */; };
 		FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA13922922D8ED93006D64B4 /* AppDelegate.swift */; };
 		FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA13922B22D8ED93006D64B4 /* ViewController.swift */; };
 		FA13922F22D8ED93006D64B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA13922D22D8ED93006D64B4 /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		C11ADAAE80A32F93CA0BE611 /* Pods-playUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playUITests.release.xcconfig"; path = "Target Support Files/Pods-playUITests/Pods-playUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D47F7EE3B6011E2083139C4B /* Pods-playUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playUITests.debug.xcconfig"; path = "Target Support Files/Pods-playUITests/Pods-playUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4EC6F7C95DB58B5B464D396 /* Pods-playTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playTests.debug.xcconfig"; path = "Target Support Files/Pods-playTests/Pods-playTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA01152222DF84E800F8234A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Models.swift; path = /Users/alex/repos/play/play/Models.swift; sourceTree = "<absolute>"; };
+		FA01152422DF851B00F8234A /* Fetchers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchers.swift; sourceTree = "<group>"; };
 		FA13922622D8ED93006D64B4 /* play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = play.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA13922922D8ED93006D64B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA13922B22D8ED93006D64B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA01151F22DF845D00F8234A /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
+				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
+				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
 		FA13921D22D8ED93006D64B4 = {
 			isa = PBXGroup;
 			children = (
@@ -147,11 +161,11 @@
 		FA13922822D8ED93006D64B4 /* play */ = {
 			isa = PBXGroup;
 			children = (
+				FA01151F22DF845D00F8234A /* VCs */,
 				FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */,
+				FA01152222DF84E800F8234A /* Models.swift */,
+				FA01152422DF851B00F8234A /* Fetchers.swift */,
 				FA13922922D8ED93006D64B4 /* AppDelegate.swift */,
-				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
-				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
-				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
 				FAD3C92322DCACAC0068E52D /* utils.swift */,
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
 				FA13923322D8ED94006D64B4 /* Assets.xcassets */,
@@ -407,7 +421,9 @@
 				FA13923222D8ED93006D64B4 /* play.xcdatamodeld in Sources */,
 				FAD3C92422DCACAC0068E52D /* utils.swift in Sources */,
 				FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */,
+				FA01152522DF851B00F8234A /* Fetchers.swift in Sources */,
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
+				FA01152322DF84E800F8234A /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

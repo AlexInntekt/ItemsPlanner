@@ -105,6 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         setupUI()
        
+        test_api()
        
     }
 
@@ -130,7 +131,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     override func viewWillAppear(_ animated: Bool)
     {
-        test_api()
+       
         
         animate_startup()
     }
@@ -159,12 +160,53 @@ class ViewController: UIViewController, UITextFieldDelegate{
         })
     }
     
+    
+    
+    
     func test_api()
     {
-        let ref = Database.database().reference(withPath: "items")
-        let elem = ref.child("balon_rosu").child("intervals").child("2")
+//        let ref = Database.database().reference(withPath: "items-planner")
+//
+//
+//        ref.child("Items").observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//
+//            print(value)
+//
+//            // ...
+//        }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//        //elem.setValue("12-26 August")
         
-        //elem.setValue("12-26 August")
+        Database.database().reference(withPath: "Bookings").observe(DataEventType.childAdded, with:
+            {(snap) in print()
+                let a = snap.childSnapshot(forPath: "descriere").value as! String
+                print(a)
+                print("inqgiowpagn")
+        })
+        
+        
+        //Database.database().reference(withPath: "items-planner").child("bugubugu").setValue("heei")
+        
+//        var fbookings = [Booking]()
+//
+//        fetchBookings(completion: { (bookings) -> Void in
+//
+//            fbookings=bookings
+//        })
+//
+//        for obj in bookings
+//        {
+//            print(obj.description)
+//            print("123")
+//        }
+//        print("nr", bookings.count)
+//        print("finished running fetchBookings")
+//
+        
+        
         
     }
     
