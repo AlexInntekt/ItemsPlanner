@@ -17,3 +17,10 @@ class Booking {
     var user = String()
     var interval = String()
 }
+
+class Item {
+    var description = String()
+    var image_url = String()
+    var name = String()
+    var bookings = [Booking]()
+}

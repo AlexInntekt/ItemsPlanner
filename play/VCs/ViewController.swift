@@ -105,7 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         setupUI()
        
-        test_api()
+        test_bookings()
        
     }
 
@@ -161,9 +161,25 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     
+    func test_items()
+    {
+        var fitems = [Item]()
+        
+        fetchItemsByCategory(category: "C1",completion: { (items) -> Void in
+            
+            fitems=items
+            
+            for obj in fitems
+            {
+                print(obj.description)
+                
+            }
+//            print("nr", fitems.count)
+//            print("finished running fetchAllItems")
+        })
+    }
     
-    
-    func test_api()
+    func test_bookings()
     {
 //        let ref = Database.database().reference(withPath: "items-planner")
 //
@@ -180,33 +196,30 @@ class ViewController: UIViewController, UITextFieldDelegate{
 //        }
 //        //elem.setValue("12-26 August")
         
-        Database.database().reference(withPath: "Bookings").observe(DataEventType.childAdded, with:
-            {(snap) in print()
-                let a = snap.childSnapshot(forPath: "descriere").value as! String
-                print(a)
-                print("inqgiowpagn")
-        })
+//        Database.database().reference(withPath: "Bookings").observe(DataEventType.childAdded, with:
+//            {(snap) in print()
+//                let a = snap.childSnapshot(forPath: "descriere").value as! String
+//                print(a)
+//                print("inqgiowpagn")
+//        })
         
         
         //Database.database().reference(withPath: "items-planner").child("bugubugu").setValue("heei")
         
-//        var fbookings = [Booking]()
-//
-//        fetchBookings(completion: { (bookings) -> Void in
-//
-//            fbookings=bookings
-//        })
-//
-//        for obj in bookings
-//        {
-//            print(obj.description)
-//            print("123")
-//        }
-//        print("nr", bookings.count)
-//        print("finished running fetchBookings")
-//
-        
-        
+        var fbookings = [Booking]()
+
+        fetchBookings(completion: { (bookings) -> Void in
+
+            fbookings=bookings
+            
+            for obj in fbookings
+            {
+                print(obj.description)
+            }
+
+        })
+
+    
         
     }
     
