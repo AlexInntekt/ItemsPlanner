@@ -105,7 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         setupUI()
        
-        test_bookings()
+        //test_bookings()
        
     }
 
