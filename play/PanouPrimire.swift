@@ -26,17 +26,30 @@ extension PanouPrimire: JTACMonthViewDataSource {
 extension PanouPrimire: JTACMonthViewDelegate {
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
-        cell.dateLabel.text = cellState.text
+        self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         return cell
     }
+    
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        let cell = cell as! DateCell
-        cell.dateLabel.text = cellState.text
+        configureCell(view: cell, cellState: cellState)
     }
 }
 
 class PanouPrimire: UIViewController
 {
+    func configureCell(view: JTACDayCell?, cellState: CellState) {
+        guard let cell = view as? DateCell  else { return }
+        cell.dateLabel.text = cellState.text
+        handleCellTextColor(cell: cell, cellState: cellState)
+    }
+    
+    func handleCellTextColor(cell: DateCell, cellState: CellState) {
+        if cellState.dateBelongsTo == .thisMonth {
+            cell.dateLabel.textColor = UIColor.black
+        } else {
+            cell.dateLabel.textColor = UIColor.gray
+        }
+    }
     
     
 //    @IBOutlet var calendarView: JTACMonthView!

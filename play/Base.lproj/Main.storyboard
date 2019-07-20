@@ -130,7 +130,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F8y-qf-R9a" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="137" width="375" height="530"/>
+                                <rect key="frame" x="20" y="137" width="340" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FVW-OB-5ca">
                                     <size key="itemSize" width="45" height="52"/>
@@ -173,13 +173,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wDp-vI-vB1" firstAttribute="bottom" secondItem="F8y-qf-R9a" secondAttribute="bottom" constant="30" id="3EQ-Zj-sIW"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="bottom" secondItem="wDp-vI-vB1" secondAttribute="bottom" id="9cr-xq-y1z"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="32" id="9i9-YS-AnB"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="trailing" secondItem="wDp-vI-vB1" secondAttribute="trailing" id="DNW-Qx-cZf"/>
+                            <constraint firstItem="F8y-qf-R9a" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="32" id="MfG-Iu-qhD"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" id="kOE-Ry-Xaz"/>
+                            <constraint firstItem="F8y-qf-R9a" firstAttribute="trailing" secondItem="wDp-vI-vB1" secondAttribute="trailing" constant="-15" id="fLQ-ix-KrB"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
+                            <constraint firstItem="F8y-qf-R9a" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="20" id="pK2-C1-nSF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wDp-vI-vB1"/>
                     </view>
