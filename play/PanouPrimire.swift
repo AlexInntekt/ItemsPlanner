@@ -12,7 +12,7 @@ import FirebaseAuth
 import JTAppleCalendar
 
 
-extension ViewController: JTACMonthViewDataSource {
+extension PanouPrimire: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
         ConfigurationParameters {
         let formatter = DateFormatter()
@@ -23,9 +23,9 @@ extension ViewController: JTACMonthViewDataSource {
     }
 }
 
-extension ViewController: JTACMonthViewDelegate {
+extension PanouPrimire: JTACMonthViewDelegate {
     func calendar(_ calendar: JTACMonthView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTACDayCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "dateCell", for: indexPath) as! DateCell
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
         cell.dateLabel.text = cellState.text
         return cell
     }
@@ -39,6 +39,7 @@ class PanouPrimire: UIViewController
 {
     
     
+//    @IBOutlet var calendarView: JTACMonthView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -68,6 +69,8 @@ class PanouPrimire: UIViewController
     {
         super.viewDidLoad()
         
+//        calendarView.ibCalendarDataSource = self
+//        calendarView.ibCalendarDelegate = self
         
         print("PanouPrimire este in deschis")
         
