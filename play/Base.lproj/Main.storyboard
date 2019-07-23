@@ -152,16 +152,25 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ikm-AG-2QI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="52"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="Ikm-AG-2QI" firstAttribute="centerY" secondItem="jaD-Sd-FeW" secondAttribute="centerY" id="80z-4S-ycQ"/>
                                             <constraint firstAttribute="trailing" secondItem="L9a-rq-EY4" secondAttribute="trailing" id="C5s-hV-fJ4"/>
+                                            <constraint firstItem="Ikm-AG-2QI" firstAttribute="height" secondItem="jaD-Sd-FeW" secondAttribute="height" id="DdP-PJ-fPh"/>
                                             <constraint firstItem="L9a-rq-EY4" firstAttribute="top" secondItem="jaD-Sd-FeW" secondAttribute="top" id="EyC-0s-lQG"/>
+                                            <constraint firstItem="Ikm-AG-2QI" firstAttribute="centerX" secondItem="jaD-Sd-FeW" secondAttribute="centerX" id="HjH-5Z-cXS"/>
+                                            <constraint firstItem="Ikm-AG-2QI" firstAttribute="width" secondItem="jaD-Sd-FeW" secondAttribute="width" id="Lls-z7-TmZ"/>
                                             <constraint firstItem="L9a-rq-EY4" firstAttribute="leading" secondItem="jaD-Sd-FeW" secondAttribute="leading" id="Ndg-GQ-iX3"/>
                                             <constraint firstAttribute="bottom" secondItem="L9a-rq-EY4" secondAttribute="bottom" id="bZj-03-4PW"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="L9a-rq-EY4" id="rxq-QC-za1"/>
+                                            <outlet property="selectedView" destination="Ikm-AG-2QI" id="7yQ-zu-PgV"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -37,10 +37,19 @@ extension PanouPrimire: JTACMonthViewDelegate {
 
 class PanouPrimire: UIViewController
 {
+    func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+        configureCell(view: cell, cellState: cellState)
+    }
+    
+    func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
+        configureCell(view: cell, cellState: cellState)
+    }
+    
     func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? DateCell  else { return }
         cell.dateLabel.text = cellState.text
         handleCellTextColor(cell: cell, cellState: cellState)
+        handleCellSelected(cell: cell, cellState: cellState)
     }
     
     func handleCellTextColor(cell: DateCell, cellState: CellState) {
@@ -48,6 +57,15 @@ class PanouPrimire: UIViewController
             cell.dateLabel.textColor = UIColor.black
         } else {
             cell.dateLabel.textColor = UIColor.gray
+        }
+    }
+    
+    func handleCellSelected(cell: DateCell, cellState: CellState) {
+        if cellState.isSelected {
+            cell.selectedView.layer.cornerRadius =  13
+            cell.selectedView.isHidden = false
+        } else {
+            cell.selectedView.isHidden = true
         }
     }
     
