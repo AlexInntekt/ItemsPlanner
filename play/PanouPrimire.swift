@@ -33,6 +33,8 @@ extension PanouPrimire: JTACMonthViewDelegate {
     func calendar(_ calendar: JTACMonthView, willDisplay cell: JTACDayCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
     }
+    
+    
 }
 
 class PanouPrimire: UIViewController
@@ -40,6 +42,7 @@ class PanouPrimire: UIViewController
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
     }
+    
     
     func calendar(_ calendar: JTACMonthView, didDeselectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
@@ -72,8 +75,15 @@ class PanouPrimire: UIViewController
         }
     }
     
+//    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+//    {
+//        return 5
+//    }
+    
     
 //    @IBOutlet var calendarView: JTACMonthView!
+    
+    @IBOutlet var calendarView: JTACMonthView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -107,6 +117,8 @@ class PanouPrimire: UIViewController
 //        calendarView.ibCalendarDelegate = self
         
         print("PanouPrimire este in deschis")
+        
+        self.calendarView.scrollingMode = .stopAtEachCalendarFrame
         
         setupUI()
         

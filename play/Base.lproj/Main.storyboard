@@ -130,8 +130,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8y-qf-R9a" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="20" y="246.5" width="340" height="333.5"/>
+                                <rect key="frame" x="20" y="310" width="340" height="270"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="Reu-w9-JiU"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FVW-OB-5ca">
                                     <size key="itemSize" width="45" height="45"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -190,7 +193,6 @@
                             <constraint firstItem="wDp-vI-vB1" firstAttribute="bottom" secondItem="F8y-qf-R9a" secondAttribute="bottom" constant="87" id="3EQ-Zj-sIW"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
                             <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="F8y-qf-R9a" secondAttribute="trailing" constant="15" id="C9s-Pr-vZS"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="height" secondItem="5gp-lt-4WM" secondAttribute="height" multiplier="0.5" id="GRD-w4-wvL"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
                             <constraint firstItem="F8y-qf-R9a" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="20" id="pK2-C1-nSF"/>
@@ -198,6 +200,7 @@
                         <viewLayoutGuide key="safeArea" id="wDp-vI-vB1"/>
                     </view>
                     <connections>
+                        <outlet property="calendarView" destination="F8y-qf-R9a" id="jYG-aT-Wcl"/>
                         <outlet property="logout" destination="Ufp-bL-r3L" id="KVF-sa-xtW"/>
                         <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="Ih1-mP-Va3"/>
