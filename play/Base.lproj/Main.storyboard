@@ -129,21 +129,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F8y-qf-R9a" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="20" y="137" width="340" height="500"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8y-qf-R9a" customClass="JTACMonthView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="20" y="246.5" width="340" height="333.5"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="FVW-OB-5ca">
-                                    <size key="itemSize" width="45" height="52"/>
+                                    <size key="itemSize" width="45" height="45"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DateCell" id="jaD-Sd-FeW" customClass="DateCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="45" height="52"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9a-rq-EY4">
@@ -174,6 +174,11 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cellSize">
+                                        <real key="value" value="45"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="ibCalendarDataSource" destination="ez9-8c-EE8" id="qFI-Ly-snr"/>
                                     <outlet property="ibCalendarDelegate" destination="ez9-8c-EE8" id="fxj-c5-aDJ"/>
@@ -182,11 +187,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wDp-vI-vB1" firstAttribute="bottom" secondItem="F8y-qf-R9a" secondAttribute="bottom" constant="30" id="3EQ-Zj-sIW"/>
+                            <constraint firstItem="wDp-vI-vB1" firstAttribute="bottom" secondItem="F8y-qf-R9a" secondAttribute="bottom" constant="87" id="3EQ-Zj-sIW"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="32" id="MfG-Iu-qhD"/>
+                            <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="F8y-qf-R9a" secondAttribute="trailing" constant="15" id="C9s-Pr-vZS"/>
+                            <constraint firstItem="F8y-qf-R9a" firstAttribute="height" secondItem="5gp-lt-4WM" secondAttribute="height" multiplier="0.5" id="GRD-w4-wvL"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
-                            <constraint firstItem="F8y-qf-R9a" firstAttribute="trailing" secondItem="wDp-vI-vB1" secondAttribute="trailing" constant="-15" id="fLQ-ix-KrB"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
                             <constraint firstItem="F8y-qf-R9a" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="20" id="pK2-C1-nSF"/>
                         </constraints>
