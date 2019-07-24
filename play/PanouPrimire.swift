@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import JTAppleCalendar
 
+let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
 
 extension PanouPrimire: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
@@ -35,11 +36,12 @@ extension PanouPrimire: JTACMonthViewDelegate {
     }
     
     func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
-        let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
-        formatter.dateFormat = "MMM"
+        formatter.dateFormat = "MMM YYYY"
         
         let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "DateHeader", for: indexPath) as! DateHeader
+        
         header.monthTitle.text = formatter.string(from: range.start)
+        
         return header
     }
     
