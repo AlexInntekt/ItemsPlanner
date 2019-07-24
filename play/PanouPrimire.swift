@@ -34,6 +34,19 @@ extension PanouPrimire: JTACMonthViewDelegate {
         configureCell(view: cell, cellState: cellState)
     }
     
+    func calendar(_ calendar: JTACMonthView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTACMonthReusableView {
+        let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
+        formatter.dateFormat = "MMM"
+        
+        let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "DateHeader", for: indexPath) as! DateHeader
+        header.monthTitle.text = formatter.string(from: range.start)
+        return header
+    }
+    
+    func calendarSizeForMonths(_ calendar: JTACMonthView?) -> MonthSize? {
+        return MonthSize(defaultSize: 50)
+    }
+    
     
 }
 

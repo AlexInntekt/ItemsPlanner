@@ -24,6 +24,7 @@
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
 		FA4D4BEA22E2E6BF00B883C8 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D4BE922E2E6BF00B883C8 /* JTAppleCell.swift */; };
+		FAD2C4DC22E8D00D00564179 /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2C4DB22E8D00D00564179 /* DateHeader.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
 		FA4D4BE922E2E6BF00B883C8 /* JTAppleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTAppleCell.swift; sourceTree = "<group>"; };
+		FAD2C4DB22E8D00D00564179 /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 		FA01151F22DF845D00F8234A /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				FAD2C4DB22E8D00D00564179 /* DateHeader.swift */,
 				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
 				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
 				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD2C4DC22E8D00D00564179 /* DateHeader.swift in Sources */,
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FA13923222D8ED93006D64B4 /* play.xcdatamodeld in Sources */,
