@@ -48,6 +48,9 @@ class PanouPrimire: UIViewController
     func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? DateCell  else { return }
         cell.dateLabel.text = cellState.text
+        cell.backgroundColor=UIColor.gray
+        cell.layer.borderWidth=1
+        cell.layer.borderColor=UIColor.black.cgColor
         handleCellTextColor(cell: cell, cellState: cellState)
         handleCellSelected(cell: cell, cellState: cellState)
     }
