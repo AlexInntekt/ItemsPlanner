@@ -18,7 +18,7 @@ extension PanouPrimire: JTACMonthViewDataSource {
         ConfigurationParameters {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2018 01 01")!
+        let startDate = formatter.date(from: "2019 07 01")!
         let endDate = Date()
         return ConfigurationParameters(startDate: startDate, endDate: endDate)
     }
