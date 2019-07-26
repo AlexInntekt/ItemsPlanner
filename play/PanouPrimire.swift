@@ -12,14 +12,18 @@ import FirebaseAuth
 import JTAppleCalendar
 
 let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
+let date=Date()
 
 extension PanouPrimire: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
         ConfigurationParameters {
-        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        let currentYear = String(Int(formatter.string(from: date))!+2)
+        let startDate = Date()
+            
         formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2019 07 01")!
-        let endDate = Date()
+        let endDate = formatter.date(from: "\(currentYear) 12 31")!
+        
         return ConfigurationParameters(startDate: startDate, endDate: endDate)
     }
 }
