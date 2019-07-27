@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import FirebaseAuth
 
 func alert(UIVC: UIViewController ,title: String, message: String)
 {
@@ -25,6 +25,14 @@ func alert(UIVC: UIViewController ,title: String, message: String)
 func isUserLoggedIn() -> Bool
 {
     var cond = false
+    
+    if Auth.auth().currentUser != nil {
+        cond = true
+        print("\n\n STATUS The user is logged in \n")
+    } else {
+        print("\n\n STATUS The user is NOT logged in \n")
+        cond = false
+    }
     
     return cond
 }

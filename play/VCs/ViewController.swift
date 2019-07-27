@@ -123,11 +123,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool)
     {
        
-        if Auth.auth().currentUser != nil {
-            print("\n\n STATUS The user is logged in \n")
-        } else {
-           print("\n\n STATUS The user is NOT logged in \n")
-        }
+        
         
         animate_startup()
     }

@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import Firebase
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        //choose first screen depending on the user status (logged in or not)
+        if !isUserLoggedIn() {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let exampleVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "login") as UIViewController
+            self.window?.rootViewController = exampleVC
+            self.window?.makeKeyAndVisible()
+        } else {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let exampleVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "welcome") as UIViewController
+            self.window?.rootViewController = exampleVC
+            self.window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 
