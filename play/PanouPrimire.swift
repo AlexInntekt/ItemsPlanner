@@ -57,7 +57,7 @@ class PanouPrimire: UIViewController
             showSimpleAlert(message: "error")
         }
         
-        test_bookings()
+        test_generic()
     }
     
     func setupUI()

@@ -10,6 +10,33 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
+func fetchAllCategories(completion: @escaping (_ success: [String]) -> Void)
+{
+    var categories_names = [String]()
+
+    Database.database().reference().child("Categories").observe(DataEventType.value, with: { (snap) in print()
+        let count=Int(snap.childrenCount)
+        
+        let ref = Database.database().reference(withPath: "Categories")
+        
+        let db = ref.queryOrderedByKey()
+        
+        var ind=1;
+        
+        db.observe(DataEventType.childAdded, with:
+            {(snap) in print()
+                
+                let name=snap.childSnapshot(forPath: "name").value as! String
+                categories_names.append(name)
+                
+                if(count==ind)
+                {
+                    completion(categories_names)
+                }
+                ind+=1
+        })
+    })
+}
 
 
 func fetchBookings(by id: String, completion: @escaping (_ success: [Booking]) -> Void)

@@ -8,6 +8,22 @@
 
 import Foundation
 
+func test_generic()
+{
+    var fetched_categories=[String]()
+    
+    fetchAllCategories(completion: { (categories) -> Void in
+        
+        fetched_categories=categories
+        
+        for categ in fetched_categories
+        {
+            print(categ)
+        }
+        
+    })
+}
+
 func test_items()
 {
     var fitems = [Item]()
