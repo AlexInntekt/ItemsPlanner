@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 print("\n\n # Trying to sign in...\n")
                 if error != nil
                 {
-                    print("Error occured in signing user in. Finding code: fhw0fgiofhojouyy ", error)
+                    self.loginFeedback(error: (error?.localizedDescription)!)
                 }
                 else if let user=Auth.auth().currentUser
                 {
@@ -58,34 +58,25 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
     }
     
+    func loginFeedback(error error: String)
+    {
+        print("Error occured in signing user in. Finding code: fhw0fgiofhojouyy ", error)
+        
+        var error_message=""
+        
+        switch error {
+            case "The password is invalid or the user does not have a password.":
+                error_message="Parola este greșită sau utilizatorul nu există"
+            case "The email address is badly formatted.": error_message="Adresa de email este greșită sau nu există."
+            default:error_message="S-a produs o eroare"
+        }
+        
+        alert(UIVC: self, title: "Logare nereușită", message: error_message)
+    }
     
     
     @IBOutlet weak var passwordReset: UIButton!
-    @IBAction func passwordReset(_ sender: Any)
-    {
-        
-        if ((self.email.text != nil) && (self.email.text != ""))
-        {
-            let email=self.email.text!
-            
-            Auth.auth().sendPasswordReset(withEmail: email) { error in
-                if let error=error
-                {
-                    alert(UIVC: self, title: "eroare", message: error as! String)
-                    
-                }
-            } //end Auth.auth()
-            
-            alert(UIVC: self, title: "Confirmat", message: "Un link de resetare a parolei v-a fost trimis prin email, pe adresa \(email)")
-        } //end if
-        else
-        {
-            
-            alert(UIVC: self, title: "Câmp gol", message: "Introduceți adresa de email in câmpul de email și apăsați din nou resetare pentru resetarea parolei")
-        }
-        
-       
-    }//end passwordReset
+    
     
     
     
@@ -105,7 +96,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         setupUI()
        
-        test_bookings()
+        //test_bookings()
        
     }
 

@@ -63,7 +63,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Resetați parola"/>
                                 <connections>
-                                    <action selector="passwordReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vbR-pT-VJd"/>
+                                    <segue destination="lVN-IX-5Uc" kind="presentation" id="sSa-kA-GUz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -98,14 +98,80 @@
                         <outlet property="email" destination="xsy-Wy-d7T" id="c2R-tY-zjF"/>
                         <outlet property="login" destination="M56-rV-iXS" id="vdk-Wp-cZb"/>
                         <outlet property="password" destination="9ip-3I-SNz" id="xRP-0r-xVK"/>
-                        <outlet property="passwordReset" destination="hdq-Sb-Aw0" id="tAE-8J-K63"/>
+                        <outlet property="passwordReset" destination="hdq-Sb-Aw0" id="Viu-XX-jfb"/>
                         <outlet property="signup" destination="7YZ-SF-pnM" id="d7x-sF-gak"/>
                         <segue destination="ez9-8c-EE8" kind="presentation" identifier="loginSegue" id="sSZ-AL-SgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-466" y="133"/>
+        </scene>
+        <!--Reset Password-->
+        <scene sceneID="skf-gG-ZZW">
+            <objects>
+                <viewController id="lVN-IX-5Uc" customClass="ResetPassword" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpm-NU-FI3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4Q-Pf-ZVl">
+                                <rect key="frame" x="103" y="244" width="169" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="Trimite"/>
+                                <connections>
+                                    <action selector="resetPassword:" destination="lVN-IX-5Uc" eventType="touchUpInside" id="SbX-QF-k8y"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="introduceti_adresa@de.email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jJX-OD-tff">
+                                <rect key="frame" x="103" y="174" width="169" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Dacă v-ați uitat parola, puteți trimite un link de resetare a parolei pe email." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nNd-hJ-YPE">
+                                <rect key="frame" x="37.5" y="57" width="300" height="66.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yeo-Uv-Evr">
+                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GhD-y6-csm"/>
+                                    <constraint firstAttribute="width" constant="50" id="Nln-2S-F1d"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="QlQ-Wq-lMN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jJX-OD-tff" firstAttribute="centerY" secondItem="NHM-Id-uDf" secondAttribute="centerY" multiplier="0.55" id="144-qG-7fS"/>
+                            <constraint firstItem="f4Q-Pf-ZVl" firstAttribute="top" secondItem="jJX-OD-tff" secondAttribute="bottom" constant="40" id="1x3-zA-ldb"/>
+                            <constraint firstItem="nNd-hJ-YPE" firstAttribute="width" secondItem="hpm-NU-FI3" secondAttribute="width" multiplier="0.8" id="2gO-Ip-WIm"/>
+                            <constraint firstItem="jJX-OD-tff" firstAttribute="width" secondItem="hpm-NU-FI3" secondAttribute="width" multiplier="0.45" id="9lW-nV-q9e"/>
+                            <constraint firstItem="Yeo-Uv-Evr" firstAttribute="leading" secondItem="NHM-Id-uDf" secondAttribute="leading" id="aRW-Kv-Tye"/>
+                            <constraint firstItem="f4Q-Pf-ZVl" firstAttribute="centerX" secondItem="NHM-Id-uDf" secondAttribute="centerX" id="gjA-FV-aLz"/>
+                            <constraint firstItem="Yeo-Uv-Evr" firstAttribute="top" secondItem="NHM-Id-uDf" secondAttribute="top" id="jpV-Rr-381"/>
+                            <constraint firstItem="NHM-Id-uDf" firstAttribute="top" secondItem="nNd-hJ-YPE" secondAttribute="top" constant="-37" id="kDY-T7-hWM"/>
+                            <constraint firstItem="nNd-hJ-YPE" firstAttribute="centerX" secondItem="NHM-Id-uDf" secondAttribute="centerX" id="lfM-Zs-aI5"/>
+                            <constraint firstItem="nNd-hJ-YPE" firstAttribute="height" secondItem="hpm-NU-FI3" secondAttribute="height" multiplier="0.1" id="pb4-Qm-Qk4"/>
+                            <constraint firstItem="f4Q-Pf-ZVl" firstAttribute="width" secondItem="hpm-NU-FI3" secondAttribute="width" multiplier="0.45" id="sGr-X7-MAG"/>
+                            <constraint firstItem="jJX-OD-tff" firstAttribute="centerX" secondItem="NHM-Id-uDf" secondAttribute="centerX" id="yKd-HT-HDd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NHM-Id-uDf"/>
+                    </view>
+                    <connections>
+                        <outlet property="email" destination="jJX-OD-tff" id="LQK-dg-XvV"/>
+                        <outlet property="instructions" destination="nNd-hJ-YPE" id="yIQ-6f-8Jh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-kV-Grg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="-593"/>
         </scene>
         <!--Panou Primire-->
         <scene sceneID="2zz-ZH-veT">
@@ -146,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="133"/>
+            <point key="canvasLocation" x="1762" y="133"/>
         </scene>
         <!--Creare Cont-->
         <scene sceneID="VPs-wO-oBR">
@@ -243,10 +309,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFm-XK-AiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="853" y="873"/>
+            <point key="canvasLocation" x="-158" y="897"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K1u-WA-VCh"/>
+        <segue reference="QlQ-Wq-lMN"/>
     </inferredMetricsTieBreakers>
 </document>
