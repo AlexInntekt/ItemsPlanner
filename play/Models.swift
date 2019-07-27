@@ -15,7 +15,8 @@ import Foundation
 class Booking {
     var description = String()
     var user = String()
-    var interval = String()
+    var startDate = String()
+    var endDate = String()
 }
 
 class Item {

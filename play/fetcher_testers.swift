@@ -55,17 +55,18 @@ func test_bookings()
     
     var fbookings = [Booking]()
     
-    fetchBookings(completion: { (bookings) -> Void in
+    fetchBookings(by: "B1",completion: { (bookings) -> Void in
         
         fbookings=bookings
         
         for obj in fbookings
         {
             print(obj.description)
+            print(obj.endDate)
+            print(obj.user)
         }
         
     })
     
-    
-    
 }
+

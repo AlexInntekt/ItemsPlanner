@@ -10,6 +10,30 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
+
+
+func fetchBookings(by id: String, completion: @escaping (_ success: [Booking]) -> Void)
+{
+    var bookings = [Booking]()
+
+    let ref = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: id)
+    
+    ref.observe(DataEventType.childAdded , with:
+        {(snap) in print()
+
+            
+            let currentBooking = Booking()
+            currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
+            currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+            currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+            currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
+
+            bookings.append(currentBooking)
+            
+            completion(bookings)
+    })
+}
+
 func fetchBookings(completion: @escaping (_ success: [Booking]) -> Void)
 {
     var bookings = [Booking]()
@@ -41,7 +65,8 @@ func fetchBookings(completion: @escaping (_ success: [Booking]) -> Void)
                     
                     let currentBooking = Booking()
                     currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
-                    currentBooking.interval = snap.childSnapshot(forPath: "interval").value as! String
+                    currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                    currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                     currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
                     
                     bookings.append(currentBooking)
