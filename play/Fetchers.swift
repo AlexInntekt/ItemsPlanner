@@ -26,7 +26,7 @@ func fetchAllCategories(completion: @escaping (_ success: [String]) -> Void)
         db.observe(DataEventType.childAdded, with:
             {(snap) in print()
                 
-                let name=snap.childSnapshot(forPath: "name").value as! String
+                let name=snap.key as! String
                 categories_names.append(name)
                 
                 if(count==ind)
@@ -61,7 +61,7 @@ func fetchBookings(by id: String, completion: @escaping (_ success: [Booking]) -
     })
 }
 
-func fetchBookings(completion: @escaping (_ success: [Booking]) -> Void)
+func fetchAllBookings(completion: @escaping (_ success: [Booking]) -> Void)
 {
     var bookings = [Booking]()
     
@@ -106,21 +106,50 @@ func fetchBookings(completion: @escaping (_ success: [Booking]) -> Void)
     
 }
 
+func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
+{
+    var categories = [String]()
+    var items = [Item]()
+    
+    fetchAllCategories(completion: { (fetched_categories) -> Void in
+        
+        categories=fetched_categories
+        
+        for cat in categories
+        {
+            fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
+                
+                if(cat=="STOP")
+                {
+                    completion(items)
+                }
+                
+                for obj in fitems
+                {
+                    items.append(obj)
+                }
+            })
+        }
+        
+
+    })
+}
+
 
 func fetchItemsByCategory(category: String,completion: @escaping (_ success: [Item]) -> Void)
 {
     var items = [Item]()
     
-    let ref = Database.database().reference(withPath: "Categories").child("C1")
+    let ref = Database.database().reference(withPath: "Categories").child(category)
     
     var countItems=0
     
     ref.observe(DataEventType.childAdded , with:
-        {(snap) in print()
+        {(snap) in
         let no_items=Int(snap.childrenCount)
             
             ref.child("items").observe(DataEventType.childAdded, with:
-                {(snap) in print()
+                {(snap) in
                     
                     countItems+=1
                     

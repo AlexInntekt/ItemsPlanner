@@ -57,7 +57,7 @@ class PanouPrimire: UIViewController
             showSimpleAlert(message: "error")
         }
         
-        test_generic()
+        test_fetch_all_items()
     }
     
     func setupUI()

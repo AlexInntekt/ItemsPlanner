@@ -8,7 +8,7 @@
 
 import Foundation
 
-func test_generic()
+func test_fetch_categories()
 {
     var fetched_categories=[String]()
     
@@ -24,7 +24,23 @@ func test_generic()
     })
 }
 
-func test_items()
+func test_fetch_all_items()
+{
+    var items = [Item]()
+    
+    fetchAllItems(completion: { (fetched_items) -> Void in
+        
+        items=fetched_items
+        
+        for item in items
+        {
+            print(item.description)
+        }
+        
+    })
+}
+
+func fetch_items()
 {
     var fitems = [Item]()
     
@@ -40,6 +56,7 @@ func test_items()
         //            print("nr", fitems.count)
         //            print("finished running fetchAllItems")
     })
+    
 }
 
 func test_bookings()
