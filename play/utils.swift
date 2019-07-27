@@ -21,3 +21,10 @@ func alert(UIVC: UIViewController ,title: String, message: String)
 
 
 
+
+func isUserLoggedIn() -> Bool
+{
+    var cond = false
+    
+    return cond
+}
