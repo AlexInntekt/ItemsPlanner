@@ -33,10 +33,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ip-3I-SNz">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ip-3I-SNz">
                                 <rect key="frame" x="94" y="218" width="187.5" height="45"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M56-rV-iXS">
@@ -260,8 +259,13 @@
                                     <action selector="signup:" destination="TGa-I6-QtF" eventType="touchUpInside" id="Qt5-o6-gqX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAK-Ua-8Ia">
-                                <rect key="frame" x="23" y="30" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAK-Ua-8Ia">
+                                <rect key="frame" x="0.0" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="feJ-HC-K86"/>
+                                    <constraint firstAttribute="height" constant="50" id="j5q-RQ-O3g"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" id="K1u-WA-VCh"/>
                                 </connections>
@@ -278,6 +282,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KAK-Ua-8Ia" firstAttribute="leading" secondItem="0Jw-5C-ujV" secondAttribute="leading" id="2WA-Hx-QsM"/>
                             <constraint firstItem="L5h-ma-8JX" firstAttribute="width" secondItem="HFi-xu-iEr" secondAttribute="width" id="7wa-4o-fOo"/>
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="top" secondItem="0Jw-5C-ujV" secondAttribute="top" constant="39" id="FCI-df-ZLz"/>
                             <constraint firstItem="SeF-tN-mEH" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="Gdj-GF-xP4"/>
@@ -287,13 +292,12 @@
                             <constraint firstItem="HFi-xu-iEr" firstAttribute="width" secondItem="GrT-nK-CIt" secondAttribute="width" multiplier="0.7" id="aGR-Dr-HnL"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="height" secondItem="HFi-xu-iEr" secondAttribute="height" id="dxg-OC-6Z9"/>
                             <constraint firstItem="HFi-xu-iEr" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="gKj-cl-O92"/>
+                            <constraint firstItem="KAK-Ua-8Ia" firstAttribute="top" secondItem="0Jw-5C-ujV" secondAttribute="top" id="gOM-Ms-dZs"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="top" secondItem="Y0w-DY-vSZ" secondAttribute="bottom" constant="58" id="i3H-B8-M68"/>
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="ig7-fd-CHY"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="lny-z0-hUn"/>
                             <constraint firstItem="L5h-ma-8JX" firstAttribute="centerX" secondItem="HFi-xu-iEr" secondAttribute="centerX" id="nWs-Qx-BMk"/>
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="width" secondItem="GrT-nK-CIt" secondAttribute="width" multiplier="0.7" id="qjv-hf-gGW"/>
-                            <constraint firstItem="KAK-Ua-8Ia" firstAttribute="leading" secondItem="0Jw-5C-ujV" secondAttribute="leading" constant="23" id="qm3-xz-LKK"/>
-                            <constraint firstItem="KAK-Ua-8Ia" firstAttribute="top" secondItem="0Jw-5C-ujV" secondAttribute="top" constant="10" id="vUe-aT-kk7"/>
                             <constraint firstItem="HFi-xu-iEr" firstAttribute="top" secondItem="B0Q-To-gWg" secondAttribute="bottom" constant="22" id="vsg-D0-pgQ"/>
                             <constraint firstItem="SeF-tN-mEH" firstAttribute="height" secondItem="L5h-ma-8JX" secondAttribute="height" id="zi1-VD-5rV"/>
                         </constraints>
@@ -316,6 +320,6 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ih1-mP-Va3"/>
+        <segue reference="K1u-WA-VCh"/>
     </inferredMetricsTieBreakers>
 </document>

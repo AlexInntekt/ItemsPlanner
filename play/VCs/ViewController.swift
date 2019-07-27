@@ -105,6 +105,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     {
         self.email.placeholder="email"
         self.password.placeholder="password"
+        self.password.isSecureTextEntry = true 
         
         self.signup.layer.cornerRadius=20
         self.signup.layer.borderColor=UIColor.gray.cgColor
