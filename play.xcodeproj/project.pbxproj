@@ -24,6 +24,7 @@
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
 		FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B422EC375B002090C3 /* ResetPassword.swift */; };
+		FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
 		FAA6E9B422EC375B002090C3 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPassword.swift; path = /Users/alex/repos/play/play/VCs/ResetPassword.swift; sourceTree = "<absolute>"; };
+		FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetcher_testers.swift; sourceTree = "<group>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */,
 				FA01152222DF84E800F8234A /* Models.swift */,
 				FA01152422DF851B00F8234A /* Fetchers.swift */,
+				FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */,
 				FA13922922D8ED93006D64B4 /* AppDelegate.swift */,
 				FAD3C92322DCACAC0068E52D /* utils.swift */,
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
@@ -423,6 +426,7 @@
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FA13923222D8ED93006D64B4 /* play.xcdatamodeld in Sources */,
 				FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */,
+				FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */,
 				FAD3C92422DCACAC0068E52D /* utils.swift in Sources */,
 				FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */,
 				FA01152522DF851B00F8234A /* Fetchers.swift in Sources */,
