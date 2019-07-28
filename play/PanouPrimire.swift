@@ -104,7 +104,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             for item in fetched_items
             {
                 items.append(item)
-                print("faergaerhgaerh") //item.description
             }
             
             self.itemsTableView.reloadData()

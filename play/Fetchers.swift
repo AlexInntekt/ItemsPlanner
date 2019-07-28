@@ -111,28 +111,39 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
     var categories = [String]()
     var items = [Item]()
     
-    fetchAllCategories(completion: { (fetched_categories) -> Void in
-        
-        categories=fetched_categories
-        
-        for cat in categories
-        {
-            fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
-                
-                if(cat=="STOP")
-                {
-                    completion(items)
-                }
-                
-                for obj in fitems
-                {
-                    items.append(obj)
-                }
-            })
-        }
-        
+    var ind=1 //counting number of fetched categories (item blocks)
+    
+    let ref = Database.database().reference(withPath: "Categories")
+    
+    Database.database().reference().child("Categories").observe(DataEventType.value, with: { (snap) in print()
+        let count=Int(snap.childrenCount)
 
+        fetchAllCategories(completion: { (fetched_categories) -> Void in
+            
+            categories=fetched_categories
+            
+            for cat in categories
+            {
+                fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
+                    
+                    ind+=1
+
+                    for obj in fitems
+                    {
+                        items.append(obj)
+                    }
+                    
+                    if(ind==count) //if all items from all categories have been fetched, return completion with the array containing them
+                    {
+                        completion(items)
+                    }
+                })
+            }
+
+        })
+        
     })
+    
 }
 
 
