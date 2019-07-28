@@ -34,7 +34,7 @@ func addBooking(item id: String, of_user user: String, description descr: String
 
     db = ref.child("Bookings")
     
-    db.setValue(bid)
+    db.updateChildValues([bid:""])
     db.child(bid).setValue("interval")
     db.child(bid).updateChildValues(["descriere":descr])
     db.child(bid).updateChildValues(["user":user])
