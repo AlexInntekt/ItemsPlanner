@@ -64,7 +64,9 @@ class PanouPrimire: UIViewController
             item.description="No comment!"
             item.image_url="Nu are asa ceva"
         
-        createItem(item: item, byCategory: "C3", with_item_id: "I10")
+        //createItem(item: item, byCategory: "C3", with_item_id: "I10")
+        addBooking(item: "I2", of_user: "Alex", description: "O vrajeala ieftina", in_category: "C1", booking_id: "unidsuperb",  startdate: "2019 07 28", enddate: "2019 07 29")
+        
     }
     
     func setupUI()
