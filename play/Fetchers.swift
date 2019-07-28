@@ -169,6 +169,9 @@ func fetchItemsByCategory(category: String,completion: @escaping (_ success: [It
                     currentItem.description = snap.childSnapshot(forPath: "descriere").value as! String
                     currentItem.image_url = snap.childSnapshot(forPath: "image_url").value as! String
                     currentItem.name = snap.childSnapshot(forPath: "name").value as! String
+                    currentItem.category = category
+                    currentItem.id = snap.key
+                    
                     
                     
                     items.append(currentItem)

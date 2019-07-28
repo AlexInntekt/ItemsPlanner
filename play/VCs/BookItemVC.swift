@@ -61,11 +61,19 @@ extension BookItemVC: JTACMonthViewDelegate {
 class BookItemVC: UIViewController
 {
     var currentItem=Item()
+    var startDateOfBooking=""
+    var endDateOfBooking=""
     
     @IBOutlet weak var calendarView: JTACMonthView!
-    
  
     @IBOutlet var numeArticol: UILabel!
+    
+    @IBOutlet var bookButton: UIButton!
+    @IBAction func bookButton(_ sender: Any)
+    {
+        addBooking(item: currentItem.id, of_user: "Alex", description: currentItem.description, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
+    }
+    
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
@@ -112,6 +120,9 @@ class BookItemVC: UIViewController
                 
                 print(date_as_string)
             }
+            
+            self.startDateOfBooking = formatter.string(from: self.calendarView.selectedDates.first!)
+            self.endDateOfBooking = formatter.string(from: self.calendarView.selectedDates.last!)
             
         } else {
             cell.selectedView.isHidden = true
@@ -167,6 +178,10 @@ class BookItemVC: UIViewController
         }
         
         self.numeArticol.text = self.currentItem.name
+        
+        print("Current selected item: \(self.currentItem.name)")
+        print("category: \(self.currentItem.category)")
+        print("id: \(self.currentItem.id)")
     }
     
     func setupUI()

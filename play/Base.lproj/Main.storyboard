@@ -259,7 +259,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mgd-qH-6Wz" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="15" y="247" width="345" height="320"/>
+                                <rect key="frame" x="15" y="146" width="345" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="C2O-iz-neT"/>
@@ -355,20 +355,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j79-lD-8TB">
+                                <rect key="frame" x="107.5" y="607" width="160" height="45"/>
+                                <color key="backgroundColor" white="0.80379231770833337" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="mph-UM-8Fe"/>
+                                    <constraint firstAttribute="height" constant="45" id="vDb-pm-Jhg"/>
+                                </constraints>
+                                <state key="normal" title="Trimite">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookButton:" destination="nBd-z6-hOB" eventType="touchUpInside" id="6Hq-dT-R3t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EKA-OB-Bhp" firstAttribute="trailing" secondItem="Mgd-qH-6Wz" secondAttribute="trailing" constant="15" id="2iC-9P-M2X"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="top" constant="5" id="7Cc-TD-ihD"/>
-                            <constraint firstItem="EKA-OB-Bhp" firstAttribute="bottom" secondItem="Mgd-qH-6Wz" secondAttribute="bottom" constant="100" id="8Ge-Ms-jZN"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="9Qr-5P-c60"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="5" id="9de-Fh-fNk"/>
+                            <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="bottom" constant="-60" id="VGg-XT-XO6"/>
+                            <constraint firstItem="j79-lD-8TB" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="YTM-9i-buc"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerY" secondItem="hb6-oF-lc1" secondAttribute="centerY" id="aSd-h6-TRK"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="i6b-Sj-26L"/>
+                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="71" id="whU-LE-9jB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EKA-OB-Bhp"/>
                     </view>
                     <connections>
+                        <outlet property="bookButton" destination="j79-lD-8TB" id="dQj-ub-Bzm"/>
                         <outlet property="calendarView" destination="Mgd-qH-6Wz" id="M7N-qF-mCc"/>
                         <outlet property="numeArticol" destination="kcD-eC-eb2" id="9hW-un-0cU"/>
                     </connections>
