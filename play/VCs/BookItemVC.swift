@@ -58,7 +58,7 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController
+class BookItemVC: UIViewController, UITextFieldDelegate
 {
     var currentItem=Item()
     var startDateOfBooking=""
@@ -68,10 +68,13 @@ class BookItemVC: UIViewController
  
     @IBOutlet var numeArticol: UILabel!
     
+    @IBOutlet var textfieldDescription: UITextView!
+    
     @IBOutlet var bookButton: UIButton!
     @IBAction func bookButton(_ sender: Any)
     {
-        addBooking(item: currentItem.id, of_user: "Alex", description: currentItem.description, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
+        
+        addBooking(item: currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
     }
     
     
@@ -188,4 +191,12 @@ class BookItemVC: UIViewController
     {
         
     }
+    
+    //dissmis the keyboard after tapping on 'return' from the textField:
+    func textFieldShouldReturn(_ titleTextfield: UITextField) -> Bool
+    {
+        self.view.endEditing(true)
+        return true
+    }
+    
 }
