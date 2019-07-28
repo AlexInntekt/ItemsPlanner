@@ -26,6 +26,7 @@
 		FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B422EC375B002090C3 /* ResetPassword.swift */; };
 		FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */; };
 		FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B822ED840F002090C3 /* Writters.swift */; };
+		FAA6E9BB22EDA9CF002090C3 /* BookItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		FAA6E9B422EC375B002090C3 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPassword.swift; path = /Users/alex/repos/play/play/VCs/ResetPassword.swift; sourceTree = "<absolute>"; };
 		FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetcher_testers.swift; sourceTree = "<group>"; };
 		FAA6E9B822ED840F002090C3 /* Writters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writters.swift; sourceTree = "<group>"; };
+		FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemVC.swift; sourceTree = "<group>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
 				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
 				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
+				FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */,
 				FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */,
 				FAD3C92422DCACAC0068E52D /* utils.swift in Sources */,
+				FAA6E9BB22EDA9CF002090C3 /* BookItemVC.swift in Sources */,
 				FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */,
 				FA01152522DF851B00F8234A /* Fetchers.swift in Sources */,
 				FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */,
