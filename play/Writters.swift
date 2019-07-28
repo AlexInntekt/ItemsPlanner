@@ -23,26 +23,42 @@ func createItem(item item: Item, byCategory cat: String, with_item_id id: String
 }
 
 
-func addBooking(item id: String, of_user user: String, description descr: String, in_category cat: String, booking_id bid: String, startdate sd: String, enddate ed: String)
+func addBooking(item id: String, of_user user: String, description descr: String, in_category cat: String, startdate sd: String, enddate ed: String)
 {
+    
     let ref = Database.database().reference()
-    var db = ref.child("Categories").child(cat).child("items")
-        db.child(id).child("bookings").updateChildValues([bid: bid])
+    var db = ref.child("Bookings")
+    
+    let new = db.childByAutoId()
+    let interval = {["from":sd];["till":ed]}
+    new.updateChildValues(["descriere":descr])
+    new.child("interval").updateChildValues(["from":sd])
+    new.child("interval").updateChildValues(["till":ed])
+    new.updateChildValues(["user":user])
+    
+    let keyToBooking = new.key!
     
     
-//    second block
-
-    db = ref.child("Bookings")
+    //second block to make changes here:
+    db = ref.child("Categories").child(cat).child("items")
+    db.child(id).child("bookings").updateChildValues([keyToBooking: keyToBooking])
     
-    db.updateChildValues([bid:""])
-    db.child(bid).setValue("interval")
-    db.child(bid).updateChildValues(["descriere":descr])
-    db.child(bid).updateChildValues(["user":user])
+    //        db.child(id).child("bookings").updateChildValues([bid: bid])
     
+    
+    
+    
+    
+    
+//    db.updateChildValues([bid:""])
+//    db.child(bid).setValue("interval")
+//    db.child(bid).updateChildValues(["descriere":descr])
+//    db.child(bid).updateChildValues(["user":user])
+//
 //    let interval = {["from":sd];["till":ed]}
 //
 //    db.child(bid).updateChildValues(["interval" : interval])
-    db.child(bid).child("interval").updateChildValues(["from":sd])
-    db.child(bid).child("interval").updateChildValues(["till":ed])
-    
+//    db.child(bid).child("interval").updateChildValues(["from":sd])
+//    db.child(bid).child("interval").updateChildValues(["till":ed])
+//
 }
