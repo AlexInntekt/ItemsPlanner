@@ -194,16 +194,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
+                                <rect key="frame" x="20.5" y="131" width="334" height="467"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
+                            <constraint firstItem="pJy-29-LBT" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="26" id="J38-oI-MPO"/>
+                            <constraint firstItem="pJy-29-LBT" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.89" id="KwK-1Q-KcL"/>
+                            <constraint firstItem="pJy-29-LBT" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" id="Ops-yV-QGX"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
+                            <constraint firstItem="pJy-29-LBT" firstAttribute="height" secondItem="5gp-lt-4WM" secondAttribute="height" multiplier="0.7" id="smv-1w-L7n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wDp-vI-vB1"/>
                     </view>
                     <connections>
+                        <outlet property="itemsTableView" destination="pJy-29-LBT" id="PVv-CC-Ldu"/>
                         <outlet property="logout" destination="Ufp-bL-r3L" id="KVF-sa-xtW"/>
                         <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="Ih1-mP-Va3"/>

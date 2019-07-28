@@ -10,8 +10,14 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class PanouPrimire: UIViewController
+var items = [Item]()
+
+class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    
+    
+    
+    @IBOutlet var itemsTableView: UITableView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
@@ -37,14 +43,30 @@ class PanouPrimire: UIViewController
         self.present(alert, animated: true, completion: nil)
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = items[indexPath.row].name
+        return cell;
+    }
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        self.itemsTableView.delegate = self
+        self.itemsTableView.dataSource = self
         
         print("PanouPrimire este in deschis")
         
         setupUI()
+        loadItemsFromDB()
         
     }
     
@@ -65,12 +87,28 @@ class PanouPrimire: UIViewController
             item.image_url="Nu are asa ceva"
         
         //createItem(item: item, byCategory: "C3", with_item_id: "I10")
-        addBooking(item: "I2", of_user: "Alex", description: "O vrajeala ieftina", in_category: "C1", booking_id: "unidsuperb",  startdate: "2019 07 28", enddate: "2019 07 29")
+        //addBooking(item: "I2", of_user: "Alex", description: "O vrajeala ieftina", in_category: "C1", booking_id: "unidsuperb",  startdate: "2019 07 28", enddate: "2019 07 29")
         
     }
     
     func setupUI()
     {
         
+    }
+    
+    func loadItemsFromDB()
+    {
+        
+        fetchAllItems(completion: { (fetched_items) -> Void in
+            
+            for item in fetched_items
+            {
+                items.append(item)
+                print("faergaerhgaerh") //item.description
+            }
+            
+            self.itemsTableView.reloadData()
+            
+        })
     }
 }
