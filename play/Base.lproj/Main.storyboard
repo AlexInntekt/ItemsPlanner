@@ -194,9 +194,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
                                 <rect key="frame" x="20.5" y="131" width="334" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVCell" rowHeight="57" id="nz2-Oe-T99" customClass="TBVCell" customModule="play" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="334" height="57"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nz2-Oe-T99" id="uyV-XL-boZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="56.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-Vw-GFm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="56.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="width" secondItem="uyV-XL-boZ" secondAttribute="width" id="4L3-Z9-wHU"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="centerX" secondItem="uyV-XL-boZ" secondAttribute="centerX" id="DgA-Dd-KHg"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="height" secondItem="uyV-XL-boZ" secondAttribute="height" id="PX2-aX-zs7"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="centerY" secondItem="uyV-XL-boZ" secondAttribute="centerY" id="yIt-aZ-mvW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelName" destination="Jv6-Vw-GFm" id="Tlp-g0-LTZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -319,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2852" y="151"/>
+            <point key="canvasLocation" x="2818" y="148"/>
         </scene>
         <!--Creare Cont-->
         <scene sceneID="VPs-wO-oBR">

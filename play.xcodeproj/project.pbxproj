@@ -23,6 +23,7 @@
 		FA3CD82E22DA533800BE5558 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */; };
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
+		FA8396D322EDD0B800130FAF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8396D222EDD0B800130FAF /* TableViewCell.swift */; };
 		FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B422EC375B002090C3 /* ResetPassword.swift */; };
 		FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */; };
 		FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B822ED840F002090C3 /* Writters.swift */; };
@@ -77,6 +78,7 @@
 		FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
+		FA8396D222EDD0B800130FAF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FAA6E9B422EC375B002090C3 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPassword.swift; path = /Users/alex/repos/play/play/VCs/ResetPassword.swift; sourceTree = "<absolute>"; };
 		FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetcher_testers.swift; sourceTree = "<group>"; };
 		FAA6E9B822ED840F002090C3 /* Writters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writters.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */,
 				FAA6E9BC22EDB524002090C3 /* JTAppleCell.swift */,
 				FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */,
+				FA8396D222EDD0B800130FAF /* TableViewCell.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8396D322EDD0B800130FAF /* TableViewCell.swift in Sources */,
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */,
