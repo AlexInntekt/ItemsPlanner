@@ -55,6 +55,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.performSegue(withIdentifier: "goToCalendar", sender: nil)
+    }
+    
     
     override func viewDidLoad()
     {
@@ -81,11 +86,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
        // test_fetch_all_items()
         
-        let item=Item()
-            item.name="Viermisor dulce"
-            item.description="No comment!"
-            item.image_url="Nu are asa ceva"
-        
+//        let item=Item()
+//            item.name="Viermisor dulce"
+//            item.description="No comment!"
+//            item.image_url="Nu are asa ceva"
+//
         //createItem(item: item, byCategory: "C3", with_item_id: "I10")
         //addBooking(item: "I2", of_user: "Alex", description: "O vrajeala ieftina", in_category: "C1", booking_id: "unidsuperb",  startdate: "2019 07 28", enddate: "2019 07 29")
         
@@ -98,6 +103,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func loadItemsFromDB()
     {
+        items.removeAll()
         
         fetchAllItems(completion: { (fetched_items) -> Void in
             
