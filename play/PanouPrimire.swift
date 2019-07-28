@@ -57,7 +57,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.performSegue(withIdentifier: "goToCalendar", sender: nil)
+        self.performSegue(withIdentifier: "goToCalendar", sender: items[indexPath.row])
     }
     
     
@@ -92,7 +92,23 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
 //            item.image_url="Nu are asa ceva"
 //
         //createItem(item: item, byCategory: "C3", with_item_id: "I10")
-        addBooking(item: "I2", of_user: "Alex", description: "Booking testare facut de Alex", in_category: "C1",  startdate: "2019 07 28", enddate: "2019 07 29")
+        
+        
+//        addBooking(item: "I2", of_user: "Alex", description: "Booking testare facut de Alex", in_category: "C1",  startdate: "2019 07 28", enddate: "2019 07 29")
+        
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
+    {
+        if(segue.identifier=="goToCalendar")
+        {
+            let obj = sender as! Item
+            let defVC = segue.destination as! BookItemVC
+            defVC.currentItem = obj
+           
+        }
+        
         
     }
     

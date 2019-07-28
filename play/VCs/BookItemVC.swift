@@ -15,6 +15,7 @@ import JTAppleCalendar
 let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
 let date=Date()
 
+
 extension BookItemVC: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
         ConfigurationParameters {
@@ -59,9 +60,12 @@ extension BookItemVC: JTACMonthViewDelegate {
 
 class BookItemVC: UIViewController
 {
+    var currentItem=Item()
+    
     @IBOutlet weak var calendarView: JTACMonthView!
     
-
+ 
+    @IBOutlet var numeArticol: UILabel!
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
@@ -161,6 +165,8 @@ class BookItemVC: UIViewController
         } else {
             showSimpleAlert(message: "error")
         }
+        
+        self.numeArticol.text = self.currentItem.name
     }
     
     func setupUI()
