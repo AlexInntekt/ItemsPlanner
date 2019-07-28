@@ -58,6 +58,13 @@ class PanouPrimire: UIViewController
         }
         
        // test_fetch_all_items()
+        
+        let item=Item()
+            item.name="Viermisor dulce"
+            item.description="No comment!"
+            item.image_url="Nu are asa ceva"
+        
+        createItem(item: item, byCategory: "C3", with_item_id: "I10")
     }
     
     func setupUI()
