@@ -182,8 +182,34 @@ func fetchItemsByCategory(category: String,completion: @escaping (_ success: [It
             })
     })
     
+}
+
+
+
+func fetchAllBookingsIDsByItemID(item id: String, category cat: String, completion: @escaping (_ success: [String]) -> Void)
+{
+    var bookings = [String]()
     
+    var item = Item()
 
+    let ref = Database.database().reference(withPath: "Categories").child(cat).child("items").child(id).child("bookings")
+    
+    
+    ref.observe(DataEventType.childAdded) { (snap) in
+        //print(snap.key)
+        bookings.append(snap.key)
 
+        completion(bookings)
+        bookings.removeAll()
+    }
     
 }
+
+//func fetchAllBookingsByItemID(item id: String, category cat: String, completion: @escaping (_ success: [Booking]) -> Void)
+//{
+//    var bookings = [String]()
+//    
+//    var item = Item()
+//    
+//    
+//}
