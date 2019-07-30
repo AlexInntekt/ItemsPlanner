@@ -58,7 +58,7 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController, UITextFieldDelegate
+class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     var currentItem=Item()
     var startDateOfBooking=""
@@ -254,12 +254,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate
         
         self.calendarView.scrollingMode = .stopAtEachCalendarFrame
         
-        setupUI()
-        
         self.calendarView.allowsMultipleSelection = true
         self.calendarView.allowsRangedSelection = true
         
+        textfieldDescription.delegate = self
         
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -283,10 +283,22 @@ class BookItemVC: UIViewController, UITextFieldDelegate
         
     }
     
-    //dissmis the keyboard after tapping on 'return' from the textField:
-    func textFieldShouldReturn(_ titleTextfield: UITextField) -> Bool
-    {
-        self.view.endEditing(true)
+
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    /* Older versions of Swift */
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
     
