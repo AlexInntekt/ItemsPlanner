@@ -76,7 +76,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         
         
-        fetchAllBookingsByItemID(item: "I1", category: "C1", completion: { (bookings) -> Void in
+        fetchAllBookingsIDsByItemID(item: "I2", category: "C1", completion: { (bookings) -> Void in
             
             
             for obj in bookings

@@ -194,14 +194,25 @@ func fetchAllBookingsIDsByItemID(item id: String, category cat: String, completi
 
     let ref = Database.database().reference(withPath: "Categories").child(cat).child("items").child(id).child("bookings")
     
-    
-    ref.observe(DataEventType.childAdded) { (snap) in
-        //print(snap.key)
-        bookings.append(snap.key)
+    var count = 0
 
-        completion(bookings)
-        bookings.removeAll()
-    }
+    ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+        //print(snapshot.childrenCount)
+        
+        ref.observe(DataEventType.childAdded) { (snap) in
+            //print(snap.key)
+            bookings.append(snap.key)
+            count+=1
+            if(count==snapshot.childrenCount)
+            {
+                completion(bookings)
+            }
+            
+            
+        }
+    })
+    
+    
     
 }
 
