@@ -73,18 +73,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadItemsFromDB()
         
-        
-        
-        
-        fetchAllBookingsByItemID(item: "I2", category: "C1", completion: { (bookings) -> Void in
-            
-            
-            for obj in bookings
-            {
-                print(obj.description)
-            }
-            
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

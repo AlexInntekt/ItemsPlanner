@@ -103,3 +103,16 @@ func test_bookings()
     
 }
 
+
+func test_fetchAllBookingsByItemID()
+{
+    fetchAllBookingsByItemID(item: "I2", category: "C1", completion: { (bookings) -> Void in
+        
+        
+        for obj in bookings
+        {
+            print(obj.description)
+        }
+        
+    })
+}

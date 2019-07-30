@@ -83,15 +83,55 @@ class BookItemVC: UIViewController, UITextFieldDelegate
         
         
         
-//        let res = dif.string(from: dateIntervalOne)
+        let ref = Database.database().reference().child("Categories").child(currentItem.category).child("items").child(currentItem.id)
         
-//        if let res = res
-//        {
-//            alert(UIVC: self, title: "Result", message: res)
-//        }
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild("bookings"){
+                
+                print("Current bookings spotted")
+                
+            }else{
+                
+                print("There is no current booking")
+            }
+            
+            
+        })
         
+        fetchAllBookingsByItemID(item: currentItem.id, category: currentItem.category, completion: { (bookings) -> Void in
+            
+            
+            var isAvailable = true
+            
+            for obj in bookings
+            {
+                let date3 = formatter.date(from: obj.startDate)!
+                let date4 = formatter.date(from: obj.endDate)!
+                
+                let currentInterval = DateInterval(start: date3, end: date4)
+
+                let res = chosenInterval.intersects(currentInterval)
+                
+                if(res==false)
+                {
+                    isAvailable=res
+                }
+            }
+            
+            if(isAvailable)
+            {
+                addBooking(item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                
+                alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
+            }
+            else
+            {
+                alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat.")
+            }
+            
+        })
         
-        //addBooking(item: currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
     }
     
     
