@@ -216,11 +216,32 @@ func fetchAllBookingsIDsByItemID(item id: String, category cat: String, completi
     
 }
 
-//func fetchAllBookingsByItemID(item id: String, category cat: String, completion: @escaping (_ success: [Booking]) -> Void)
-//{
-//    var bookings = [String]()
-//    
-//    var item = Item()
-//    
-//    
-//}
+func fetchAllBookingsByItemID(item id: String, category cat: String, completion: @escaping (_ success: [Booking]) -> Void)
+{
+    
+    var bookingsList = [Booking]()
+    
+    fetchAllBookingsIDsByItemID(item: id, category: cat, completion: { (booking_ids) -> Void in
+        
+        var count = 1
+
+        for booking_id in booking_ids
+        {
+            fetchBookings(by: booking_id, completion: { (fetched_bookings) in
+                for booking in fetched_bookings
+                {
+                    bookingsList.append(booking)
+
+                    if(count==booking_ids.count)
+                    {
+                        completion(bookingsList)
+                    }
+                    count+=1;
+                }
+                
+            })
+        }
+        
+    })
+    
+}
