@@ -74,7 +74,24 @@ class BookItemVC: UIViewController, UITextFieldDelegate
     @IBAction func bookButton(_ sender: Any)
     {
         
-        addBooking(item: currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
+        let dif = DateIntervalFormatter()
+        formatter.dateFormat = "YYYY MM dd"
+        let date1 = formatter.date(from: startDateOfBooking)!
+        let date2 = formatter.date(from: endDateOfBooking)!
+        
+        let chosenInterval = DateInterval(start: date1, end: date2)
+        
+        
+        
+//        let res = dif.string(from: dateIntervalOne)
+        
+//        if let res = res
+//        {
+//            alert(UIVC: self, title: "Result", message: res)
+//        }
+        
+        
+        //addBooking(item: currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: currentItem.category, startdate: startDateOfBooking, enddate: endDateOfBooking)
     }
     
     
