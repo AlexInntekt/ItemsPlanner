@@ -112,7 +112,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 
                             if(isAvailable)
                             {
-                                addBooking(item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                 
                                 alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
                             }
@@ -125,7 +125,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 
             }else{
                 
-                addBooking(item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                 
                 alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
             }
