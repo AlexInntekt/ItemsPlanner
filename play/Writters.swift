@@ -39,20 +39,24 @@ func addBooking(itemName itemName: String, item id: String, of_user user: String
     new.child("interval").updateChildValues(["till":ed])
     new.updateChildValues(["user":user])
     
-    let keyToBooking = new.key!
+    let keyToBooking = new.key! as String
     
     
     //second block to make changes here:
     db = ref.child("Categories").child(cat).child("items")
     db.child(id).child("bookings").updateChildValues([keyToBooking: keyToBooking])
     
+    
+    
+    
+    
+    //third block to make changes:
+    db = ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
+    db.updateChildValues([new.key!:new.key!])
+    
+    
+    
     //        db.child(id).child("bookings").updateChildValues([bid: bid])
-    
-    
-    
-    
-    
-    
     
 //    db.updateChildValues([bid:""])
 //    db.child(bid).setValue("interval")
