@@ -17,6 +17,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var username: UITextField!
+    @IBOutlet var phoneNumber: UITextField!
     
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
@@ -40,6 +41,15 @@ class CreareCont: UIViewController, UITextFieldDelegate
                         let changeRequest = user.createProfileChangeRequest()
                         
                         changeRequest.displayName = self.username.text!
+                        
+                        let userId = Auth.auth().currentUser!.uid
+                        
+                        let ref = Database.database().reference().child("Users")
+//                        let values = {["name":changeRequest.displayName];["phoneNumber":"xxx-xxx-xxx"]}
+                        ref.updateChildValues([userId : ""])
+                        let userPath = ref.child(userId)
+                        userPath.updateChildValues(["name" : changeRequest.displayName])
+                        userPath.updateChildValues(["phoneNumber" : self.phoneNumber.text])
                         
                         changeRequest.commitChanges { error in
                             if let error = error {

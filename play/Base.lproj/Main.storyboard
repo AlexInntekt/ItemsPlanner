@@ -442,7 +442,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeF-tN-mEH">
-                                <rect key="frame" x="62.5" y="378" width="250" height="40"/>
+                                <rect key="frame" x="62.5" y="466" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="eXd-b8-y9Y"/>
                                 </constraints>
@@ -472,6 +472,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0vn-2g-9zi">
+                                <rect key="frame" x="56.5" y="356" width="262.5" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SQF-5h-szI"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -479,8 +488,10 @@
                             <constraint firstItem="L5h-ma-8JX" firstAttribute="width" secondItem="HFi-xu-iEr" secondAttribute="width" id="7wa-4o-fOo"/>
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="top" secondItem="0Jw-5C-ujV" secondAttribute="top" constant="39" id="FCI-df-ZLz"/>
                             <constraint firstItem="SeF-tN-mEH" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="Gdj-GF-xP4"/>
-                            <constraint firstItem="SeF-tN-mEH" firstAttribute="top" secondItem="L5h-ma-8JX" secondAttribute="bottom" constant="50" id="LRN-lR-fmI"/>
+                            <constraint firstItem="0vn-2g-9zi" firstAttribute="width" secondItem="B0Q-To-gWg" secondAttribute="width" id="Hum-tT-7Pf"/>
+                            <constraint firstItem="SeF-tN-mEH" firstAttribute="top" secondItem="0vn-2g-9zi" secondAttribute="bottom" constant="70" id="LRN-lR-fmI"/>
                             <constraint firstItem="L5h-ma-8JX" firstAttribute="top" secondItem="HFi-xu-iEr" secondAttribute="bottom" constant="29" id="QHY-wI-HPB"/>
+                            <constraint firstItem="0vn-2g-9zi" firstAttribute="centerX" secondItem="B0Q-To-gWg" secondAttribute="centerX" id="UHK-LI-xaP"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="width" secondItem="HFi-xu-iEr" secondAttribute="width" id="UL7-Ej-CgC"/>
                             <constraint firstItem="HFi-xu-iEr" firstAttribute="width" secondItem="GrT-nK-CIt" secondAttribute="width" multiplier="0.7" id="aGR-Dr-HnL"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="height" secondItem="HFi-xu-iEr" secondAttribute="height" id="dxg-OC-6Z9"/>
@@ -490,8 +501,10 @@
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="ig7-fd-CHY"/>
                             <constraint firstItem="B0Q-To-gWg" firstAttribute="centerX" secondItem="0Jw-5C-ujV" secondAttribute="centerX" id="lny-z0-hUn"/>
                             <constraint firstItem="L5h-ma-8JX" firstAttribute="centerX" secondItem="HFi-xu-iEr" secondAttribute="centerX" id="nWs-Qx-BMk"/>
+                            <constraint firstItem="0vn-2g-9zi" firstAttribute="height" secondItem="B0Q-To-gWg" secondAttribute="height" id="pVj-oc-zHu"/>
                             <constraint firstItem="Y0w-DY-vSZ" firstAttribute="width" secondItem="GrT-nK-CIt" secondAttribute="width" multiplier="0.7" id="qjv-hf-gGW"/>
                             <constraint firstItem="HFi-xu-iEr" firstAttribute="top" secondItem="B0Q-To-gWg" secondAttribute="bottom" constant="22" id="vsg-D0-pgQ"/>
+                            <constraint firstItem="0vn-2g-9zi" firstAttribute="top" secondItem="L5h-ma-8JX" secondAttribute="bottom" constant="28" id="z9F-iV-CwJ"/>
                             <constraint firstItem="SeF-tN-mEH" firstAttribute="height" secondItem="L5h-ma-8JX" secondAttribute="height" id="zi1-VD-5rV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Jw-5C-ujV"/>
@@ -500,6 +513,7 @@
                         <outlet property="email" destination="HFi-xu-iEr" id="pWc-hD-VXr"/>
                         <outlet property="label1" destination="Y0w-DY-vSZ" id="O9m-xA-R9j"/>
                         <outlet property="password" destination="L5h-ma-8JX" id="eyL-zP-1pg"/>
+                        <outlet property="phoneNumber" destination="0vn-2g-9zi" id="8c5-pM-tyT"/>
                         <outlet property="signup" destination="SeF-tN-mEH" id="2Cq-FQ-atP"/>
                         <outlet property="username" destination="B0Q-To-gWg" id="6ut-kH-oxK"/>
                     </connections>
@@ -514,6 +528,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3EE-c4-Ell"/>
-        <segue reference="QlQ-Wq-lMN"/>
+        <segue reference="K1u-WA-VCh"/>
     </inferredMetricsTieBreakers>
 </document>

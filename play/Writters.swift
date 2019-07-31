@@ -53,6 +53,7 @@ func addBooking(itemName itemName: String, item id: String, of_user user: String
     
     
     
+    
 //    db.updateChildValues([bid:""])
 //    db.child(bid).setValue("interval")
 //    db.child(bid).updateChildValues(["descriere":descr])
