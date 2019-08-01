@@ -10,6 +10,7 @@ target 'play' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'JTAppleCalendar'
+  pod 'SideMenu'
   # Pods for play
 
   target 'playTests' do

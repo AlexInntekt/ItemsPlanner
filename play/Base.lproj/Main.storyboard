@@ -568,6 +568,7 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="raY-1k-xts"/>
         <segue reference="wlb-jp-kx3"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
