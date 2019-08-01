@@ -225,12 +225,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-Wk-BVp">
+                                <rect key="frame" x="232" y="35" width="113" height="30"/>
+                                <state key="normal" title="Rezervările mele"/>
+                                <connections>
+                                    <segue destination="HgO-6c-e7z" kind="presentation" identifier="myBookingsSegue" id="raY-1k-xts"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="6aM-Wk-BVp" secondAttribute="trailing" constant="30" id="0wW-9G-btb"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="26" id="J38-oI-MPO"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.89" id="KwK-1Q-KcL"/>
+                            <constraint firstItem="6aM-Wk-BVp" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="15" id="MZg-5t-wGs"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" id="Ops-yV-QGX"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
@@ -249,6 +258,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1762" y="133"/>
+        </scene>
+        <!--My BookingsVC-->
+        <scene sceneID="9oB-yg-0Sw">
+            <objects>
+                <viewController id="HgO-6c-e7z" customClass="MyBookingsVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NXv-3C-zJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC2-JN-Y6f">
+                                <rect key="frame" x="10" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="735-Fz-3PB"/>
+                                    <constraint firstAttribute="width" constant="50" id="Unu-IV-01w"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" id="wlb-jp-kx3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iC2-JN-Y6f" firstAttribute="top" secondItem="Od6-OK-yYm" secondAttribute="top" id="ixo-Md-GDX"/>
+                            <constraint firstItem="iC2-JN-Y6f" firstAttribute="leading" secondItem="Od6-OK-yYm" secondAttribute="leading" constant="10" id="tbV-Df-lxF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Od6-OK-yYm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159" y="979"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="IEk-dz-3km">
@@ -527,7 +568,7 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3EE-c4-Ell"/>
-        <segue reference="K1u-WA-VCh"/>
+        <segue reference="wlb-jp-kx3"/>
+        <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
