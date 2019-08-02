@@ -245,3 +245,13 @@ func fetchAllBookingsByItemID(item id: String, category cat: String, completion:
     })
     
 }
+
+
+
+
+func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ success: [Booking]) -> Void)
+{
+    let ref = Database.database().reference().child("Users").child(user_id)
+    
+    
+}
