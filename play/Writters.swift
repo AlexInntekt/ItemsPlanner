@@ -23,7 +23,7 @@ func createItem(item item: Item, byCategory cat: String, with_item_id id: String
 }
 
 
-func addBooking(itemName itemName: String, item id: String, of_user user: String, description descr: String, in_category cat: String, startdate sd: String, enddate ed: String)
+func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category cat: String, startdate sd: String, enddate ed: String)
 {
     
     let ref = Database.database().reference()
@@ -37,7 +37,7 @@ func addBooking(itemName itemName: String, item id: String, of_user user: String
     new.updateChildValues(["itemName":itemName])
     new.child("interval").updateChildValues(["from":sd])
     new.child("interval").updateChildValues(["till":ed])
-    new.updateChildValues(["user":user])
+    new.updateChildValues(["user":user_id])
     
     let keyToBooking = new.key! as String
     

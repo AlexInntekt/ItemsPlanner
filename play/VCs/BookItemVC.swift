@@ -78,6 +78,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         formatter.dateFormat = "YYYY MM dd"
         let date1 = formatter.date(from: startDateOfBooking)!
         let date2 = formatter.date(from: endDateOfBooking)!
+        let current_user_id = Auth.auth().currentUser?.uid
         
         let chosenInterval = DateInterval(start: date1, end: date2)
         
@@ -112,7 +113,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 
                             if(isAvailable)
                             {
-                                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                 
                                 alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
                             }
@@ -125,7 +126,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 
             }else{
                 
-                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                 
                 alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
             }

@@ -8,14 +8,52 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
-class MyBookingsVC: UIViewController
+class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    override func viewDidLoad() {
+    
+    
+    var bookings = [Booking]()
+    
+    @IBOutlet var tbv: UITableView!
+    
+    override func viewDidLoad()
+    {
+        tbv.delegate = self
+        tbv.dataSource = self
+        
+        loadBookings()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bookings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
+        cell.labelName?.text = bookings[indexPath.row].description
+        return cell;
+    }
+    
+    func loadBookings()
+    {
+        let currentUserId = Auth.auth().currentUser?.uid
+        fetchAllBookingsByUser(user_id: currentUserId ?? "null") { fetched_bookings in
+            
+            self.bookings = fetched_bookings
+            
+            print(self.bookings[0].description)
+            
+            self.tbv.reloadData()
+        }
     }
 }

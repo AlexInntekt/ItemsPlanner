@@ -73,7 +73,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadItemsFromDB()
         
-        
+    
         
     }
     

@@ -245,3 +245,71 @@ func fetchAllBookingsByItemID(item id: String, category cat: String, completion:
     })
     
 }
+
+
+
+
+func fetchAllBookingsIDsByUser(user_id user_id: String, completion: @escaping (_ success: [String]) -> Void)
+{
+    let ref = Database.database().reference().child("Users").child(user_id).child("bookings")
+    
+    var bookingsIDs = [String]()
+    
+    var count = 0
+    
+    ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+        //print(snapshot.childrenCount)
+        
+        ref.observe(DataEventType.childAdded) { (snap) in
+            //print(snap.key)
+            bookingsIDs.append(snap.key)
+            count+=1
+            if(count==snapshot.childrenCount)
+            {
+                completion(bookingsIDs)
+            }
+            
+            
+        }
+    })
+    
+}
+
+func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ succes: [Booking]) -> Void)
+{
+    
+    var bookings = [Booking]()
+    var count = 1
+    
+    fetchAllBookingsIDsByUser(user_id: Auth.auth().currentUser?.uid ?? "null") { (bks) in
+        for bk in bks
+        {
+            let currentBooking = Booking()
+
+            let ref = Database.database().reference().child("Bookings")
+            let pathToBooking = ref.child(bk)
+            
+            pathToBooking.observe(.value, with: { (snap) in
+
+                currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
+                currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
+                currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
+                currentBooking.itemId = snap.childSnapshot(forPath: "itemId").value as! String
+                currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
+                currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                
+                bookings.append(currentBooking)
+                
+                print(currentBooking.category)
+                if(count==bks.count)
+                {
+                    completion(bookings)
+                }
+                count+=1
+            })
+            
+
+        }
+    }
+}

@@ -278,18 +278,56 @@
                                     <segue destination="ez9-8c-EE8" kind="presentation" id="wlb-jp-kx3"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
+                                <rect key="frame" x="10" y="78" width="355" height="569"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVBookingCell" id="sHi-CJ-jtz" customClass="TBVBookingCell" customModule="play" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHi-CJ-jtz" id="24C-r0-USl">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CU-L8-zap">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5CU-L8-zap" firstAttribute="leading" secondItem="24C-r0-USl" secondAttribute="leading" id="5sL-78-GEL"/>
+                                                <constraint firstItem="5CU-L8-zap" firstAttribute="top" secondItem="24C-r0-USl" secondAttribute="top" id="HfX-rt-R0w"/>
+                                                <constraint firstAttribute="trailing" secondItem="5CU-L8-zap" secondAttribute="trailing" id="hmq-vf-IGS"/>
+                                                <constraint firstAttribute="bottom" secondItem="5CU-L8-zap" secondAttribute="bottom" id="vcz-YZ-ue2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelName" destination="5CU-L8-zap" id="ZUU-59-1WS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Od6-OK-yYm" firstAttribute="bottom" secondItem="Ctc-eF-61i" secondAttribute="bottom" constant="20" id="Vz3-SK-pyo"/>
+                            <constraint firstItem="Ctc-eF-61i" firstAttribute="leading" secondItem="Od6-OK-yYm" secondAttribute="leading" constant="10" id="XS4-pQ-6wo"/>
+                            <constraint firstItem="Ctc-eF-61i" firstAttribute="top" secondItem="iC2-JN-Y6f" secondAttribute="bottom" constant="8" id="er9-9f-rUL"/>
                             <constraint firstItem="iC2-JN-Y6f" firstAttribute="top" secondItem="Od6-OK-yYm" secondAttribute="top" id="ixo-Md-GDX"/>
+                            <constraint firstItem="Od6-OK-yYm" firstAttribute="trailing" secondItem="Ctc-eF-61i" secondAttribute="trailing" constant="10" id="m0x-F1-eEz"/>
                             <constraint firstItem="iC2-JN-Y6f" firstAttribute="leading" secondItem="Od6-OK-yYm" secondAttribute="leading" constant="10" id="tbV-Df-lxF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Od6-OK-yYm"/>
                     </view>
+                    <connections>
+                        <outlet property="tbv" destination="Ctc-eF-61i" id="VeH-4G-Kdu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="979"/>
+            <point key="canvasLocation" x="2157.5999999999999" y="978.26086956521749"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="IEk-dz-3km">

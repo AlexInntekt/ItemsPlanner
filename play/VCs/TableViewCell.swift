@@ -15,3 +15,10 @@ class TBVCell: UITableViewCell
     @IBOutlet weak var labelName: UILabel!
     
 }
+
+
+class TBVBookingCell: UITableViewCell
+{
+    @IBOutlet var labelName: UILabel!
+    
+}
