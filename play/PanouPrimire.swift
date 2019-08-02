@@ -73,7 +73,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadItemsFromDB()
         
-        deleteMyBookingWithId(bk_id: "-LlIwRm8r2p2YlAP9s6n", item_id: "I2", cat: "C1")
     
         
     }
