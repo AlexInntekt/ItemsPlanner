@@ -14,6 +14,9 @@ import Foundation
 
 class Booking {
     var description = String()
+    var category = String()
+    var itemId = String()
+    var itemName = String()
     var user = String()
     var startDate = String()
     var endDate = String()
