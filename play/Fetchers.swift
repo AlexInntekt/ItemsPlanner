@@ -290,24 +290,26 @@ func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ su
             let pathToBooking = ref.child(bk)
             
             pathToBooking.observe(.value, with: { (snap) in
-                
-                //print(snap.childSnapshot(forPath: "itemName").value as! String)
-                
+
                 currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
+                currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
                 currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
                 currentBooking.itemId = snap.childSnapshot(forPath: "itemId").value as! String
                 currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
+                currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                 
-//                currentBooking.startDate = snap.child("interval").value(forKey: "from") as! String
-//                currentBooking.endDate = snap.child("interval").value(forKey: "till") as! String
-    
                 bookings.append(currentBooking)
+                
+                print(currentBooking.category)
+                if(count==bks.count)
+                {
+                    completion(bookings)
+                }
+                count+=1
             })
-            count+=1
-            if(count==bks.count)
-            {
-                completion(bookings)
-            }
+            
+
         }
     }
 }

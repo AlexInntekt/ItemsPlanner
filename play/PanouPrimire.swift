@@ -77,8 +77,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         fetchAllBookingsByUser(user_id: Auth.auth().currentUser?.uid ?? "null") { bookings in
             for bk in bookings
             {
-                print(bk.description)
-                print(bookings.count)
+                print(bk.endDate)
             }
         }
         
