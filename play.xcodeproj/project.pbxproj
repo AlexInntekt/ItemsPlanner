@@ -31,6 +31,7 @@
 		FAA6E9BD22EDB524002090C3 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BC22EDB524002090C3 /* JTAppleCell.swift */; };
 		FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */; };
 		FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD176322F2B47C00881325 /* MyBookings.swift */; };
+		FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFEAE722F4CB2F00270F25 /* Deleters.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		FAA6E9BC22EDB524002090C3 /* JTAppleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTAppleCell.swift; sourceTree = "<group>"; };
 		FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
 		FAAD176322F2B47C00881325 /* MyBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookings.swift; sourceTree = "<group>"; };
+		FACFEAE722F4CB2F00270F25 /* Deleters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deleters.swift; path = /Users/alex/repos/play/play/Deleters.swift; sourceTree = "<absolute>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,10 +187,8 @@
 			children = (
 				FA01151F22DF845D00F8234A /* VCs */,
 				FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */,
+				FACFEAE922F4CB3500270F25 /* API Handlers */,
 				FA01152222DF84E800F8234A /* Models.swift */,
-				FA01152422DF851B00F8234A /* Fetchers.swift */,
-				FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */,
-				FAA6E9B822ED840F002090C3 /* Writters.swift */,
 				FA13922922D8ED93006D64B4 /* AppDelegate.swift */,
 				FAD3C92322DCACAC0068E52D /* utils.swift */,
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
@@ -216,6 +216,17 @@
 				FA13924E22D8ED95006D64B4 /* Info.plist */,
 			);
 			path = playUITests;
+			sourceTree = "<group>";
+		};
+		FACFEAE922F4CB3500270F25 /* API Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				FA01152422DF851B00F8234A /* Fetchers.swift */,
+				FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */,
+				FACFEAE722F4CB2F00270F25 /* Deleters.swift */,
+				FAA6E9B822ED840F002090C3 /* Writters.swift */,
+			);
+			path = "API Handlers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */,
 				FA8396D322EDD0B800130FAF /* TableViewCell.swift in Sources */,
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
