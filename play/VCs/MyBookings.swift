@@ -24,6 +24,8 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         tbv.delegate = self
         tbv.dataSource = self
+        
+        loadBookings()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -38,12 +40,20 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
-        cell.labelName?.text = items[indexPath.row].name
+        cell.labelName?.text = bookings[indexPath.row].description
         return cell;
     }
     
     func loadBookings()
     {
-        let ref = Database.database().reference().child("Bookings").child
+        let currentUserId = Auth.auth().currentUser?.uid
+        fetchAllBookingsByUser(user_id: currentUserId ?? "null") { fetched_bookings in
+            
+            self.bookings = fetched_bookings
+            
+            print(self.bookings[0].description)
+            
+            self.tbv.reloadData()
+        }
     }
 }

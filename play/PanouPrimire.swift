@@ -73,13 +73,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadItemsFromDB()
         
-        
-        fetchAllBookingsByUser(user_id: Auth.auth().currentUser?.uid ?? "null") { bookings in
-            for bk in bookings
-            {
-                print(bk.endDate)
-            }
-        }
+    
         
     }
     
