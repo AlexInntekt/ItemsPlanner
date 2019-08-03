@@ -13,6 +13,7 @@ import Foundation
 //}
 
 class Booking {
+    var id = String()
     var description = String()
     var category = String()
     var itemId = String()

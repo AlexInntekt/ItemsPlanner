@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/alex/repos/play/play/Deleters.swift">
-   </FileRef>
-   <FileRef
       location = "group:play.xcodeproj">
    </FileRef>
    <FileRef

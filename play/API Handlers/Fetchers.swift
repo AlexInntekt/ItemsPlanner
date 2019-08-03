@@ -54,6 +54,7 @@ func fetchBookings(by id: String, completion: @escaping (_ success: [Booking]) -
             currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
             currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
             currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
+            currentBooking.id = snap.key
 
             bookings.append(currentBooking)
             
@@ -95,6 +96,7 @@ func fetchAllBookings(completion: @escaping (_ success: [Booking]) -> Void)
                     currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                     currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                     currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
+                    currentBooking.id = snap.key
                     
                     bookings.append(currentBooking)
                     if(no_items==countItems)
@@ -278,6 +280,7 @@ func fetchAllBookingsIDsByUser(user_id user_id: String, completion: @escaping (_
 func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ succes: [Booking]) -> Void)
 {
     
+    
     var bookings = [Booking]()
     var count = 1
     
@@ -298,6 +301,7 @@ func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ su
                 currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
                 currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                 currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                currentBooking.id = snap.key
                 
                 bookings.append(currentBooking)
                 

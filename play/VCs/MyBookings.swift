@@ -54,6 +54,25 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let bk = self.bookings[indexPath.row]
+            self.bookings.remove(at: indexPath.row)
+            self.tbv.reloadData()
+            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category)
+            
+        }
+        
+//        let share = UITableViewRowAction(style: .normal, title: "Disable") { (action, indexPath) in
+//            // share item at indexPath
+//        }
+//
+//        share.backgroundColor = UIColor.blue
+//
+        return [delete]
+    }
+    
     func setup()
     {
         

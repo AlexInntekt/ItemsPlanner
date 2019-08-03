@@ -73,8 +73,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadItemsFromDB()
         
-    
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
