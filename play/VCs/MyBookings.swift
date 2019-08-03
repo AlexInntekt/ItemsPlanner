@@ -64,13 +64,13 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         }
         
-//        let share = UITableViewRowAction(style: .normal, title: "Disable") { (action, indexPath) in
-//            // share item at indexPath
-//        }
-//
-//        share.backgroundColor = UIColor.blue
-//
-        return [delete]
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            // share item at indexPath
+        }
+
+        edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
+
+        return [delete,edit]
     }
     
     func setup()
