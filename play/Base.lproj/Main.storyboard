@@ -210,7 +210,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
-                                <rect key="frame" x="20.5" y="131.5" width="334" height="467"/>
+                                <rect key="frame" x="20.5" y="165.5" width="334" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVCell" rowHeight="57" id="nz2-Oe-T99" customClass="TBVCell" customModule="play" customModuleProvider="target">
@@ -272,6 +272,12 @@
                                     <segue destination="HgO-6c-e7z" kind="presentation" identifier="myBookingsSegue" id="raY-1k-xts"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY3-yF-LpJ">
+                                <rect key="frame" x="20.5" y="108" width="334" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ivQ-Sr-U58"/>
+                                </constraints>
+                            </pickerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy5-5k-Rkr">
                                 <rect key="frame" x="0.0" y="70" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -284,10 +290,13 @@
                         <constraints>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
                             <constraint firstItem="Ufp-bL-r3L" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="15" id="FA9-P3-KNn"/>
-                            <constraint firstItem="pJy-29-LBT" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="26" id="J38-oI-MPO"/>
+                            <constraint firstItem="pJy-29-LBT" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="60" id="J38-oI-MPO"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.89" id="KwK-1Q-KcL"/>
                             <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="6aM-Wk-BVp" secondAttribute="trailing" constant="16" id="N8R-mu-nCD"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" id="Ops-yV-QGX"/>
+                            <constraint firstItem="nY3-yF-LpJ" firstAttribute="width" secondItem="pJy-29-LBT" secondAttribute="width" id="TO3-mD-zhF"/>
+                            <constraint firstItem="nY3-yF-LpJ" firstAttribute="centerX" secondItem="pJy-29-LBT" secondAttribute="centerX" id="TxI-OS-z3K"/>
+                            <constraint firstItem="nY3-yF-LpJ" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="2.5" id="UDh-bu-y0i"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
                             <constraint firstItem="fy5-5k-Rkr" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="50" id="giy-SL-5NA"/>
                             <constraint firstItem="Ufp-bL-r3L" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="16" id="hBg-BB-bte"/>
@@ -307,6 +316,7 @@
                     <connections>
                         <outlet property="itemsTableView" destination="pJy-29-LBT" id="PVv-CC-Ldu"/>
                         <outlet property="logout" destination="Ufp-bL-r3L" id="KVF-sa-xtW"/>
+                        <outlet property="pickerCategory" destination="nY3-yF-LpJ" id="DhS-4c-MhX"/>
                         <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="Ih1-mP-Va3"/>
                         <segue destination="nBd-z6-hOB" kind="presentation" identifier="goToCalendar" id="Tn8-hL-gDt"/>
@@ -766,8 +776,8 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="raY-1k-xts"/>
-        <segue reference="wlb-jp-kx3"/>
+        <segue reference="Tn8-hL-gDt"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

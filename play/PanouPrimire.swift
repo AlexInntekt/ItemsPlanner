@@ -12,9 +12,16 @@ import FirebaseAuth
 
 var items = [Item]()
 
-class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
+var displayingItems = [Item]()
+var displayingCategories = ["Toate"]
+
+class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource
 {
     
+    
+    
+    
+    @IBOutlet var pickerCategory: UIPickerView!
     
     
     @IBOutlet var itemsTableView: UITableView!
@@ -42,16 +49,53 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return displayingCategories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return displayingCategories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        displayingItems.removeAll()
+        
+        if(displayingCategories[row]=="Toate")
+        {
+            displayingItems=items
+            self.itemsTableView.reloadData()
+        }
+        else
+        {
+            for item in items
+            {
+                if(item.category==displayingCategories[row])
+                {
+                    displayingItems.append(item)
+                }
+            }
+            
+            self.itemsTableView.reloadData()
+        }
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return items.count
+        return displayingItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.itemsTableView.dequeueReusableCell(withIdentifier: "TBVCell") as! TBVCell
-        let item = items[indexPath.row]
+        let item = displayingItems[indexPath.row]
         cell.labelName?.text = item.name
         cell.labelDescription?.text = item.description
         cell.labelCategory?.text = "category: \(item.category)"
@@ -70,6 +114,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.itemsTableView.delegate = self
         self.itemsTableView.dataSource = self
+        self.pickerCategory.delegate = self
+        self.pickerCategory.dataSource = self
         
         print("PanouPrimire este in deschis")
         
@@ -132,7 +178,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 items.append(item)
             }
             
+            displayingItems=items
             self.itemsTableView.reloadData()
+            
+            fetchAllCategories(completion: { (categories) in
+                displayingCategories=categories
+                displayingCategories.append("Toate")
+                
+                self.pickerCategory.reloadAllComponents()
+            })
             
         })
     }
