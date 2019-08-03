@@ -225,7 +225,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
             {
                 //                var date = Calendar.current.date(byAdding: .day, value: 1, to: date)
                 
-                var date_as_string = formatter.string(from: date)
+                let date_as_string = formatter.string(from: date)
                 
                 print(date_as_string)
             }
@@ -295,7 +295,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func setupUI()
     {
-        
+        self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment."
     }
     
 
