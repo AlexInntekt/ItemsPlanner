@@ -17,7 +17,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var username: UITextField!
-    @IBOutlet var phoneNumber: UITextField!
+    @IBOutlet weak var phoneNumber: UITextField!
     
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
@@ -130,5 +130,6 @@ class CreareCont: UIViewController, UITextFieldDelegate
         self.view.endEditing(true)
         return true
     }
+    
     
 }
