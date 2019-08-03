@@ -40,18 +40,25 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M56-rV-iXS">
                                 <rect key="frame" x="154" y="283" width="67.5" height="45"/>
+                                <color key="backgroundColor" white="0.80379231770000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M56-rV-iXS" secondAttribute="height" multiplier="3/2" id="Ndh-43-DEX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Start"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ltH-b4-pdE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YZ-SF-pnM">
                                 <rect key="frame" x="220" y="602" width="135" height="45"/>
-                                <state key="normal" title="Cont nou?"/>
+                                <color key="backgroundColor" white="0.80379231770000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cont nou?">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="signup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qjw-0Z-cU8"/>
                                     <segue destination="TGa-I6-QtF" kind="presentation" id="KjD-em-1eO"/>
@@ -59,8 +66,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-Sb-Aw0">
                                 <rect key="frame" x="220" y="529" width="135" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Resetați parola"/>
+                                <color key="backgroundColor" white="0.80379231770000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Resetați parola">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="lVN-IX-5Uc" kind="presentation" id="sSa-kA-GUz"/>
                                 </connections>
@@ -116,8 +127,11 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4Q-Pf-ZVl">
                                 <rect key="frame" x="103" y="244" width="169" height="40"/>
+                                <color key="backgroundColor" white="0.80379231770000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="Trimite"/>
+                                <state key="normal" title="Trimite">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="resetPassword:" destination="lVN-IX-5Uc" eventType="touchUpInside" id="SbX-QF-k8y"/>
                                 </connections>
@@ -180,22 +194,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-bL-r3L">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-bL-r3L">
                                 <rect key="frame" x="16" y="35" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log Out"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.24888082187860247" green="0.099284072167955428" blue="0.46881985513086855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="logout:" destination="ez9-8c-EE8" eventType="touchUpInside" id="QjT-PC-M7b"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-2X-HUs">
-                                <rect key="frame" x="46" y="84" width="262.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="46" y="84" width="262.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
-                                <rect key="frame" x="20.5" y="131" width="334" height="467"/>
+                                <rect key="frame" x="20.5" y="131.5" width="334" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVCell" rowHeight="57" id="nz2-Oe-T99" customClass="TBVCell" customModule="play" customModuleProvider="target">
@@ -226,26 +241,46 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-Wk-BVp">
-                                <rect key="frame" x="232" y="35" width="113" height="30"/>
-                                <state key="normal" title="Rezervările mele"/>
+                                <rect key="frame" x="226" y="32" width="133" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Rezervările mele">
+                                    <color key="titleColor" red="0.24888082187860247" green="0.099284072167955428" blue="0.46881985513086855" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <segue destination="HgO-6c-e7z" kind="presentation" identifier="myBookingsSegue" id="raY-1k-xts"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy5-5k-Rkr">
+                                <rect key="frame" x="0.0" y="70" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="KX3-QK-UdU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="6aM-Wk-BVp" secondAttribute="trailing" constant="30" id="0wW-9G-btb"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="64" id="3rY-Z6-Y02"/>
+                            <constraint firstItem="Ufp-bL-r3L" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="15" id="FA9-P3-KNn"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="26" id="J38-oI-MPO"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.89" id="KwK-1Q-KcL"/>
-                            <constraint firstItem="6aM-Wk-BVp" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="15" id="MZg-5t-wGs"/>
+                            <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="6aM-Wk-BVp" secondAttribute="trailing" constant="16" id="N8R-mu-nCD"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" id="Ops-yV-QGX"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
+                            <constraint firstItem="fy5-5k-Rkr" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="50" id="giy-SL-5NA"/>
+                            <constraint firstItem="Ufp-bL-r3L" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="16" id="hBg-BB-bte"/>
+                            <constraint firstItem="fy5-5k-Rkr" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" id="lSp-gb-Jk8"/>
+                            <constraint firstItem="fy5-5k-Rkr" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" id="lX6-fl-yzJ"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="height" secondItem="5gp-lt-4WM" secondAttribute="height" multiplier="0.7" id="smv-1w-L7n"/>
+                            <constraint firstItem="6aM-Wk-BVp" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="12" id="yXL-HH-83j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wDp-vI-vB1"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="fy5-5k-Rkr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="itemsTableView" destination="pJy-29-LBT" id="PVv-CC-Ldu"/>
@@ -541,7 +576,7 @@
                                     <constraint firstAttribute="width" constant="160" id="mph-UM-8Fe"/>
                                     <constraint firstAttribute="height" constant="45" id="vDb-pm-Jhg"/>
                                 </constraints>
-                                <state key="normal" title="Trimite">
+                                <state key="normal" title="Rezervă">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -622,11 +657,14 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeF-tN-mEH">
                                 <rect key="frame" x="62.5" y="466" width="250" height="40"/>
+                                <color key="backgroundColor" white="0.80379231770000004" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="eXd-b8-y9Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Crează"/>
+                                <state key="normal" title="Crează">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="signup:" destination="TGa-I6-QtF" eventType="touchUpInside" id="Qt5-o6-gqX"/>
                                 </connections>
@@ -706,7 +744,8 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="raY-1k-xts"/>
+        <segue reference="wlb-jp-kx3"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

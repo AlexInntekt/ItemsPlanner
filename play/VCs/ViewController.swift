@@ -108,16 +108,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.password.isSecureTextEntry = true 
         
         self.signup.layer.cornerRadius=20
-        self.signup.layer.borderColor=UIColor.gray.cgColor
-        self.signup.layer.borderWidth=1
         
-        self.passwordReset.layer.cornerRadius=16
-        self.passwordReset.layer.borderColor=UIColor.gray.cgColor
-        self.passwordReset.layer.borderWidth=1
+        self.passwordReset.layer.cornerRadius=20
         
-        self.login.layer.cornerRadius=16
-        self.login.layer.borderColor=UIColor.gray.cgColor
-        self.login.layer.borderWidth=1
+        self.login.layer.cornerRadius=20
 
     }
     

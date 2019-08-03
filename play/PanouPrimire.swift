@@ -78,7 +78,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewWillAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil {
-            welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)"
+            welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)!"
             //showSimpleAlert(message: "user")
             //showSimpleAlert(message: Auth.auth().currentUser!.displayName!)
         } else {
