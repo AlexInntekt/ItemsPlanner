@@ -201,9 +201,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func handleCellTextColor(cell: DateCell, cellState: CellState) {
         if cellState.dateBelongsTo == .thisMonth {
-            cell.dateLabel.textColor = UIColor.black
+            cell.dateLabel.textColor = UIColor(red:0.35, green:0.35, blue:0.35, alpha:1.0)
+            cell.layer.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0).cgColor
         } else {
-            cell.dateLabel.textColor = UIColor.gray
+            cell.dateLabel.textColor = UIColor(red:0.7, green:0.7, blue:0.7, alpha:1.0)
+            cell.layer.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1.0).cgColor
         }
     }
     
@@ -211,6 +213,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         if cellState.isSelected {
             cell.selectedView.layer.cornerRadius =  0
             cell.selectedView.isHidden = false
+            cell.selectedView.layer.backgroundColor = UIColor(red:0.5, green:0.5, blue:0.55, alpha:1.0).cgColor
+            cell.dateLabel.textColor = UIColor(red:0.95, green:0.99, blue:1, alpha:1.0)
             
             formatter.dateFormat="YYYY MM dd"
             
