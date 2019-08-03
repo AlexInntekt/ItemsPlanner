@@ -18,11 +18,7 @@ var displayingCategories = ["Toate"]
 class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource
 {
     
-    
-    
-    
     @IBOutlet var pickerCategory: UIPickerView!
-    
     
     @IBOutlet var itemsTableView: UITableView!
     
@@ -39,6 +35,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         performSegue(withIdentifier: "logoutSegue", sender: nil)
     }
+    
+
+    @IBOutlet var adminButton: UIButton!
+    @IBAction func adminButton(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "adminSegue", sender: nil)
+    }
+    
+    
     
     func showSimpleAlert(message: String) {
         let alert = UIAlertController(title: "Signing in problem", message: message, preferredStyle: UIAlertController.Style.alert)
@@ -104,7 +109,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        self.performSegue(withIdentifier: "goToCalendar", sender: items[indexPath.row])
+        self.performSegue(withIdentifier: "goToCalendar", sender: displayingItems[indexPath.row])
     }
     
     

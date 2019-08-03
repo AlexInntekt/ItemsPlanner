@@ -91,7 +91,9 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
             if snapshot.hasChild("bookings"){
                 
                 fetchAllBookingsByItemID(item: self.currentItem.id, category: self.currentItem.category, completion: { (bookings) -> Void in
-                
+                    
+                            var userThatBooked=""
+                            var usersPhoneNumebrThatBooked=""
                 
                             var isAvailable = true
                 
@@ -107,7 +109,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 if(res==true)
                                 {
                                     isAvailable=false
-                                    print(res)
+                                    
+                                    userThatBooked=obj.user
                                 }
                             }
                 
@@ -129,7 +132,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                             }
                             else
                             {
-                                alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat.")
+                                alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Utilizator: \(userThatBooked)")
                             }
                 
                         })
