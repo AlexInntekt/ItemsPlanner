@@ -299,7 +299,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Booking description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyb-Uj-nVh">
-                                                    <rect key="frame" x="0.0" y="28" width="355" height="32"/>
+                                                    <rect key="frame" x="0.0" y="28" width="355" height="51.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -309,8 +309,8 @@
                                             <constraints>
                                                 <constraint firstItem="eyb-Uj-nVh" firstAttribute="centerX" secondItem="24C-r0-USl" secondAttribute="centerX" id="HDE-uS-oXw"/>
                                                 <constraint firstItem="VBZ-Zq-gOp" firstAttribute="width" secondItem="24C-r0-USl" secondAttribute="width" id="KRq-P3-bGC"/>
+                                                <constraint firstAttribute="bottom" secondItem="eyb-Uj-nVh" secondAttribute="bottom" id="NTt-Q3-DuA"/>
                                                 <constraint firstItem="VBZ-Zq-gOp" firstAttribute="top" secondItem="24C-r0-USl" secondAttribute="top" constant="5" id="dN1-wa-nlm"/>
-                                                <constraint firstItem="eyb-Uj-nVh" firstAttribute="height" secondItem="24C-r0-USl" secondAttribute="height" multiplier="0.4" id="g62-BQ-eiN"/>
                                                 <constraint firstItem="eyb-Uj-nVh" firstAttribute="width" secondItem="24C-r0-USl" secondAttribute="width" id="hhr-ZD-F1J"/>
                                                 <constraint firstItem="eyb-Uj-nVh" firstAttribute="top" secondItem="VBZ-Zq-gOp" secondAttribute="bottom" constant="5" id="itm-yl-geA"/>
                                                 <constraint firstItem="VBZ-Zq-gOp" firstAttribute="leading" secondItem="24C-r0-USl" secondAttribute="leading" id="oa4-nD-qsI"/>
