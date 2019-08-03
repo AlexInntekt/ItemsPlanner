@@ -292,8 +292,8 @@ func fetchAllBookingsByUser(user_id user_id: String, completion: @escaping (_ su
             let ref = Database.database().reference().child("Bookings")
             let pathToBooking = ref.child(bk)
             
-            pathToBooking.observe(.value, with: { (snap) in
-
+            pathToBooking.observeSingleEvent(of: .value, with: { (snap) in
+                
                 currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
                 currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
                 currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
