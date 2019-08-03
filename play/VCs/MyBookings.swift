@@ -40,9 +40,20 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
-        cell.labelName?.text = bookings[indexPath.row].description
+        
+        var text = bookings[indexPath.row].description
+            text += "\n Perioadă: \(bookings[indexPath.row].startDate) - \(bookings[indexPath.row].endDate)"
         cell.itemName?.text = bookings[indexPath.row].itemName
+        cell.labelName.isUserInteractionEnabled = false
+        
+        cell.labelName?.text = text
+        
         return cell;
+    }
+    
+    func setup()
+    {
+        
     }
     
     func loadBookings()
