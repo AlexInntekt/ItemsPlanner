@@ -298,7 +298,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     func setupUI()
     {
-        self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment."
+        self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
     }
     
 

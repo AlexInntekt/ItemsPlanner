@@ -61,6 +61,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40
+    }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return displayingCategories.count
     }

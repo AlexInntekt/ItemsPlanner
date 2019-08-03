@@ -273,7 +273,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY3-yF-LpJ">
-                                <rect key="frame" x="20.5" y="108" width="334" height="60"/>
+                                <rect key="frame" x="112.5" y="108" width="150" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ivQ-Sr-U58"/>
                                 </constraints>
@@ -287,6 +287,12 @@
                                     <action selector="adminButton:" destination="ez9-8c-EE8" eventType="touchUpInside" id="9VR-qx-gjx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtru:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmj-Lu-Yev">
+                                <rect key="frame" x="0.0" y="108" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fy5-5k-Rkr">
                                 <rect key="frame" x="0.0" y="70" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -303,18 +309,22 @@
                             <constraint firstItem="pJy-29-LBT" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.89" id="KwK-1Q-KcL"/>
                             <constraint firstItem="wDp-vI-vB1" firstAttribute="trailing" secondItem="6aM-Wk-BVp" secondAttribute="trailing" constant="16" id="N8R-mu-nCD"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" id="Ops-yV-QGX"/>
-                            <constraint firstItem="nY3-yF-LpJ" firstAttribute="width" secondItem="pJy-29-LBT" secondAttribute="width" id="TO3-mD-zhF"/>
+                            <constraint firstItem="nY3-yF-LpJ" firstAttribute="width" secondItem="pJy-29-LBT" secondAttribute="width" multiplier="0.45" id="TO3-mD-zhF"/>
                             <constraint firstItem="nY3-yF-LpJ" firstAttribute="centerX" secondItem="pJy-29-LBT" secondAttribute="centerX" id="TxI-OS-z3K"/>
                             <constraint firstItem="nY3-yF-LpJ" firstAttribute="top" secondItem="CVu-2X-HUs" secondAttribute="bottom" constant="2.5" id="UDh-bu-y0i"/>
+                            <constraint firstItem="kmj-Lu-Yev" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" id="WA6-yl-bHT"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-10.25" id="bOR-6J-3kk"/>
                             <constraint firstItem="fdS-tN-rW0" firstAttribute="centerX" secondItem="wDp-vI-vB1" secondAttribute="centerX" constant="-38" id="c8u-X5-yqs"/>
                             <constraint firstItem="fdS-tN-rW0" firstAttribute="height" secondItem="Ufp-bL-r3L" secondAttribute="height" id="eA9-1P-oCv"/>
                             <constraint firstItem="fy5-5k-Rkr" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="50" id="giy-SL-5NA"/>
                             <constraint firstItem="Ufp-bL-r3L" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" constant="16" id="hBg-BB-bte"/>
+                            <constraint firstItem="kmj-Lu-Yev" firstAttribute="height" secondItem="nY3-yF-LpJ" secondAttribute="height" id="ioI-fr-haU"/>
+                            <constraint firstItem="kmj-Lu-Yev" firstAttribute="centerY" secondItem="nY3-yF-LpJ" secondAttribute="centerY" id="kzO-dQ-TJJ"/>
                             <constraint firstItem="fy5-5k-Rkr" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" id="lSp-gb-Jk8"/>
                             <constraint firstItem="fy5-5k-Rkr" firstAttribute="leading" secondItem="wDp-vI-vB1" secondAttribute="leading" id="lX6-fl-yzJ"/>
                             <constraint firstItem="CVu-2X-HUs" firstAttribute="width" secondItem="5gp-lt-4WM" secondAttribute="width" multiplier="0.7" id="om1-mo-Z1Z"/>
                             <constraint firstItem="fdS-tN-rW0" firstAttribute="centerY" secondItem="Ufp-bL-r3L" secondAttribute="centerY" constant="-1" id="qqn-wd-zaM"/>
+                            <constraint firstItem="kmj-Lu-Yev" firstAttribute="width" secondItem="nY3-yF-LpJ" secondAttribute="width" multiplier="0.7" id="r9I-33-Eyz"/>
                             <constraint firstItem="pJy-29-LBT" firstAttribute="height" secondItem="5gp-lt-4WM" secondAttribute="height" multiplier="0.7" id="smv-1w-L7n"/>
                             <constraint firstItem="fdS-tN-rW0" firstAttribute="width" secondItem="Ufp-bL-r3L" secondAttribute="width" id="vOI-ua-vok"/>
                             <constraint firstItem="6aM-Wk-BVp" firstAttribute="top" secondItem="wDp-vI-vB1" secondAttribute="top" constant="12" id="yXL-HH-83j"/>
@@ -827,6 +837,7 @@
         <image name="back" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0zt-tU-UE9"/>
         <segue reference="Su3-uJ-jIS"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
