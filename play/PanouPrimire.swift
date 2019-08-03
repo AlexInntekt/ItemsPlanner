@@ -98,7 +98,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         let item = displayingItems[indexPath.row]
         cell.labelName?.text = item.name
         cell.labelDescription?.text = item.description
-        cell.labelCategory?.text = "category: \(item.category)"
+        cell.labelCategory?.text = "categorie: \(item.category)"
         return cell;
     }
     
@@ -120,7 +120,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         print("PanouPrimire este in deschis")
         
         setupUI()
-        loadItemsFromDB()
+        loadDataFromDB()
         
 
     }
@@ -167,7 +167,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
     }
     
-    func loadItemsFromDB()
+    func loadDataFromDB()
     {
         items.removeAll()
         
@@ -182,10 +182,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.itemsTableView.reloadData()
             
             fetchAllCategories(completion: { (categories) in
-                displayingCategories=categories
-                displayingCategories.append("Toate")
+                displayingCategories.append(contentsOf: categories)
                 
                 self.pickerCategory.reloadAllComponents()
+                
             })
             
         })
