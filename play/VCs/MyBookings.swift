@@ -41,8 +41,11 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
         
+        let startDate = convertEnDateToRo(bookings[indexPath.row].startDate)
+        let endDate = convertEnDateToRo(bookings[indexPath.row].endDate)
+        
         var text = bookings[indexPath.row].description
-            text += "\n Perioadă: \(bookings[indexPath.row].startDate) - \(bookings[indexPath.row].endDate)"
+            text += "\n Perioadă: \(startDate) - \(endDate)"
         cell.itemName?.text = bookings[indexPath.row].itemName
         cell.labelName.isUserInteractionEnabled = false
         

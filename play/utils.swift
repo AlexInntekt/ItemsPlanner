@@ -36,3 +36,73 @@ func isUserLoggedIn() -> Bool
     
     return cond
 }
+
+
+
+
+func convertEnDateToRo(_ date: String) -> String
+{
+    let year = "\(date[0])\(date[1])\(date[2])\(date[3])"
+    let month = "\(date[5])\(date[6])"
+    let day = "\(date[8])\(date[9])"
+    
+    return "\(day) \(month) \(year)"
+}
+
+
+extension String {
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+    subscript (bounds: CountableRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[start ..< end]
+    }
+    subscript (bounds: CountableClosedRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[start ... end]
+    }
+    subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(endIndex, offsetBy: -1)
+        return self[start ... end]
+    }
+    subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[startIndex ... end]
+    }
+    subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[startIndex ..< end]
+    }
+}
+extension Substring {
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+    subscript (bounds: CountableRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[start ..< end]
+    }
+    subscript (bounds: CountableClosedRange<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[start ... end]
+    }
+    subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(endIndex, offsetBy: -1)
+        return self[start ... end]
+    }
+    subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[startIndex ... end]
+    }
+    subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return self[startIndex ..< end]
+    }
+}
