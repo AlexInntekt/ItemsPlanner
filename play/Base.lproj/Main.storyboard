@@ -323,14 +323,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezervările mele" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wg-3T-Ig3">
+                                <rect key="frame" x="170" y="25" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0OK-vC-WRt"/>
+                                    <constraint firstAttribute="width" constant="200" id="oF8-r5-aL2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7wg-3T-Ig3" firstAttribute="top" secondItem="Od6-OK-yYm" secondAttribute="top" constant="5" id="3Ia-ny-shp"/>
                             <constraint firstItem="Od6-OK-yYm" firstAttribute="bottom" secondItem="Ctc-eF-61i" secondAttribute="bottom" constant="20" id="Vz3-SK-pyo"/>
                             <constraint firstItem="Ctc-eF-61i" firstAttribute="leading" secondItem="Od6-OK-yYm" secondAttribute="leading" constant="10" id="XS4-pQ-6wo"/>
                             <constraint firstItem="Ctc-eF-61i" firstAttribute="top" secondItem="iC2-JN-Y6f" secondAttribute="bottom" constant="8" id="er9-9f-rUL"/>
                             <constraint firstItem="iC2-JN-Y6f" firstAttribute="top" secondItem="Od6-OK-yYm" secondAttribute="top" id="ixo-Md-GDX"/>
                             <constraint firstItem="Od6-OK-yYm" firstAttribute="trailing" secondItem="Ctc-eF-61i" secondAttribute="trailing" constant="10" id="m0x-F1-eEz"/>
+                            <constraint firstItem="Od6-OK-yYm" firstAttribute="trailing" secondItem="7wg-3T-Ig3" secondAttribute="trailing" constant="5" id="oRt-D4-d6n"/>
                             <constraint firstItem="iC2-JN-Y6f" firstAttribute="leading" secondItem="Od6-OK-yYm" secondAttribute="leading" constant="10" id="tbV-Df-lxF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Od6-OK-yYm"/>
