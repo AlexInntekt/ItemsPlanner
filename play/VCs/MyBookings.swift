@@ -41,6 +41,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
         cell.labelName?.text = bookings[indexPath.row].description
+        cell.itemName?.text = bookings[indexPath.row].itemName
         return cell;
     }
     

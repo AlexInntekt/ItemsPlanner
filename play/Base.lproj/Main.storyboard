@@ -278,33 +278,45 @@
                                     <segue destination="ez9-8c-EE8" kind="presentation" id="wlb-jp-kx3"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
                                 <rect key="frame" x="10" y="78" width="355" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVBookingCell" id="sHi-CJ-jtz" customClass="TBVBookingCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="355" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHi-CJ-jtz" id="24C-r0-USl">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CU-L8-zap">
-                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-Zq-gOp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Booking description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eyb-Uj-nVh">
+                                                    <rect key="frame" x="0.0" y="26" width="355" height="48"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5CU-L8-zap" firstAttribute="leading" secondItem="24C-r0-USl" secondAttribute="leading" id="5sL-78-GEL"/>
-                                                <constraint firstItem="5CU-L8-zap" firstAttribute="top" secondItem="24C-r0-USl" secondAttribute="top" id="HfX-rt-R0w"/>
-                                                <constraint firstAttribute="trailing" secondItem="5CU-L8-zap" secondAttribute="trailing" id="hmq-vf-IGS"/>
-                                                <constraint firstAttribute="bottom" secondItem="5CU-L8-zap" secondAttribute="bottom" id="vcz-YZ-ue2"/>
+                                                <constraint firstItem="eyb-Uj-nVh" firstAttribute="centerX" secondItem="24C-r0-USl" secondAttribute="centerX" id="HDE-uS-oXw"/>
+                                                <constraint firstItem="VBZ-Zq-gOp" firstAttribute="width" secondItem="24C-r0-USl" secondAttribute="width" id="KRq-P3-bGC"/>
+                                                <constraint firstItem="VBZ-Zq-gOp" firstAttribute="top" secondItem="24C-r0-USl" secondAttribute="top" id="dN1-wa-nlm"/>
+                                                <constraint firstItem="VBZ-Zq-gOp" firstAttribute="height" secondItem="24C-r0-USl" secondAttribute="height" multiplier="0.15" id="fsZ-cX-psp"/>
+                                                <constraint firstItem="eyb-Uj-nVh" firstAttribute="height" secondItem="24C-r0-USl" secondAttribute="height" multiplier="0.4" id="g62-BQ-eiN"/>
+                                                <constraint firstItem="eyb-Uj-nVh" firstAttribute="width" secondItem="24C-r0-USl" secondAttribute="width" id="hhr-ZD-F1J"/>
+                                                <constraint firstItem="eyb-Uj-nVh" firstAttribute="top" secondItem="VBZ-Zq-gOp" secondAttribute="top" constant="26" id="itm-yl-geA"/>
+                                                <constraint firstItem="VBZ-Zq-gOp" firstAttribute="leading" secondItem="24C-r0-USl" secondAttribute="leading" id="oa4-nD-qsI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="labelName" destination="5CU-L8-zap" id="ZUU-59-1WS"/>
+                                            <outlet property="itemName" destination="VBZ-Zq-gOp" id="4Py-xt-6rV"/>
+                                            <outlet property="labelName" destination="eyb-Uj-nVh" id="ZXT-bB-55i"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

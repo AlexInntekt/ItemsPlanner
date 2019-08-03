@@ -14,11 +14,14 @@ class TBVCell: UITableViewCell
 
     @IBOutlet weak var labelName: UILabel!
     
+    
 }
 
 
 class TBVBookingCell: UITableViewCell
 {
-    @IBOutlet var labelName: UILabel!
+   
+    @IBOutlet var itemName: UILabel!
     
+    @IBOutlet var labelName: UITextView!
 }
