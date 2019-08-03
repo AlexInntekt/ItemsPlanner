@@ -20,7 +20,7 @@ class ResetPassword: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var instructions: UITextView!
     
-    @IBOutlet var email: UITextField!
+    @IBOutlet weak var email: UITextField!
     
     @IBAction func resetPassword(_ sender: Any) {
         
