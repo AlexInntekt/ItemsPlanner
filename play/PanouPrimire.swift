@@ -51,7 +51,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.itemsTableView.dequeueReusableCell(withIdentifier: "TBVCell") as! TBVCell
-        cell.labelName?.text = items[indexPath.row].name
+        let item = items[indexPath.row]
+        cell.labelName?.text = item.name
+        cell.labelDescription?.text = item.description
+        cell.labelCategory?.text = "category: \(item.category)"
         return cell;
     }
     

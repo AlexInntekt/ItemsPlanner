@@ -14,7 +14,9 @@ class TBVCell: UITableViewCell
 
     @IBOutlet weak var labelName: UILabel!
     
+    @IBOutlet var labelDescription: UILabel!
     
+    @IBOutlet var labelCategory: UILabel!
 }
 
 

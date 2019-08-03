@@ -209,7 +209,7 @@
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJy-29-LBT">
                                 <rect key="frame" x="20.5" y="131.5" width="334" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -220,21 +220,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="334" height="56.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-Vw-GFm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="56.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv6-Vw-GFm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="159" height="28.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7h-ED-jy6">
+                                                    <rect key="frame" x="0.0" y="28.5" width="227" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A39-FI-IEw">
+                                                    <rect key="frame" x="266" y="0.0" width="68" height="28.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="width" secondItem="uyV-XL-boZ" secondAttribute="width" id="4L3-Z9-wHU"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="top" secondItem="uyV-XL-boZ" secondAttribute="top" id="2Pb-AE-l4l"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="width" secondItem="uyV-XL-boZ" secondAttribute="width" multiplier="0.7" id="4L3-Z9-wHU"/>
+                                                <constraint firstItem="A39-FI-IEw" firstAttribute="top" secondItem="uyV-XL-boZ" secondAttribute="top" id="7bz-ky-eBe"/>
                                                 <constraint firstItem="Jv6-Vw-GFm" firstAttribute="centerX" secondItem="uyV-XL-boZ" secondAttribute="centerX" id="DgA-Dd-KHg"/>
-                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="height" secondItem="uyV-XL-boZ" secondAttribute="height" id="PX2-aX-zs7"/>
-                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="centerY" secondItem="uyV-XL-boZ" secondAttribute="centerY" id="yIt-aZ-mvW"/>
+                                                <constraint firstItem="E7h-ED-jy6" firstAttribute="leading" secondItem="uyV-XL-boZ" secondAttribute="leading" id="Gzh-Pe-5VK"/>
+                                                <constraint firstItem="A39-FI-IEw" firstAttribute="leading" secondItem="Jv6-Vw-GFm" secondAttribute="trailing" id="Huw-at-eTI"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="height" secondItem="uyV-XL-boZ" secondAttribute="height" multiplier="0.5" id="PX2-aX-zs7"/>
+                                                <constraint firstItem="E7h-ED-jy6" firstAttribute="top" secondItem="A39-FI-IEw" secondAttribute="bottom" id="fWR-eH-ny2"/>
+                                                <constraint firstAttribute="trailing" secondItem="A39-FI-IEw" secondAttribute="trailing" id="h79-3I-VYB"/>
+                                                <constraint firstAttribute="trailing" secondItem="E7h-ED-jy6" secondAttribute="trailing" id="or1-wN-pbT"/>
+                                                <constraint firstItem="E7h-ED-jy6" firstAttribute="top" secondItem="Jv6-Vw-GFm" secondAttribute="bottom" id="tG0-dg-QsV"/>
+                                                <constraint firstItem="Jv6-Vw-GFm" firstAttribute="leading" secondItem="uyV-XL-boZ" secondAttribute="leading" id="z0Y-vI-DoZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="labelCategory" destination="A39-FI-IEw" id="FMy-fk-7Sq"/>
+                                            <outlet property="labelDescription" destination="E7h-ED-jy6" id="YKO-5d-VSu"/>
                                             <outlet property="labelName" destination="Jv6-Vw-GFm" id="Tlp-g0-LTZ"/>
                                         </connections>
                                     </tableViewCell>
@@ -292,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762" y="133"/>
+            <point key="canvasLocation" x="1760.8" y="132.68365817091455"/>
         </scene>
         <!--My BookingsVC-->
         <scene sceneID="9oB-yg-0Sw">
