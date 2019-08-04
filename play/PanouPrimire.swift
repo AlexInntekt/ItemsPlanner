@@ -22,7 +22,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet var menu: UIView!
     
+    @IBOutlet var faderView: UIView!
     @IBOutlet var leadingConstraintMenu: NSLayoutConstraint!
+    
+    @IBOutlet var leadingConstraintFaderView: NSLayoutConstraint!
+    
     
     @IBOutlet var pickerCategory: UIPickerView!
     
@@ -35,13 +39,24 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func menuButton(_ sender: Any)
     {
+        
         if(!displayingMenu)
         {
+            self.leadingConstraintFaderView.constant = 0
+            
+            self.view.layoutIfNeeded()
+            
             self.leadingConstraintMenu.constant = 0
+            
         }
         else
         {
+            self.leadingConstraintFaderView.constant = +1000
+            
+            self.view.layoutIfNeeded()
+            
             self.leadingConstraintMenu.constant = -500
+            
         }
         
         UIView.animate(withDuration: 0.6) {
@@ -202,6 +217,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func setupUI()
     {
         self.leadingConstraintMenu.constant = -400
+        self.leadingConstraintFaderView.constant = 1000
     }
     
     func loadDataFromDB()
