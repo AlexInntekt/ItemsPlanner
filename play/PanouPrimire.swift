@@ -35,8 +35,14 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var welcomeLabel: UILabel!
     
     
-    @IBOutlet var menuButton: UIButton!
+    @IBOutlet var goToSeeMyBookings: UIButton!
+    @IBAction func goToSeeMyBookings(_ sender: Any)
+    {
+        triggerMenu()
+        self.performSegue(withIdentifier: "myBookingsSegue", sender: nil)
+    }
     
+    @IBOutlet var menuButton: UIButton!
     @IBAction func menuButton(_ sender: Any)
     {
         triggerMenu()
@@ -84,6 +90,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var logout: UIButton!
     @IBAction func logout(_ sender: Any)
     {
+        triggerMenu()
+        
         do{
             try Auth.auth().signOut()
         } catch{
@@ -97,6 +105,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet var adminButton: UIButton!
     @IBAction func adminButton(_ sender: Any)
     {
+        triggerMenu()
         self.performSegue(withIdentifier: "adminSegue", sender: nil)
     }
     
@@ -187,7 +196,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         print("PanouPrimire este in deschis")
         
-        setupUI()
         loadDataFromDB()
         
         
@@ -214,6 +222,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupUI()
         if Auth.auth().currentUser != nil {
             welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)!"
             //showSimpleAlert(message: "user")
