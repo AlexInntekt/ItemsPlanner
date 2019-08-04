@@ -48,25 +48,34 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         if(!displayingMenu)
         {
             self.leadingConstraintFaderView.constant = 0
+            self.faderView.alpha=0
             
             self.view.layoutIfNeeded()
             
             self.leadingConstraintMenu.constant = 0
             
+            UIView.animate(withDuration: 0.6) {
+                self.faderView.alpha=0.5
+                self.view.layoutIfNeeded()
+            }
         }
         else
         {
             self.leadingConstraintFaderView.constant = +1000
+            self.faderView.alpha=0.5
             
             self.view.layoutIfNeeded()
             
             self.leadingConstraintMenu.constant = -500
             
+            UIView.animate(withDuration: 0.6) {
+                self.faderView.alpha=0
+                self.view.layoutIfNeeded()
+            }
+            
         }
         
-        UIView.animate(withDuration: 0.6) {
-            self.view.layoutIfNeeded()
-        }
+        
         
         displayingMenu = !displayingMenu
     }
