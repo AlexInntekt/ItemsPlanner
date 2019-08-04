@@ -15,14 +15,42 @@ var items = [Item]()
 var displayingItems = [Item]()
 var displayingCategories = ["Toate"]
 
+var displayingMenu = false
+
 class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    @IBOutlet var menu: UIView!
+    
+    @IBOutlet var leadingConstraintMenu: NSLayoutConstraint!
     
     @IBOutlet var pickerCategory: UIPickerView!
     
     @IBOutlet var itemsTableView: UITableView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
+    
+    
+    @IBOutlet var menuButton: UIButton!
+    
+    @IBAction func menuButton(_ sender: Any)
+    {
+        if(!displayingMenu)
+        {
+            self.leadingConstraintMenu.constant = -500
+        }
+        else
+        {
+            self.leadingConstraintMenu.constant = 0
+        }
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
+        
+        displayingMenu = !displayingMenu
+    }
+    
     
     @IBOutlet weak var logout: UIButton!
     @IBAction func logout(_ sender: Any)
