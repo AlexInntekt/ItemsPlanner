@@ -113,23 +113,26 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
     var categories = [String]()
     var items = [Item]()
     
-    var ind=1 //counting number of fetched categories (item blocks)
+    var ind=0 //counting number of fetched categories (item blocks)
     
     let ref = Database.database().reference(withPath: "Categories")
     
     Database.database().reference().child("Categories").observe(DataEventType.value, with: { (snap) in print()
-        let count=Int(snap.childrenCount)
+        var count=Int(snap.childrenCount)
 
+       
+        
         fetchAllCategories(completion: { (fetched_categories) -> Void in
             
             categories=fetched_categories
             
             for cat in categories
             {
+                print(cat)
+                
                 fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
                     
-                    ind+=1
-
+   
                     for obj in fitems
                     {
                         items.append(obj)
@@ -139,7 +142,14 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
                     {
                         completion(items)
                     }
+                    
+                    
+                    
+                    print(ind, count)
+                
                 })
+                ind+=1
+                
             }
 
         })

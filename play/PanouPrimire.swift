@@ -290,6 +290,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             displayingItems=items
             self.itemsTableView.reloadData()
             
+            
             fetchAllCategories(completion: { (categories) in
                 displayingCategories.append(contentsOf: categories)
                 
