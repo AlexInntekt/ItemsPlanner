@@ -16,7 +16,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
     
-    var bookings = [Booking]()
+    var displayingBookings = [Booking]()
     
     @IBOutlet var tbv: UITableView!
     
@@ -34,19 +34,19 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bookings.count
+        return displayingBookings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "TBVBookingCell") as! TBVBookingCell
         
-        let startDate = convertEnDateToRo(bookings[indexPath.row].startDate)
-        let endDate = convertEnDateToRo(bookings[indexPath.row].endDate)
+        let startDate = convertEnDateToRo(displayingBookings[indexPath.row].startDate)
+        let endDate = convertEnDateToRo(displayingBookings[indexPath.row].endDate)
         
-        var text = bookings[indexPath.row].description
+        var text = displayingBookings[indexPath.row].description
             text += "\n Perioadă: \(startDate) - \(endDate)"
-        cell.itemName?.text = bookings[indexPath.row].itemName
+        cell.itemName?.text = displayingBookings[indexPath.row].itemName
         cell.labelName.isUserInteractionEnabled = false
         
         cell.labelName?.text = text
@@ -57,8 +57,8 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
-            let bk = self.bookings[indexPath.row]
-            self.bookings.remove(at: indexPath.row)
+            let bk = self.displayingBookings[indexPath.row]
+            self.displayingBookings.remove(at: indexPath.row)
             self.tbv.reloadData()
             deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category)
             
@@ -98,6 +98,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 bookingsIDs.append(snap.key)
                 
                 print(snap.key)
+                
                 
                 
             }
