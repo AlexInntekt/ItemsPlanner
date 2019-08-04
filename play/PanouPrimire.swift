@@ -39,7 +39,12 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func menuButton(_ sender: Any)
     {
+        triggerMenu()
         
+    }
+    
+    func triggerMenu()
+    {
         if(!displayingMenu)
         {
             self.leadingConstraintFaderView.constant = 0
@@ -65,7 +70,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         displayingMenu = !displayingMenu
     }
-    
     
     @IBOutlet weak var logout: UIButton!
     @IBAction func logout(_ sender: Any)
@@ -174,7 +178,24 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupUI()
         loadDataFromDB()
         
+        
+        // The didTap: method will be defined in Step 3 below.
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
+        
+        // Optionally set the number of required taps, e.g., 2 for a double click
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        
+        // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
+        faderView.isUserInteractionEnabled = true
+        faderView.addGestureRecognizer(tapGestureRecognizer)
 
+    }
+    
+    @objc func didTap(sender: UITapGestureRecognizer) {
+        let location = sender.location(in: view)
+        // User tapped at the point above. Do something with that if you want.
+        triggerMenu()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
