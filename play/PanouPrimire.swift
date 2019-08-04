@@ -37,11 +37,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         if(!displayingMenu)
         {
-            self.leadingConstraintMenu.constant = -500
+            self.leadingConstraintMenu.constant = 0
         }
         else
         {
-            self.leadingConstraintMenu.constant = 0
+            self.leadingConstraintMenu.constant = -500
         }
         
         UIView.animate(withDuration: 0.6) {
@@ -201,7 +201,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func setupUI()
     {
-        
+        self.leadingConstraintMenu.constant = -400
     }
     
     func loadDataFromDB()
