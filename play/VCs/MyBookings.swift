@@ -82,38 +82,70 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         let currentUserId = Auth.auth().currentUser?.uid
         
+        var bookings = [Booking]()
         
-        let ref = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
+        var ref = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
         
-        var bookingsIDs = [String]()
         
         print("running loadBookings()")
         
-        ref.observe(.value, with: { (snapshot: DataSnapshot!) in
-            //print(snapshot.childrenCount)
-            
-            
-            ref.observe(DataEventType.childAdded) { (snap) in
+
+//            self.displayingBookings.removeAll()
+//            bookings.removeAll()
+        
+            ref.observe(.childAdded) { (snap) in
                 //print(snap.key)
-                bookingsIDs.append(snap.key)
+
                 
-                print(snap.key)
+                //self.displayingBookings.removeAll()
                 
+                var bookings = [Booking]()
                 
+                let ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
                 
+              
+//                ref2.observeSingleEvent(of: .childAdded , with:
+//                                    {(snap) in print()
+//                       print(snap)
+//                })
+                
+                ref2.observeSingleEvent(of: .childRemoved, with:
+                    {(snap) in print()
+                        var int=0;
+                        for obj in self.displayingBookings
+                        {
+                            if(obj.id==snap.key)
+                            {
+                                self.displayingBookings.remove(at: int)
+                                self.tbv.reloadData()
+                            }
+                            int+=1
+                        }
+                })
+                
+                ref2.observeSingleEvent(of: .childAdded , with:
+                    {(snap) in print()
+
+                        print("fbuiwgeiwbGIwge")
+
+                        let currentBooking = Booking()
+                        currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
+                        currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
+                        currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
+                        currentBooking.itemId = snap.childSnapshot(forPath: "itemId").value as! String
+                        currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
+                        currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                        currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                        currentBooking.id = snap.key
+
+                        self.displayingBookings.append(currentBooking)
+                        print(currentBooking.description)
+                        self.tbv.reloadData()
+
+                })
             }
-        })
         
         
-        
-        
-//        fetchAllBookingsByUser(user_id: currentUserId ?? "null") { fetched_bookings in
-//
-//            self.bookings = fetched_bookings
-//
-//            print(self.bookings[0].description)
-//
-//            self.tbv.reloadData()
-//        }
+
     }
 }

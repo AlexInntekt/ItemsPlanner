@@ -128,7 +128,7 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
             
             for cat in categories
             {
-                print(cat)
+                //print(cat)
                 
                 fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
                     
@@ -145,7 +145,7 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
                     
                     
                     
-                    print(ind, count)
+                   // print(ind, count)
                 
                 })
                 ind+=1
