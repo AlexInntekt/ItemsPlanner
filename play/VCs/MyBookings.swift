@@ -81,13 +81,38 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadBookings()
     {
         let currentUserId = Auth.auth().currentUser?.uid
-        fetchAllBookingsByUser(user_id: currentUserId ?? "null") { fetched_bookings in
+        
+        
+        let ref = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
+        
+        var bookingsIDs = [String]()
+        
+        print("running loadBookings()")
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+            //print(snapshot.childrenCount)
             
-            self.bookings = fetched_bookings
             
-            print(self.bookings[0].description)
-            
-            self.tbv.reloadData()
-        }
+            ref.observe(DataEventType.childAdded) { (snap) in
+                //print(snap.key)
+                bookingsIDs.append(snap.key)
+                
+                print(snap.key)
+                
+                
+            }
+        })
+        
+        
+        
+        
+//        fetchAllBookingsByUser(user_id: currentUserId ?? "null") { fetched_bookings in
+//
+//            self.bookings = fetched_bookings
+//
+//            print(self.bookings[0].description)
+//
+//            self.tbv.reloadData()
+//        }
     }
 }

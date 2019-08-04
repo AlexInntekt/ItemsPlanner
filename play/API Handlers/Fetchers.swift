@@ -210,6 +210,7 @@ func fetchAllBookingsIDsByItemID(item id: String, category cat: String, completi
 
     ref.observe(.value, with: { (snapshot: DataSnapshot!) in
         //print(snapshot.childrenCount)
+    
         
         ref.observe(DataEventType.childAdded) { (snap) in
             //print(snap.key)

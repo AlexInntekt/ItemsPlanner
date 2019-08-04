@@ -177,6 +177,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         super.viewDidLoad()
         
+        detectChanges()
+        
         self.itemsTableView.delegate = self
         self.itemsTableView.dataSource = self
         self.pickerCategory.delegate = self
@@ -304,4 +306,26 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         })
     }
+    
+    
+    func detectChanges()
+    {
+        
+        
+        let ref = Database.database().reference().child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
+        
+        
+        ref.observe(.value, with: { (snapshot: DataSnapshot!) in
+            //print(snapshot.childrenCount)
+            
+            ref.observe(DataEventType.childAdded) { (snap) in
+                //print(snap.key)
+                
+              
+                
+            }
+        })
+        
+    }
+    
 }
