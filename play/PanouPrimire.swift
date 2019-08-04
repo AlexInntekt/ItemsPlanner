@@ -198,6 +198,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         faderView.isUserInteractionEnabled = true
         faderView.addGestureRecognizer(tapGestureRecognizer)
 
+        setupLogic()
     }
     
     @objc func didTap(sender: UITapGestureRecognizer) {
@@ -241,6 +242,31 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
            
         }
         
+        
+    }
+    
+    func setupLogic()
+    {
+        let ref = Database.database().reference()
+        
+        
+        let path = ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("isAdmin")
+        
+        path.observeSingleEvent(of: .value) { (snap) in
+            let value = snap.value as? String
+            
+            if let value = value
+            {
+                if(value=="true")
+                {
+                    self.adminButton.isHidden=false
+                }
+                else
+                {
+                    self.adminButton.isHidden=true
+                }
+            }
+        }
         
     }
     
