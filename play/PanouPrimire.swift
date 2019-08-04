@@ -199,6 +199,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         faderView.addGestureRecognizer(tapGestureRecognizer)
 
         setupLogic()
+        
+ 
     }
     
     @objc func didTap(sender: UITapGestureRecognizer) {
@@ -269,6 +271,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
     }
+    
+   
     
     func setupUI()
     {
