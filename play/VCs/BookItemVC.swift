@@ -70,9 +70,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     @IBOutlet var textfieldDescription: UITextView!
     
+    @IBOutlet var progressLabel: UILabel!
+    
     @IBOutlet var bookButton: UIButton!
     @IBAction func bookButton(_ sender: Any)
     {
+        
         
         let dif = DateIntervalFormatter()
         formatter.dateFormat = "YYYY MM dd"
@@ -91,6 +94,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
             if snapshot.hasChild("bookings"){
                 
                 fetchAllBookingsByItemID(item: self.currentItem.id, category: self.currentItem.category, completion: { (bookings) -> Void in
+                    
+                    
                     
                             var userThatBooked=""
                             var usersPhoneNumebrThatBooked=""
@@ -116,6 +121,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 
                             if(isAvailable)
                             {
+                                
+                                
                                 addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                 
                                 
@@ -123,7 +130,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 let message = "Rezervarea a fost facută cu succes!"
                                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                                    self.dismiss(animated: true, completion: nil)
+                                    //self.dismiss(animated: true, completion: nil)
                                     print("Dismissing VC after adding booking")
                                 }))
                                 self.present(alert, animated: true)

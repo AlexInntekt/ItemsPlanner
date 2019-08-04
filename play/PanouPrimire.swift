@@ -45,6 +45,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func triggerMenu()
     {
+        
         if(!displayingMenu)
         {
             self.leadingConstraintFaderView.constant = 0

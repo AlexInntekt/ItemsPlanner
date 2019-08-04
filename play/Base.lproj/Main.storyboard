@@ -266,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipm-9P-az7">
-                                <rect key="frame" x="0.0" y="67" width="187.5" height="600"/>
+                                <rect key="frame" x="0.0" y="87" width="187.5" height="580"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufp-bL-r3L">
                                         <rect key="frame" x="14" y="28" width="160" height="40"/>
@@ -317,11 +317,11 @@
                                     <constraint firstItem="fdS-tN-rW0" firstAttribute="width" secondItem="Ufp-bL-r3L" secondAttribute="width" id="yx9-VL-1x8"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEK-vq-Pmt">
-                                <rect key="frame" x="7" y="27" width="40" height="40"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEK-vq-Pmt">
+                                <rect key="frame" x="7" y="27" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3S7-kv-G0x"/>
-                                    <constraint firstAttribute="width" constant="40" id="kW1-CF-We7"/>
+                                    <constraint firstAttribute="height" constant="60" id="3S7-kv-G0x"/>
+                                    <constraint firstAttribute="width" constant="60" id="kW1-CF-We7"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="menu"/>
                                 <connections>
@@ -543,7 +543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mgd-qH-6Wz" customClass="JTACMonthView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="15" y="175" width="345" height="320"/>
+                                <rect key="frame" x="15" y="225" width="345" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="C2O-iz-neT"/>
@@ -728,7 +728,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Necesit articolul pentru un eveniment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ztL-sh-V0p">
-                                <rect key="frame" x="10" y="80" width="355" height="87"/>
+                                <rect key="frame" x="10" y="80" width="355" height="105"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -744,12 +744,12 @@
                             <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="5" id="B1q-Fa-mGB"/>
                             <constraint firstItem="ztL-sh-V0p" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="10" id="HQm-L0-qgJ"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="bottom" constant="-60" id="VGg-XT-XO6"/>
-                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="ztL-sh-V0p" secondAttribute="bottom" constant="8" id="WgH-6S-6LP"/>
+                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="ztL-sh-V0p" secondAttribute="bottom" constant="40" id="WgH-6S-6LP"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="YTM-9i-buc"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerY" secondItem="hb6-oF-lc1" secondAttribute="centerY" id="aSd-h6-TRK"/>
                             <constraint firstAttribute="trailing" secondItem="ztL-sh-V0p" secondAttribute="trailing" constant="10" id="fsd-Mr-TOA"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="i6b-Sj-26L"/>
-                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="100" id="whU-LE-9jB"/>
+                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="150" id="whU-LE-9jB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EKA-OB-Bhp"/>
                     </view>
@@ -889,8 +889,8 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0zt-tU-UE9"/>
-        <segue reference="Su3-uJ-jIS"/>
+        <segue reference="Tn8-hL-gDt"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
