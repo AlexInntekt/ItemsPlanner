@@ -136,7 +136,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                             let message = "Rezervarea a fost facută cu succes!"
                             let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                                //self.dismiss(animated: true, completion: nil)
+                                self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
                                 print("Dismissing VC after adding booking")
                             }))
                             self.present(alert, animated: true)
@@ -154,7 +154,14 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     
                     addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                     
-                    alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
+                    let title = "Rezervare efectuată"
+                    let message = "Rezervarea a fost facută cu succes!"
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                        self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+                        print("Dismissing VC after adding booking")
+                    }))
+                    self.present(alert, animated: true)
                 }
                 
                 

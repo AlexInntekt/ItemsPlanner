@@ -61,7 +61,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qjw-0Z-cU8"/>
-                                    <segue destination="TGa-I6-QtF" kind="presentation" id="KjD-em-1eO"/>
+                                    <segue destination="TGa-I6-QtF" kind="custom" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="KjD-em-1eO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-Sb-Aw0">
@@ -73,7 +73,7 @@
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lVN-IX-5Uc" kind="presentation" id="sSa-kA-GUz"/>
+                                    <segue destination="lVN-IX-5Uc" kind="custom" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="sSa-kA-GUz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -156,7 +156,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="QlQ-Wq-lMN"/>
+                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="QlQ-Wq-lMN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-kV-Grg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="175" y="-593"/>
+            <point key="canvasLocation" x="-587" y="1026"/>
         </scene>
         <!--Panou Primire-->
         <scene sceneID="2zz-ZH-veT">
@@ -732,7 +732,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="3EE-c4-Ell"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" identifier="backToMainMenu" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="3EE-c4-Ell"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume articol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-eC-eb2">
@@ -853,7 +853,7 @@
                                 </constraints>
                                 <state key="normal" image="back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" id="K1u-WA-VCh"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="K1u-WA-VCh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nume de utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-To-gWg">
@@ -913,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFm-XK-AiK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-158" y="897"/>
+            <point key="canvasLocation" x="-410" y="-653"/>
         </scene>
     </scenes>
     <resources>
@@ -922,7 +922,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="wlb-jp-kx3"/>
-        <segue reference="Ih1-mP-Va3"/>
+        <segue reference="3EE-c4-Ell"/>
+        <segue reference="QlQ-Wq-lMN"/>
     </inferredMetricsTieBreakers>
 </document>
