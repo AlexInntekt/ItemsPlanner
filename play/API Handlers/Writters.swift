@@ -47,26 +47,9 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
     db.child(id).child("bookings").updateChildValues([keyToBooking: keyToBooking])
     
     
-    
-    
-    
     //third block to make changes:
     db = ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
     db.updateChildValues([new.key!:new.key!])
     
-    
-    
-    //        db.child(id).child("bookings").updateChildValues([bid: bid])
-    
-//    db.updateChildValues([bid:""])
-//    db.child(bid).setValue("interval")
-//    db.child(bid).updateChildValues(["descriere":descr])
-//    db.child(bid).updateChildValues(["user":user])
-//
-//    let interval = {["from":sd];["till":ed]}
-//
-//    db.child(bid).updateChildValues(["interval" : interval])
-//    db.child(bid).child("interval").updateChildValues(["from":sd])
-//    db.child(bid).child("interval").updateChildValues(["till":ed])
-//
+
 }

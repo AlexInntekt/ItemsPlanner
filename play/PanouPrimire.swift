@@ -295,26 +295,36 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadDataFromDB()
     {
         items.removeAll()
+        displayingItems.removeAll()
+        displayingCategories.removeAll()
         
-        fetchAllItems(completion: { (fetched_items) -> Void in
+        let ref = Database.database().reference().child("Categories")
+        
+        ref.observe(.value) { (allCategories) in
             
-            for item in fetched_items
-            {
-                items.append(item)
+            for category in allCategories.children.allObjects as! [DataSnapshot]{
+                displayingCategories.append(category.key)
+                
+                let packets = category.childSnapshot(forPath: "items")
+                //print(packets)
+                
+                for item in packets.children.allObjects as! [DataSnapshot]
+                {
+                      let currentItem = Item()
+                      currentItem.category = category.key as! String
+                      currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
+                      currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                      currentItem.id = item.key
+                    
+                      displayingItems.append(currentItem)
+                    
+                }
             }
             
-            displayingItems=items
-            self.itemsTableView.reloadData()
-            
-            
-            fetchAllCategories(completion: { (categories) in
-                displayingCategories.append(contentsOf: categories)
-                
-                self.pickerCategory.reloadAllComponents()
-                
-            })
-            
-        })
+             self.itemsTableView.reloadData()
+             self.pickerCategory.reloadAllComponents()
+        }
+        
     }
     
     
