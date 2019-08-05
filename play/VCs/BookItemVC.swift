@@ -77,115 +77,90 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     {
         
         
-        let dif = DateIntervalFormatter()
-        formatter.dateFormat = "YYYY MM dd"
-        let date1 = formatter.date(from: startDateOfBooking)!
-        let date2 = formatter.date(from: endDateOfBooking)!
-        let current_user_id = Auth.auth().currentUser?.uid
-        
-        let chosenInterval = DateInterval(start: date1, end: date2)
-        
-        
-        
-        let ref = Database.database().reference().child("Categories").child(currentItem.category).child("items").child(currentItem.id)
-        
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+        if(startDateOfBooking=="")
+        {
+            alert(UIVC: self, title: "Input invalid!", message: "Selectați minim o dată din calendar.")
+        }
+        else
+        {
+            let dif = DateIntervalFormatter()
+            formatter.dateFormat = "YYYY MM dd"
+            let date1 = formatter.date(from: startDateOfBooking)!
+            let date2 = formatter.date(from: endDateOfBooking)!
+            let current_user_id = Auth.auth().currentUser?.uid
             
-            if snapshot.hasChild("bookings"){
-                
-                fetchAllBookingsByItemID(item: self.currentItem.id, category: self.currentItem.category, completion: { (bookings) -> Void in
-                    
-                    
-                    
-                            var userThatBooked=""
-                            var usersPhoneNumebrThatBooked=""
-                
-                            var isAvailable = true
-                
-                            for obj in bookings
-                            {
-                                let date3 = formatter.date(from: obj.startDate)!
-                                let date4 = formatter.date(from: obj.endDate)!
-                
-                                let currentInterval = DateInterval(start: date3, end: date4)
-                
-                                let res = chosenInterval.intersects(currentInterval)
-                
-                                if(res==true)
-                                {
-                                    isAvailable=false
-                                    
-                                    userThatBooked=obj.user
-                                }
-                            }
-                
-                            if(isAvailable)
-                            {
-                                
-                                
-                                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
-                
-                                
-                                let title = "Rezervare efectuată"
-                                let message = "Rezervarea a fost facută cu succes!"
-                                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                                    //self.dismiss(animated: true, completion: nil)
-                                    print("Dismissing VC after adding booking")
-                                }))
-                                self.present(alert, animated: true)
-                                
-                                
-                            }
-                            else
-                            {
-                                alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Utilizator: \(userThatBooked)")
-                            }
-                
-                        })
-                
-            }else{
-                
-                addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
-                
-                alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
-            }
+            let chosenInterval = DateInterval(start: date1, end: date2)
             
             
-        })
-        
-//        fetchAllBookingsByItemID(item: currentItem.id, category: currentItem.category, completion: { (bookings) -> Void in
-//
-//
-//            var isAvailable = true
-//
-//            for obj in bookings
-//            {
-//                let date3 = formatter.date(from: obj.startDate)!
-//                let date4 = formatter.date(from: obj.endDate)!
-//
-//                let currentInterval = DateInterval(start: date3, end: date4)
-//
-//                let res = chosenInterval.intersects(currentInterval)
-//
-//                if(res==false)
-//                {
-//                    isAvailable=res
-//                }
-//            }
-//
-//            if(isAvailable)
-//            {
-//                addBooking(item: self.currentItem.id, of_user: "Alex", description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
-//
-//                alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
-//            }
-//            else
-//            {
-//                alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat.")
-//            }
-//
-//        })
+            
+            let ref = Database.database().reference().child("Categories").child(currentItem.category).child("items").child(currentItem.id)
+            
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if snapshot.hasChild("bookings"){
+                    
+                    fetchAllBookingsByItemID(item: self.currentItem.id, category: self.currentItem.category, completion: { (bookings) -> Void in
+                        
+                        
+                        
+                        var userThatBooked=""
+                        var usersPhoneNumebrThatBooked=""
+                        
+                        var isAvailable = true
+                        
+                        for obj in bookings
+                        {
+                            let date3 = formatter.date(from: obj.startDate)!
+                            let date4 = formatter.date(from: obj.endDate)!
+                            
+                            let currentInterval = DateInterval(start: date3, end: date4)
+                            
+                            let res = chosenInterval.intersects(currentInterval)
+                            
+                            if(res==true)
+                            {
+                                isAvailable=false
+                                
+                                userThatBooked=obj.user
+                            }
+                        }
+                        
+                        if(isAvailable)
+                        {
+                            
+                            
+                            addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                            
+                            
+                            let title = "Rezervare efectuată"
+                            let message = "Rezervarea a fost facută cu succes!"
+                            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                                //self.dismiss(animated: true, completion: nil)
+                                print("Dismissing VC after adding booking")
+                            }))
+                            self.present(alert, animated: true)
+                            
+                            
+                        }
+                        else
+                        {
+                            alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Utilizator: \(userThatBooked)")
+                        }
+                        
+                    })
+                    
+                }else{
+                    
+                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                    
+                    alert(UIVC: self, title: "Rezervare efectuată", message: "Rezervarea a fost facută cu succes!")
+                }
+                
+                
+            })
+            
+        }
         
     }
     
