@@ -430,7 +430,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-Zq-gOp">
-                                                    <rect key="frame" x="0.0" y="5" width="716" height="18"/>
+                                                    <rect key="frame" x="0.0" y="5" width="394" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="89c-MV-snz"/>
                                                     </constraints>
@@ -439,7 +439,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Booking description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyb-Uj-nVh">
-                                                    <rect key="frame" x="0.0" y="28.000000000000007" width="716" height="76.666666666666686"/>
+                                                    <rect key="frame" x="0.0" y="28.000000000000007" width="394" height="76.666666666666686"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -489,11 +489,44 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="Ctc-eF-61i" id="VeH-4G-Kdu"/>
+                        <segue destination="cto-mt-vRJ" kind="presentation" identifier="goToEditVC" id="reU-xr-CK0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2157.5999999999999" y="978.26086956521749"/>
+        </scene>
+        <!--Edit Own BookingVC-->
+        <scene sceneID="YuZ-Ze-qiu">
+            <objects>
+                <viewController id="cto-mt-vRJ" customClass="editOwnBookingVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mQN-GV-jZG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-SY-3kH">
+                                <rect key="frame" x="10" y="30" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="7fZ-eP-e65"/>
+                                    <constraint firstAttribute="height" constant="60" id="q2v-Vo-qfX"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="HgO-6c-e7z" kind="presentation" id="QQe-8j-Sh8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vHP-SY-3kH" firstAttribute="top" secondItem="K8o-Ev-oUq" secondAttribute="top" constant="10" id="cJ1-fP-bqY"/>
+                            <constraint firstItem="vHP-SY-3kH" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="10" id="gbL-zI-2sS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K8o-Ev-oUq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1N-d3-0zV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3320" y="977"/>
         </scene>
         <!--AdminVC-->
         <scene sceneID="ZNP-zu-fFr">
@@ -596,7 +629,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDM-Xq-0pm">
-                                            <rect key="frame" x="8" y="3" width="690" height="40"/>
+                                            <rect key="frame" x="8" y="3" width="368" height="40"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -888,7 +921,7 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Rd0-jq-Ag7"/>
+        <segue reference="QQe-8j-Sh8"/>
         <segue reference="wlb-jp-kx3"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>

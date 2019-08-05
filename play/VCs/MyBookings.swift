@@ -65,7 +65,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
         let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            // share item at indexPath
+            self.performSegue(withIdentifier: "goToEditVC", sender: nil)
         }
 
         edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
