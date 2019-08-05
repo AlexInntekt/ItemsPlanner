@@ -296,7 +296,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         items.removeAll()
         displayingItems.removeAll()
-        displayingCategories.removeAll()
+        //displayingCategories.removeAll()
         
         let ref = Database.database().reference().child("Categories")
         
