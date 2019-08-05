@@ -71,7 +71,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.leadingConstraintFaderView.constant = +1000
             self.faderView.alpha=0.5
             
-            self.view.layoutIfNeeded()
+            self.view.layoutIfNeeded()   
             
             self.leadingConstraintMenu.constant = -500
             
