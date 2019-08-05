@@ -76,8 +76,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBAction func bookButton(_ sender: Any)
     {
         
-        
-        if(startDateOfBooking=="")
+        //check if there is at least one selected date in calendar
+        if(calendarView.indexPathsForSelectedItems?.count==0)
         {
             alert(UIVC: self, title: "Input invalid!", message: "Selectați minim o dată din calendar.")
         }
