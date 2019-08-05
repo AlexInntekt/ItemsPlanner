@@ -110,7 +110,7 @@
                         <outlet property="password" destination="9ip-3I-SNz" id="xRP-0r-xVK"/>
                         <outlet property="passwordReset" destination="hdq-Sb-Aw0" id="Viu-XX-jfb"/>
                         <outlet property="signup" destination="7YZ-SF-pnM" id="d7x-sF-gak"/>
-                        <segue destination="ez9-8c-EE8" kind="presentation" identifier="loginSegue" id="sSZ-AL-SgI"/>
+                        <segue destination="ez9-8c-EE8" kind="custom" identifier="loginSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="sSZ-AL-SgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -389,10 +389,10 @@
                         <outlet property="menuButton" destination="OEK-vq-Pmt" id="Mdw-tP-QuA"/>
                         <outlet property="pickerCategory" destination="nY3-yF-LpJ" id="DhS-4c-MhX"/>
                         <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" id="Ih1-mP-Va3"/>
-                        <segue destination="nBd-z6-hOB" kind="presentation" identifier="goToCalendar" id="Tn8-hL-gDt"/>
-                        <segue destination="YGm-VA-4e0" kind="presentation" identifier="adminSegue" id="0zt-tU-UE9"/>
-                        <segue destination="HgO-6c-e7z" kind="presentation" identifier="myBookingsSegue" id="Rd0-jq-Ag7"/>
+                        <segue destination="BYZ-38-t0r" kind="custom" identifier="logoutSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Ih1-mP-Va3"/>
+                        <segue destination="nBd-z6-hOB" kind="custom" identifier="goToCalendar" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Tn8-hL-gDt"/>
+                        <segue destination="YGm-VA-4e0" kind="custom" identifier="adminSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="0zt-tU-UE9"/>
+                        <segue destination="HgO-6c-e7z" kind="custom" identifier="myBookingsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Rd0-jq-Ag7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -415,7 +415,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="presentation" id="wlb-jp-kx3"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wlb-jp-kx3"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
@@ -489,7 +489,7 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="Ctc-eF-61i" id="VeH-4G-Kdu"/>
-                        <segue destination="cto-mt-vRJ" kind="presentation" identifier="goToEditVC" id="reU-xr-CK0"/>
+                        <segue destination="cto-mt-vRJ" kind="custom" identifier="goToEditVC" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="reU-xr-CK0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -512,7 +512,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="HgO-6c-e7z" kind="presentation" id="QQe-8j-Sh8"/>
+                                    <segue destination="HgO-6c-e7z" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="QQe-8j-Sh8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -544,7 +544,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="presentation" id="Su3-uJ-jIS"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Su3-uJ-jIS"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcM-bi-99x">
@@ -732,7 +732,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="presentation" id="3EE-c4-Ell"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="3EE-c4-Ell"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume articol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-eC-eb2">
