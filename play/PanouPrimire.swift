@@ -316,6 +316,9 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                       currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       currentItem.id = item.key
                     
+                      print(currentItem.category)
+                    
+                      items.append(currentItem)
                       displayingItems.append(currentItem)
                     
                 }
