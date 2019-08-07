@@ -189,7 +189,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                             
                                             if(reports.count==i)
                                             {
-                                                self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
+                                                self.performSegue(withIdentifier: "seeFailedBookingReport", sender: nil)
                                                 //                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
                                             }
                                         })
@@ -375,10 +375,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     {
         if(segue.identifier=="seeFailedBookingReport")
         {
-            let obj = sender as! [FailedBookingReportModel]
+
             let defVC = segue.destination as! FailedBookingReport
             defVC.reports = reports
-            
+            defVC.desiredItem = currentItem as! Item
         }
         
         

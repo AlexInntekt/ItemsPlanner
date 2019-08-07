@@ -12,10 +12,15 @@ import UIKit
 class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     var reports = [FailedBookingReportModel]()
-    var desiredItem = [Item]()
+    var desiredItem = Item()
     
     @IBOutlet var tbv: UITableView!
     
+   
+    @IBAction func back(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "backToCalendar", sender: nil)
+    }
     
     override func viewDidLoad() {
         self.tbv.delegate = self
@@ -41,4 +46,18 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reports.count
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
+    {
+        if(segue.identifier=="backToCalendar")
+        {
+           
+            let defVC = segue.destination as! BookItemVC
+            defVC.currentItem = desiredItem
+            
+        }
+        
+        
+    }
+    
 }

@@ -816,7 +816,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="nBd-z6-hOB" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="c5p-Fv-gia"/>
+                                    <action selector="back:" destination="1d1-eE-aYs" eventType="touchUpInside" id="TKr-zn-gW9"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VPC-qL-1YQ">
@@ -896,6 +896,7 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="VPC-qL-1YQ" id="0eP-x6-hPA"/>
+                        <segue destination="nBd-z6-hOB" kind="custom" identifier="backToCalendar" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="tna-xz-s02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAU-Ll-IIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1027,7 +1028,8 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c5p-Fv-gia"/>
+        <segue reference="Bks-UD-XfE"/>
+        <segue reference="tna-xz-s02"/>
         <segue reference="Rd0-jq-Ag7"/>
         <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
