@@ -37,4 +37,5 @@ class Item {
 class FailedBookingReportModel {
     var username=""
     var date=""
+    var phone=""
 }

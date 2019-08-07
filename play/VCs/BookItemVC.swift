@@ -75,6 +75,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet var bookButton: UIButton!
     @IBAction func bookButton(_ sender: Any)
     {
+        var useridstofetch=[String]()
         
         //check if there is at least one selected date in calendar
         if(calendarView.indexPathsForSelectedItems?.count==0)
@@ -144,9 +145,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     isAvailable=false
                                     
                                     let report=FailedBookingReportModel()
-                                    report.date="123"
+                                    report.date=dateOccupied
                                     report.username=userIdOfBookingOwner
+                                    
                                     reports.append(report)
+                                    
+                                    useridstofetch.append(userIdOfBookingOwner)
                                 }
                                 
                                 
@@ -172,10 +176,30 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     else
                                     {
                                     
+                                       var i=0
+                                        
+                                       for id in useridstofetch
+                                       {
+                                        reference.child("Users").child(userIdOfBookingOwner).observeSingleEvent(of: .value, with: { (user) in
+                                            print()
+                                            reports[i].username=user.childSnapshot(forPath: "name").value as! String
+                                            reports[i].phone=user.childSnapshot(forPath: "phoneNumber").value as! String
+                                            
+                                            i+=1
+                                            
+                                            if(reports.count==i)
+                                            {
+                                                self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
+                                                //                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
+                                            }
+                                        })
                                         
                                         
-                                       self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
-//                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
+                                       }
+                                        
+                                       
+                                        
+                                      
                                         
                                         
                                         
