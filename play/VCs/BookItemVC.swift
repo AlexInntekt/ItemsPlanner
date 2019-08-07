@@ -14,7 +14,7 @@ import JTAppleCalendar
 
 let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
 let date=Date()
-
+var reports=[FailedBookingReportModel]()
 
 extension BookItemVC: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
@@ -83,6 +83,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         }
         else
         {
+            reports.removeAll()
+            
             let dif = DateIntervalFormatter()
             formatter.dateFormat = "YYYY MM dd"
             let date1 = formatter.date(from: startDateOfBooking)!
@@ -112,6 +114,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                         {
                             var userIdOfBookingOwner=""
                             var dateOccupied=""
+                            var phone=""
                             
                             //here we extract the bookings
                             
@@ -139,6 +142,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 if(res==true)
                                 {
                                     isAvailable=false
+                                    
+                                    let report=FailedBookingReportModel()
+                                    report.date="123"
+                                    report.username=userIdOfBookingOwner
+                                    reports.append(report)
                                 }
                                 
                                 
@@ -163,13 +171,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     }
                                     else
                                     {
-                                    reference.child("Users").child(userIdOfBookingOwner).observeSingleEvent(of: .value, with: { (user) in
-                                            let usernameOfBookingOwner=user.childSnapshot(forPath: "name").value as! String
-                                            let phoneNumber=user.childSnapshot(forPath: "phoneNumber").value as! String
+                                    
                                         
-                                           self.performSegue(withIdentifier: "seeFailedBookingReport", sender: nil)
+                                        
+                                       self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
 //                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
-                                        })
+                                        
                                         
                                         
                                     }
@@ -340,4 +347,16 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         return true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
+    {
+        if(segue.identifier=="seeFailedBookingReport")
+        {
+            let obj = sender as! [FailedBookingReportModel]
+            let defVC = segue.destination as! FailedBookingReport
+            defVC.reports = reports
+            
+        }
+        
+        
+    }
 }

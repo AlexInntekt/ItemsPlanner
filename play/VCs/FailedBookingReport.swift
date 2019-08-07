@@ -11,7 +11,7 @@ import UIKit
 
 class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    var report = [FailedBookingReport]()
+    var reports = [FailedBookingReportModel]()
     var desiredItem = [Item]()
     
     @IBOutlet var tbv: UITableView!
@@ -25,10 +25,10 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
          let cell = self.tbv.dequeueReusableCell(withIdentifier: "FailReportCell") as! FailReportCell
-             cell.usernameLabel?.text="tu"
-             cell.phoneNumberLabel?.text="587129537"
-             cell.dateLabel?.text="maine"
-        return UITableViewCell()
+             cell.usernameLabel?.text=reports[indexPath.row].username
+             cell.phoneNumberLabel?.text=reports[indexPath.row].username
+             cell.dateLabel?.text=reports[indexPath.row].username
+        return cell
     }
     
 //    let cell = self.itemsTableView.dequeueReusableCell(withIdentifier: "TBVCell") as! TBVCell
@@ -39,6 +39,6 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
 //    return cell;
 //
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return reports.count
     }
 }
