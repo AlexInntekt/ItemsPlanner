@@ -791,11 +791,64 @@
                         <outlet property="calendarView" destination="Mgd-qH-6Wz" id="M7N-qF-mCc"/>
                         <outlet property="numeArticol" destination="kcD-eC-eb2" id="9hW-un-0cU"/>
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
+                        <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2816.8000000000002" y="147.97601199400302"/>
+        </scene>
+        <!--Failed Booking Report-->
+        <scene sceneID="8Ga-Rn-6nb">
+            <objects>
+                <viewController id="1d1-eE-aYs" customClass="FailedBookingReport" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6lT-pu-pUM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frI-oZ-3eu">
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2M6-W2-saP"/>
+                                    <constraint firstAttribute="width" constant="60" id="Gm7-Z9-dLC"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="n8g-yf-12W"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="sdJ-Wo-KlF"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="nBd-z6-hOB" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="c5p-Fv-gia"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VPC-qL-1YQ">
+                                <rect key="frame" x="0.0" y="209.66666666666669" width="375" height="568.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articolul selectat nu a putut fi rezervat in perioada dată datorită unor rezervări deja existente." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-mG-y5A">
+                                <rect key="frame" x="5" y="101" width="365" height="103.66666666666669"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VPC-qL-1YQ" firstAttribute="top" secondItem="9HT-mG-y5A" secondAttribute="bottom" constant="5" id="22U-x6-2jg"/>
+                            <constraint firstItem="frI-oZ-3eu" firstAttribute="leading" secondItem="dTi-ju-6VL" secondAttribute="leading" constant="5" id="GS5-zc-rTl"/>
+                            <constraint firstItem="frI-oZ-3eu" firstAttribute="top" secondItem="dTi-ju-6VL" secondAttribute="top" constant="5" id="OLg-dW-Nhk"/>
+                            <constraint firstItem="dTi-ju-6VL" firstAttribute="bottom" secondItem="VPC-qL-1YQ" secondAttribute="bottom" id="PG3-k1-uvK"/>
+                            <constraint firstItem="dTi-ju-6VL" firstAttribute="trailing" secondItem="VPC-qL-1YQ" secondAttribute="trailing" id="TRP-6N-IpY"/>
+                            <constraint firstItem="VPC-qL-1YQ" firstAttribute="leading" secondItem="dTi-ju-6VL" secondAttribute="leading" id="WCl-3j-VE2"/>
+                            <constraint firstItem="dTi-ju-6VL" firstAttribute="trailing" secondItem="9HT-mG-y5A" secondAttribute="trailing" constant="5" id="Xxl-Kk-4Ji"/>
+                            <constraint firstItem="VPC-qL-1YQ" firstAttribute="height" secondItem="6lT-pu-pUM" secondAttribute="height" multiplier="0.7" id="YCJ-Dt-wMg"/>
+                            <constraint firstItem="9HT-mG-y5A" firstAttribute="top" secondItem="frI-oZ-3eu" secondAttribute="bottom" constant="-8" id="yfY-dR-hDC"/>
+                            <constraint firstItem="9HT-mG-y5A" firstAttribute="leading" secondItem="dTi-ju-6VL" secondAttribute="leading" constant="5" id="zuw-LW-BZc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dTi-ju-6VL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAU-Ll-IIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3954" y="155"/>
         </scene>
         <!--Creare Cont-->
         <scene sceneID="VPs-wO-oBR">
@@ -922,6 +975,7 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="c5p-Fv-gia"/>
         <segue reference="Rd0-jq-Ag7"/>
         <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>

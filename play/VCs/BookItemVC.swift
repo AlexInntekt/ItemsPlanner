@@ -112,7 +112,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                         {
                             var userIdOfBookingOwner=""
                             var dateOccupied=""
-                            var usernameOfBookingOwner=""
                             
                             //here we extract the bookings
                             
@@ -126,8 +125,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 let startingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                                 let endingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                                 
-                                userId=booking.childSnapshot(forPath: "user").value as! String
-                                dateOccupied=startingDateOfBooking+endingDateOfBooking
+                                userIdOfBookingOwner=booking.childSnapshot(forPath: "user").value as! String
+                                dateOccupied=startingDateOfBooking+"-"+endingDateOfBooking
                                 
                                 
                                 let date3 = formatter.date(from: startingDateOfBooking)!
@@ -140,10 +139,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 if(res==true)
                                 {
                                     isAvailable=false
-                                    
-                                    reference.child("Users").child(userId).child("name").observeSingleEvent(of: .value, with: { (username) in
-                                        print(username)
-                                    })
                                 }
                                 
                                 
@@ -168,7 +163,15 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     }
                                     else
                                     {
-                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Utilizator: ")
+                                    reference.child("Users").child(userIdOfBookingOwner).observeSingleEvent(of: .value, with: { (user) in
+                                            let usernameOfBookingOwner=user.childSnapshot(forPath: "name").value as! String
+                                            let phoneNumber=user.childSnapshot(forPath: "phoneNumber").value as! String
+                                        
+                                           self.performSegue(withIdentifier: "seeFailedBookingReport", sender: nil)
+//                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
+                                        })
+                                        
+                                        
                                     }
                                 }
                                 

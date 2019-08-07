@@ -32,3 +32,9 @@ class Item {
     var name = String()
     var bookings = [Booking]()
 }
+
+
+class FailedBookingReportModel {
+    var username=""
+    var date=""
+}
