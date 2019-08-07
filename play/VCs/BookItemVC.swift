@@ -110,7 +110,9 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                         //here we extract all bookings ids belonging to this item
                         for bookingid in snap.children.allObjects as! [DataSnapshot]
                         {
-                            
+                            var userIdOfBookingOwner=""
+                            var dateOccupied=""
+                            var usernameOfBookingOwner=""
                             
                             //here we extract the bookings
                             
@@ -120,10 +122,13 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                             path.observeSingleEvent(of: .value, with: { (booking) in
                                 //print(booking.value)
                                 count+=1
-                                // print(booking.childSnapshot(forPath: "itemName").value as! String)
                                 
                                 let startingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                                 let endingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                                
+                                userId=booking.childSnapshot(forPath: "user").value as! String
+                                dateOccupied=startingDateOfBooking+endingDateOfBooking
+                                
                                 
                                 let date3 = formatter.date(from: startingDateOfBooking)!
                                 let date4 = formatter.date(from: endingDateOfBooking)!
@@ -135,6 +140,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                 if(res==true)
                                 {
                                     isAvailable=false
+                                    
+                                    reference.child("Users").child(userId).child("name").observeSingleEvent(of: .value, with: { (username) in
+                                        print(username)
+                                    })
                                 }
                                 
                                 
