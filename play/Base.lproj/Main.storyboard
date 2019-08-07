@@ -801,7 +801,7 @@
         <!--Failed Booking Report-->
         <scene sceneID="8Ga-Rn-6nb">
             <objects>
-                <viewController id="1d1-eE-aYs" customClass="FailedBookingReport" sceneMemberID="viewController">
+                <viewController id="1d1-eE-aYs" customClass="FailedBookingReport" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6lT-pu-pUM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -819,9 +819,58 @@
                                     <segue destination="nBd-z6-hOB" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="c5p-Fv-gia"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VPC-qL-1YQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VPC-qL-1YQ">
                                 <rect key="frame" x="0.0" y="209.66666666666669" width="375" height="568.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FailReportCell" id="ntm-nH-Sr6" customClass="FailReportCell" customModule="play" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ntm-nH-Sr6" id="zGf-wx-YSz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usernameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mf-zb-xVM">
+                                                    <rect key="frame" x="0.0" y="3" width="187.66666666666666" height="35"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEF-NL-HxT">
+                                                    <rect key="frame" x="172.66666666666663" y="3" width="187.33333333333337" height="35"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ro-aD-cfn">
+                                                    <rect key="frame" x="15" y="38" width="345" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="width" secondItem="8Mf-zb-xVM" secondAttribute="width" id="4k5-Ud-euZ"/>
+                                                <constraint firstItem="3Ro-aD-cfn" firstAttribute="leading" secondItem="zGf-wx-YSz" secondAttribute="leadingMargin" id="JsD-kn-2XB"/>
+                                                <constraint firstItem="8Mf-zb-xVM" firstAttribute="top" secondItem="zGf-wx-YSz" secondAttribute="top" constant="3" id="SBJ-Wx-xgX"/>
+                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="centerY" secondItem="8Mf-zb-xVM" secondAttribute="centerY" id="U65-dN-W0N"/>
+                                                <constraint firstItem="8Mf-zb-xVM" firstAttribute="height" secondItem="zGf-wx-YSz" secondAttribute="height" multiplier="0.5" id="bpl-O0-MW1"/>
+                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="height" secondItem="8Mf-zb-xVM" secondAttribute="height" id="cXV-Pt-gIN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3Ro-aD-cfn" secondAttribute="trailing" id="fUt-Ra-5VX"/>
+                                                <constraint firstItem="8Mf-zb-xVM" firstAttribute="width" secondItem="zGf-wx-YSz" secondAttribute="width" multiplier="0.5" id="j40-cg-qhv"/>
+                                                <constraint firstItem="8Mf-zb-xVM" firstAttribute="leading" secondItem="zGf-wx-YSz" secondAttribute="leading" id="o4P-5N-wxL"/>
+                                                <constraint firstItem="3Ro-aD-cfn" firstAttribute="bottom" secondItem="zGf-wx-YSz" secondAttribute="bottomMargin" id="oTU-5W-S2r"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vEF-NL-HxT" secondAttribute="trailing" id="voZ-Zb-sI1"/>
+                                                <constraint firstItem="3Ro-aD-cfn" firstAttribute="top" secondItem="8Mf-zb-xVM" secondAttribute="bottom" id="zRi-dt-xK1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="3Ro-aD-cfn" id="KOt-d4-5L7"/>
+                                            <outlet property="phoneNumberLabel" destination="vEF-NL-HxT" id="UOt-fy-Jau"/>
+                                            <outlet property="usernameLabel" destination="8Mf-zb-xVM" id="eSb-eD-PsM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articolul selectat nu a putut fi rezervat in perioada dată datorită unor rezervări deja existente." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-mG-y5A">
                                 <rect key="frame" x="5" y="101" width="365" height="103.66666666666669"/>
@@ -845,6 +894,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dTi-ju-6VL"/>
                     </view>
+                    <connections>
+                        <outlet property="tbv" destination="VPC-qL-1YQ" id="0eP-x6-hPA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAU-Ll-IIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
