@@ -1,8 +1,8 @@
 //
-//  AdminVC.swift
+//  MyBookings.swift
 //  play
 //
-//  Created by Alexandru-Mihai Manolescu on 04/08/2019.
+//  Created by Alexandru-Mihai Manolescu on 01/08/2019.
 //  Copyright © 2019 Alexandru-Mihai Manolescu. All rights reserved.
 //
 
@@ -12,30 +12,66 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-
 class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
-    var displayingBookings=[Booking]()
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayingBookings.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=UITableViewCell()
-        cell.textLabel?.text = displayingBookings[indexPath.row].itemName
-        return cell
-    }
+    var displayingBookings = [Booking]()
     
     @IBOutlet var TBVAdmin: UITableView!
     
     override func viewDidLoad()
     {
-        self.TBVAdmin.delegate = self
-        self.TBVAdmin.dataSource = self
+        TBVAdmin.delegate = self
+        TBVAdmin.dataSource = self
         
         loadDataFromDB()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayingBookings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = self.TBVAdmin.dequeueReusableCell(withIdentifier: "AdminBookingCell") as! AdminBookingCell
+     
+            cell.itemNameLabel?.text=displayingBookings[indexPath.row].itemName
+            cell.userLabel?.text=displayingBookings[indexPath.row].user
+            let startDate=displayingBookings[indexPath.row].startDate
+            let endDate=displayingBookings[indexPath.row].endDate
+            let date="\(startDate) - \(endDate)"
+            cell.dateLabel?.text=date
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let bk = self.displayingBookings[indexPath.row]
+            self.displayingBookings.remove(at: indexPath.row)
+            self.TBVAdmin.reloadData()
+            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category)
+            
+        }
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            self.performSegue(withIdentifier: "goToEditVC", sender: nil)
+        }
+        
+        edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
+        
+        return [delete,edit]
+    }
+    
+    func setup()
+    {
+        
     }
     
     func loadDataFromDB()
@@ -94,11 +130,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 }
             }
             
- 
+            
         }
     }
-        
-        
 }
-    
-

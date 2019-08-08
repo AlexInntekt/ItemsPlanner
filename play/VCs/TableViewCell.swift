@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import JTAppleCalendar
 
 class TBVCell: UITableViewCell
 {
@@ -26,4 +27,28 @@ class TBVBookingCell: UITableViewCell
     @IBOutlet var itemName: UILabel!
     
     @IBOutlet var labelName: UITextView!
+}
+
+
+class DateCell: JTACDayCell {
+    
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var selectedView: UIView!
+    
+    
+    
+}
+
+
+class AdminBookingCell: UITableViewCell
+{
+
+    @IBOutlet weak var itemNameLabel: UILabel!
+  
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
 }
