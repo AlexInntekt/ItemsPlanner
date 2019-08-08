@@ -16,7 +16,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
     
-    var displayingBookings = [Booking]()
+    var displayingBookings = [BookingPack]()
     
     @IBOutlet var TBVAdmin: UITableView!
     
@@ -42,11 +42,13 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let cell = self.TBVAdmin.dequeueReusableCell(withIdentifier: "AdminBookingCell") as! AdminBookingCell
      
             cell.itemNameLabel?.text=displayingBookings[indexPath.row].itemName
-            cell.userLabel?.text=displayingBookings[indexPath.row].user
+            cell.userLabel?.text=displayingBookings[indexPath.row].username
             let startDate=displayingBookings[indexPath.row].startDate
             let endDate=displayingBookings[indexPath.row].endDate
             let date="\(startDate) - \(endDate)"
+            cell.phoneLabel?.text=displayingBookings[indexPath.row].phone
             cell.dateLabel?.text=date
+        
         return cell
     }
     
@@ -60,13 +62,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         }
         
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            self.performSegue(withIdentifier: "goToEditVC", sender: nil)
-        }
-        
-        edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
-        
-        return [delete,edit]
+        return [delete]
     }
     
     func setup()
@@ -84,6 +80,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             for child in snap.children.allObjects as! [DataSnapshot]{
                 
+                let phone = child.childSnapshot(forPath: "phoneNumber").value as! String
+                let nameOfOwner = child.childSnapshot(forPath: "name").value as! String
                 let userUid = child.key
                 
                 let ref = Database.database().reference().child("Users").child(userUid).child("bookings")
@@ -112,7 +110,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             
                             print("fbuiwgeiwbGIwge")
                             
-                            let currentBooking = Booking()
+                            let currentBooking = BookingPack()
                             currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
                             currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
                             currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
@@ -121,7 +119,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                             currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                             currentBooking.id = snap.key
-                            
+                            currentBooking.phone=phone
+                            currentBooking.username=nameOfOwner
                             self.displayingBookings.append(currentBooking)
                             print(currentBooking.description)
                             self.TBVAdmin.reloadData()

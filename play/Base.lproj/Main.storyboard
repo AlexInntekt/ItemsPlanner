@@ -578,7 +578,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yK-en-TOY">
-                                                    <rect key="frame" x="15" y="27" width="78.333333333333329" height="25"/>
+                                                    <rect key="frame" x="15" y="27" width="144" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="2bN-gM-Vb0"/>
                                                     </constraints>
@@ -587,7 +587,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4V-4f-LWG">
-                                                    <rect key="frame" x="15" y="52" width="324" height="21"/>
+                                                    <rect key="frame" x="15" y="52" width="324" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -598,12 +598,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="8x6-zg-GiD" secondAttribute="trailing" id="795-8h-qnd"/>
                                                 <constraint firstItem="8x6-zg-GiD" firstAttribute="centerY" secondItem="1yK-en-TOY" secondAttribute="centerY" constant="-2" id="7qA-qg-AtE"/>
                                                 <constraint firstItem="1yK-en-TOY" firstAttribute="top" secondItem="Cjg-2F-BCu" secondAttribute="bottom" constant="2" id="CPT-jQ-PDy"/>
-                                                <constraint firstItem="1yK-en-TOY" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.4" constant="-65.666666666666671" id="GBx-KA-62x"/>
+                                                <constraint firstItem="1yK-en-TOY" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.4" id="GBx-KA-62x"/>
                                                 <constraint firstItem="Cjg-2F-BCu" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.4" id="LW9-Fm-85i"/>
                                                 <constraint firstItem="Cjg-2F-BCu" firstAttribute="top" secondItem="pJl-Cp-RTK" secondAttribute="top" id="MG4-x7-tia"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="bottom" secondItem="pJl-Cp-RTK" secondAttribute="bottomMargin" constant="4" id="QFC-9Q-Xhn"/>
                                                 <constraint firstItem="8x6-zg-GiD" firstAttribute="leading" secondItem="Cjg-2F-BCu" secondAttribute="trailing" id="UHj-G2-z9o"/>
-                                                <constraint firstItem="8x6-zg-GiD" firstAttribute="leading" secondItem="1yK-en-TOY" secondAttribute="trailing" constant="50.666666666666671" id="YkT-Io-jfi"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="leading" secondItem="pJl-Cp-RTK" secondAttribute="leadingMargin" id="bTc-Sl-IAd"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.9" id="jjO-8A-o9m"/>
                                                 <constraint firstItem="1yK-en-TOY" firstAttribute="leading" secondItem="pJl-Cp-RTK" secondAttribute="leadingMargin" id="jx5-iR-6Gy"/>
