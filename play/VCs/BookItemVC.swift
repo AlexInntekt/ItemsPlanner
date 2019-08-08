@@ -180,7 +180,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                         
                                        for id in useridstofetch
                                        {
-                                        reference.child("Users").child(userIdOfBookingOwner).observeSingleEvent(of: .value, with: { (user) in
+                                        reference.child("Users").child(id).observeSingleEvent(of: .value, with: { (user) in
                                             print()
                                             reports[i].username=user.childSnapshot(forPath: "name").value as! String
                                             reports[i].phone=user.childSnapshot(forPath: "phoneNumber").value as! String
