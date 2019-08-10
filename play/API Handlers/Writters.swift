@@ -21,9 +21,13 @@ func createItem(item item: Item, byCategory cat: String)
         
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
-        db.child(id).updateChildValues(["name": item.name])
-        db.child(id).updateChildValues(["image_url": item.image_url])
-        db.child(id).updateChildValues(["descriere": item.description])
+        
+        let dict = ["name": item.name,"image_url": item.image_url,"descriere": item.description]
+//        db.child(id).updateChildValues(["name": item.name])
+//        db.child(id).updateChildValues(["image_url": item.image_url])
+//        db.child(id).updateChildValues(["descriere": item.description])
+        
+        db.child(id).setValue(dict)
         
         return TransactionResult.success(withValue: currentData)
     })
