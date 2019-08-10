@@ -54,6 +54,10 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
@@ -64,13 +68,13 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         }
         
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            self.performSegue(withIdentifier: "goToEditVC", sender: nil)
+        let info = UITableViewRowAction(style: .normal, title: "Info") { (action, indexPath) in
+            self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
         }
 
-        edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
+        info.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
 
-        return [delete,edit]
+        return [delete,info]
     }
     
     func setup()
@@ -147,5 +151,14 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="goToEditVC")
+        {
+            let obj = sender as! Booking
+            let defVC = segue.destination as! editOwnBookingVC
+            defVC.currentBooking = obj
+        }
     }
 }

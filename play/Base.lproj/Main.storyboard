@@ -500,13 +500,13 @@
         <!--Edit Own BookingVC-->
         <scene sceneID="YuZ-Ze-qiu">
             <objects>
-                <viewController id="cto-mt-vRJ" customClass="editOwnBookingVC" sceneMemberID="viewController">
+                <viewController id="cto-mt-vRJ" customClass="editOwnBookingVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mQN-GV-jZG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-SY-3kH">
-                                <rect key="frame" x="10" y="54" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="54" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="7fZ-eP-e65"/>
                                     <constraint firstAttribute="height" constant="60" id="q2v-Vo-qfX"/>
@@ -516,18 +516,56 @@
                                     <segue destination="HgO-6c-e7z" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="QQe-8j-Sh8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPj-FN-gmn">
+                                <rect key="frame" x="83" y="54" width="292" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="MRA-OG-QuT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8d-Zy-XFc">
+                                <rect key="frame" x="10" y="114" width="355" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.4823529412" green="0.49019607840000001" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LxH-5T-ggC">
+                                <rect key="frame" x="5" y="132.00000000000003" width="365" height="446.66666666666674"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="T8d-Zy-XFc" secondAttribute="trailing" constant="10" id="9A8-T7-9In"/>
+                            <constraint firstItem="T8d-Zy-XFc" firstAttribute="height" secondItem="NPj-FN-gmn" secondAttribute="height" multiplier="0.3" id="LIi-X4-jv5"/>
+                            <constraint firstItem="LxH-5T-ggC" firstAttribute="height" secondItem="mQN-GV-jZG" secondAttribute="height" multiplier="0.55" id="LSg-e5-dc5"/>
+                            <constraint firstItem="LxH-5T-ggC" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="5" id="MdR-PU-ZZ7"/>
+                            <constraint firstItem="LxH-5T-ggC" firstAttribute="top" secondItem="T8d-Zy-XFc" secondAttribute="bottom" id="Opg-iG-mJA"/>
+                            <constraint firstItem="NPj-FN-gmn" firstAttribute="centerY" secondItem="vHP-SY-3kH" secondAttribute="centerY" id="RuD-P1-zkB"/>
+                            <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="LxH-5T-ggC" secondAttribute="trailing" constant="5" id="T1a-x9-JA1"/>
+                            <constraint firstItem="NPj-FN-gmn" firstAttribute="leading" secondItem="vHP-SY-3kH" secondAttribute="trailing" constant="23" id="T5s-Ai-u7x"/>
+                            <constraint firstItem="T8d-Zy-XFc" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="10" id="VpD-QH-JRo"/>
                             <constraint firstItem="vHP-SY-3kH" firstAttribute="top" secondItem="K8o-Ev-oUq" secondAttribute="top" constant="10" id="cJ1-fP-bqY"/>
-                            <constraint firstItem="vHP-SY-3kH" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="10" id="gbL-zI-2sS"/>
+                            <constraint firstItem="vHP-SY-3kH" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" id="gbL-zI-2sS"/>
+                            <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="NPj-FN-gmn" secondAttribute="trailing" id="i2w-QK-YOM"/>
+                            <constraint firstItem="T8d-Zy-XFc" firstAttribute="top" secondItem="NPj-FN-gmn" secondAttribute="bottom" id="llP-rC-y8z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8o-Ev-oUq"/>
                     </view>
+                    <connections>
+                        <outlet property="bookingDescr" destination="LxH-5T-ggC" id="Zq5-3R-Pc5"/>
+                        <outlet property="date" destination="T8d-Zy-XFc" id="WKz-yN-F19"/>
+                        <outlet property="item" destination="NPj-FN-gmn" id="HLI-oV-EAB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1N-d3-0zV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3320" y="977"/>
+            <point key="canvasLocation" x="3319.1999999999998" y="976.84729064039414"/>
         </scene>
         <!--AdminVC-->
         <scene sceneID="ZNP-zu-fFr">
@@ -1098,7 +1136,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tna-xz-s02"/>
-        <segue reference="Rd0-jq-Ag7"/>
+        <segue reference="QQe-8j-Sh8"/>
         <segue reference="Su3-uJ-jIS"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>

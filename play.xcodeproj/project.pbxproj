@@ -39,6 +39,7 @@
 		FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFEAE722F4CB2F00270F25 /* Deleters.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 		FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9F5D722F7068A0074B36D /* AdminVC.swift */; };
+		FAEF5F2722FEC23100E5AC6F /* editOwnBookingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		FACFEAE722F4CB2F00270F25 /* Deleters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deleters.swift; path = /Users/alex/repos/play/play/Deleters.swift; sourceTree = "<absolute>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FAE9F5D722F7068A0074B36D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
+		FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editOwnBookingVC.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				FAE9F5D722F7068A0074B36D /* AdminVC.swift */,
 				FAAD176322F2B47C00881325 /* MyBookings.swift */,
 				FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */,
+				FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */,
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
 				FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */,
+				FAEF5F2722FEC23100E5AC6F /* editOwnBookingVC.swift in Sources */,
 				FA01152322DF84E800F8234A /* Models.swift in Sources */,
 				FA17BBA122FB3E4A00CC7803 /* FailReportCell.swift in Sources */,
 			);
