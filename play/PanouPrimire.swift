@@ -341,7 +341,12 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 //UserDefaults.standard.value(forKey: "selected_category")
                 let saved_selection=UserDefaults.standard.integer(forKey: "selected_category")
                 self.pickerCategory.selectRow(saved_selection, inComponent: 0, animated: false)
-                self.filterDisplayingItemsByCategory(displayingCategories[saved_selection])
+                
+                if(!displayingCategories.isEmpty)
+                {
+                    self.filterDisplayingItemsByCategory(displayingCategories[saved_selection])
+                }
+                
              }
             
             self.itemsTableView.reloadData()
