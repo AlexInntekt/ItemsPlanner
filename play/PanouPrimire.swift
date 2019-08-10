@@ -328,7 +328,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 }
             }
             
-             //self.pickerCategory.reloadAllComponents()
+             self.pickerCategory.reloadAllComponents()
             
               if UserDefaults.standard.value(forKey: "selected_category") == nil
               {
@@ -340,7 +340,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
               {
                 //UserDefaults.standard.value(forKey: "selected_category")
                 let saved_selection=UserDefaults.standard.integer(forKey: "selected_category")
-                print(saved_selection)
                 self.pickerCategory.selectRow(saved_selection, inComponent: 0, animated: false)
                 self.filterDisplayingItemsByCategory(displayingCategories[saved_selection])
              }
