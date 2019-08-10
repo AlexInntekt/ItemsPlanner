@@ -41,11 +41,31 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+//            let bk = self.displayingBookings[indexPath.row]
+//            self.displayingBookings.remove(at: indexPath.row)
+//            self.tbv.reloadData()
+            
+            let key = self.displayingCategories[indexPath.row]
+            
+            self.reference.child("Categories").child(key).removeValue()
+            
+            self.tbv.reloadData()
+            
+        }
+        
+        return [delete]
+    }
+    
     func loadCategories()
     {
         let path = reference.child("Categories")
         
         path.observe(DataEventType.value) { (pack) in
+            self.displayingCategories.removeAll()
             for category in pack.children.allObjects as! [DataSnapshot]{
             
                 let name = category.key as! String
