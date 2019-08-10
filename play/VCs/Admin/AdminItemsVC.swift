@@ -54,7 +54,15 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         self.tbv.delegate=self
         self.tbv.dataSource=self
         
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         loadDataFromDB()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+
     }
     
     func loadDataFromDB()

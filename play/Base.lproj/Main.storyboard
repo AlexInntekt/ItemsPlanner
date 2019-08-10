@@ -275,7 +275,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Qo9-WV-4gb"/>
                                             <constraint firstAttribute="width" constant="160" id="hk4-67-VjG"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Log Out">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -285,7 +285,7 @@
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-tN-rW0">
                                         <rect key="frame" x="18.666666666666671" y="148" width="160" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Admin">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
@@ -685,6 +685,9 @@
                                 <state key="normal" title="Categorii">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" id="NBO-Qa-E4w"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1050,6 +1053,84 @@
             </objects>
             <point key="canvasLocation" x="3954" y="155"/>
         </scene>
+        <!--Admin CategoriesVC-->
+        <scene sceneID="nA2-Ai-iSp">
+            <objects>
+                <viewController storyboardIdentifier="AdminCategoriesVC" id="YSl-Re-JxK" customClass="AdminCategoriesVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vn6-UA-ZcO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-hy-NNA">
+                                <rect key="frame" x="279" y="49" width="80" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="4kZ-RZ-Ez9"/>
+                                    <constraint firstAttribute="height" constant="60" id="Haw-Aa-NwH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Item-uri">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="L3y-sH-PSf" kind="presentation" animates="NO" id="6W9-po-8Al"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-gg-uYd">
+                                <rect key="frame" x="179" y="49" width="80" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="YKL-KG-8uM"/>
+                                    <constraint firstAttribute="height" constant="60" id="b4d-7m-xrD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Rezervări">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YGm-VA-4e0" kind="presentation" animates="NO" id="W89-oH-rKv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3p-NN-Tlv">
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="eER-4T-cSn"/>
+                                    <constraint firstAttribute="width" constant="60" id="m5k-Ay-RaW"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="aQY-2G-NCh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HR6-hx-CSg">
+                                <rect key="frame" x="79" y="49" width="80" height="60"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="5kv-Bk-UnE"/>
+                                    <constraint firstAttribute="height" constant="60" id="rOD-90-dOi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Categorii">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TCn-gg-uYd" firstAttribute="leading" secondItem="HR6-hx-CSg" secondAttribute="trailing" constant="20" id="8GQ-rM-3CD"/>
+                            <constraint firstItem="HR6-hx-CSg" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="8ve-sy-1uS"/>
+                            <constraint firstItem="p3p-NN-Tlv" firstAttribute="top" secondItem="bTP-JJ-xzB" secondAttribute="top" constant="5" id="CEF-rz-GUE"/>
+                            <constraint firstItem="p3p-NN-Tlv" firstAttribute="leading" secondItem="bTP-JJ-xzB" secondAttribute="leading" constant="5" id="Okj-z4-8c8"/>
+                            <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="9FU-hy-NNA" secondAttribute="trailing" constant="16" id="XiQ-PI-R9B"/>
+                            <constraint firstItem="9FU-hy-NNA" firstAttribute="leading" secondItem="TCn-gg-uYd" secondAttribute="trailing" constant="20" id="Yko-Pt-hLR"/>
+                            <constraint firstItem="TCn-gg-uYd" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="k4P-nD-Vv7"/>
+                            <constraint firstItem="9FU-hy-NNA" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="yAz-IF-u2B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bTP-JJ-xzB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRq-aI-kpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3102" y="-2506"/>
+        </scene>
         <!--Admin ItemsVC-->
         <scene sceneID="m83-rR-XUf">
             <objects>
@@ -1173,6 +1254,9 @@
                                 <state key="normal" title="Categorii">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" id="Urz-D9-MVr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1462,11 +1546,12 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wfI-xl-UUB"/>
+        <segue reference="6W9-po-8Al"/>
+        <segue reference="NBO-Qa-E4w"/>
         <segue reference="Tn8-hL-gDt"/>
-        <segue reference="0zt-tU-UE9"/>
+        <segue reference="W89-oH-rKv"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="aQY-2G-NCh"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
