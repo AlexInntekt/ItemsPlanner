@@ -214,10 +214,12 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         faderView.isUserInteractionEnabled = true
         faderView.addGestureRecognizer(tapGestureRecognizer)
 
-        setupLogic()
         
- 
+        
+        setupLogic()
     }
+    
+    
     
     @objc func didTap(sender: UITapGestureRecognizer) {
         let location = sender.location(in: view)
@@ -345,7 +347,12 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 
                 if(!displayingCategories.isEmpty)
                 {
+                   
+                    if(displayingCategories.count>=saved_selection)
+                    {
                     self.filterDisplayingItemsByCategory(displayingCategories[saved_selection])
+                    }
+                    
                 }
                 
              }

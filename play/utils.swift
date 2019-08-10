@@ -110,5 +110,9 @@ extension Substring {
 
 func scrollToFirstRow(in tableview: UITableView) {
     let indexPath = NSIndexPath(row: 0, section: 0)
-    tableview.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+    if(tableview.numberOfRows(inSection: 0)>0)
+    {
+        tableview.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+    }
+    
 }
