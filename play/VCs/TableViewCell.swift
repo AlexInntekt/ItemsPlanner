@@ -52,3 +52,13 @@ class AdminBookingCell: UITableViewCell
     
     @IBOutlet weak var dateLabel: UILabel!
 }
+
+
+class AdminItemCell: UITableViewCell
+{
+    @IBOutlet weak var itemNameLabel: UILabel!
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
+}
