@@ -14,13 +14,19 @@ import FirebaseAuth
 func createItem(item item: Item, byCategory cat: String)
 {
     let ref = Database.database().reference()
-    let db = ref.child("Categories").child(cat).child("items")
     
-    db.childByAutoId()
-    let id = db.childByAutoId().key as! String
-    db.child(id).updateChildValues(["name": item.name])
-    db.child(id).updateChildValues(["image_url": item.image_url])
-    db.child(id).updateChildValues(["descriere": item.description])
+    ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
+        
+        let db = ref.child("Categories").child(cat).child("items")
+        
+        db.childByAutoId()
+        let id = db.childByAutoId().key as! String
+        db.child(id).updateChildValues(["name": item.name])
+        db.child(id).updateChildValues(["image_url": item.image_url])
+        db.child(id).updateChildValues(["descriere": item.description])
+        
+        return TransactionResult.success(withValue: currentData)
+    })
 }
 
 
