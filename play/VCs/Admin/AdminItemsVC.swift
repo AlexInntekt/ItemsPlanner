@@ -40,9 +40,6 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
             
             let path_of_item=ref.child("Categories").child(itemToDelete.category).child("items").child(itemToDelete.id)
             path_of_item.removeValue()
-            print("tapped delete")
-            self.displayingItems.remove(at: indexPath.row)
-            self.tbv.reloadData()
             
         }
         

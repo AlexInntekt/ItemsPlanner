@@ -140,25 +140,30 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        UserDefaults.standard.set(String(row), forKey: "selected_category")
         
+        filterDisplayingItemsByCategory(displayingCategories[row])
+        self.itemsTableView.reloadData()
+    }
+    
+    func filterDisplayingItemsByCategory(_ category: String)
+    {
         displayingItems.removeAll()
         
-        if(displayingCategories[row]=="Toate")
+        if(category=="Toate")
         {
             displayingItems=items
-            self.itemsTableView.reloadData()
         }
         else
         {
             for item in items
             {
-                if(item.category==displayingCategories[row])
+                if(item.category==category)
                 {
                     displayingItems.append(item)
                 }
             }
-            
-            self.itemsTableView.reloadData()
+
         }
     }
 
@@ -187,7 +192,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         super.viewDidLoad()
         
-        detectChanges()
         
         self.itemsTableView.delegate = self
         self.itemsTableView.dataSource = self
@@ -294,13 +298,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func loadDataFromDB()
     {
-        items.removeAll()
-        displayingItems.removeAll()
-        //displayingCategories.removeAll()
         
         let ref = Database.database().reference().child("Categories")
         
         ref.observe(.value) { (allCategories) in
+            items.removeAll()
+            displayingItems.removeAll()
+            displayingCategories.removeAll()
+            
+            displayingCategories.append("Toate")
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
                 displayingCategories.append(category.key)
@@ -319,36 +325,31 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                       print(currentItem.category)
                     
                       items.append(currentItem)
-                      displayingItems.append(currentItem)
-                    
                 }
             }
             
-             self.itemsTableView.reloadData()
-             self.pickerCategory.reloadAllComponents()
+             //self.pickerCategory.reloadAllComponents()
+            
+              if UserDefaults.standard.value(forKey: "selected_category") == nil
+              {
+                print("UserDefaults->selected_category is nill")
+                UserDefaults.standard.set(self.pickerCategory.selectedRow(inComponent: 0), forKey: "selected_category")
+                self.filterDisplayingItemsByCategory(displayingCategories[0])
+              }
+              else
+              {
+                //UserDefaults.standard.value(forKey: "selected_category")
+                let saved_selection=UserDefaults.standard.integer(forKey: "selected_category")
+                print(saved_selection)
+                self.pickerCategory.selectRow(saved_selection, inComponent: 0, animated: false)
+                self.filterDisplayingItemsByCategory(displayingCategories[saved_selection])
+             }
+            
+            self.itemsTableView.reloadData()
         }
         
     }
     
     
-    func detectChanges()
-    {
-        
-        
-        let ref = Database.database().reference().child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
-        
-        
-        ref.observe(.value, with: { (snapshot: DataSnapshot!) in
-            //print(snapshot.childrenCount)
-            
-            ref.observe(DataEventType.childAdded) { (snap) in
-                //print(snap.key)
-                
-              
-                
-            }
-        })
-        
-    }
     
 }
