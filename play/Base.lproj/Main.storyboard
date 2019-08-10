@@ -1112,20 +1112,31 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zje-Ea-Kwl">
+                                <rect key="frame" x="10" y="204.66666666666669" width="355" height="568.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TCn-gg-uYd" firstAttribute="leading" secondItem="HR6-hx-CSg" secondAttribute="trailing" constant="20" id="8GQ-rM-3CD"/>
                             <constraint firstItem="HR6-hx-CSg" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="8ve-sy-1uS"/>
                             <constraint firstItem="p3p-NN-Tlv" firstAttribute="top" secondItem="bTP-JJ-xzB" secondAttribute="top" constant="5" id="CEF-rz-GUE"/>
+                            <constraint firstItem="zje-Ea-Kwl" firstAttribute="leading" secondItem="bTP-JJ-xzB" secondAttribute="leading" constant="10" id="FOU-uw-tmJ"/>
+                            <constraint firstItem="zje-Ea-Kwl" firstAttribute="height" secondItem="vn6-UA-ZcO" secondAttribute="height" multiplier="0.7" id="FiX-o9-0rR"/>
+                            <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="zje-Ea-Kwl" secondAttribute="trailing" constant="10" id="HQr-Ov-Z5Y"/>
                             <constraint firstItem="p3p-NN-Tlv" firstAttribute="leading" secondItem="bTP-JJ-xzB" secondAttribute="leading" constant="5" id="Okj-z4-8c8"/>
                             <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="9FU-hy-NNA" secondAttribute="trailing" constant="16" id="XiQ-PI-R9B"/>
                             <constraint firstItem="9FU-hy-NNA" firstAttribute="leading" secondItem="TCn-gg-uYd" secondAttribute="trailing" constant="20" id="Yko-Pt-hLR"/>
+                            <constraint firstItem="bTP-JJ-xzB" firstAttribute="bottom" secondItem="zje-Ea-Kwl" secondAttribute="bottom" constant="5" id="jSz-DI-gna"/>
                             <constraint firstItem="TCn-gg-uYd" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="k4P-nD-Vv7"/>
                             <constraint firstItem="9FU-hy-NNA" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="yAz-IF-u2B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bTP-JJ-xzB"/>
                     </view>
+                    <connections>
+                        <outlet property="tbv" destination="zje-Ea-Kwl" id="xy8-EU-h1H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRq-aI-kpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
