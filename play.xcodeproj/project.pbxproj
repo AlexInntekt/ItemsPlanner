@@ -20,6 +20,7 @@
 		FA13923722D8ED94006D64B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA13923522D8ED94006D64B4 /* LaunchScreen.storyboard */; };
 		FA13924222D8ED95006D64B4 /* playTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA13924122D8ED95006D64B4 /* playTests.swift */; };
 		FA13924D22D8ED95006D64B4 /* playUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA13924C22D8ED95006D64B4 /* playUITests.swift */; };
+		FA13F4B322FF2AEA0014CED5 /* AddCategoryAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA13F4B222FF2AEA0014CED5 /* AddCategoryAdminVC.swift */; };
 		FA142AE322F85D2E00C56AA7 /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA142AE222F85D2E00C56AA7 /* RightToLeft.swift */; };
 		FA142AE522F85DE400C56AA7 /* LeftToRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA142AE422F85DE400C56AA7 /* LeftToRight.swift */; };
 		FA142AE722F85EE600C56AA7 /* DownUpSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA142AE622F85EE600C56AA7 /* DownUpSegue.swift */; };
@@ -87,6 +88,7 @@
 		FA13924822D8ED95006D64B4 /* playUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = playUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA13924C22D8ED95006D64B4 /* playUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playUITests.swift; sourceTree = "<group>"; };
 		FA13924E22D8ED95006D64B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA13F4B222FF2AEA0014CED5 /* AddCategoryAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryAdminVC.swift; sourceTree = "<group>"; };
 		FA142AE222F85D2E00C56AA7 /* RightToLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightToLeft.swift; sourceTree = "<group>"; };
 		FA142AE422F85DE400C56AA7 /* LeftToRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftToRight.swift; sourceTree = "<group>"; };
 		FA142AE622F85EE600C56AA7 /* DownUpSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownUpSegue.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */,
 				FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */,
 				FA5A6B7822FF1DBC00F0764E /* AdminCategoriesVC.swift */,
+				FA13F4B222FF2AEA0014CED5 /* AddCategoryAdminVC.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */,
 				FA5A6B7922FF1DBC00F0764E /* AdminCategoriesVC.swift in Sources */,
 				FAEF5F2A22FEC99800E5AC6F /* AdminItemsVC.swift in Sources */,
+				FA13F4B322FF2AEA0014CED5 /* AddCategoryAdminVC.swift in Sources */,
 				FAEF5F2722FEC23100E5AC6F /* editOwnBookingVC.swift in Sources */,
 				FA01152322DF84E800F8234A /* Models.swift in Sources */,
 				FA17BBA122FB3E4A00CC7803 /* FailReportCell.swift in Sources */,
