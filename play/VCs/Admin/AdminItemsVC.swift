@@ -39,12 +39,11 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
             let ref=Database.database().reference()
             
             let path_of_item=ref.child("Categories").child(itemToDelete.category).child("items").child(itemToDelete.id)
-                path_of_item.removeValue()
+            path_of_item.removeValue()
             print("tapped delete")
-//            let bk = self.displayingItems[indexPath.row]
             self.displayingItems.remove(at: indexPath.row)
             self.tbv.reloadData()
-//            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category)
+            
         }
         
         return [delete]
@@ -63,13 +62,14 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     
     func loadDataFromDB()
     {
-        items.removeAll()
-        displayingItems.removeAll()
+        
         //displayingCategories.removeAll()
         
         let ref = Database.database().reference().child("Categories")
         
         ref.observe(.value) { (allCategories) in
+            self.items.removeAll()
+            self.displayingItems.removeAll()
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
                 displayingCategories.append(category.key)
