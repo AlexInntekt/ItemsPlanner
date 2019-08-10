@@ -91,6 +91,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
             }
             
             self.tbv.reloadData()
+            scrollToFirstRow(in: self.tbv)
 //            self.pickerCategory.reloadAllComponents()
         }
         

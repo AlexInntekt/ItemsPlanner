@@ -144,6 +144,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         filterDisplayingItemsByCategory(displayingCategories[row])
         self.itemsTableView.reloadData()
+        scrollToFirstRow(in: self.itemsTableView)
     }
     
     func filterDisplayingItemsByCategory(_ category: String)
@@ -350,6 +351,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
              }
             
             self.itemsTableView.reloadData()
+            scrollToFirstRow(in: self.itemsTableView)
         }
         
     }

@@ -106,3 +106,9 @@ extension Substring {
         return self[startIndex ..< end]
     }
 }
+
+
+func scrollToFirstRow(in tableview: UITableView) {
+    let indexPath = NSIndexPath(row: 0, section: 0)
+    tableview.scrollToRow(at: indexPath as IndexPath, at: .top, animated: true)
+}
