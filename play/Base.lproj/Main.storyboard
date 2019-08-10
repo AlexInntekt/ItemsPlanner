@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Cf-Dh-Jhx">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1099,10 +1099,10 @@
             </objects>
             <point key="canvasLocation" x="3103" y="-1366"/>
         </scene>
-        <!--Add ItemVC-->
+        <!--Add Item AdminVC-->
         <scene sceneID="NkS-pm-Vbp">
             <objects>
-                <viewController id="1Cf-Dh-Jhx" customClass="AddItemVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddItemAdminVC" id="1Cf-Dh-Jhx" customClass="AddItemAdminVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tpg-gA-yDH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1119,13 +1119,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adaugă un nou item " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5J-QZ-f7Q">
-                                <rect key="frame" x="75" y="44" width="295" height="60"/>
+                                <rect key="frame" x="75" y="44" width="305" height="60"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume articol:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geF-cv-Kis">
-                                <rect key="frame" x="5" y="129" width="150" height="35"/>
+                                <rect key="frame" x="5" y="119" width="150" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="jES-hA-ZCM"/>
                                     <constraint firstAttribute="width" constant="150" id="wFq-c4-UVS"/>
@@ -1135,29 +1135,97 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Scaun pliabil de lemn.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-3m-Nea">
-                                <rect key="frame" x="155" y="129" width="180" height="35"/>
+                                <rect key="frame" x="25" y="154" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="VrU-VP-Uoz"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorie:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIY-Kc-hl8">
+                                <rect key="frame" x="7" y="214" width="371" height="20.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79.329999999999998" id="a0c-x9-zi4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRZ-if-vVM">
+                                <rect key="frame" x="25" y="234.33333333333337" width="320" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NZy-Le-fU3"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descriere:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-n9-CQf">
+                                <rect key="frame" x="7" y="334.33333333333331" width="371" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aFI-8f-no9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="150x50x50, culoare maro cu motive de pin. La pliere are o grosime de 20cm." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="14y-qi-7yP">
+                                <rect key="frame" x="25" y="374.33333333333326" width="335" height="348.66666666666674"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Ch-pTu">
+                                <rect key="frame" x="142.66666666666666" y="728" width="100" height="45"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="EXA-V9-BV2"/>
+                                    <constraint firstAttribute="width" constant="100" id="hxa-Rx-60S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Salvează">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveItem:" destination="1Cf-Dh-Jhx" eventType="touchUpInside" id="SLH-UZ-C4L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="WZE-ur-Bei" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="5" id="0cx-h6-Ybi"/>
+                            <constraint firstItem="sRZ-if-vVM" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="25" id="1uY-Vk-Ina"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="leading" secondItem="WZE-ur-Bei" secondAttribute="trailing" constant="10" id="2A1-N6-jml"/>
-                            <constraint firstItem="geF-cv-Kis" firstAttribute="top" secondItem="WZE-ur-Bei" secondAttribute="bottom" constant="20" id="3qN-8m-csg"/>
+                            <constraint firstItem="geF-cv-Kis" firstAttribute="top" secondItem="WZE-ur-Bei" secondAttribute="bottom" constant="10" id="3qN-8m-csg"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="14y-qi-7yP" secondAttribute="trailing" constant="25" id="4W1-33-FYi"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="TCu-n9-CQf" secondAttribute="trailing" constant="7" id="4bS-PY-KJb"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="D5J-QZ-f7Q" secondAttribute="trailing" constant="5" id="4nH-Uu-U9R"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="height" secondItem="WZE-ur-Bei" secondAttribute="height" id="AeM-Y7-Fb1"/>
+                            <constraint firstItem="SIY-Kc-hl8" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="7" id="FNl-Gb-EiN"/>
+                            <constraint firstItem="HcS-Ch-pTu" firstAttribute="centerX" secondItem="5of-Wn-Nqs" secondAttribute="centerX" id="Fvd-UF-ECB"/>
+                            <constraint firstItem="SIY-Kc-hl8" firstAttribute="top" secondItem="NDk-3m-Nea" secondAttribute="bottom" constant="20" id="JGN-kP-7sG"/>
                             <constraint firstItem="geF-cv-Kis" firstAttribute="leading" secondItem="WZE-ur-Bei" secondAttribute="leading" id="KNX-HU-keD"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="NDk-3m-Nea" secondAttribute="trailing" constant="25" id="LFH-3i-ybM"/>
+                            <constraint firstItem="NDk-3m-Nea" firstAttribute="top" secondItem="geF-cv-Kis" secondAttribute="bottom" id="Lgu-BQ-uJa"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="sRZ-if-vVM" secondAttribute="trailing" constant="40" id="NWG-v3-fDy"/>
                             <constraint firstItem="WZE-ur-Bei" firstAttribute="top" secondItem="5of-Wn-Nqs" secondAttribute="top" constant="5" id="NdR-GJ-mSt"/>
-                            <constraint firstItem="NDk-3m-Nea" firstAttribute="centerY" secondItem="geF-cv-Kis" secondAttribute="centerY" id="Swc-lr-o5T"/>
-                            <constraint firstItem="NDk-3m-Nea" firstAttribute="leading" secondItem="geF-cv-Kis" secondAttribute="trailing" id="err-w8-57p"/>
-                            <constraint firstItem="NDk-3m-Nea" firstAttribute="height" secondItem="geF-cv-Kis" secondAttribute="height" id="oxw-6W-bAR"/>
+                            <constraint firstItem="14y-qi-7yP" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="25" id="T42-6X-Ece"/>
+                            <constraint firstItem="14y-qi-7yP" firstAttribute="top" secondItem="TCu-n9-CQf" secondAttribute="bottom" constant="10" id="VfG-s4-blZ"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="bottom" secondItem="HcS-Ch-pTu" secondAttribute="bottom" constant="5" id="X4Z-Qj-FQu"/>
+                            <constraint firstItem="TCu-n9-CQf" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="7" id="ct9-X5-8wo"/>
+                            <constraint firstItem="HcS-Ch-pTu" firstAttribute="top" secondItem="14y-qi-7yP" secondAttribute="bottom" constant="5" id="q9U-zW-r8n"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="top" secondItem="5of-Wn-Nqs" secondAttribute="top" id="rO5-hd-Xy2"/>
-                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="NDk-3m-Nea" secondAttribute="trailing" constant="40" id="vIx-G4-ZMT"/>
+                            <constraint firstItem="sRZ-if-vVM" firstAttribute="top" secondItem="SIY-Kc-hl8" secondAttribute="bottom" id="uhJ-h0-UEu"/>
+                            <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="SIY-Kc-hl8" secondAttribute="trailing" constant="7" id="w3f-7W-lIA"/>
+                            <constraint firstItem="NDk-3m-Nea" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="25" id="y0a-F1-6cJ"/>
+                            <constraint firstItem="TCu-n9-CQf" firstAttribute="top" secondItem="sRZ-if-vVM" secondAttribute="bottom" id="z9m-YF-Sqr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5of-Wn-Nqs"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryPicker" destination="sRZ-if-vVM" id="wcV-bo-y09"/>
+                        <outlet property="itemNameLabel" destination="NDk-3m-Nea" id="9db-6m-23T"/>
+                        <outlet property="saveItem" destination="HcS-Ch-pTu" id="6N7-Ni-A8X"/>
+                        <outlet property="textView" destination="14y-qi-7yP" id="EzQ-B2-LyD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyz-bf-6Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

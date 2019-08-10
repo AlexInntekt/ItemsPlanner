@@ -41,6 +41,7 @@
 		FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9F5D722F7068A0074B36D /* AdminVC.swift */; };
 		FAEF5F2722FEC23100E5AC6F /* editOwnBookingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */; };
 		FAEF5F2A22FEC99800E5AC6F /* AdminItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */; };
+		FAEF5F2C22FED01C00E5AC6F /* AddItemAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		FAE9F5D722F7068A0074B36D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editOwnBookingVC.swift; sourceTree = "<group>"; };
 		FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminItemsVC.swift; sourceTree = "<group>"; };
+		FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemAdminVC.swift; sourceTree = "<group>"; };
 		FEC00CFE682E32A17CF25970 /* Pods_playTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 			children = (
 				FAE9F5D722F7068A0074B36D /* AdminVC.swift */,
 				FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */,
+				FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				FA01152522DF851B00F8234A /* Fetchers.swift in Sources */,
 				FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */,
 				FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */,
+				FAEF5F2C22FED01C00E5AC6F /* AddItemAdminVC.swift in Sources */,
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
 				FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */,
 				FAEF5F2A22FEC99800E5AC6F /* AdminItemsVC.swift in Sources */,
