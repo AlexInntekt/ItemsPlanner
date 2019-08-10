@@ -28,9 +28,15 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func saveItem(_ sender: Any)
     {
-        let name=self.itemNameLabel?.text
-        let category=selectedCategory
-        print(category)
+
+        let item = Item()
+            item.category = selectedCategory
+            item.description = self.textView?.text ?? "articol"
+            item.name = self.itemNameLabel?.text ?? "descriere articol"
+        
+        createItem(item: item, byCategory: selectedCategory)
+        
+        alert(UIVC: self, title: "Succes", message: "Articolul a fost adaugat!")
     }
     
     
