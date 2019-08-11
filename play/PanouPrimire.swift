@@ -306,7 +306,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         
         categoriesRef.observe(.value) { (allCategories) in
-            print("OBSERVER LISTENER CALLED owiHEGwjegowWghw")
             items.removeAll()
             displayingItems.removeAll()
             displayingCategories.removeAll()

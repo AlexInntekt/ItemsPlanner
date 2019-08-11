@@ -14,7 +14,8 @@ import FirebaseAuth
 
 class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    
+    var bookingsReference = Database.database().reference().child("Users")
+    var ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey()
     
     var displayingBookings = [Booking]()
     
@@ -88,32 +89,17 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         var bookings = [Booking]()
         
-        var ref = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
-        
-        
-        print("running loadBookings()")
-        
 
-//            self.displayingBookings.removeAll()
-//            bookings.removeAll()
-        
-            ref.observe(.childAdded) { (snap) in
-                //print(snap.key)
+            bookingsReference = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
+            bookingsReference.observe(.childAdded) { (snap) in
 
-                
-                //self.displayingBookings.removeAll()
                 
                 var bookings = [Booking]()
                 
-                let ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
+                self.ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
                 
-              
-//                ref2.observeSingleEvent(of: .childAdded , with:
-//                                    {(snap) in print()
-//                       print(snap)
-//                })
                 
-                ref2.observeSingleEvent(of: .childRemoved, with:
+                self.ref2.observe(.childRemoved, with:
                     {(snap) in print()
                         var int=0;
                         for obj in self.displayingBookings
@@ -127,10 +113,8 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         }
                 })
                 
-                ref2.observeSingleEvent(of: .childAdded , with:
+                self.ref2.observeSingleEvent(of: .childAdded , with:
                     {(snap) in print()
-
-                        print("fbuiwgeiwbGIwge")
 
                         let currentBooking = Booking()
                         currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
@@ -143,7 +127,6 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentBooking.id = snap.key
 
                         self.displayingBookings.append(currentBooking)
-                        print(currentBooking.description)
                         self.tbv.reloadData()
 
                 })
@@ -160,5 +143,10 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             let defVC = segue.destination as! editOwnBookingVC
             defVC.currentBooking = obj
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        bookingsReference.removeAllObservers()
+        ref2.removeAllObservers()
     }
 }
