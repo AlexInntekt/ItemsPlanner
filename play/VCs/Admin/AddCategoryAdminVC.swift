@@ -44,7 +44,7 @@ class AddCategoryAdminVC: UIViewController
             }
             else
             {
-                alert(UIVC: self, title: "Eroare detectată", message: "O eroare a intervenit în procesul solicitat. Dacă problema persistă, contactați dezvoltatorii.")
+                alert(UIVC: self, title: "Eroare detectată", message: "O eroare a intervenit în procesul solicitat. Dacă problema persistă, contactați dezvoltatorii. Eroare:  \(error.debugDescription)")
             }
         }
     }
