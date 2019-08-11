@@ -109,7 +109,6 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                     ref2.observeSingleEvent(of: .childAdded , with:
                         {(snap) in print()
                             
-                            print("fbuiwgeiwbGIwge")
                             
                             let currentBooking = BookingPack()
                             currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
@@ -123,7 +122,6 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             currentBooking.phone=phone
                             currentBooking.username=nameOfOwner
                             self.displayingBookings.append(currentBooking)
-                            print(currentBooking.description)
                             self.TBVAdmin.reloadData()
                             
                     })
