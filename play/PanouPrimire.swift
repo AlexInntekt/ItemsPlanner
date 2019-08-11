@@ -17,6 +17,9 @@ var displayingCategories = ["Toate"]
 
 var displayingMenu = false
 
+let reference = Database.database().reference()
+let categoriesRef=reference.child("Categories")
+
 class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource
 {
     
@@ -302,9 +305,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadDataFromDB()
     {
         
-        let ref = Database.database().reference().child("Categories")
-        
-        ref.observe(.value) { (allCategories) in
+        categoriesRef.observe(.value) { (allCategories) in
+            print("OBSERVER LISTENER CALLED owiHEGwjegowWghw")
             items.removeAll()
             displayingItems.removeAll()
             displayingCategories.removeAll()
@@ -324,8 +326,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                       currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
                       currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       currentItem.id = item.key
-                    
-                      print(currentItem.category)
                     
                       items.append(currentItem)
                 }
@@ -363,6 +363,9 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        reference.removeAllObservers()
+        categoriesRef.removeAllObservers()
+    }
     
 }
