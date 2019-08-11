@@ -1116,13 +1116,12 @@
                                 <rect key="frame" x="10" y="204.66666666666669" width="355" height="568.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSa-qI-vgh">
-                                <rect key="frame" x="320" y="119" width="45" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSa-qI-vgh">
+                                <rect key="frame" x="279" y="129" width="80" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="Nke-z8-rng"/>
-                                    <constraint firstAttribute="height" constant="45" id="flb-dz-CrA"/>
+                                    <constraint firstAttribute="width" secondItem="xSa-qI-vgh" secondAttribute="height" multiplier="2" id="RcY-0B-wUo"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="add"/>
+                                <state key="normal" title="Adaugă"/>
                                 <connections>
                                     <segue destination="WaF-AT-0Ya" kind="custom" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="vY6-5h-6Ov"/>
                                 </connections>
@@ -1133,16 +1132,17 @@
                             <constraint firstItem="TCn-gg-uYd" firstAttribute="leading" secondItem="HR6-hx-CSg" secondAttribute="trailing" constant="20" id="8GQ-rM-3CD"/>
                             <constraint firstItem="HR6-hx-CSg" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="8ve-sy-1uS"/>
                             <constraint firstItem="p3p-NN-Tlv" firstAttribute="top" secondItem="bTP-JJ-xzB" secondAttribute="top" constant="5" id="CEF-rz-GUE"/>
-                            <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="xSa-qI-vgh" secondAttribute="trailing" constant="10" id="F6c-w8-6ve"/>
                             <constraint firstItem="zje-Ea-Kwl" firstAttribute="leading" secondItem="bTP-JJ-xzB" secondAttribute="leading" constant="10" id="FOU-uw-tmJ"/>
                             <constraint firstItem="zje-Ea-Kwl" firstAttribute="height" secondItem="vn6-UA-ZcO" secondAttribute="height" multiplier="0.7" id="FiX-o9-0rR"/>
                             <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="zje-Ea-Kwl" secondAttribute="trailing" constant="10" id="HQr-Ov-Z5Y"/>
+                            <constraint firstItem="xSa-qI-vgh" firstAttribute="width" secondItem="9FU-hy-NNA" secondAttribute="width" id="HZm-sZ-jPy"/>
                             <constraint firstItem="p3p-NN-Tlv" firstAttribute="leading" secondItem="bTP-JJ-xzB" secondAttribute="leading" constant="5" id="Okj-z4-8c8"/>
+                            <constraint firstItem="xSa-qI-vgh" firstAttribute="centerX" secondItem="9FU-hy-NNA" secondAttribute="centerX" id="R4a-cJ-9H7"/>
                             <constraint firstItem="bTP-JJ-xzB" firstAttribute="trailing" secondItem="9FU-hy-NNA" secondAttribute="trailing" constant="16" id="XiQ-PI-R9B"/>
                             <constraint firstItem="9FU-hy-NNA" firstAttribute="leading" secondItem="TCn-gg-uYd" secondAttribute="trailing" constant="20" id="Yko-Pt-hLR"/>
                             <constraint firstItem="bTP-JJ-xzB" firstAttribute="bottom" secondItem="zje-Ea-Kwl" secondAttribute="bottom" constant="5" id="jSz-DI-gna"/>
                             <constraint firstItem="TCn-gg-uYd" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="k4P-nD-Vv7"/>
-                            <constraint firstItem="xSa-qI-vgh" firstAttribute="top" secondItem="9FU-hy-NNA" secondAttribute="bottom" constant="10" id="rOB-KF-keN"/>
+                            <constraint firstItem="xSa-qI-vgh" firstAttribute="top" secondItem="9FU-hy-NNA" secondAttribute="bottom" constant="20" id="rOB-KF-keN"/>
                             <constraint firstItem="9FU-hy-NNA" firstAttribute="centerY" secondItem="p3p-NN-Tlv" secondAttribute="centerY" id="yAz-IF-u2B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bTP-JJ-xzB"/>
@@ -1171,7 +1171,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="YSl-Re-JxK" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Gkz-Kj-MD9"/>
+                                    <segue destination="YSl-Re-JxK" kind="custom" identifier="backToCategoriesSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Gkz-Kj-MD9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adăugare categorie nouă" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fv-VT-CSU">
@@ -1641,7 +1641,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="512" height="512"/>
         <image name="back" width="512" height="512"/>
         <image name="menu" width="1200" height="1200"/>
     </resources>

@@ -30,7 +30,17 @@ class AddCategoryAdminVC: UIViewController
         path.updateChildValues(dict) { (error, reference) in
             if(error==nil)
             {
-                alert(UIVC: self, title: "Adăugare cu succes", message: "Categoria a fost adăugată!")
+                //alert(UIVC: self, title: "Adăugare cu succes", message: "Categoria a fost adăugată!")
+                
+                let title = "Adăugare cu succes"
+                let message = "Categoria a fost adăugată!"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                    self.performSegue(withIdentifier: "backToCategoriesSegue", sender: nil)
+                }))
+                
+                self.present(alert, animated: true)
+                
             }
             else
             {
