@@ -1404,7 +1404,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="L3y-sH-PSf" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wfI-xl-UUB"/>
+                                    <segue destination="L3y-sH-PSf" kind="custom" identifier="backToItemsSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wfI-xl-UUB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adaugă un nou item " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5J-QZ-f7Q">
@@ -1645,7 +1645,7 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6W9-po-8Al"/>
+        <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="oPY-KH-5YU"/>

@@ -16,6 +16,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 {
     var displayingCategories=[String]()
     var selectedCategory=""
+    let reference = Database.database().reference()
     
     @IBOutlet weak var itemNameLabel: UITextField!
     
@@ -34,9 +35,31 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
         
-        createItem(item: item, byCategory: selectedCategory)
+        //createItem(item: item, byCategory: selectedCategory)
         
-        alert(UIVC: self, title: "Succes", message: "Articolul a fost adaugat!")
+        let db = reference.child("Categories").child(selectedCategory).child("items")
+        db.childByAutoId()
+        let id = db.childByAutoId().key as! String
+        let dict = ["name": item.name,"image_url": item.image_url,"descriere": item.description]
+        
+        db.child(id).setValue(dict) { (error, reference) in
+            if(error==nil)
+            {
+                let title = "Adăugare cu succes"
+                let message = "Articolul a fost adaugat!"
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                    self.performSegue(withIdentifier: "backToItemsSegue", sender: nil)
+                }))
+                
+                self.present(alert, animated: true)
+            }
+            else
+            {
+                alert(UIVC: self, title: "Eroare detectată", message: "Articolul nu a putut fi adăugat. Dacă problema persistă, contactați dezvoltatorii.")
+            }
+        }
+        
     }
     
     
@@ -47,7 +70,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         
-        
         loadCategoriesFromDB()
     }
     
@@ -55,9 +77,9 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         displayingCategories.removeAll()
         
-        let ref = Database.database().reference().child("Categories")
         
-        ref.observeSingleEvent(of: .value) { (allCategories) in
+        
+        reference.child("Categories").observeSingleEvent(of: .value) { (allCategories) in
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
                 self.displayingCategories.append(category.key)
