@@ -14,7 +14,7 @@ import FirebaseAuth
 
 class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    
+    var bookingsReference = Database.database().reference().child("Users")
     
     var displayingBookings = [BookingPack]()
     
@@ -73,7 +73,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadDataFromDB()
     {
         let currentUserId = Auth.auth().currentUser?.uid
-        
+
+       
         
         let ref1 = Database.database().reference().child("Users")
         ref1.observeSingleEvent(of: .value) { (snap) in
@@ -84,9 +85,9 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let nameOfOwner = child.childSnapshot(forPath: "name").value as! String
                 let userUid = child.key
                 
-                let ref = Database.database().reference().child("Users").child(userUid).child("bookings")
+                self.bookingsReference = Database.database().reference().child("Users").child(userUid).child("bookings")
                 
-                ref.observe(.childAdded) { (snap) in
+                self.bookingsReference.observe(.childAdded) { (snap) in
                     
                     let ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
                     
@@ -132,4 +133,9 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        bookingsReference.removeAllObservers()
+    }
+    
 }
