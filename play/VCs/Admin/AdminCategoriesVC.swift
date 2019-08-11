@@ -45,16 +45,22 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
-//            let bk = self.displayingBookings[indexPath.row]
-//            self.displayingBookings.remove(at: indexPath.row)
+//            let key = self.displayingCategories[indexPath.row]
+//            self.reference.child("Categories").child(key).removeValue()
 //            self.tbv.reloadData()
-            
-            let key = self.displayingCategories[indexPath.row]
-            
-            self.reference.child("Categories").child(key).removeValue()
-            
-            self.tbv.reloadData()
-            
+            let title = "Acțiune periculoasă"
+            let message = "Ștergerea unei categorii duce la ștergerea completă și a articolelor aflate sub această categorie. Sunteți sigur de această acțiune?"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
+            }))
+            alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
+                
+                let key = self.displayingCategories[indexPath.row]
+                self.reference.child("Categories").child(key).removeValue()
+                self.tbv.reloadData()
+            }))
+
+            self.present(alert, animated: true)
         }
         
         return [delete]

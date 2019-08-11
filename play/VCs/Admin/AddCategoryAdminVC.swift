@@ -27,7 +27,16 @@ class AddCategoryAdminVC: UIViewController
         
         let dict = [name : ["name":name]]
         
-        path.updateChildValues(dict)
+        path.updateChildValues(dict) { (error, reference) in
+            if(error==nil)
+            {
+                alert(UIVC: self, title: "Adăugare cu succes", message: "Categoria a fost adăugată!")
+            }
+            else
+            {
+                alert(UIVC: self, title: "Eroare detectată", message: "O eroare a intervenit în procesul solicitat. Dacă problema persistă, contactați dezvoltatorii.")
+            }
+        }
     }
     
     let reference = Database.database().reference()
