@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import JTAppleCalendar
+import SDWebImage
 
 let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
 let date=Date()
@@ -71,6 +72,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet var textfieldDescription: UITextView!
     
     @IBOutlet var progressLabel: UILabel!
+    
+    @IBOutlet weak var imageContainer: UIImageView!
     
     @IBOutlet var bookButton: UIButton!
     @IBAction func bookButton(_ sender: Any)
@@ -350,6 +353,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     func setupUI()
     {
         self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+        
+        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/0.bmp?alt=media&token=f53e6957-9016-4c72-9c17-64a23a419684")
+        
+        self.imageContainer.sd_setImage(with: url, completed: nil)
     }
     
 
