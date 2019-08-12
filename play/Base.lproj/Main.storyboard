@@ -581,10 +581,10 @@
             </objects>
             <point key="canvasLocation" x="3319.1999999999998" y="976.84729064039414"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Date Of Own BookingVC-->
         <scene sceneID="er2-UV-wBC">
             <objects>
-                <viewController id="YdM-oK-PTF" sceneMemberID="viewController">
+                <viewController id="YdM-oK-PTF" customClass="EditDateOfOwnBookingVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aSY-Dp-g3M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,17 +597,51 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="cto-mt-vRJ" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="baO-ww-eJh"/>
+                                    <action selector="EditDateOfOwnBookingVC:" destination="YdM-oK-PTF" eventType="touchUpInside" id="4xR-NA-LZN"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RM0-Zp-GGg" customClass="JTACMonthView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="15" y="308" width="345" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="bDl-dg-wKs"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Kkf-6j-VRm">
+                                    <size key="itemSize" width="45" height="45"/>
+                                    <size key="headerReferenceSize" width="100" height="100"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="FuX-Ra-Avy">
+                                        <rect key="frame" x="0.0" y="100" width="45" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9v5-hF-2nZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DxM-8j-afZ" firstAttribute="bottom" secondItem="RM0-Zp-GGg" secondAttribute="bottom" constant="150" id="20h-nb-B9E"/>
+                            <constraint firstItem="RM0-Zp-GGg" firstAttribute="leading" secondItem="DxM-8j-afZ" secondAttribute="leading" constant="15" id="GcX-Pp-5FC"/>
                             <constraint firstItem="AJG-S4-JxW" firstAttribute="top" secondItem="DxM-8j-afZ" secondAttribute="top" constant="10" id="H8i-Jg-ita"/>
+                            <constraint firstItem="DxM-8j-afZ" firstAttribute="trailing" secondItem="RM0-Zp-GGg" secondAttribute="trailing" constant="15" id="hIZ-vb-EVh"/>
                             <constraint firstItem="AJG-S4-JxW" firstAttribute="leading" secondItem="DxM-8j-afZ" secondAttribute="leading" constant="23" id="iZf-oG-Z8D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DxM-8j-afZ"/>
                     </view>
+                    <connections>
+                        <outlet property="EditDateOfOwnBookingVC" destination="AJG-S4-JxW" id="QnM-Qw-BHW"/>
+                        <segue destination="cto-mt-vRJ" kind="custom" identifier="BackToeditDateOfOwnBookingSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="g0p-4A-HcZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LB0-Rn-LWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1722,12 +1756,11 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iNd-zR-Ndo"/>
         <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="oPY-KH-5YU"/>
-        <segue reference="baO-ww-eJh"/>
+        <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
         <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>

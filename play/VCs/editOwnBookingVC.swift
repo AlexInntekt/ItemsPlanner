@@ -31,4 +31,15 @@ class editOwnBookingVC: UIViewController
         bookingDescr.text=currentBooking.description
         date.text="\(currentBooking.startDate) - \(currentBooking.endDate)"
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
+    {
+        if(segue.identifier=="editDateOfOwnBookingSegue")
+        {
+            let obj = sender as! Booking
+            let defVC = segue.destination as! EditDateOfOwnBookingVC
+            defVC.currentBooking = obj
+            
+        }
+    }
 }

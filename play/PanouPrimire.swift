@@ -265,8 +265,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             defVC.currentItem = obj
            
         }
-        
-        
     }
     
     func setupLogic()
