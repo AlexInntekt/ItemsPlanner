@@ -45,12 +45,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         dismiss(animated: true, completion: nil)
         
-//        //once the picture is taken, make the background transparent:
-//        showPicture.backgroundColor = UIColor.clear
-//
-//        nextButton.isEnabled = true
-//        nextButton.setTitleColor(UIColor.blue, for: .normal)
-        
     }
     
     @IBOutlet weak var saveItem: UIButton!
@@ -61,9 +55,43 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             item.category = selectedCategory
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
-        
+            item.imageUID = "\(NSUUID().uuidString).jpg"
         //createItem(item: item, byCategory: selectedCategory)
+        let imagesFolder = Storage.storage().reference().child("images")
         
+//        let ImadeData = UIImageJPEGRepresentation(imageContainer.image!, 0.5)!
+        //let imageInstance = UIImage
+        let ImageData = imageContainer.image!.jpegData(compressionQuality: 0.5)!
+        
+        let refStorage = imagesFolder.child(item.imageUID)
+        refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
+            if error != nil
+            {
+                print("\n\n! Error code f304hg93hg9 \n\n")
+                
+            }
+            else
+            {
+                print("\n\n#Succesfully uploaded the image on Firebase.\n")
+                
+                
+                
+                refStorage.downloadURL { url, error in
+                    item.image_url=url!.absoluteString
+                    self.saveItemInDB(item: item)
+                }
+//
+                //self.saveItemInDB(item: item)
+                
+            }
+        })
+        
+        
+        
+    }
+    
+    func saveItemInDB(item item: Item)
+    {
         let db = reference.child("Categories").child(selectedCategory).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
@@ -86,7 +114,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 alert(UIVC: self, title: "Eroare detectată", message: "Articolul nu a putut fi adăugat. Dacă problema persistă, contactați dezvoltatorii. Eroare:  \(error.debugDescription)")
             }
         }
-        
     }
     
     
