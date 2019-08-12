@@ -29,9 +29,9 @@ class EditDateOfOwnBookingVC: UIViewController
     {
         if(segue.identifier=="BackToeditDateOfOwnBookingSegue")
         {
-            let obj = sender as! Booking
-            let defVC = segue.destination as! EditDateOfOwnBookingVC
-            defVC.currentBooking = obj
+            
+            let defVC = segue.destination as! editOwnBookingVC
+            defVC.currentBooking = currentBooking
             
         }
     }
