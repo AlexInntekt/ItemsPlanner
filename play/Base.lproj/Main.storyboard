@@ -538,10 +538,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp3-wN-EC4">
+                                <rect key="frame" x="225" y="98" width="140" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5cj-cr-TtJ"/>
+                                    <constraint firstAttribute="width" constant="140" id="exo-9l-Gve"/>
+                                </constraints>
+                                <state key="normal" title="Modifică data"/>
+                                <connections>
+                                    <action selector="changeDate:" destination="cto-mt-vRJ" eventType="touchUpInside" id="KIv-UO-HHk"/>
+                                    <segue destination="YdM-oK-PTF" kind="custom" identifier="editDateOfOwnBookingSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="iNd-zR-Ndo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="T8d-Zy-XFc" secondAttribute="trailing" constant="10" id="9A8-T7-9In"/>
+                            <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="Bp3-wN-EC4" secondAttribute="trailing" constant="10" id="FSy-8e-F9m"/>
                             <constraint firstItem="T8d-Zy-XFc" firstAttribute="height" secondItem="NPj-FN-gmn" secondAttribute="height" multiplier="0.3" id="LIi-X4-jv5"/>
                             <constraint firstItem="LxH-5T-ggC" firstAttribute="height" secondItem="mQN-GV-jZG" secondAttribute="height" multiplier="0.55" id="LSg-e5-dc5"/>
                             <constraint firstItem="LxH-5T-ggC" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="5" id="MdR-PU-ZZ7"/>
@@ -554,6 +567,7 @@
                             <constraint firstItem="vHP-SY-3kH" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" id="gbL-zI-2sS"/>
                             <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="NPj-FN-gmn" secondAttribute="trailing" id="i2w-QK-YOM"/>
                             <constraint firstItem="T8d-Zy-XFc" firstAttribute="top" secondItem="NPj-FN-gmn" secondAttribute="bottom" id="llP-rC-y8z"/>
+                            <constraint firstItem="Bp3-wN-EC4" firstAttribute="centerY" secondItem="T8d-Zy-XFc" secondAttribute="centerY" id="rOr-IZ-d23"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8o-Ev-oUq"/>
                     </view>
@@ -566,6 +580,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1N-d3-0zV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3319.1999999999998" y="976.84729064039414"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="er2-UV-wBC">
+            <objects>
+                <viewController id="YdM-oK-PTF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aSY-Dp-g3M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJG-S4-JxW">
+                                <rect key="frame" x="23" y="54" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EUY-d0-VPk"/>
+                                    <constraint firstAttribute="width" constant="60" id="rpJ-zH-rHh"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <segue destination="cto-mt-vRJ" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="baO-ww-eJh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AJG-S4-JxW" firstAttribute="top" secondItem="DxM-8j-afZ" secondAttribute="top" constant="10" id="H8i-Jg-ita"/>
+                            <constraint firstItem="AJG-S4-JxW" firstAttribute="leading" secondItem="DxM-8j-afZ" secondAttribute="leading" constant="23" id="iZf-oG-Z8D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DxM-8j-afZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LB0-Rn-LWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4220" y="977"/>
         </scene>
         <!--AdminVC-->
         <scene sceneID="ZNP-zu-fFr">
@@ -1676,10 +1722,12 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="iNd-zR-Ndo"/>
         <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="oPY-KH-5YU"/>
+        <segue reference="baO-ww-eJh"/>
         <segue reference="QQe-8j-Sh8"/>
         <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>

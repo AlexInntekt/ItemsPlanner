@@ -20,6 +20,10 @@ class editOwnBookingVC: UIViewController
     
     var currentBooking=Booking()
     
+    @IBAction func changeDate(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "editDateOfOwnBookingSegue", sender: nil)
+    }
     
     override func viewDidLoad()
     {
