@@ -12,11 +12,13 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate
+class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     var displayingCategories=[String]()
     var selectedCategory=""
     let reference = Database.database().reference()
+    
+    @IBOutlet weak var imageContainer: UIImageView!
     
     @IBOutlet weak var itemNameLabel: UITextField!
     
@@ -24,9 +26,34 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var textView: UITextView!
     
+    var imagePicker = UIImagePickerController()
+    
+    @IBAction func addImage(_ sender: Any)
+    {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        //let image = info[UIImagePickerController.image] as! UIImage
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        imageContainer.image = image
+        
+        dismiss(animated: true, completion: nil)
+        
+//        //once the picture is taken, make the background transparent:
+//        showPicture.backgroundColor = UIColor.clear
+//
+//        nextButton.isEnabled = true
+//        nextButton.setTitleColor(UIColor.blue, for: .normal)
+        
+    }
     
     @IBOutlet weak var saveItem: UIButton!
-    
     @IBAction func saveItem(_ sender: Any)
     {
 
@@ -69,6 +96,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.itemNameLabel.delegate = self
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
+        self.imagePicker.delegate = self
         
         loadCategoriesFromDB()
     }
