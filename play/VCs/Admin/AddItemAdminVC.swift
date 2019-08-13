@@ -76,43 +76,13 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             item.name = self.itemNameLabel?.text ?? "descriere articol"
             item.imageUID = "\(NSUUID().uuidString).jpg"
         //createItem(item: item, byCategory: selectedCategory)
-        let imagesFolder = Storage.storage().reference().child("images")
+        
         
 //        let ImadeData = UIImageJPEGRepresentation(imageContainer.image!, 0.5)!
         //let imageInstance = UIImage
         
         self.saveItemInDB(item: item)
-        
-        for image in images
-        {
-            let ImageData =  image.jpegData(compressionQuality: 0.5)!
-            
-            let refStorage = imagesFolder.child(item.imageUID)
-            refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
-                if error != nil
-                {
-                    print("\n\n! Error code f304hg93hg9 \n\n")
-                    
-                }
-                else
-                {
-                    print("\n\n#Succesfully uploaded the image on Firebase.\n")
-                    
-                    
-                    refStorage.downloadURL { url, error in
-                        //item.image_url=url!.absoluteString
-                        let path=self.reference.child("Categories").child(item.category).child("items").child(item.id).child("image_url")
-                            let autoid=path.childByAutoId()
-                        print("autoid: ", autoid)
-                        //path.child(autoid.).setValue(url)
-                    }
-                }
-            })
-        }
-        
-        
-        
-        
+
         
     }
     
@@ -121,11 +91,41 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let db = reference.child("Categories").child(selectedCategory).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
-        let dict = ["name": item.name,"image_url": item.image_url,"descriere": item.description]
+        let dict = ["name": item.name,"descriere": item.description]
+        
+        let imagesFolder = Storage.storage().reference().child("images")
         
         db.child(id).setValue(dict) { (error, reference) in
             if(error==nil)
             {
+                
+                for image in self.images
+                {
+                    let ImageData =  image.jpegData(compressionQuality: 0.5)!
+                    
+                    let refStorage = imagesFolder.child(item.imageUID)
+                    refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
+                        if error != nil
+                        {
+                            print("\n\n! Error code f304hg93hg9 \n\n")
+                            
+                        }
+                        else
+                        {
+                            print("\n\n#Succesfully uploaded the image on Firebase.\n")
+                            
+                            
+                            refStorage.downloadURL { url, error in
+                                let itsUrl = url!.absoluteString
+                                let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
+                                let autoid=path.childByAutoId()
+//                                print("autoid: ", autoid)
+                                path.child(autoid.key as! String).setValue(itsUrl)
+                            }
+                        }
+                    })
+                }
+                
                 let title = "Adăugare cu succes"
                 let message = "Articolul a fost adaugat!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
