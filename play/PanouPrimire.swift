@@ -323,10 +323,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                       currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
                       currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       currentItem.id = item.key
-                      for imageurl in item.childSnapshot(forPath: "image_url").children.allObjects as! [DataSnapshot]
+                      for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
                       {
-                        currentItem.image_url = imageurl.value as! String
+//                        currentItem.image_url = imageurl.value as! String
                         //print(imageurl)
+                        
+                        let fbimage = FBImage()
+                            fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
+                            fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                        currentItem.images.append(fbimage)
                     }
                     
                       items.append(currentItem)

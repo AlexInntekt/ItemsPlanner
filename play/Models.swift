@@ -44,7 +44,7 @@ class Item {
     var image_url = String()
     var name = String()
     var bookings = [Booking]()
-    var imageUID = [String]()
+    var images = [FBImage]()
 }
 
 
@@ -52,4 +52,10 @@ class FailedBookingReportModel {
     var username=""
     var date=""
     var phone=""
+}
+
+
+class FBImage {
+    var url = String()
+    var uid = String()
 }

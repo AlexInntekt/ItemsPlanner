@@ -105,7 +105,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 for image in self.images
                 {
                     let image_id="\(NSUUID().uuidString).jpg"
-                    item.imageUID.append(image_id)
                     let ImageData =  image.jpegData(compressionQuality: 0.5)!
                     
                     let refStorage = imagesFolder.child(image_id)
@@ -123,14 +122,20 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                             
                             refStorage.downloadURL { url, error in
                                 let itsUrl = url!.absoluteString
-                                let pathToImageUrl=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
-                                let pathToImageUid=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_uids")
-                                let autoid=pathToImageUrl.childByAutoId()
-//                                print("autoid: ", autoid)
-                                pathToImageUrl.child(autoid.key as! String).setValue(itsUrl)
                                 
-                                let autoidForUid=pathToImageUid.childByAutoId()
-                                pathToImageUid.child(autoidForUid.key as! String).setValue(image_id)
+                                let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("images")
+                                let autoid=path.childByAutoId()
+                                path.child(autoid.key as! String).child("url").setValue(itsUrl)
+                                path.child(autoid.key as! String).child("uid").setValue(image_id)
+                                
+//                                let pathToImageUrl=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
+//                                let pathToImageUid=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_uids")
+//                                let autoid=pathToImageUrl.childByAutoId()
+////                                print("autoid: ", autoid)
+//                                pathToImageUrl.child(autoid.key as! String).setValue(itsUrl)
+//
+//                                let autoidForUid=pathToImageUid.childByAutoId()
+//                                pathToImageUid.child(autoidForUid.key as! String).setValue(image_id)
                                 
                             }
                         }

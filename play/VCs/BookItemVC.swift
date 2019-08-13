@@ -355,7 +355,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
 //        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
         
-        let url = URL(string: currentItem.image_url)
+        let url = URL(string: currentItem.images.first!.url)
         self.imageContainer.sd_setImage(with: url, completed: nil)
     }
     
