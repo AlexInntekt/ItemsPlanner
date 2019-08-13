@@ -1499,7 +1499,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vmB-EX-BNj">
-                                <rect key="frame" x="15" y="235.33333333333331" width="345" height="527.66666666666674"/>
+                                <rect key="frame" x="15" y="170.33333333333331" width="345" height="592.66666666666674"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AdminItemCell" id="p5c-q9-CK5" customClass="AdminItemCell" customModule="play" customModuleProvider="target">
@@ -1580,7 +1580,7 @@
                             <constraint firstItem="v30-xf-Tj5" firstAttribute="centerY" secondItem="VDS-6x-SPJ" secondAttribute="centerY" id="JIj-OW-yyq"/>
                             <constraint firstItem="v30-xf-Tj5" firstAttribute="height" secondItem="VDS-6x-SPJ" secondAttribute="height" id="MOV-e2-X1J"/>
                             <constraint firstItem="9br-Q3-dHW" firstAttribute="top" secondItem="ez0-Nr-vSh" secondAttribute="top" constant="5" id="NoN-rx-mfB"/>
-                            <constraint firstItem="vmB-EX-BNj" firstAttribute="height" secondItem="U6V-Qs-3AS" secondAttribute="height" multiplier="0.65" id="PaE-bE-VOs"/>
+                            <constraint firstItem="vmB-EX-BNj" firstAttribute="height" secondItem="U6V-Qs-3AS" secondAttribute="height" multiplier="0.73" id="PaE-bE-VOs"/>
                             <constraint firstItem="vmB-EX-BNj" firstAttribute="centerX" secondItem="ez0-Nr-vSh" secondAttribute="centerX" id="VuB-9G-qt9"/>
                             <constraint firstItem="ez0-Nr-vSh" firstAttribute="trailing" secondItem="vmB-EX-BNj" secondAttribute="trailing" constant="15" id="YOW-qj-FbH"/>
                             <constraint firstItem="ez0-Nr-vSh" firstAttribute="bottom" secondItem="vmB-EX-BNj" secondAttribute="bottom" constant="15" id="Zu4-G6-qej"/>
@@ -1770,6 +1770,7 @@
                         <outlet property="itemNameLabel" destination="NDk-3m-Nea" id="9db-6m-23T"/>
                         <outlet property="saveItem" destination="HcS-Ch-pTu" id="6N7-Ni-A8X"/>
                         <outlet property="textView" destination="14y-qi-7yP" id="EzQ-B2-LyD"/>
+                        <segue destination="9fi-ZC-F2q" kind="custom" identifier="GoToImageVC" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="jNh-se-duz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyz-bf-6Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1896,14 +1897,58 @@
             </objects>
             <point key="canvasLocation" x="-410" y="-653"/>
         </scene>
+        <!--ImageVC-->
+        <scene sceneID="RNR-jT-IEw">
+            <objects>
+                <viewController storyboardIdentifier="ImageVC" id="9fi-ZC-F2q" customClass="ImageVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ix4-bB-Hy1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VQa-k6-7os">
+                                <rect key="frame" x="0.0" y="159.66666666666669" width="375" height="568.33333333333326"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fA3-75-GM5">
+                                <rect key="frame" x="10" y="54" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ETZ-oe-s9y"/>
+                                    <constraint firstAttribute="width" constant="60" id="F71-JM-cW3"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="9fi-ZC-F2q" eventType="touchUpInside" id="FeD-Oy-k2h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="URv-RD-11c" firstAttribute="bottom" secondItem="VQa-k6-7os" secondAttribute="bottom" constant="50" id="Bld-vp-bED"/>
+                            <constraint firstItem="VQa-k6-7os" firstAttribute="height" secondItem="Ix4-bB-Hy1" secondAttribute="height" multiplier="0.7" id="Nqy-we-UCG"/>
+                            <constraint firstItem="fA3-75-GM5" firstAttribute="top" secondItem="URv-RD-11c" secondAttribute="top" constant="10" id="VDm-c6-oUZ"/>
+                            <constraint firstItem="VQa-k6-7os" firstAttribute="leading" secondItem="URv-RD-11c" secondAttribute="leading" id="cg6-mp-mr8"/>
+                            <constraint firstItem="URv-RD-11c" firstAttribute="trailing" secondItem="VQa-k6-7os" secondAttribute="trailing" id="ggC-Zw-IQt"/>
+                            <constraint firstItem="fA3-75-GM5" firstAttribute="leading" secondItem="URv-RD-11c" secondAttribute="leading" constant="10" id="v33-ic-H1o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="URv-RD-11c"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentImage" destination="VQa-k6-7os" id="3Vy-vr-xug"/>
+                        <segue destination="1Cf-Dh-Jhx" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="mrp-oW-Wuo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxn-ee-cPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5340" y="-1753"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="512" height="512"/>
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="c6c-g9-YPq"/>
         <segue reference="wfI-xl-UUB"/>
-        <segue reference="Gkz-Kj-MD9"/>
+        <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>

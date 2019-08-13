@@ -25,6 +25,10 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return cell!
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GoToImageVC", sender: images[indexPath.row])
+    }
+    
     var images=[UIImage]()
     var displayingCategories=[String]()
     var selectedCategory=""
@@ -213,5 +217,15 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         self.view.endEditing(true)
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="GoToImageVC")
+        {
+           
+            let obj = sender as! UIImage
+            let defVC = segue.destination as! ImageVC
+            defVC.image = obj
+        }
     }
 }
