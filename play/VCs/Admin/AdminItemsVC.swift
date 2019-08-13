@@ -16,7 +16,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
 {
     var displayingItems=[Item]()
     var items=[Item]()
-    
+    let ref = Database.database().reference().child("Categories")
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayingItems.count
@@ -37,10 +37,19 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
             let itemToDelete=self.displayingItems[indexPath.row]
             
             let ref=Database.database().reference()
+            let path_to_storage = Storage.storage().reference().child("images")
+            
+            print(itemToDelete.images, " fjiohfpahwgpaw")
+            for image in itemToDelete.images
+            {
+                print(image)
+                path_to_storage.child(image.uid).delete(completion: { (error) in
+                    print(error, error.debugDescription)
+                })
+            }
             
             let path_of_item=ref.child("Categories").child(itemToDelete.category).child("items").child(itemToDelete.id)
             path_of_item.removeValue()
-            
         }
         
         return [delete]
@@ -62,7 +71,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-
+        ref.removeAllObservers()
     }
     
     func loadDataFromDB()
@@ -70,7 +79,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         
         //displayingCategories.removeAll()
         
-        let ref = Database.database().reference().child("Categories")
+        
         
         ref.observe(.value) { (allCategories) in
             self.items.removeAll()
@@ -90,7 +99,16 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
                     currentItem.name = item.childSnapshot(forPath: "name").value as! String
                     currentItem.id = item.key
                     
-                    print(currentItem.category)
+                    for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
+                    {
+                        //                        currentItem.image_url = imageurl.value as! String
+                        //print(imageurl)
+                        
+                        let fbimage = FBImage()
+                        fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
+                        fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                        currentItem.images.append(fbimage)
+                    }
                     
                     self.items.append(currentItem)
                     self.displayingItems.append(currentItem)
@@ -104,4 +122,6 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
         }
         
     }
+    
+
 }
