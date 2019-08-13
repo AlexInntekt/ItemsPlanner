@@ -44,7 +44,7 @@ class Item {
     var image_url = String()
     var name = String()
     var bookings = [Booking]()
-    var imageUID = String()
+    var imageUID = [String]()
 }
 
 

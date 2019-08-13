@@ -78,7 +78,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             item.category = selectedCategory
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
-            item.imageUID = "\(NSUUID().uuidString).jpg"
         //createItem(item: item, byCategory: selectedCategory)
         
         
@@ -105,9 +104,11 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 
                 for image in self.images
                 {
+                    let image_id="\(NSUUID().uuidString).jpg"
+                    item.imageUID.append(image_id)
                     let ImageData =  image.jpegData(compressionQuality: 0.5)!
                     
-                    let refStorage = imagesFolder.child(item.imageUID)
+                    let refStorage = imagesFolder.child(image_id)
                     refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
                         if error != nil
                         {
@@ -118,13 +119,19 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                         {
                             print("\n\n#Succesfully uploaded the image on Firebase.\n")
                             
+                            print("woihgowhgwtwowphgw")
                             
                             refStorage.downloadURL { url, error in
                                 let itsUrl = url!.absoluteString
-                                let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
-                                let autoid=path.childByAutoId()
+                                let pathToImageUrl=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
+                                let pathToImageUid=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_uids")
+                                let autoid=pathToImageUrl.childByAutoId()
 //                                print("autoid: ", autoid)
-                                path.child(autoid.key as! String).setValue(itsUrl)
+                                pathToImageUrl.child(autoid.key as! String).setValue(itsUrl)
+                                
+                                let autoidForUid=pathToImageUid.childByAutoId()
+                                pathToImageUid.child(autoidForUid.key as! String).setValue(image_id)
+                                
                             }
                         }
                     })
