@@ -13,8 +13,7 @@ import FirebaseAuth
 import JTAppleCalendar
 import SDWebImage
 
-let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
-let date=Date()
+
 var reports=[FailedBookingReportModel]()
 
 extension BookItemVC: JTACMonthViewDataSource {
