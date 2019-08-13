@@ -60,6 +60,7 @@ class EditDateOfOwnBookingVC: UIViewController
     var startDateOfBooking=""
     var endDateOfBooking=""
     
+    
     @IBOutlet weak var calendarView: JTACMonthView!
     
     

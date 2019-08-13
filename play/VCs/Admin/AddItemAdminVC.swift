@@ -12,13 +12,27 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = gallery.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
+        cell!.image.image = images[indexPath.row]
+        
+        return cell!
+    }
+    
+    var images=[UIImage]()
     var displayingCategories=[String]()
     var selectedCategory=""
     let reference = Database.database().reference()
     
-    @IBOutlet weak var imageContainer: UIImageView!
+
+    @IBOutlet weak var gallery: UICollectionView!
+    
     
     @IBOutlet weak var itemNameLabel: UITextField!
     
@@ -27,6 +41,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var textView: UITextView!
     
     var imagePicker = UIImagePickerController()
+    
     
     @IBAction func addImage(_ sender: Any)
     {
@@ -41,9 +56,13 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         guard let image = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        imageContainer.image = image
+        images.append(image)
         
-        dismiss(animated: true, completion: nil)
+        
+        
+        dismiss(animated: true) {
+            self.gallery.reloadData()
+        }
         
     }
     
@@ -61,30 +80,37 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
 //        let ImadeData = UIImageJPEGRepresentation(imageContainer.image!, 0.5)!
         //let imageInstance = UIImage
-        let ImageData = imageContainer.image!.jpegData(compressionQuality: 0.5)!
         
-        let refStorage = imagesFolder.child(item.imageUID)
-        refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
-            if error != nil
-            {
-                print("\n\n! Error code f304hg93hg9 \n\n")
-                
-            }
-            else
-            {
-                print("\n\n#Succesfully uploaded the image on Firebase.\n")
-                
-                
-                
-                refStorage.downloadURL { url, error in
-                    item.image_url=url!.absoluteString
-                    self.saveItemInDB(item: item)
+        self.saveItemInDB(item: item)
+        
+        for image in images
+        {
+            let ImageData =  image.jpegData(compressionQuality: 0.5)!
+            
+            let refStorage = imagesFolder.child(item.imageUID)
+            refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
+                if error != nil
+                {
+                    print("\n\n! Error code f304hg93hg9 \n\n")
+                    
                 }
-//
-                //self.saveItemInDB(item: item)
-                
-            }
-        })
+                else
+                {
+                    print("\n\n#Succesfully uploaded the image on Firebase.\n")
+                    
+                    
+                    refStorage.downloadURL { url, error in
+                        //item.image_url=url!.absoluteString
+                        let path=self.reference.child("Categories").child(item.category).child("items").child(item.id).child("image_url")
+                            let autoid=path.childByAutoId()
+                        print("autoid: ", autoid)
+                        //path.child(autoid.).setValue(url)
+                    }
+                }
+            })
+        }
+        
+        
         
         
         
