@@ -1771,7 +1771,7 @@
                         <outlet property="itemNameLabel" destination="NDk-3m-Nea" id="9db-6m-23T"/>
                         <outlet property="saveItem" destination="HcS-Ch-pTu" id="6N7-Ni-A8X"/>
                         <outlet property="textView" destination="14y-qi-7yP" id="EzQ-B2-LyD"/>
-                        <segue destination="9fi-ZC-F2q" kind="custom" identifier="GoToImageVC" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="jNh-se-duz"/>
+                        <segue destination="9fi-ZC-F2q" kind="custom" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="jNh-se-duz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyz-bf-6Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1945,7 +1945,7 @@
                     </view>
                     <connections>
                         <outlet property="currentImage" destination="VQa-k6-7os" id="3Vy-vr-xug"/>
-                        <segue destination="1Cf-Dh-Jhx" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="mrp-oW-Wuo"/>
+                        <segue destination="1Cf-Dh-Jhx" kind="custom" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="mrp-oW-Wuo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxn-ee-cPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1959,15 +1959,14 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jNh-se-duz"/>
-        <segue reference="mrp-oW-Wuo"/>
-        <segue reference="wfI-xl-UUB"/>
+        <segue reference="c6c-g9-YPq"/>
+        <segue reference="6W9-po-8Al"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="tna-xz-s02"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="kNt-8W-Dcm"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
