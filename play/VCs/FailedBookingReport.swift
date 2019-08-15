@@ -13,6 +13,7 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
 {
     var reports = [FailedBookingReportModel]()
     var desiredItem = Item()
+    var descriptionOfBooking = ""
     
     @IBOutlet var tbv: UITableView!
     
@@ -54,7 +55,7 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
            
             let defVC = segue.destination as! BookItemVC
             defVC.currentItem = desiredItem
-            
+            defVC.descriptionOfBooking = descriptionOfBooking
         }
         
         

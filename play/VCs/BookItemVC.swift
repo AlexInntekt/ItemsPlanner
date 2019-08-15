@@ -77,10 +77,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
+        performSegue(withIdentifier: "gallerySegue", sender: indexPath.row)
     }
     
     var currentItem=Item()
+    var descriptionOfBooking = ""
     var startDateOfBooking=""
     var endDateOfBooking=""
     
@@ -375,9 +376,18 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func setupUI()
     {
-        self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+        if(self.descriptionOfBooking=="")
+        {
+            self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+        }
+        else
+        {
+            self.textfieldDescription.text = self.descriptionOfBooking
+        }
+        
         
 //        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
+        
         
     }
     
@@ -402,13 +412,23 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
     {
+        self.descriptionOfBooking = self.textfieldDescription.text
+        
         if(segue.identifier=="seeFailedBookingReport")
         {
-
             let defVC = segue.destination as! FailedBookingReport
             defVC.reports = reports
             defVC.desiredItem = currentItem as! Item
+            defVC.descriptionOfBooking = self.descriptionOfBooking
         }
+        
+        if(segue.identifier=="gallerySegue")
+        {
+            let defVC = segue.destination as! GalleryVC
+            defVC.currentItem = self.currentItem
+            defVC.descriptionOfBooking = self.descriptionOfBooking
+        }
+        
         
         
     }

@@ -922,6 +922,41 @@
             </objects>
             <point key="canvasLocation" x="3102" y="-955"/>
         </scene>
+        <!--GalleryVC-->
+        <scene sceneID="0SY-CL-REY">
+            <objects>
+                <viewController storyboardIdentifier="GalleryVC" id="Mzb-lP-pFS" customClass="GalleryVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EMz-DU-fGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-N5-Bu5">
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2CE-0m-4kO"/>
+                                    <constraint firstAttribute="width" constant="60" id="Ctm-3n-7pm"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="back:" destination="Mzb-lP-pFS" eventType="touchUpInside" id="KbF-zX-fVq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9LC-N5-Bu5" firstAttribute="top" secondItem="3d8-Lh-i9c" secondAttribute="top" constant="5" id="9my-Ug-z5Y"/>
+                            <constraint firstItem="9LC-N5-Bu5" firstAttribute="leading" secondItem="3d8-Lh-i9c" secondAttribute="leading" constant="5" id="BJi-Hp-ovx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3d8-Lh-i9c"/>
+                    </view>
+                    <connections>
+                        <segue destination="nBd-z6-hOB" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="tpk-he-C5L"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PW4-qC-Lh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3866" y="-415"/>
+        </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="IEk-dz-3km">
             <objects>
@@ -1186,6 +1221,7 @@
                         <outlet property="numeArticol" destination="kcD-eC-eb2" id="9hW-un-0cU"/>
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
                         <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
+                        <segue destination="Mzb-lP-pFS" kind="custom" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Wz4-QR-s1D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1295,7 +1331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAU-Ll-IIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3954" y="155"/>
+            <point key="canvasLocation" x="3825" y="352"/>
         </scene>
         <!--Admin CategoriesVC-->
         <scene sceneID="nA2-Ai-iSp">
@@ -1993,7 +2029,7 @@
         <segue reference="c6c-g9-YPq"/>
         <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
-        <segue reference="tna-xz-s02"/>
+        <segue reference="tpk-he-C5L"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
