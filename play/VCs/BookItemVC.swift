@@ -58,11 +58,33 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
+class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return currentItem.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = gallery.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
+        
+        let url = URL(string: currentItem.images[indexPath.row].url)
+        cell!.image.sd_setImage(with: url, completed: nil)
+        
+        
+        //self.imageContainer.sd_setImage(with: url, completed: nil)
+        
+        return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
+    }
+    
     var currentItem=Item()
     var startDateOfBooking=""
     var endDateOfBooking=""
+    
+    @IBOutlet weak var gallery: UICollectionView!
     
     @IBOutlet weak var calendarView: JTACMonthView!
  
@@ -327,6 +349,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         self.calendarView.allowsMultipleSelection = true
         self.calendarView.allowsRangedSelection = true
+        self.gallery.delegate = self
+        self.gallery.dataSource = self
         
         textfieldDescription.delegate = self
         
@@ -355,8 +379,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
 //        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
         
-        let url = URL(string: currentItem.images.first!.url)
-        self.imageContainer.sd_setImage(with: url, completed: nil)
     }
     
 

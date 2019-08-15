@@ -974,9 +974,6 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDQ-0p-W8v">
-                                <rect key="frame" x="20" y="234" width="335" height="149"/>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mgd-qH-6Wz" customClass="JTACMonthView" customModule="JTAppleCalendar">
                                 <rect key="frame" x="15" y="388" width="345" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1125,33 +1122,67 @@
                                     <outlet property="ibCalendarDelegate" destination="nBd-z6-hOB" id="Lj4-2f-3u0"/>
                                 </connections>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t14-qE-o9W">
+                                <rect key="frame" x="5" y="239" width="365" height="144"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6iO-I0-2AY">
+                                    <size key="itemSize" width="200" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="nes-Z1-Kxb" customClass="ImageCell" customModule="play" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="200" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uds-v9-vTs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="uds-v9-vTs" firstAttribute="leading" secondItem="nes-Z1-Kxb" secondAttribute="leading" id="DHm-B3-FxF"/>
+                                            <constraint firstAttribute="bottom" secondItem="uds-v9-vTs" secondAttribute="bottom" id="On0-a4-1ZF"/>
+                                            <constraint firstAttribute="trailing" secondItem="uds-v9-vTs" secondAttribute="trailing" id="fzE-lL-WR1"/>
+                                            <constraint firstItem="uds-v9-vTs" firstAttribute="top" secondItem="nes-Z1-Kxb" secondAttribute="top" id="uXo-uu-z6h"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="uds-v9-vTs" id="LuU-tu-E2E"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="Mgd-qH-6Wz" secondAttribute="bottom" constant="10" id="0o5-eW-Cln"/>
                             <constraint firstItem="EKA-OB-Bhp" firstAttribute="trailing" secondItem="Mgd-qH-6Wz" secondAttribute="trailing" constant="15" id="2iC-9P-M2X"/>
+                            <constraint firstItem="t14-qE-o9W" firstAttribute="top" secondItem="ztL-sh-V0p" secondAttribute="bottom" constant="5" id="6ik-HO-fqu"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="top" constant="5" id="7Cc-TD-ihD"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="width" secondItem="DE5-df-Oa7" secondAttribute="width" multiplier="0.7" id="8wM-IO-E37"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="5" id="9de-Fh-fNk"/>
                             <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="5" id="B1q-Fa-mGB"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="CKp-2p-QSj"/>
+                            <constraint firstItem="t14-qE-o9W" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="5" id="GtJ-vA-W6D"/>
                             <constraint firstItem="ztL-sh-V0p" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="10" id="HQm-L0-qgJ"/>
-                            <constraint firstItem="dDQ-0p-W8v" firstAttribute="top" secondItem="ztL-sh-V0p" secondAttribute="bottom" id="KXj-lq-9KA"/>
-                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="dDQ-0p-W8v" secondAttribute="bottom" constant="5" id="RgD-Cv-hWM"/>
+                            <constraint firstAttribute="trailing" secondItem="t14-qE-o9W" secondAttribute="trailing" constant="5" id="HbG-TB-UgR"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="bottom" constant="-60" id="VGg-XT-XO6"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="YTM-9i-buc"/>
-                            <constraint firstItem="dDQ-0p-W8v" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="20" id="aOR-F4-7pz"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerY" secondItem="hb6-oF-lc1" secondAttribute="centerY" id="aSd-h6-TRK"/>
                             <constraint firstAttribute="trailing" secondItem="ztL-sh-V0p" secondAttribute="trailing" constant="10" id="fsd-Mr-TOA"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="i6b-Sj-26L"/>
-                            <constraint firstItem="EKA-OB-Bhp" firstAttribute="trailing" secondItem="dDQ-0p-W8v" secondAttribute="trailing" constant="20" id="nwv-uW-yRf"/>
+                            <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="t14-qE-o9W" secondAttribute="bottom" constant="5" id="tpr-PY-dr8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EKA-OB-Bhp"/>
                     </view>
                     <connections>
                         <outlet property="bookButton" destination="j79-lD-8TB" id="dQj-ub-Bzm"/>
                         <outlet property="calendarView" destination="Mgd-qH-6Wz" id="M7N-qF-mCc"/>
-                        <outlet property="imageContainer" destination="dDQ-0p-W8v" id="EXm-QG-oic"/>
+                        <outlet property="gallery" destination="t14-qE-o9W" id="bpW-vA-66p"/>
                         <outlet property="numeArticol" destination="kcD-eC-eb2" id="9hW-un-0cU"/>
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
                         <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
@@ -1966,7 +1997,7 @@
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="kNt-8W-Dcm"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
