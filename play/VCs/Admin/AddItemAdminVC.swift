@@ -26,7 +26,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToImageVC", sender: images[indexPath.row])
+        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
     }
     
     var images=[UIImage]()
@@ -170,6 +170,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewWillAppear(_ animated: Bool)
     {
         setupui()
+        self.gallery.reloadData()
     }
     
     override func viewDidLoad()
@@ -307,10 +308,9 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             cachingItem.description=self.textView.text ?? ""
             cachingItem.category=selectedCategory
             
-            let obj = sender as! UIImage
+            let obj = sender as! Int
             let defVC = segue.destination as! ImageVC
-            defVC.image = obj
-            defVC.images = self.images
+            defVC.imageIndex = obj
             defVC.currentItem = cachingItem
             
             showCachedItem=true

@@ -1705,7 +1705,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VXh-8d-Pkm">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VXh-8d-Pkm">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                                 </imageView>
                                             </subviews>
@@ -1906,7 +1906,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VQa-k6-7os">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VQa-k6-7os">
                                 <rect key="frame" x="0.0" y="159.66666666666669" width="375" height="568.33333333333326"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fA3-75-GM5">
@@ -1920,14 +1920,25 @@
                                     <action selector="backButton:" destination="9fi-ZC-F2q" eventType="touchUpInside" id="FeD-Oy-k2h"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="517-zn-7ya">
+                                <rect key="frame" x="323" y="63" width="42" height="42"/>
+                                <state key="normal" title="Button" image="delete"/>
+                                <connections>
+                                    <action selector="deleteImage:" destination="9fi-ZC-F2q" eventType="touchUpInside" id="vRw-Dz-hFF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="URv-RD-11c" firstAttribute="bottom" secondItem="VQa-k6-7os" secondAttribute="bottom" constant="50" id="Bld-vp-bED"/>
+                            <constraint firstItem="517-zn-7ya" firstAttribute="height" secondItem="fA3-75-GM5" secondAttribute="height" multiplier="0.7" id="N5K-kA-BnW"/>
                             <constraint firstItem="VQa-k6-7os" firstAttribute="height" secondItem="Ix4-bB-Hy1" secondAttribute="height" multiplier="0.7" id="Nqy-we-UCG"/>
                             <constraint firstItem="fA3-75-GM5" firstAttribute="top" secondItem="URv-RD-11c" secondAttribute="top" constant="10" id="VDm-c6-oUZ"/>
+                            <constraint firstItem="URv-RD-11c" firstAttribute="trailing" secondItem="517-zn-7ya" secondAttribute="trailing" constant="10" id="Vr6-js-Pjv"/>
+                            <constraint firstItem="517-zn-7ya" firstAttribute="centerY" secondItem="fA3-75-GM5" secondAttribute="centerY" id="af9-v5-nLK"/>
                             <constraint firstItem="VQa-k6-7os" firstAttribute="leading" secondItem="URv-RD-11c" secondAttribute="leading" id="cg6-mp-mr8"/>
                             <constraint firstItem="URv-RD-11c" firstAttribute="trailing" secondItem="VQa-k6-7os" secondAttribute="trailing" id="ggC-Zw-IQt"/>
+                            <constraint firstItem="517-zn-7ya" firstAttribute="width" secondItem="fA3-75-GM5" secondAttribute="width" multiplier="0.7" id="pXF-LC-K3Z"/>
                             <constraint firstItem="fA3-75-GM5" firstAttribute="leading" secondItem="URv-RD-11c" secondAttribute="leading" constant="10" id="v33-ic-H1o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="URv-RD-11c"/>
@@ -1944,13 +1955,15 @@
     </scenes>
     <resources>
         <image name="back" width="512" height="512"/>
+        <image name="delete" width="934" height="980"/>
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c6c-g9-YPq"/>
+        <segue reference="jNh-se-duz"/>
+        <segue reference="mrp-oW-Wuo"/>
         <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
-        <segue reference="Tn8-hL-gDt"/>
+        <segue reference="tna-xz-s02"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
