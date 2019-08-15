@@ -180,8 +180,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
         
-        dealWithCachedItem()
         loadCategoriesFromDB()
+        dealWithCachedItem()
     }
     
     func loadCategoriesFromDB()
@@ -201,6 +201,21 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.categoryPicker.reloadAllComponents()
             
             self.selectedCategory=self.displayingCategories[0]
+            
+            if(showCachedItem)
+            {
+                var index=0
+                for section in self.displayingCategories
+                {
+                    print("fijasngasgsHGH ", section, " ", self.cachedItem.category)
+                    if(section==self.cachedItem.category)
+                    {
+                        self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
+                        self.selectedCategory=self.displayingCategories[index]
+                    }
+                    index+=1
+                }
+            }
         }
     }
     
@@ -290,7 +305,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         {
             cachingItem.name=self.itemNameLabel.text ?? ""
             cachingItem.description=self.textView.text ?? ""
-            
+            cachingItem.category=selectedCategory
             
             let obj = sender as! UIImage
             let defVC = segue.destination as! ImageVC
