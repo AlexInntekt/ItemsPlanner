@@ -32,9 +32,14 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var images=[UIImage]()
     var displayingCategories=[String]()
     var selectedCategory=""
+    var indexOfSelectedCategory=0
     let reference = Database.database().reference()
-    
+    var cachingItem = Item()
+    var cachedItem = Item()
 
+    
+    @IBOutlet weak var backButtonToFirstTextfieldConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var gallery: UICollectionView!
     
     
@@ -62,11 +67,13 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         images.append(image)
         
-        
+        cauchedImagesToCreate=images
         
         dismiss(animated: true) {
             self.gallery.reloadData()
+            self.showOrHideGallery()
         }
+        
         
     }
     
@@ -142,8 +149,10 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     })
                 }
                 
+                showCachedItem=false
+                
                 let title = "Adăugare cu succes"
-                let message = "Articolul a fost adaugat!"
+                let message = "Obiectul a fost adaugat in baza de date!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                     self.performSegue(withIdentifier: "backToItemsSegue", sender: nil)
@@ -158,6 +167,10 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        setupui()
+    }
     
     override func viewDidLoad()
     {
@@ -167,6 +180,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
         
+        dealWithCachedItem()
         loadCategoriesFromDB()
     }
     
@@ -211,6 +225,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if(!displayingCategories.isEmpty)
         {
             self.selectedCategory=displayingCategories[row]
+            self.indexOfSelectedCategory=row
         }
         
         
@@ -231,13 +246,63 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return true
     }
     
+    func setupui()
+    {
+        dealWithCachedItem()
+        showOrHideGallery()
+    }
+    
+    func dealWithCachedItem()
+    {
+
+        if(showCachedItem)
+        {
+            self.itemNameLabel.text = cachedItem.name
+            self.textView.text = cachedItem.description
+            self.images = cauchedImagesToCreate
+            
+            print("showCachedItem true")
+        }
+        else
+        {
+            print("showCachedItem false")
+        }
+
+        
+        
+    
+    }
+    
+    func showOrHideGallery()
+    {
+        if(gallery.numberOfItems(inSection: 0)==0)
+        {
+            backButtonToFirstTextfieldConstraint.constant=20
+        }
+        else
+        {
+            backButtonToFirstTextfieldConstraint.constant=140
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="GoToImageVC")
         {
-           
+            cachingItem.name=self.itemNameLabel.text ?? ""
+            cachingItem.description=self.textView.text ?? ""
+            
+            
             let obj = sender as! UIImage
             let defVC = segue.destination as! ImageVC
             defVC.image = obj
+            defVC.images = self.images
+            defVC.currentItem = cachingItem
+            
+            showCachedItem=true
         }
     }
+    
+
+    
+    
 }

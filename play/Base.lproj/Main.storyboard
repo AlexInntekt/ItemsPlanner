@@ -1689,7 +1689,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQj-E2-ydC">
-                                <rect key="frame" x="0.0" y="117" width="385" height="128"/>
+                                <rect key="frame" x="0.0" y="117" width="385" height="122"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="41Y-eO-pEf">
                                     <size key="itemSize" width="200" height="100"/>
@@ -1699,14 +1699,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="4tm-V6-zRw" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14" width="200" height="100"/>
+                                        <rect key="frame" x="0.0" y="11" width="200" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VXh-8d-Pkm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -1732,7 +1732,7 @@
                             <constraint firstItem="WZE-ur-Bei" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="5" id="0cx-h6-Ybi"/>
                             <constraint firstItem="sRZ-if-vVM" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="25" id="1uY-Vk-Ina"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="leading" secondItem="WZE-ur-Bei" secondAttribute="trailing" constant="10" id="2A1-N6-jml"/>
-                            <constraint firstItem="NDk-3m-Nea" firstAttribute="top" secondItem="nQj-E2-ydC" secondAttribute="bottom" constant="-1" id="2wU-mo-0iC"/>
+                            <constraint firstItem="NDk-3m-Nea" firstAttribute="top" secondItem="nQj-E2-ydC" secondAttribute="bottom" constant="5" id="2wU-mo-0iC"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="14y-qi-7yP" secondAttribute="trailing" constant="25" id="4W1-33-FYi"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="TCu-n9-CQf" secondAttribute="trailing" constant="7" id="4bS-PY-KJb"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="D5J-QZ-f7Q" secondAttribute="trailing" constant="5" id="4nH-Uu-U9R"/>
@@ -1765,6 +1765,7 @@
                         <viewLayoutGuide key="safeArea" id="5of-Wn-Nqs"/>
                     </view>
                     <connections>
+                        <outlet property="backButtonToFirstTextfieldConstraint" destination="WYU-ZB-IFb" id="hGn-1F-qgd"/>
                         <outlet property="categoryPicker" destination="sRZ-if-vVM" id="wcV-bo-y09"/>
                         <outlet property="gallery" destination="nQj-E2-ydC" id="1or-dN-4YB"/>
                         <outlet property="itemNameLabel" destination="NDk-3m-Nea" id="9db-6m-23T"/>
@@ -1953,7 +1954,7 @@
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="kNt-8W-Dcm"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -319,19 +319,40 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 for item in packets.children.allObjects as! [DataSnapshot]
                 {
                       let currentItem = Item()
-                      currentItem.category = category.key as! String
-                      currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
-                      currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                    
+                      if category.key != nil
+                      {
+                        currentItem.category = category.key as! String
+                      }
+                    
+                      if item.childSnapshot(forPath: "descriere").value != nil
+                      {
+                        currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
+                     }
+                    
+                      if item.childSnapshot(forPath: "name").value != nil
+                      {
+                        currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                      }
+                    
                       currentItem.id = item.key
+                    
                       for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
                       {
 //                        currentItem.image_url = imageurl.value as! String
                         //print(imageurl)
                         
-                        let fbimage = FBImage()
+                        print("foiashegoes, ", currentItem.name)
+                        
+                        if(image.childSnapshot(forPath: "uid").value != nil)
+                        {
+                            let fbimage = FBImage()
                             fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
                             fbimage.url = image.childSnapshot(forPath: "url").value as! String
-                        currentItem.images.append(fbimage)
+                            currentItem.images.append(fbimage)
+                        }
+                        
+                        
                     }
                     
                       items.append(currentItem)

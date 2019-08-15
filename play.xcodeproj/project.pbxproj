@@ -28,6 +28,7 @@
 		FA142AE922F85F0800C56AA7 /* UpDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA142AE822F85F0800C56AA7 /* UpDownSegue.swift */; };
 		FA17BB9F22FB3AF200CC7803 /* FailedBookingReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17BB9E22FB3AF200CC7803 /* FailedBookingReport.swift */; };
 		FA17BBA122FB3E4A00CC7803 /* FailReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */; };
+		FA1C56512305AA46007F1BB9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C56502305AA46007F1BB9 /* Cache.swift */; };
 		FA3CD82E22DA533800BE5558 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */; };
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
@@ -99,6 +100,7 @@
 		FA142AE822F85F0800C56AA7 /* UpDownSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpDownSegue.swift; sourceTree = "<group>"; };
 		FA17BB9E22FB3AF200CC7803 /* FailedBookingReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedBookingReport.swift; sourceTree = "<group>"; };
 		FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailReportCell.swift; sourceTree = "<group>"; };
+		FA1C56502305AA46007F1BB9 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				FA142ADF22F85D0C00C56AA7 /* Segues */,
+				FA1C564F2305AA2F007F1BB9 /* Cache */,
 				FA01151F22DF845D00F8234A /* VCs */,
 				FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */,
 				FACFEAE922F4CB3500270F25 /* API Handlers */,
@@ -261,6 +264,14 @@
 				FA142AE822F85F0800C56AA7 /* UpDownSegue.swift */,
 			);
 			path = Segues;
+			sourceTree = "<group>";
+		};
+		FA1C564F2305AA2F007F1BB9 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				FA1C56502305AA46007F1BB9 /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		FACFEAE922F4CB3500270F25 /* API Handlers */ = {
@@ -535,6 +546,7 @@
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
 				FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */,
 				FA5A6B7922FF1DBC00F0764E /* AdminCategoriesVC.swift in Sources */,
+				FA1C56512305AA46007F1BB9 /* Cache.swift in Sources */,
 				FAEF5F2A22FEC99800E5AC6F /* AdminItemsVC.swift in Sources */,
 				FA13F4B322FF2AEA0014CED5 /* AddCategoryAdminVC.swift in Sources */,
 				FAEF5F2722FEC23100E5AC6F /* editOwnBookingVC.swift in Sources */,

@@ -14,6 +14,8 @@ class ImageVC: UIViewController
     @IBOutlet weak var currentImage: UIImageView!
     
     var image = UIImage()
+    var images = [UIImage]()
+    var currentItem = Item()
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "back", sender: nil)
@@ -22,6 +24,14 @@ class ImageVC: UIViewController
     override func viewDidLoad()
     {
         self.currentImage.image=image
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="back")
+        {
+            let defVC = segue.destination as! AddItemAdminVC
+            defVC.cachedItem=currentItem
+        }
     }
     
     

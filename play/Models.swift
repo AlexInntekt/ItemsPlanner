@@ -38,6 +38,12 @@ class BookingPack {
 }
 
 class Item {
+    init(name setName: String, description setDescription: String)
+    {
+        self.name = setName
+        self.description = setDescription
+    }
+    init(){}
     var category = String()
     var id = String()
     var description = String()
