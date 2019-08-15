@@ -104,10 +104,14 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
                         //                        currentItem.image_url = imageurl.value as! String
                         //print(imageurl)
                         
-                        let fbimage = FBImage()
-                        fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
-                        fbimage.url = image.childSnapshot(forPath: "url").value as! String
-                        currentItem.images.append(fbimage)
+                        if((image.childSnapshot(forPath: "uid").exists())&&(image.childSnapshot(forPath: "uid").exists()))
+                        {
+                            let fbimage = FBImage()
+                            fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
+                            fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                            currentItem.images.append(fbimage)
+                        }
+
                     }
                     
                     self.items.append(currentItem)

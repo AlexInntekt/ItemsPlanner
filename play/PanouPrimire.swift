@@ -342,9 +342,9 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
 //                        currentItem.image_url = imageurl.value as! String
                         //print(imageurl)
                         
-                        print("foiashegoes, ", currentItem.name)
+                        print("foiashegoes, ", currentItem.category)
                         
-                        if(image.childSnapshot(forPath: "uid").value != nil)
+                        if((image.childSnapshot(forPath: "uid").exists()) && (image.childSnapshot(forPath: "url").exists()))
                         {
                             let fbimage = FBImage()
                             fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
