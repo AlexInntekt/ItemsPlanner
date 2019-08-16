@@ -28,7 +28,7 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         
         let height = view.frame.size.height
         let width = view.frame.size.width
-        // in case you you want the cell to be 40% of your controllers view
+
         return CGSize(width: width, height: height)
     }
     

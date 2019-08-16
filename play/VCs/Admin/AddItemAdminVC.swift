@@ -98,6 +98,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func saveItemInDB(item item: Item)
     {
+        self.saveItem.isEnabled=false
+        
         let db = reference.child("Categories").child(selectedCategory).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
@@ -123,26 +125,21 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                         }
                         else
                         {
-                            print("\n\n#Succesfully uploaded the image on Firebase.\n")
-                            
-                            print("woihgowhgwtwowphgw")
-                            
+
                             refStorage.downloadURL { url, error in
-                                let itsUrl = url!.absoluteString
-                                
-                                let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("images")
-                                let autoid=path.childByAutoId()
-                                path.child(autoid.key as! String).child("url").setValue(itsUrl)
-                                path.child(autoid.key as! String).child("uid").setValue(image_id)
-                                
-//                                let pathToImageUrl=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_url")
-//                                let pathToImageUid=self.reference.child("Categories").child(item.category).child("items").child(id).child("image_uids")
-//                                let autoid=pathToImageUrl.childByAutoId()
-////                                print("autoid: ", autoid)
-//                                pathToImageUrl.child(autoid.key as! String).setValue(itsUrl)
-//
-//                                let autoidForUid=pathToImageUid.childByAutoId()
-//                                pathToImageUid.child(autoidForUid.key as! String).setValue(image_id)
+                                if(error==nil)
+                                {
+                                    let itsUrl = url!.absoluteString
+                                    
+                                    let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("images")
+                                    let autoid=path.childByAutoId()
+                                    path.child(autoid.key as! String).child("url").setValue(itsUrl)
+                                    path.child(autoid.key as! String).child("uid").setValue(image_id)
+                                }
+                                else
+                                {
+                                    
+                                }
                                 
                             }
                         }
@@ -162,6 +159,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             else
             {
+                self.saveItem.isEnabled=true
+                
                 alert(UIVC: self, title: "Eroare detectată", message: "Articolul nu a putut fi adăugat. Dacă problema persistă, contactați dezvoltatorii. Eroare:  \(error.debugDescription)")
             }
         }
