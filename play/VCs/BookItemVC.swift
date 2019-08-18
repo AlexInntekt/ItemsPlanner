@@ -58,7 +58,7 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource
+class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentItem.images.count
@@ -79,6 +79,14 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "gallerySegue", sender: indexPath.row)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let height = gallery.frame.size.height
+        let width = gallery.frame.size.width
+        
+        return CGSize(width: width, height: height)
     }
     
     var currentItem=Item()
