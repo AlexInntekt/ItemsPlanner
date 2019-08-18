@@ -942,7 +942,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Cp-sL-wve">
-                                <rect key="frame" x="0.0" y="145" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nwu-t0-BfN">
                                     <size key="itemSize" width="350" height="500"/>
@@ -952,7 +952,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="lhs-hD-hQ4" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36.666666666666664" width="350" height="500"/>
+                                        <rect key="frame" x="0.0" y="84.666666666666671" width="350" height="500"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
@@ -981,13 +981,15 @@
                             <constraint firstItem="9LC-N5-Bu5" firstAttribute="top" secondItem="3d8-Lh-i9c" secondAttribute="top" constant="5" id="9my-Ug-z5Y"/>
                             <constraint firstItem="9LC-N5-Bu5" firstAttribute="leading" secondItem="3d8-Lh-i9c" secondAttribute="leading" constant="5" id="BJi-Hp-ovx"/>
                             <constraint firstItem="6Cp-sL-wve" firstAttribute="width" secondItem="EMz-DU-fGJ" secondAttribute="width" id="JPv-aD-Dht"/>
-                            <constraint firstItem="6Cp-sL-wve" firstAttribute="top" secondItem="9LC-N5-Bu5" secondAttribute="bottom" constant="36" id="daf-Mq-Qlq"/>
-                            <constraint firstItem="3d8-Lh-i9c" firstAttribute="bottom" secondItem="6Cp-sL-wve" secondAttribute="bottom" constant="60" id="v42-me-aeS"/>
+                            <constraint firstItem="6Cp-sL-wve" firstAttribute="top" secondItem="9LC-N5-Bu5" secondAttribute="bottom" id="daf-Mq-Qlq"/>
+                            <constraint firstItem="3d8-Lh-i9c" firstAttribute="bottom" secondItem="6Cp-sL-wve" secondAttribute="bottom" id="v42-me-aeS"/>
                             <constraint firstItem="6Cp-sL-wve" firstAttribute="centerX" secondItem="3d8-Lh-i9c" secondAttribute="centerX" id="zWD-my-Huw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3d8-Lh-i9c"/>
                     </view>
                     <connections>
+                        <outlet property="back" destination="9LC-N5-Bu5" id="YDn-V6-K3e"/>
+                        <outlet property="backButtonTopConstraint" destination="9my-Ug-z5Y" id="249-n1-rKY"/>
                         <outlet property="gallery" destination="6Cp-sL-wve" id="zjC-Su-UWD"/>
                         <segue destination="nBd-z6-hOB" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="tpk-he-C5L"/>
                     </connections>

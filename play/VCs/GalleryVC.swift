@@ -46,6 +46,9 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
     @IBOutlet weak var gallery: UICollectionView!
     
+    
+    @IBOutlet weak var backButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var back: UIButton!
     @IBAction func back(_ sender: Any)
     {
         performSegue(withIdentifier: "back", sender: nil)
@@ -75,6 +78,31 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     override func viewWillDisappear(_ animated: Bool)
     {
         AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let flowLayout = gallery.collectionViewLayout as? UICollectionViewFlowLayout else
+        {
+            return
+        }
+        
+        if UIDevice.current.orientation.isLandscape
+        {
+            print("Landscape")
+            self.backButtonTopConstraint.constant = -60
+            super.viewWillTransition(to: size, with: coordinator)
+//            self.view.backgroundColor = UIColor.black
+            
+        } else
+        {
+            print("Portrait")
+//            self.view.backgroundColor = UIColor.white
+            self.backButtonTopConstraint.constant = 5
+        }
+        
+        flowLayout.invalidateLayout()
     }
     
 }
