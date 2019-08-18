@@ -74,7 +74,8 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             self.displayingCategories.removeAll()
             for category in pack.children.allObjects as! [DataSnapshot]{
             
-                let name = category.key as! String
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                let name = category_name
                 self.displayingCategories.append(name)
                 
                 self.tbv.reloadData()

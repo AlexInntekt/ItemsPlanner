@@ -30,8 +30,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     var images=[UIImage]()
-    var displayingCategories=[String]()
-    var selectedCategory=""
+    var displayingCategories:[(key: String, name: String)] = []
+    var selectedCategory=(key:"", name:"")
     var indexOfSelectedCategory=0
     let reference = Database.database().reference()
     var cachingItem = Item()
@@ -82,7 +82,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
 
         let item = Item()
-            item.category_id = selectedCategory
+            item.category_name = selectedCategory.name
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
         //createItem(item: item, byCategory: selectedCategory)
@@ -98,9 +98,12 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func saveItemInDB(item item: Item)
     {
+        item.category_id = self.selectedCategory.key
+        item.category_name = self.selectedCategory.name
+        
         self.saveItem.isEnabled=false
         
-        let db = reference.child("Categories").child(selectedCategory).child("items")
+        let db = reference.child("Categories").child(selectedCategory.key).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
         let dict = ["name": item.name,"descriere": item.description]
@@ -130,7 +133,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                 if(error==nil)
                                 {
                                     let itsUrl = url!.absoluteString
-                                    
+
                                     let path=self.reference.child("Categories").child(item.category_id).child("items").child(id).child("images")
                                     let autoid=path.childByAutoId()
                                     path.child(autoid.key as! String).child("url").setValue(itsUrl)
@@ -193,10 +196,13 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         reference.child("Categories").observeSingleEvent(of: .value) { (allCategories) in
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
-                self.displayingCategories.append(category.key)
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                self.displayingCategories.append((key:category.key,name:category_name))
                 
-                print(category.key)
+                //print(category.key)
             }
+            
+            print(self.displayingCategories)
 
             self.categoryPicker.reloadAllComponents()
             
@@ -208,7 +214,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 for section in self.displayingCategories
                 {
 
-                    if(section==self.cachedItem.category_id)
+                    if(section.name==self.cachedItem.category_name)
                     {
                         self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
                         self.selectedCategory=self.displayingCategories[index]
@@ -232,7 +238,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return displayingCategories[row]
+        return displayingCategories[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -315,7 +321,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         {
             cachingItem.name=self.itemNameLabel.text ?? ""
             cachingItem.description=self.textView.text ?? ""
-            cachingItem.category_id=selectedCategory
+            cachingItem.category_id=selectedCategory.key
             
             let obj = sender as! Int
             let defVC = segue.destination as! ImageVC

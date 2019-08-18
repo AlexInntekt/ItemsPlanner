@@ -24,8 +24,9 @@ class AddCategoryAdminVC: UIViewController
         let name = self.categoryLabel?.text?.capitalized as! String
         
         let path = reference.child("Categories")
+        let autoid = path.childByAutoId()
         
-        let dict = [name : ["name":name]]
+        let dict = [autoid.key : ["name":name]]
         
         path.updateChildValues(dict) { (error, reference) in
             if(error==nil)
