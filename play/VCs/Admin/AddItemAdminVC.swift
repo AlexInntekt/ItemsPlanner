@@ -83,6 +83,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
         let item = Item()
             item.category_name = selectedCategory.name
+            item.category_id = selectedCategory.key
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
         //createItem(item: item, byCategory: selectedCategory)
@@ -98,8 +99,6 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func saveItemInDB(item item: Item)
     {
-        item.category_id = self.selectedCategory.key
-        item.category_name = self.selectedCategory.name
         
         self.saveItem.isEnabled=false
         
