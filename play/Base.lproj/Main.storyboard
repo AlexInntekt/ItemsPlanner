@@ -1470,11 +1470,100 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="zje-Ea-Kwl" id="xy8-EU-h1H"/>
+                        <segue destination="Rbl-z8-dbS" kind="custom" identifier="modifyCategory" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="F5X-iK-unA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRq-aI-kpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3102" y="-2506"/>
+            <point key="canvasLocation" x="3102" y="-2773"/>
+        </scene>
+        <!--Modify CategoryVC-->
+        <scene sceneID="dEy-i8-q52">
+            <objects>
+                <viewController storyboardIdentifier="ModifyCategoryVC" id="Rbl-z8-dbS" customClass="ModifyCategoryVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HGA-Wm-I6B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiS-He-R84">
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1Xu-Zl-BJn"/>
+                                    <constraint firstAttribute="width" constant="60" id="Jtc-gp-7JN"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="back:" destination="Rbl-z8-dbS" eventType="touchUpInside" id="ZgG-Xg-Bpp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modifică denumirea categoriei:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLf-UN-YPC">
+                                <rect key="frame" x="56.333333333333343" y="149" width="262.33333333333326" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PBm-HG-t7o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="noua denumire.." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m2R-Ga-C9V">
+                                <rect key="frame" x="56.333333333333343" y="206" width="262.33333333333326" height="40"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current category name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFT-E3-eqS">
+                                <rect key="frame" x="97.666666666666686" y="49" width="180" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8H-lX-lBg">
+                                <rect key="frame" x="137.66666666666666" y="723" width="100" height="45"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="HTS-oP-f6a"/>
+                                    <constraint firstAttribute="height" constant="45" id="Ozh-Ud-suK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Salvează">
+                                    <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="Rbl-z8-dbS" eventType="touchUpInside" id="H5m-m4-3xa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iiS-He-R84" firstAttribute="top" secondItem="net-H7-1gS" secondAttribute="top" constant="5" id="0aY-Mh-eLP"/>
+                            <constraint firstItem="net-H7-1gS" firstAttribute="bottom" secondItem="G8H-lX-lBg" secondAttribute="bottom" constant="10" id="AyB-8R-Qgr"/>
+                            <constraint firstItem="xLf-UN-YPC" firstAttribute="centerX" secondItem="net-H7-1gS" secondAttribute="centerX" id="EBe-bu-KGZ"/>
+                            <constraint firstItem="G8H-lX-lBg" firstAttribute="centerX" secondItem="net-H7-1gS" secondAttribute="centerX" id="M1p-oN-4et"/>
+                            <constraint firstItem="m2R-Ga-C9V" firstAttribute="height" secondItem="xLf-UN-YPC" secondAttribute="height" id="NAL-nF-BlQ"/>
+                            <constraint firstItem="m2R-Ga-C9V" firstAttribute="width" secondItem="xLf-UN-YPC" secondAttribute="width" id="PoG-LQ-YiN"/>
+                            <constraint firstItem="m2R-Ga-C9V" firstAttribute="top" secondItem="xLf-UN-YPC" secondAttribute="bottom" constant="17" id="YbY-AD-GBQ"/>
+                            <constraint firstItem="iFT-E3-eqS" firstAttribute="centerY" secondItem="iiS-He-R84" secondAttribute="centerY" id="a5H-Yk-hmu"/>
+                            <constraint firstItem="iFT-E3-eqS" firstAttribute="height" secondItem="iiS-He-R84" secondAttribute="height" id="eOO-Iv-05t"/>
+                            <constraint firstItem="iFT-E3-eqS" firstAttribute="centerX" secondItem="net-H7-1gS" secondAttribute="centerX" id="ge8-QD-cTJ"/>
+                            <constraint firstItem="m2R-Ga-C9V" firstAttribute="centerX" secondItem="xLf-UN-YPC" secondAttribute="centerX" id="nez-7t-6Xo"/>
+                            <constraint firstItem="xLf-UN-YPC" firstAttribute="width" secondItem="HGA-Wm-I6B" secondAttribute="width" multiplier="0.7" id="nnH-R6-LIQ"/>
+                            <constraint firstItem="iiS-He-R84" firstAttribute="leading" secondItem="net-H7-1gS" secondAttribute="leading" constant="5" id="o3M-LR-cnd"/>
+                            <constraint firstItem="xLf-UN-YPC" firstAttribute="top" secondItem="iiS-He-R84" secondAttribute="bottom" constant="40" id="y9M-Ug-Kid"/>
+                            <constraint firstItem="iFT-E3-eqS" firstAttribute="width" secondItem="iiS-He-R84" secondAttribute="width" multiplier="3" id="zFp-SZ-qif"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="net-H7-1gS"/>
+                    </view>
+                    <connections>
+                        <outlet property="back" destination="iiS-He-R84" id="aHB-yI-0jh"/>
+                        <outlet property="currentCategoryName" destination="iFT-E3-eqS" id="1xj-WR-7Lh"/>
+                        <outlet property="newNameTextField" destination="m2R-Ga-C9V" id="qOc-nx-5J6"/>
+                        <outlet property="saveButton" destination="G8H-lX-lBg" id="3S2-sM-LOu"/>
+                        <segue destination="YSl-Re-JxK" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="zYa-UT-4bY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkf-zU-3QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3861.5999999999999" y="-3133.0049261083745"/>
         </scene>
         <!--Add Category AdminVC-->
         <scene sceneID="g0S-tu-Nfo">
@@ -1549,7 +1638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxx-9m-jLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4099" y="-2498"/>
+            <point key="canvasLocation" x="3865" y="-2465"/>
         </scene>
         <!--Admin ItemsVC-->
         <scene sceneID="m83-rR-XUf">
@@ -2069,12 +2158,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="wfI-xl-UUB"/>
-        <segue reference="Urz-D9-MVr"/>
+        <segue reference="zYa-UT-4bY"/>
         <segue reference="tpk-he-C5L"/>
-        <segue reference="oPY-KH-5YU"/>
+        <segue reference="W89-oH-rKv"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="aQY-2G-NCh"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
