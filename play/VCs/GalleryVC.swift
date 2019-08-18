@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+extension GalleryVC {
+  
+    
+     func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.landscape
+    }
+}
+
 class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,5 +67,14 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         }
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        AppUtility.lockOrientation(.all)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        AppUtility.lockOrientation(.portrait)
+    }
     
 }
