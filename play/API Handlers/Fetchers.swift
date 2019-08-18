@@ -130,7 +130,7 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
             {
                 //print(cat)
                 
-                fetchItemsByCategory(category: cat,completion: { (fitems) -> Void in
+                fetchItemsByCategory(category_id: cat,completion: { (fitems) -> Void in
                     
    
                     for obj in fitems
@@ -159,11 +159,11 @@ func fetchAllItems(completion: @escaping (_ success: [Item]) -> Void)
 }
 
 
-func fetchItemsByCategory(category: String,completion: @escaping (_ success: [Item]) -> Void)
+func fetchItemsByCategory(category_id: String,completion: @escaping (_ success: [Item]) -> Void)
 {
     var items = [Item]()
     
-    let ref = Database.database().reference(withPath: "Categories").child(category)
+    let ref = Database.database().reference(withPath: "Categories").child(category_id)
     
     var countItems=0
     
@@ -181,7 +181,8 @@ func fetchItemsByCategory(category: String,completion: @escaping (_ success: [It
                     currentItem.description = snap.childSnapshot(forPath: "descriere").value as! String
                     currentItem.image_url = snap.childSnapshot(forPath: "image_url").value as! String
                     currentItem.name = snap.childSnapshot(forPath: "name").value as! String
-                    currentItem.category = category
+                    currentItem.category_id = category_id
+                    currentItem.category_name = snap.childSnapshot(forPath: "categoryName").value as! String
                     currentItem.id = snap.key
                     
                     

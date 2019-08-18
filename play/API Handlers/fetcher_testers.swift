@@ -44,7 +44,7 @@ func fetch_items()
 {
     var fitems = [Item]()
     
-    fetchItemsByCategory(category: "C1",completion: { (items) -> Void in
+    fetchItemsByCategory(category_id: "C1",completion: { (items) -> Void in
         
         fitems=items
         

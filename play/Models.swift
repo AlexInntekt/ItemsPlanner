@@ -27,7 +27,8 @@ class Booking {
 class BookingPack {
     var id = String()
     var description = String()
-    var category = String()
+    var category_id = String()
+    var category_name = String()
     var itemId = String()
     var itemName = String()
     var user = String()
@@ -44,7 +45,8 @@ class Item {
         self.description = setDescription
     }
     init(){}
-    var category = String()
+    var category_name = String()
+    var category_id = String()
     var id = String()
     var description = String()
     var image_url = String()

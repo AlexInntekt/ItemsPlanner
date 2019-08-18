@@ -122,7 +122,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             
             
             
-            let itemPath = Database.database().reference().child("Categories").child(currentItem.category).child("items").child(currentItem.id)
+            let itemPath = Database.database().reference().child("Categories").child(currentItem.category_id).child("items").child(currentItem.id)
             
             let reference = Database.database().reference()
             
@@ -186,7 +186,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                                     
                                     if(isAvailable)
                                     {
-                                        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                                        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
             
             
                                         let title = "Rezervare efectuată"
@@ -240,7 +240,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                     
                 }else{
                     
-                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                     
                     let title = "Rezervare efectuată"
                     let message = "Rezervarea a fost facută cu succes!"
@@ -371,7 +371,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         self.numeArticol.text = self.currentItem.name
         
         print("Current selected item: \(self.currentItem.name)")
-        print("category: \(self.currentItem.category)")
+        print("category: \(self.currentItem.category_name)")
         print("id: \(self.currentItem.id)")
     }
     

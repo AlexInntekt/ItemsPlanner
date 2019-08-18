@@ -82,7 +82,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
 
         let item = Item()
-            item.category = selectedCategory
+            item.category_id = selectedCategory
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
         //createItem(item: item, byCategory: selectedCategory)
@@ -131,7 +131,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                                 {
                                     let itsUrl = url!.absoluteString
                                     
-                                    let path=self.reference.child("Categories").child(item.category).child("items").child(id).child("images")
+                                    let path=self.reference.child("Categories").child(item.category_id).child("items").child(id).child("images")
                                     let autoid=path.childByAutoId()
                                     path.child(autoid.key as! String).child("url").setValue(itsUrl)
                                     path.child(autoid.key as! String).child("uid").setValue(image_id)
@@ -207,8 +207,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 var index=0
                 for section in self.displayingCategories
                 {
-                    print("fijasngasgsHGH ", section, " ", self.cachedItem.category)
-                    if(section==self.cachedItem.category)
+
+                    if(section==self.cachedItem.category_id)
                     {
                         self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
                         self.selectedCategory=self.displayingCategories[index]
@@ -315,7 +315,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         {
             cachingItem.name=self.itemNameLabel.text ?? ""
             cachingItem.description=self.textView.text ?? ""
-            cachingItem.category=selectedCategory
+            cachingItem.category_id=selectedCategory
             
             let obj = sender as! Int
             let defVC = segue.destination as! ImageVC

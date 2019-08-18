@@ -25,7 +25,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "AdminItemCell") as! AdminItemCell
             cell.itemNameLabel?.text="Articol: \(displayingItems[indexPath.row].name)"
-            cell.categoryLabel?.text="Categorie: \(displayingItems[indexPath.row].category)"
+            cell.categoryLabel?.text="Categorie: \(displayingItems[indexPath.row].category_name)"
             cell.descriptionTextView?.text="Descriere: \(displayingItems[indexPath.row].description)"
         return cell;
     }
@@ -48,7 +48,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
                 })
             }
             
-            let path_of_item=ref.child("Categories").child(itemToDelete.category).child("items").child(itemToDelete.id)
+            let path_of_item=ref.child("Categories").child(itemToDelete.category_id).child("items").child(itemToDelete.id)
             path_of_item.removeValue()
         }
         
@@ -86,7 +86,8 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
             self.displayingItems.removeAll()
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
-                displayingCategories.append(category.key)
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                displayingCategories.append(category_name)
                 
                 let packets = category.childSnapshot(forPath: "items")
                 //print(packets)
@@ -94,7 +95,8 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
                 for item in packets.children.allObjects as! [DataSnapshot]
                 {
                     let currentItem = Item()
-                    currentItem.category = category.key as! String
+                    currentItem.category_id = category.key as! String
+                    currentItem.category_name = category_name
                     currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
                     currentItem.name = item.childSnapshot(forPath: "name").value as! String
                     currentItem.id = item.key
