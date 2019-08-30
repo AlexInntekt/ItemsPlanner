@@ -36,7 +36,7 @@ class ModifyCategoryVC: UIViewController
             
             let path = reference.child("Categories").child(currentCategory.key)
             
-            path.updateChildValues(["name":newName])
+            
             
             let pathToChange = reference.child("Bookings")
             
@@ -51,6 +51,7 @@ class ModifyCategoryVC: UIViewController
                         
                         if(its_category_id==self.currentCategory.key)
                         {
+                                path.updateChildValues(["name":newName])
                             self.reference.child("Bookings").child(key).updateChildValues(["categoryName":newName])
                         }
                         
