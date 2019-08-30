@@ -40,6 +40,7 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
     
     let new = db.childByAutoId()
     let interval = {["from":sd];["till":ed]}
+    new.updateChildValues(["cantitate":1])
     new.updateChildValues(["descriere":descr])
     new.updateChildValues(["itemId":id])
     new.updateChildValues(["categoryId":cat_id])

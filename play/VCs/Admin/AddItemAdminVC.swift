@@ -105,7 +105,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let db = reference.child("Categories").child(selectedCategory.key).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
-        let dict = ["name": item.name,"descriere": item.description]
+        let dict = ["name": item.name,"descriere": item.description,"cantitate": 1] as [String : Any] 
         
         let imagesFolder = Storage.storage().reference().child("images")
         
