@@ -338,10 +338,32 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let chosenDays = extractDaysFromInterval(date1,date2)
         let totalQuantityOfItem = currentItem.quantity
         
+        var available = true
+        
         for day in chosenDays
         {
+            let amount = find_number_of_occupied_items(day)
+            print(day,": ", amount)
             
-            find_number_of_occupied_items(day)
+            if(amount>=totalQuantityOfItem)
+            {
+                available=false
+            }
+        }
+        
+        if(available)
+        {
+            addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+            
+            
+            let title = "Rezervare efectuată"
+            let message = "Rezervarea a fost facută cu succes!"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+                print("Dismissing VC after adding booking")
+            }))
+            self.present(alert, animated: true)
         }
     }
     
