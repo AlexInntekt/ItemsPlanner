@@ -47,6 +47,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var categoryPicker: UIPickerView!
     
+    @IBOutlet weak var quantityTextfield: UITextField!
+    
     @IBOutlet weak var textView: UITextView!
     
     var imagePicker = UIImagePickerController()
@@ -81,19 +83,20 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBAction func saveItem(_ sender: Any)
     {
 
-        let item = Item()
+        if(self.quantityTextfield.text?.isInt ?? false)
+        {
+            let item = Item()
             item.category_name = selectedCategory.name
             item.category_id = selectedCategory.key
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
-        //createItem(item: item, byCategory: selectedCategory)
-        
-        
-//        let ImadeData = UIImageJPEGRepresentation(imageContainer.image!, 0.5)!
-        //let imageInstance = UIImage
-        
-        self.saveItemInDB(item: item)
-
+            item.quantity = Int(self.quantityTextfield.text!) ?? 1
+            self.saveItemInDB(item: item)
+        }
+        else
+        {
+            alert(UIVC: self, title: "Invalid", message: "Introduceți un număr întreg in câmpul de cantități.")
+        }
         
     }
     
@@ -105,7 +108,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let db = reference.child("Categories").child(selectedCategory.key).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
-        let dict = ["name": item.name,"descriere": item.description,"cantitate": 1] as [String : Any] 
+        let dict = ["name": item.name,"descriere": item.description,"cantitate": item.quantity] as [String : Any] 
         
         let imagesFolder = Storage.storage().reference().child("images")
         

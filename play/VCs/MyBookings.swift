@@ -44,9 +44,10 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         let startDate = convertEnDateToRo(displayingBookings[indexPath.row].startDate)
         let endDate = convertEnDateToRo(displayingBookings[indexPath.row].endDate)
-        
+        let quantity = displayingBookings[indexPath.row].quantity
         var text = displayingBookings[indexPath.row].description
             text += "\n Perioadă: \(startDate) - \(endDate)"
+            text += "\n Cantitate: \(quantity)"
         cell.itemName?.text = displayingBookings[indexPath.row].itemName
         cell.labelName.isUserInteractionEnabled = false
         
@@ -125,6 +126,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                         currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                         currentBooking.id = snap.key
+                        currentBooking.quantity = snap.childSnapshot(forPath: "cantitate").value as! Int
 
                         self.displayingBookings.append(currentBooking)
                         self.tbv.reloadData()

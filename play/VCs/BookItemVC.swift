@@ -368,7 +368,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let chosenDays = extractDaysFromInterval(date1,date2)
         let totalQuantityOfItem = currentItem.quantity
         
-        var available = false
+        var available = true
         
         for day in chosenDays
         {
@@ -377,14 +377,14 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             
             let numberOfAvailableItems = totalQuantityOfItem-amountOccupied
             
-//            print("totalQuantityOfItem: ",totalQuantityOfItem)
-//            print("amountOccupied: ",amountOccupied)
-//            print("numberOfAvailableItems: ",numberOfAvailableItems)
-//            print("desiredQuantityOfBookedItems: ",desiredQuantityOfBookedItems)
-            
-            if(desiredQuantityOfBookedItems<=numberOfAvailableItems)
+            print("totalQuantityOfItem: ",totalQuantityOfItem)
+            print("amountOccupied: ",amountOccupied)
+            print("numberOfAvailableItems: ",numberOfAvailableItems)
+            print("desiredQuantityOfBookedItems: ",desiredQuantityOfBookedItems)
+            print("\n")
+            if(desiredQuantityOfBookedItems>numberOfAvailableItems)
             {
-                available=true
+                available=false
             }
         }
         
@@ -398,7 +398,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         let current_user_id = Auth.auth().currentUser?.uid
         
-        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking, quantity: desiredQuantityOfBookedItems)
         
         
         let title = "Rezervare efectuată"

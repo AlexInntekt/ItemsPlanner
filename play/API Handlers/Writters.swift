@@ -32,7 +32,7 @@ func createItem(item item: Item, byCategory cat: String)
 }
 
 
-func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String)
+func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int)
 {
     
     let ref = Database.database().reference()
@@ -40,7 +40,7 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
     
     let new = db.childByAutoId()
     let interval = {["from":sd];["till":ed]}
-    new.updateChildValues(["cantitate":1])
+    new.updateChildValues(["cantitate":quantity])
     new.updateChildValues(["descriere":descr])
     new.updateChildValues(["itemId":id])
     new.updateChildValues(["categoryId":cat_id])

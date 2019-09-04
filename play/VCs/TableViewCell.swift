@@ -18,6 +18,8 @@ class TBVCell: UITableViewCell
     @IBOutlet var labelDescription: UILabel!
     
     @IBOutlet var labelCategory: UILabel!
+    
+    
 }
 
 

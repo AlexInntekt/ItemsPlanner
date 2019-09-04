@@ -419,15 +419,15 @@
                                     <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wlb-jp-kx3"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
                                 <rect key="frame" x="10" y="112" width="355" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TBVBookingCell" id="sHi-CJ-jtz" customClass="TBVBookingCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="355" height="115"/>
+                                        <rect key="frame" x="0.0" y="28" width="355" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sHi-CJ-jtz" id="24C-r0-USl">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="114.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="124.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-Zq-gOp">
@@ -1866,7 +1866,7 @@
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descriere:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-n9-CQf">
-                                <rect key="frame" x="7" y="424.33333333333331" width="371" height="30"/>
+                                <rect key="frame" x="7" y="474.33333333333331" width="371" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aFI-8f-no9"/>
                                 </constraints>
@@ -1875,7 +1875,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="150x50x50, culoare maro cu motive de pin. La pliere are o grosime de 20cm." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="14y-qi-7yP">
-                                <rect key="frame" x="25" y="464.33333333333326" width="335" height="258.66666666666674"/>
+                                <rect key="frame" x="25" y="514.33333333333337" width="335" height="208.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1941,6 +1941,21 @@
                                     <outlet property="delegate" destination="1Cf-Dh-Jhx" id="wWI-ln-4jD"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantitate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-aP-gXB">
+                                <rect key="frame" x="7.0000000000000071" y="424.33333333333331" width="115.66666666666669" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Vf2-px-i31"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGV-Q0-ilk">
+                                <rect key="frame" x="142" y="424.33333333333331" width="154" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1948,6 +1963,7 @@
                             <constraint firstItem="sRZ-if-vVM" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="25" id="1uY-Vk-Ina"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="leading" secondItem="WZE-ur-Bei" secondAttribute="trailing" constant="10" id="2A1-N6-jml"/>
                             <constraint firstItem="NDk-3m-Nea" firstAttribute="top" secondItem="nQj-E2-ydC" secondAttribute="bottom" constant="5" id="2wU-mo-0iC"/>
+                            <constraint firstItem="hGV-Q0-ilk" firstAttribute="top" secondItem="sRZ-if-vVM" secondAttribute="bottom" id="3bo-Rx-Wki"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="14y-qi-7yP" secondAttribute="trailing" constant="25" id="4W1-33-FYi"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="TCu-n9-CQf" secondAttribute="trailing" constant="7" id="4bS-PY-KJb"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="D5J-QZ-f7Q" secondAttribute="trailing" constant="5" id="4nH-Uu-U9R"/>
@@ -1966,16 +1982,21 @@
                             <constraint firstItem="KVL-qV-woN" firstAttribute="height" secondItem="D5J-QZ-f7Q" secondAttribute="height" multiplier="0.5" id="WU1-hv-msF"/>
                             <constraint firstItem="NDk-3m-Nea" firstAttribute="top" secondItem="WZE-ur-Bei" secondAttribute="bottom" constant="135" id="WYU-ZB-IFb"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="bottom" secondItem="HcS-Ch-pTu" secondAttribute="bottom" constant="5" id="X4Z-Qj-FQu"/>
+                            <constraint firstItem="hGV-Q0-ilk" firstAttribute="leading" secondItem="fh0-aP-gXB" secondAttribute="trailing" constant="19.333333333333314" id="ali-5s-BUO"/>
                             <constraint firstItem="TCu-n9-CQf" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="7" id="ct9-X5-8wo"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="KVL-qV-woN" secondAttribute="trailing" constant="10" id="eqi-8K-m9V"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="nQj-E2-ydC" secondAttribute="trailing" id="jcf-S7-GcV"/>
+                            <constraint firstItem="fh0-aP-gXB" firstAttribute="width" secondItem="tpg-gA-yDH" secondAttribute="width" multiplier="0.3" id="nZ4-DH-xOR"/>
+                            <constraint firstItem="TCu-n9-CQf" firstAttribute="top" secondItem="fh0-aP-gXB" secondAttribute="bottom" constant="20" id="o1k-Bn-NrZ"/>
+                            <constraint firstItem="hGV-Q0-ilk" firstAttribute="width" secondItem="tpg-gA-yDH" secondAttribute="width" multiplier="0.4" id="oXN-YG-EfH"/>
                             <constraint firstItem="NDk-3m-Nea" firstAttribute="width" secondItem="tpg-gA-yDH" secondAttribute="width" multiplier="0.8" id="pVT-P8-hH1"/>
                             <constraint firstItem="HcS-Ch-pTu" firstAttribute="top" secondItem="14y-qi-7yP" secondAttribute="bottom" constant="5" id="q9U-zW-r8n"/>
+                            <constraint firstItem="fh0-aP-gXB" firstAttribute="leading" secondItem="5of-Wn-Nqs" secondAttribute="leading" constant="7" id="qvo-mp-8br"/>
                             <constraint firstItem="D5J-QZ-f7Q" firstAttribute="top" secondItem="5of-Wn-Nqs" secondAttribute="top" id="rO5-hd-Xy2"/>
                             <constraint firstItem="KVL-qV-woN" firstAttribute="top" secondItem="D5J-QZ-f7Q" secondAttribute="bottom" constant="-20" id="sr4-W7-fgj"/>
                             <constraint firstItem="sRZ-if-vVM" firstAttribute="top" secondItem="SIY-Kc-hl8" secondAttribute="bottom" id="uhJ-h0-UEu"/>
                             <constraint firstItem="5of-Wn-Nqs" firstAttribute="trailing" secondItem="SIY-Kc-hl8" secondAttribute="trailing" constant="7" id="w3f-7W-lIA"/>
-                            <constraint firstItem="TCu-n9-CQf" firstAttribute="top" secondItem="sRZ-if-vVM" secondAttribute="bottom" id="z9m-YF-Sqr"/>
+                            <constraint firstItem="fh0-aP-gXB" firstAttribute="top" secondItem="sRZ-if-vVM" secondAttribute="bottom" id="yTv-UA-ahO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5of-Wn-Nqs"/>
                     </view>
@@ -1984,6 +2005,7 @@
                         <outlet property="categoryPicker" destination="sRZ-if-vVM" id="wcV-bo-y09"/>
                         <outlet property="gallery" destination="nQj-E2-ydC" id="1or-dN-4YB"/>
                         <outlet property="itemNameLabel" destination="NDk-3m-Nea" id="9db-6m-23T"/>
+                        <outlet property="quantityTextfield" destination="hGV-Q0-ilk" id="tVK-lG-LGD"/>
                         <outlet property="saveItem" destination="HcS-Ch-pTu" id="6N7-Ni-A8X"/>
                         <outlet property="textView" destination="14y-qi-7yP" id="EzQ-B2-LyD"/>
                         <segue destination="9fi-ZC-F2q" kind="custom" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="jNh-se-duz"/>
@@ -2179,9 +2201,9 @@
         <segue reference="zYa-UT-4bY"/>
         <segue reference="tpk-he-C5L"/>
         <segue reference="W89-oH-rKv"/>
-        <segue reference="g0p-4A-HcZ"/>
+        <segue reference="reU-xr-CK0"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="wlb-jp-kx3"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
