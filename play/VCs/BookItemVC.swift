@@ -59,8 +59,26 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
+    UIPickerViewDelegate,
+    UIPickerViewDataSource
 {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 20
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.currentItem.quantity
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row+1)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentItem.images.count
     }
@@ -89,6 +107,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         return CGSize(width: width, height: height)
     }
+    
+    
+    @IBOutlet weak var quantityPicker: UIPickerView!
+    
     
     var currentItem=Item()
     var bookingsOfCurrentItem=[Booking]()
@@ -206,6 +228,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         self.calendarView.allowsRangedSelection = true
         self.gallery.delegate = self
         self.gallery.dataSource = self
+        self.quantityPicker.delegate = self
+        self.quantityPicker.dataSource = self
         
         textfieldDescription.delegate = self
         

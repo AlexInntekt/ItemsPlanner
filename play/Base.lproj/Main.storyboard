@@ -1018,7 +1018,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume articol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-eC-eb2">
-                                <rect key="frame" x="56.333333333333343" y="59" width="262.33333333333326" height="40"/>
+                                <rect key="frame" x="56.333333333333343" y="44" width="262.33333333333326" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7VR-si-kIP"/>
                                 </constraints>
@@ -1041,7 +1041,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Necesit articolul pentru un eveniment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ztL-sh-V0p">
-                                <rect key="frame" x="10" y="114" width="355" height="80"/>
+                                <rect key="frame" x="10" y="124" width="355" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="QYO-Hh-8Q8"/>
@@ -1199,7 +1199,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t14-qE-o9W">
-                                <rect key="frame" x="15" y="199" width="345" height="184"/>
+                                <rect key="frame" x="15" y="209" width="345" height="174"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="6iO-I0-2AY">
                                     <size key="itemSize" width="350" height="100"/>
@@ -1209,7 +1209,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="nes-Z1-Kxb" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="42" width="350" height="100"/>
+                                        <rect key="frame" x="0.0" y="37" width="350" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
@@ -1232,26 +1232,43 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantitate: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoX-ZT-jfM">
+                                <rect key="frame" x="85" y="90.333333333333329" width="60" height="25.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dg0-Lc-BnZ">
+                                <rect key="frame" x="180" y="84" width="160" height="40"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="Mgd-qH-6Wz" secondAttribute="bottom" constant="10" id="0o5-eW-Cln"/>
                             <constraint firstItem="EKA-OB-Bhp" firstAttribute="trailing" secondItem="Mgd-qH-6Wz" secondAttribute="trailing" constant="15" id="2iC-9P-M2X"/>
+                            <constraint firstItem="dg0-Lc-BnZ" firstAttribute="top" secondItem="kcD-eC-eb2" secondAttribute="bottom" id="4lZ-mO-Cox"/>
                             <constraint firstItem="t14-qE-o9W" firstAttribute="top" secondItem="ztL-sh-V0p" secondAttribute="bottom" constant="5" id="6ik-HO-fqu"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="top" constant="5" id="7Cc-TD-ihD"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="width" secondItem="DE5-df-Oa7" secondAttribute="width" multiplier="0.7" id="8wM-IO-E37"/>
                             <constraint firstItem="hb6-oF-lc1" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="5" id="9de-Fh-fNk"/>
-                            <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="5" id="B1q-Fa-mGB"/>
+                            <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="hb6-oF-lc1" secondAttribute="bottom" constant="15" id="B1q-Fa-mGB"/>
                             <constraint firstItem="kcD-eC-eb2" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="CKp-2p-QSj"/>
                             <constraint firstItem="t14-qE-o9W" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="GtJ-vA-W6D"/>
                             <constraint firstItem="ztL-sh-V0p" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="10" id="HQm-L0-qgJ"/>
                             <constraint firstItem="EKA-OB-Bhp" firstAttribute="trailing" secondItem="t14-qE-o9W" secondAttribute="trailing" constant="15" id="HbG-TB-UgR"/>
+                            <constraint firstAttribute="trailing" secondItem="dg0-Lc-BnZ" secondAttribute="trailing" constant="35" id="IdB-f2-Kk3"/>
+                            <constraint firstItem="IoX-ZT-jfM" firstAttribute="top" secondItem="kcD-eC-eb2" secondAttribute="bottom" constant="6.3333333333333286" id="Jf4-hL-cOf"/>
+                            <constraint firstItem="kcD-eC-eb2" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="top" id="LJu-OC-i1x"/>
+                            <constraint firstItem="IoX-ZT-jfM" firstAttribute="width" secondItem="hb6-oF-lc1" secondAttribute="width" id="LzQ-Ef-CWf"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="bottom" constant="-60" id="VGg-XT-XO6"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="YTM-9i-buc"/>
-                            <constraint firstItem="kcD-eC-eb2" firstAttribute="centerY" secondItem="hb6-oF-lc1" secondAttribute="centerY" id="aSd-h6-TRK"/>
+                            <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="dg0-Lc-BnZ" secondAttribute="bottom" id="ZlE-vQ-zKQ"/>
                             <constraint firstAttribute="trailing" secondItem="ztL-sh-V0p" secondAttribute="trailing" constant="10" id="fsd-Mr-TOA"/>
+                            <constraint firstItem="IoX-ZT-jfM" firstAttribute="leading" secondItem="hb6-oF-lc1" secondAttribute="trailing" constant="20" id="hFl-yK-Fdn"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="i6b-Sj-26L"/>
+                            <constraint firstItem="dg0-Lc-BnZ" firstAttribute="leading" secondItem="IoX-ZT-jfM" secondAttribute="trailing" constant="35" id="r3n-0t-Vop"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="top" secondItem="t14-qE-o9W" secondAttribute="bottom" constant="5" id="tpr-PY-dr8"/>
+                            <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="IoX-ZT-jfM" secondAttribute="bottom" constant="8" id="yzh-lO-Xue"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EKA-OB-Bhp"/>
                     </view>
@@ -1260,6 +1277,7 @@
                         <outlet property="calendarView" destination="Mgd-qH-6Wz" id="M7N-qF-mCc"/>
                         <outlet property="gallery" destination="t14-qE-o9W" id="bpW-vA-66p"/>
                         <outlet property="numeArticol" destination="kcD-eC-eb2" id="9hW-un-0cU"/>
+                        <outlet property="quantityPicker" destination="dg0-Lc-BnZ" id="t6a-nK-dwJ"/>
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
                         <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
                         <segue destination="Mzb-lP-pFS" kind="custom" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Wz4-QR-s1D"/>
@@ -2163,7 +2181,7 @@
         <segue reference="W89-oH-rKv"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="QQe-8j-Sh8"/>
-        <segue reference="aQY-2G-NCh"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
