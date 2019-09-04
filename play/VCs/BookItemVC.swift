@@ -79,6 +79,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         return String(row+1)
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        self.desiredQuantityOfBookedItems = row
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentItem.images.count
     }
@@ -119,6 +124,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     var endDateOfBooking=""
     var chosenInterval = DateInterval()
     let nscalendar = NSCalendar.current
+    var desiredQuantityOfBookedItems = 1
     
     @IBOutlet weak var gallery: UICollectionView!
     
@@ -366,10 +372,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         for day in chosenDays
         {
-            let amount = find_number_of_occupied_items(day)
-            print(day,": ", amount)
+            let amountOccupied = find_number_of_occupied_items(day)
+            print(day,": ", amountOccupied)
             
-            if(amount>=totalQuantityOfItem)
+            let numberOfAvailableItems = totalQuantityOfItem-amountOccupied
+            
+            if(desiredQuantityOfBookedItems<=numberOfAvailableItems)
             {
                 available=false
             }
