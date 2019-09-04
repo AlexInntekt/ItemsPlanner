@@ -81,7 +81,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        self.desiredQuantityOfBookedItems = row
+        self.desiredQuantityOfBookedItems = row+1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -368,7 +368,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let chosenDays = extractDaysFromInterval(date1,date2)
         let totalQuantityOfItem = currentItem.quantity
         
-        var available = true
+        var available = false
         
         for day in chosenDays
         {
@@ -377,9 +377,14 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             
             let numberOfAvailableItems = totalQuantityOfItem-amountOccupied
             
+//            print("totalQuantityOfItem: ",totalQuantityOfItem)
+//            print("amountOccupied: ",amountOccupied)
+//            print("numberOfAvailableItems: ",numberOfAvailableItems)
+//            print("desiredQuantityOfBookedItems: ",desiredQuantityOfBookedItems)
+            
             if(desiredQuantityOfBookedItems<=numberOfAvailableItems)
             {
-                available=false
+                available=true
             }
         }
         
