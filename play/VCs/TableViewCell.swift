@@ -62,3 +62,9 @@ class AdminItemCell: UITableViewCell
     
     @IBOutlet weak var descriptionTextView: UITextView!
 }
+
+
+class ImageCell: UICollectionViewCell
+{
+    @IBOutlet weak var image: UIImageView!
+}

@@ -17,7 +17,7 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var tbv: UITableView!
     
-    var displayingCategories=[String]()
+    var displayingCategories:[(key: String, name: String)] = []
     
     let reference = Database.database().reference()
     
@@ -37,8 +37,13 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-            cell.textLabel?.text = displayingCategories[indexPath.row]
+            cell.textLabel?.text = displayingCategories[indexPath.row].name
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        self.performSegue(withIdentifier: "modifyCategory", sender: displayingCategories[indexPath.row])
     }
     
     
@@ -55,7 +60,7 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             }))
             alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
                 
-                let key = self.displayingCategories[indexPath.row]
+                let key = self.displayingCategories[indexPath.row].key
                 self.reference.child("Categories").child(key).removeValue()
                 self.tbv.reloadData()
             }))
@@ -74,11 +79,22 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             self.displayingCategories.removeAll()
             for category in pack.children.allObjects as! [DataSnapshot]{
             
-                let name = category.key as! String
-                self.displayingCategories.append(name)
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                let name = category_name
+                self.displayingCategories.append((key:category.key, name:name))
                 
                 self.tbv.reloadData()
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier=="modifyCategory")
+        {
+            let categoryCell = sender as! (key: String, name: String)
+            let defVC = segue.destination as! ModifyCategoryVC
+            defVC.currentCategory = categoryCell
         }
     }
     

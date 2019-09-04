@@ -58,7 +58,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             let bk = self.displayingBookings[indexPath.row]
             self.displayingBookings.remove(at: indexPath.row)
             self.TBVAdmin.reloadData()
-            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category)
+            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category_id)
             
         }
         
@@ -111,7 +111,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             
                             
                             let currentBooking = BookingPack()
-                            currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
+                            currentBooking.category_id = snap.childSnapshot(forPath: "categoryId").value as! String
+                            currentBooking.category_name = snap.childSnapshot(forPath: "categoryName").value as! String
                             currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
                             currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
                             currentBooking.itemId = snap.childSnapshot(forPath: "itemId").value as! String

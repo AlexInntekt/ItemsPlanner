@@ -11,9 +11,9 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import JTAppleCalendar
+import SDWebImage
 
-let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
-let date=Date()
+
 var reports=[FailedBookingReportModel]()
 
 extension BookItemVC: JTACMonthViewDataSource {
@@ -58,11 +58,43 @@ extension BookItemVC: JTACMonthViewDelegate {
     
 }
 
-class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
+class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return currentItem.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = gallery.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
+        
+        let url = URL(string: currentItem.images[indexPath.row].url)
+        cell!.image.sd_setImage(with: url, completed: nil)
+        
+        
+        //self.imageContainer.sd_setImage(with: url, completed: nil)
+        
+        return cell!
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "gallerySegue", sender: indexPath.row)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let height = gallery.frame.size.height
+        let width = gallery.frame.size.width
+        
+        return CGSize(width: width, height: height)
+    }
+    
     var currentItem=Item()
+    var descriptionOfBooking = ""
     var startDateOfBooking=""
     var endDateOfBooking=""
+    
+    @IBOutlet weak var gallery: UICollectionView!
     
     @IBOutlet weak var calendarView: JTACMonthView!
  
@@ -71,6 +103,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet var textfieldDescription: UITextView!
     
     @IBOutlet var progressLabel: UILabel!
+    
+    @IBOutlet weak var imageContainer: UIImageView!
     
     @IBOutlet var bookButton: UIButton!
     @IBAction func bookButton(_ sender: Any)
@@ -96,7 +130,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
             
             
             
-            let itemPath = Database.database().reference().child("Categories").child(currentItem.category).child("items").child(currentItem.id)
+            let itemPath = Database.database().reference().child("Categories").child(currentItem.category_id).child("items").child(currentItem.id)
             
             let reference = Database.database().reference()
             
@@ -160,7 +194,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     
                                     if(isAvailable)
                                     {
-                                        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                                        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
             
             
                                         let title = "Rezervare efectuată"
@@ -214,7 +248,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     
                 }else{
                     
-                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category: self.currentItem.category, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
+                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
                     
                     let title = "Rezervare efectuată"
                     let message = "Rezervarea a fost facută cu succes!"
@@ -325,6 +359,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         
         self.calendarView.allowsMultipleSelection = true
         self.calendarView.allowsRangedSelection = true
+        self.gallery.delegate = self
+        self.gallery.dataSource = self
         
         textfieldDescription.delegate = self
         
@@ -343,13 +379,26 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
         self.numeArticol.text = self.currentItem.name
         
         print("Current selected item: \(self.currentItem.name)")
-        print("category: \(self.currentItem.category)")
+        print("category: \(self.currentItem.category_name)")
         print("id: \(self.currentItem.id)")
     }
     
     func setupUI()
     {
-        self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+        
+        if(self.descriptionOfBooking=="")
+        {
+            self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+        }
+        else
+        {
+            self.textfieldDescription.text = self.descriptionOfBooking
+        }
+        
+        
+//        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
+        
+        
     }
     
 
@@ -373,14 +422,26 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
     {
+        self.descriptionOfBooking = self.textfieldDescription.text
+        
         if(segue.identifier=="seeFailedBookingReport")
         {
-
             let defVC = segue.destination as! FailedBookingReport
             defVC.reports = reports
             defVC.desiredItem = currentItem as! Item
+            defVC.descriptionOfBooking = self.descriptionOfBooking
+        }
+        
+        if(segue.identifier=="gallerySegue")
+        {
+            let defVC = segue.destination as! GalleryVC
+            defVC.currentItem = self.currentItem
+            defVC.descriptionOfBooking = self.descriptionOfBooking
         }
         
         
+        
     }
+    
+    
 }

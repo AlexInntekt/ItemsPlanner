@@ -12,11 +12,36 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate
+class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 {
-    var displayingCategories=[String]()
-    var selectedCategory=""
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = gallery.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
+        cell!.image.image = images[indexPath.row]
+        
+        return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
+    }
+    
+    var images=[UIImage]()
+    var displayingCategories:[(key: String, name: String)] = []
+    var selectedCategory=(key:"", name:"")
+    var indexOfSelectedCategory=0
     let reference = Database.database().reference()
+    var cachingItem = Item()
+    var cachedItem = Item()
+
+    
+    @IBOutlet weak var backButtonToFirstTextfieldConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var gallery: UICollectionView!
+    
     
     @IBOutlet weak var itemNameLabel: UITextField!
     
@@ -24,29 +49,109 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet weak var textView: UITextView!
     
+    var imagePicker = UIImagePickerController()
+    
+    
+    @IBAction func addImage(_ sender: Any)
+    {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        //let image = info[UIImagePickerController.image] as! UIImage
+        guard let image = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        images.append(image)
+        
+        cauchedImagesToCreate=images
+        
+        dismiss(animated: true) {
+            self.gallery.reloadData()
+            self.showOrHideGallery()
+        }
+        
+        
+    }
     
     @IBOutlet weak var saveItem: UIButton!
-    
     @IBAction func saveItem(_ sender: Any)
     {
 
         let item = Item()
-            item.category = selectedCategory
+            item.category_name = selectedCategory.name
+            item.category_id = selectedCategory.key
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
-        
         //createItem(item: item, byCategory: selectedCategory)
         
-        let db = reference.child("Categories").child(selectedCategory).child("items")
+        
+//        let ImadeData = UIImageJPEGRepresentation(imageContainer.image!, 0.5)!
+        //let imageInstance = UIImage
+        
+        self.saveItemInDB(item: item)
+
+        
+    }
+    
+    func saveItemInDB(item item: Item)
+    {
+        
+        self.saveItem.isEnabled=false
+        
+        let db = reference.child("Categories").child(selectedCategory.key).child("items")
         db.childByAutoId()
         let id = db.childByAutoId().key as! String
-        let dict = ["name": item.name,"image_url": item.image_url,"descriere": item.description]
+        let dict = ["name": item.name,"descriere": item.description,"cantitate": 1] as [String : Any] 
+        
+        let imagesFolder = Storage.storage().reference().child("images")
         
         db.child(id).setValue(dict) { (error, reference) in
             if(error==nil)
             {
+                
+                for image in self.images
+                {
+                    let image_id="\(NSUUID().uuidString).jpg"
+                    let ImageData =  image.jpegData(compressionQuality: 0.5)!
+                    
+                    let refStorage = imagesFolder.child(image_id)
+                    refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
+                        if error != nil
+                        {
+                            print("\n\n! Error code f304hg93hg9 \n\n")
+                            
+                        }
+                        else
+                        {
+
+                            refStorage.downloadURL { url, error in
+                                if(error==nil)
+                                {
+                                    let itsUrl = url!.absoluteString
+
+                                    let path=self.reference.child("Categories").child(item.category_id).child("items").child(id).child("images")
+                                    let autoid=path.childByAutoId()
+                                    path.child(autoid.key as! String).child("url").setValue(itsUrl)
+                                    path.child(autoid.key as! String).child("uid").setValue(image_id)
+                                }
+                                else
+                                {
+                                    
+                                }
+                                
+                            }
+                        }
+                    })
+                }
+                
+                showCachedItem=false
+                
                 let title = "Adăugare cu succes"
-                let message = "Articolul a fost adaugat!"
+                let message = "Obiectul a fost adaugat in baza de date!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                     self.performSegue(withIdentifier: "backToItemsSegue", sender: nil)
@@ -56,12 +161,18 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             else
             {
+                self.saveItem.isEnabled=true
+                
                 alert(UIVC: self, title: "Eroare detectată", message: "Articolul nu a putut fi adăugat. Dacă problema persistă, contactați dezvoltatorii. Eroare:  \(error.debugDescription)")
             }
         }
-        
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        setupui()
+        self.gallery.reloadData()
+    }
     
     override func viewDidLoad()
     {
@@ -69,8 +180,10 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.itemNameLabel.delegate = self
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
+        self.imagePicker.delegate = self
         
         loadCategoriesFromDB()
+        dealWithCachedItem()
     }
     
     func loadCategoriesFromDB()
@@ -82,14 +195,32 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         reference.child("Categories").observeSingleEvent(of: .value) { (allCategories) in
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
-                self.displayingCategories.append(category.key)
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                self.displayingCategories.append((key:category.key,name:category_name))
                 
-                print(category.key)
+                //print(category.key)
             }
+            
+            print(self.displayingCategories)
 
             self.categoryPicker.reloadAllComponents()
             
             self.selectedCategory=self.displayingCategories[0]
+            
+            if(showCachedItem)
+            {
+                var index=0
+                for section in self.displayingCategories
+                {
+
+                    if(section.name==self.cachedItem.category_name)
+                    {
+                        self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
+                        self.selectedCategory=self.displayingCategories[index]
+                    }
+                    index+=1
+                }
+            }
         }
     }
     
@@ -106,7 +237,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return displayingCategories[row]
+        return displayingCategories[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -114,11 +245,22 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if(!displayingCategories.isEmpty)
         {
             self.selectedCategory=displayingCategories[row]
+            self.indexOfSelectedCategory=row
         }
         
         
     }
     
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    /* Older versions of Swift */
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
@@ -133,4 +275,63 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.view.endEditing(true)
         return true
     }
+    
+    func setupui()
+    {
+        dealWithCachedItem()
+        showOrHideGallery()
+    }
+    
+    func dealWithCachedItem()
+    {
+
+        if(showCachedItem)
+        {
+            self.itemNameLabel.text = cachedItem.name
+            self.textView.text = cachedItem.description
+            self.images = cauchedImagesToCreate
+            
+            print("showCachedItem true")
+        }
+        else
+        {
+            print("showCachedItem false")
+        }
+
+        
+        
+    
+    }
+    
+    func showOrHideGallery()
+    {
+        if(gallery.numberOfItems(inSection: 0)==0)
+        {
+            backButtonToFirstTextfieldConstraint.constant=20
+        }
+        else
+        {
+            backButtonToFirstTextfieldConstraint.constant=140
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier=="GoToImageVC")
+        {
+            cachingItem.name=self.itemNameLabel.text ?? ""
+            cachingItem.description=self.textView.text ?? ""
+            cachingItem.category_id=selectedCategory.key
+            
+            let obj = sender as! Int
+            let defVC = segue.destination as! ImageVC
+            defVC.imageIndex = obj
+            defVC.currentItem = cachingItem
+            
+            showCachedItem=true
+        }
+    }
+    
+
+    
+    
 }

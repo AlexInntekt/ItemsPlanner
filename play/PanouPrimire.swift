@@ -162,7 +162,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         {
             for item in items
             {
-                if(item.category==category)
+                if(item.category_name==category)
                 {
                     displayingItems.append(item)
                 }
@@ -182,7 +182,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         let item = displayingItems[indexPath.row]
         cell.labelName?.text = item.name
         cell.labelDescription?.text = item.description
-        cell.labelCategory?.text = "categorie: \(item.category)"
+        cell.labelCategory?.text = "categorie: \(item.category_name)"
         return cell;
     }
     
@@ -265,8 +265,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             defVC.currentItem = obj
            
         }
-        
-        
     }
     
     func setupLogic()
@@ -313,7 +311,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             displayingCategories.append("Toate")
             
             for category in allCategories.children.allObjects as! [DataSnapshot]{
-                displayingCategories.append(category.key)
+                let category_key = category.key
+                let category_name = category.childSnapshot(forPath: "name").value as! String
+                
+                displayingCategories.append(category_name)
                 
                 let packets = category.childSnapshot(forPath: "items")
                 //print(packets)
@@ -321,10 +322,41 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 for item in packets.children.allObjects as! [DataSnapshot]
                 {
                       let currentItem = Item()
-                      currentItem.category = category.key as! String
-                      currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
-                      currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                    
+                      if category.key != nil
+                      {
+                        currentItem.category_id = category_key
+                        currentItem.category_name = category_name
+                      }
+                    
+                      if item.childSnapshot(forPath: "descriere").value != nil
+                      {
+                        currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
+                     }
+                    
+                      if item.childSnapshot(forPath: "name").value != nil
+                      {
+                        currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                      }
+                    
                       currentItem.id = item.key
+                    
+                      for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
+                      {
+//                        currentItem.image_url = imageurl.value as! String
+                        //print(imageurl)
+                        
+                        
+                        if((image.childSnapshot(forPath: "uid").exists()) && (image.childSnapshot(forPath: "url").exists()))
+                        {
+                            let fbimage = FBImage()
+                            fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
+                            fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                            currentItem.images.append(fbimage)
+                        }
+                        
+                        
+                    }
                     
                       items.append(currentItem)
                 }
