@@ -91,6 +91,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     }
     
     var currentItem=Item()
+    var bookingsOfCurrentItem=[Booking]()
     var descriptionOfBooking = ""
     var startDateOfBooking=""
     var endDateOfBooking=""
@@ -157,7 +158,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 
                 let date_as_string = formatter.string(from: date)
                 
-                print(date_as_string)
+                //print(date_as_string)
             }
             
             self.startDateOfBooking = formatter.string(from: self.calendarView.selectedDates.first!)
@@ -220,9 +221,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         self.numeArticol.text = self.currentItem.name
         
-        print("Current selected item: \(self.currentItem.name)")
-        print("category: \(self.currentItem.category_name)")
-        print("id: \(self.currentItem.id)")
+//        print("Current selected item: \(self.currentItem.name)")
+//        print("category: \(self.currentItem.category_name)")
+//        print("id: \(self.currentItem.id)")
+        
+        load_bookings_of_item()
     }
     
     func setupUI()
@@ -312,11 +315,16 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         {
             //print(DateFormatter.string(from: startDate))
             date = calendar.date(byAdding: .day, value: 1, to: date)!
-            print(date)
+            //print(date)
             dates.append(date)
         }
         
         return dates
+    }
+    
+    func find_number_of_available_items()
+    {
+        
     }
     
     func startBookingProcedure()
@@ -330,5 +338,42 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let chosenInterval = DateInterval(start: date1, end: date2)
         extractDaysFromInterval(date1,date2)
         
+        print(bookingsOfCurrentItem)
+        
     }
+    
+    func load_bookings_of_item()
+    {
+        reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.value) { (bookings_ids) in
+            
+            self.bookingsOfCurrentItem.removeAll()
+            
+            print("Running load_bookings_of_item()")
+            for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
+            {
+                let id_of_booking = bk_id.value as! String
+                
+                let path = reference.child("Bookings").child(id_of_booking)
+                
+                path.observeSingleEvent(of: .value) { (bk) in
+                    
+
+                    let booking = Booking()
+                    booking.category = self.currentItem.category_id
+                    booking.id = id_of_booking
+                    booking.itemId = self.currentItem.id
+                    booking.itemName = self.currentItem.name
+                    booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+                    booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                    booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                    booking.user = bk.childSnapshot(forPath: "user").value as! String
+                
+                    self.bookingsOfCurrentItem.append(booking)
+                    
+                } //end of observeSingleEvent
+            }
+        
+        }
+   
+    } //end of load_bookings_of_item()
 }

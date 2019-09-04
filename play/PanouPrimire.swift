@@ -339,6 +339,17 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       }
                     
+//                      if item.childSnapshot(forPath: "bookings").value != nil
+//                      {
+//                         for bk in item.childSnapshot(forPath: "bookings").children.allObjects as! [DataSnapshot]
+//                         {
+//                            let booking = Booking()
+//                                booking.category = 
+//                            
+//                            currentItem.bookings.append(bk)
+//                         }
+//                      }
+                    
                       currentItem.id = item.key
                     
                       for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
