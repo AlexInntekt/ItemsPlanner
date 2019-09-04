@@ -21,6 +21,7 @@ class Booking {
     var user = String()
     var startDate = String()
     var endDate = String()
+    var quantity = Int()
     
 }
 
@@ -53,6 +54,7 @@ class Item {
     var name = String()
     var bookings = [Booking]()
     var images = [FBImage]()
+    var quantity = Int()
 }
 
 

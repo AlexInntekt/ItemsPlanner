@@ -95,6 +95,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     var descriptionOfBooking = ""
     var startDateOfBooking=""
     var endDateOfBooking=""
+    var chosenInterval = DateInterval()
+    let nscalendar = NSCalendar.current
     
     @IBOutlet weak var gallery: UICollectionView!
     
@@ -322,24 +324,77 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         return dates
     }
     
-    func find_number_of_available_items()
-    {
-        
-    }
+    
+    
     
     func startBookingProcedure()
     {
         let dif = DateIntervalFormatter()
-        formatter.dateFormat = "YYYY MM dd"
+        formatter.dateFormat = "yyyy MM dd"
         let date1 = formatter.date(from: startDateOfBooking)!
         let date2 = formatter.date(from: endDateOfBooking)!
         let current_user_id = Auth.auth().currentUser?.uid
         
-        let chosenInterval = DateInterval(start: date1, end: date2)
-        extractDaysFromInterval(date1,date2)
+        let chosenDays = extractDaysFromInterval(date1,date2)
+        let totalQuantityOfItem = currentItem.quantity
         
-        print(bookingsOfCurrentItem)
+        for day in chosenDays
+        {
+            
+            find_number_of_occupied_items(day)
+        }
+    }
+    
+    
+    func find_number_of_occupied_items(_ day: Date)->Int
+    {
+        var amount=0
+        var bks = getBookingsThatIntersects(day: day)
         
+        for bk in bks
+        {
+            //print(bk.id)
+            amount+=bk.quantity
+        }
+        
+        //print(day,": ", amount)
+        
+        return amount
+        
+    }
+    
+    func getBookingsThatIntersects(day day: Date)->[Booking]
+    {
+        let date1 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: startDateOfBooking)!)!
+        let date2 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: endDateOfBooking)!)!
+        
+        chosenInterval = DateInterval(start: day, end: day)
+
+        var matchedBookings=[Booking]()
+        formatter.dateFormat = "YYYY MM dd"
+        for booking in self.bookingsOfCurrentItem
+        {
+            let startDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.startDate)!)!
+            let endDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.endDate)!)!
+//            let startDate = formatter.date(from: booking.startDate)!
+//            let endDate = formatter.date(from: booking.endDate)!
+            
+            let dateInterval = DateInterval(start: startDate, end: endDate)
+            
+            if dateInterval.intersects(chosenInterval)
+            {
+                matchedBookings.append(booking)
+//                print(booking.id)
+//                print(dateInterval)
+//                print(chosenInterval)
+                //print(dateInterval," ||| ",  " to ", chosenInterval)
+            }
+            
+
+
+        }
+        
+        return matchedBookings
     }
     
     func load_bookings_of_item()
@@ -367,7 +422,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                     booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                     booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                     booking.user = bk.childSnapshot(forPath: "user").value as! String
-                
+                    booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
                     self.bookingsOfCurrentItem.append(booking)
                     
                 } //end of observeSingleEvent

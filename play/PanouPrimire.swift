@@ -339,6 +339,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       }
                     
+                     if item.childSnapshot(forPath: "cantitate").value != nil
+                     {
+                        currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
+                     }
+                    
 //                      if item.childSnapshot(forPath: "bookings").value != nil
 //                      {
 //                         for bk in item.childSnapshot(forPath: "bookings").children.allObjects as! [DataSnapshot]
