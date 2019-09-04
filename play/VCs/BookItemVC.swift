@@ -15,6 +15,7 @@ import SDWebImage
 
 
 var reports=[FailedBookingReportModel]()
+var useridstofetch=[String]()
 
 extension BookItemVC: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
@@ -107,165 +108,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     @IBOutlet weak var imageContainer: UIImageView!
     
     @IBOutlet var bookButton: UIButton!
-    @IBAction func bookButton(_ sender: Any)
-    {
-        var useridstofetch=[String]()
-        
-        //check if there is at least one selected date in calendar
-        if(calendarView.indexPathsForSelectedItems?.count==0)
-        {
-            alert(UIVC: self, title: "Input invalid!", message: "Selectați minim o dată din calendar.")
-        }
-        else
-        {
-            reports.removeAll()
-            
-            let dif = DateIntervalFormatter()
-            formatter.dateFormat = "YYYY MM dd"
-            let date1 = formatter.date(from: startDateOfBooking)!
-            let date2 = formatter.date(from: endDateOfBooking)!
-            let current_user_id = Auth.auth().currentUser?.uid
-            
-            let chosenInterval = DateInterval(start: date1, end: date2)
-            
-            
-            
-            let itemPath = Database.database().reference().child("Categories").child(currentItem.category_id).child("items").child(currentItem.id)
-            
-            let reference = Database.database().reference()
-            
-            var count=0
-            
-            itemPath.observeSingleEvent(of: .value, with: { (bookingsSet) in
-                
-                if bookingsSet.hasChild("bookings"){
-                    
-                    var isAvailable = true
-                    
-                    
-                    itemPath.observeSingleEvent(of: .childAdded, with: { (snap) in
-                        //here we extract all bookings ids belonging to this item
-                        for bookingid in snap.children.allObjects as! [DataSnapshot]
-                        {
-                            var userIdOfBookingOwner=""
-                            var dateOccupied=""
-                            var phone=""
-                            
-                            //here we extract the bookings
-                            
-                            //get the path of the booking
-                            let path=reference.child("Bookings").child(bookingid.key)
-                            
-                            path.observeSingleEvent(of: .value, with: { (booking) in
-                                //print(booking.value)
-                                count+=1
-                                
-                                let startingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                                let endingDateOfBooking = booking.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                                
-                                userIdOfBookingOwner=booking.childSnapshot(forPath: "user").value as! String
-                                dateOccupied=startingDateOfBooking+"-"+endingDateOfBooking
-                                
-                                
-                                let date3 = formatter.date(from: startingDateOfBooking)!
-                                let date4 = formatter.date(from: endingDateOfBooking)!
-                                
-                                let currentInterval = DateInterval(start: date3, end: date4)
-                                
-                                let res = chosenInterval.intersects(currentInterval)
-                                
-                                if(res==true)
-                                {
-                                    isAvailable=false
-                                    
-                                    let report=FailedBookingReportModel()
-                                    report.date=dateOccupied
-                                    report.username=userIdOfBookingOwner
-                                    
-                                    reports.append(report)
-                                    
-                                    useridstofetch.append(userIdOfBookingOwner)
-                                }
-                                
-                                
-                                
-                                if(bookingsSet.childSnapshot(forPath: "bookings").childrenCount==count)
-                                {
-                                    
-                                    if(isAvailable)
-                                    {
-                                        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
-            
-            
-                                        let title = "Rezervare efectuată"
-                                        let message = "Rezervarea a fost facută cu succes!"
-                                        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-                                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                                            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
-                                            print("Dismissing VC after adding booking")
-                                        }))
-                                        self.present(alert, animated: true)
-            
-                                    }
-                                    else
-                                    {
-                                    
-                                       var i=0
-                                        
-                                       for id in useridstofetch
-                                       {
-                                        reference.child("Users").child(id).observeSingleEvent(of: .value, with: { (user) in
-                                            print()
-                                            reports[i].username=user.childSnapshot(forPath: "name").value as! String
-                                            reports[i].phone=user.childSnapshot(forPath: "phoneNumber").value as! String
-                                            
-                                            i+=1
-                                            
-                                            if(reports.count==i)
-                                            {
-                                                self.performSegue(withIdentifier: "seeFailedBookingReport", sender: nil)
-                                                //                                        alert(UIVC: self, title: "Rezervare eșuată", message: "Rezervarea nu a putut fi efectuată deoarece există deja o rezervare in această perioada pentru articolul selectat. \n Rezervare facuta de utilizator: \(usernameOfBookingOwner) in perioada: \n \(dateOccupied) \n Tel.: \(phoneNumber)")
-                                            }
-                                        })
-                                        
-                                        
-                                       }
-                                        
-                                       
-                                        
-                                      
-                                        
-                                        
-                                        
-                                    }
-                                }
-                                
-                            })
-                        }
-                    })
-                    
-                
-                    
-                }else{
-                    
-                    addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking)
-                    
-                    let title = "Rezervare efectuată"
-                    let message = "Rezervarea a fost facută cu succes!"
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                        self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
-                        print("Dismissing VC after adding booking")
-                    }))
-                    self.present(alert, animated: true)
-                }
-                
-                
-            })
-            
-        }
-        
-    }
     
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
@@ -444,4 +286,49 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     }
     
     
+    
+    
+    @IBAction func bookButton(_ sender: Any)
+    {
+        //check if there is at least one selected date in calendar
+        if(calendarView.indexPathsForSelectedItems?.count==0)
+        {
+            alert(UIVC: self, title: "Input invalid!", message: "Selectați minim o dată din calendar.")
+        }
+        else
+        {
+            startBookingProcedure()
+        }
+        
+    }
+    
+
+    func extractDaysFromInterval(_ startDate: Date, _ endDate: Date)->[Date]
+    {
+        let calendar = NSCalendar.current
+        var dates=[Date]()
+        var date = startDate
+        while date <= endDate
+        {
+            //print(DateFormatter.string(from: startDate))
+            date = calendar.date(byAdding: .day, value: 1, to: date)!
+            print(date)
+            dates.append(date)
+        }
+        
+        return dates
+    }
+    
+    func startBookingProcedure()
+    {
+        let dif = DateIntervalFormatter()
+        formatter.dateFormat = "YYYY MM dd"
+        let date1 = formatter.date(from: startDateOfBooking)!
+        let date2 = formatter.date(from: endDateOfBooking)!
+        let current_user_id = Auth.auth().currentUser?.uid
+        
+        let chosenInterval = DateInterval(start: date1, end: date2)
+        extractDaysFromInterval(date1,date2)
+        
+    }
 }
