@@ -164,6 +164,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         if(isDayFullyOccupied(getDateFromCalendarDate(cellState.date)))
         {
+            print(self.bookingsOfCurrentItem)
             print("occupied: ", getDateFromCalendarDate(cellState.date))
             cell.layer.backgroundColor=UIColor(red:1, green:0.6, blue:0.6, alpha:1.0).cgColor
         }
@@ -502,53 +503,99 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func load_bookings_of_item()
     {
-       
-        reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.value) { (bookings_ids) in
+        print("Running load_bookings_of_item() \n")
+        
+        reference.child("Bookings").queryOrdered(byChild: "itemId").queryEqual(toValue : currentItem.id).observe(.value) { (list) in
             
-                self.bookingsOfCurrentItem.removeAll()
+            self.bookingsOfCurrentItem.removeAll()
             
-                print("Running load_bookings_of_item()")
+            let total_bks_no = list.children.allObjects.count
+            var i = 0
             
-                var i=0
-                let total_bks = bookings_ids.children.allObjects.count
-                for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
-                {
-                    let id_of_booking = bk_id.value as! String
-                    
-                    let path = reference.child("Bookings").child(id_of_booking)
-                    
-                    path.observeSingleEvent(of: .value) { (bk) in
-                        
-
-                        let booking = Booking()
-                        booking.category = self.currentItem.category_id
-                        booking.id = id_of_booking
-                        booking.itemId = self.currentItem.id
-                        booking.itemName = self.currentItem.name
-                        if(bk.childSnapshot(forPath: "descriere").exists())
-                        {
-                            booking.description = bk.childSnapshot(forPath: "descriere").value as! String
-                        }
-                        
-                        booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                        booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                        booking.user = bk.childSnapshot(forPath: "user").value as! String
-                        booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
-                        self.bookingsOfCurrentItem.append(booking)
-
-                        i+=1
-                        if(i==total_bks)
-                        {
-                            self.calendarView.reloadData() //so that it can color the occupied cells in red
-                        }
-                        
-
-                } //end of observeSingleEvent
-                    
+            if(total_bks_no==0)
+            {
+                self.calendarView.reloadData()
             }
             
-        
+            for bk in list.children.allObjects as! [DataSnapshot] {
+                print(bk.childSnapshot(forPath: "descriere"))
+                
+                let booking = Booking()
+                booking.category = self.currentItem.category_id
+                booking.id = bk.key as! String
+                booking.itemId = self.currentItem.id
+                booking.itemName = self.currentItem.name
+                if(bk.childSnapshot(forPath: "descriere").exists())
+                {
+                    booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+                }
+                
+                booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                booking.user = bk.childSnapshot(forPath: "user").value as! String
+                booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
+                self.bookingsOfCurrentItem.append(booking)
+                
+                i+=1
+                if(i==total_bks_no)
+                {
+                    print(self.bookingsOfCurrentItem.count)
+                    self.calendarView.reloadData() //so that it can color the occupied cells in red
+                }
+            }
+            
+            
+            
+            
         }
+       
+//        reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.childAdded) { (bookings_ids) in
+//
+//                self.bookingsOfCurrentItem.removeAll()
+//
+//                print("Running load_bookings_of_item()")
+//
+//                var i=0
+//                let total_bks = bookings_ids.children.allObjects.count
+//                for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
+//                {
+//                    let id_of_booking = bk_id.value as! String
+//
+//                    let path = reference.child("Bookings").child(id_of_booking)
+//                    print(bk_id)
+//                    path.observeSingleEvent(of: .value) { (bk) in
+//
+//
+//                        let booking = Booking()
+//                        booking.category = self.currentItem.category_id
+//                        booking.id = id_of_booking
+//                        booking.itemId = self.currentItem.id
+//                        booking.itemName = self.currentItem.name
+//                        if(bk.childSnapshot(forPath: "descriere").exists())
+//                        {
+//                            booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+//                        }
+//
+//                        booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+//                        booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+//                        booking.user = bk.childSnapshot(forPath: "user").value as! String
+//                        booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
+//                        self.bookingsOfCurrentItem.append(booking)
+//
+//                        i+=1
+//                        if(i==total_bks)
+//                        {
+//                            print(self.bookingsOfCurrentItem.count)
+//                            self.calendarView.reloadData() //so that it can color the occupied cells in red
+//                        }
+//
+//
+//                } //end of observeSingleEvent
+//
+//            }
+//
+//
+//        }
    
     } //end of load_bookings_of_item()
 }
