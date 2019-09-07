@@ -15,6 +15,8 @@ import SDWebImage
 
 
 var reports=[FailedBookingReportModel]()
+var fetching_intersecting_bookings = [Booking]()
+var currentBookingsInCurrentInterval=[Booking]()
 var useridstofetch=[String]()
 
 extension BookItemVC: JTACMonthViewDataSource {
@@ -393,8 +395,13 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         var available = true
         
+        fetching_intersecting_bookings.removeAll()
+        
         for day in chosenDays
         {
+            //use this to make reports on existing bookings in case if the validation fails:
+            fetching_intersecting_bookings += getBookingsThatIntersects(day: day)
+            
             let amountOccupied = find_number_of_occupied_items(day)
             //print(day,": ", amountOccupied)
             
@@ -415,6 +422,31 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         {
             saveBooking()
         }
+        else
+        {
+            bookingFails()
+        }
+    }
+    
+    func bookingFails()
+    {
+        //take all existing bookings, remove duplicates after extraction, and make reports
+        //then send them to reports VC..
+        
+        reports.removeAll()
+        
+        for bk in remove_duplicates_in_bookings_array(fetching_intersecting_bookings)
+        {
+            let report = FailedBookingReportModel()
+            report.date = "\(bk.startDate) - \(bk.endDate)"
+            report.username = bk.user
+            report.phone = ""
+            
+            reports.append(report)
+        }
+        
+        self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
+
     }
     
     func saveBooking()
@@ -549,53 +581,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             
         }
        
-//        reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.childAdded) { (bookings_ids) in
-//
-//                self.bookingsOfCurrentItem.removeAll()
-//
-//                print("Running load_bookings_of_item()")
-//
-//                var i=0
-//                let total_bks = bookings_ids.children.allObjects.count
-//                for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
-//                {
-//                    let id_of_booking = bk_id.value as! String
-//
-//                    let path = reference.child("Bookings").child(id_of_booking)
-//                    print(bk_id)
-//                    path.observeSingleEvent(of: .value) { (bk) in
-//
-//
-//                        let booking = Booking()
-//                        booking.category = self.currentItem.category_id
-//                        booking.id = id_of_booking
-//                        booking.itemId = self.currentItem.id
-//                        booking.itemName = self.currentItem.name
-//                        if(bk.childSnapshot(forPath: "descriere").exists())
-//                        {
-//                            booking.description = bk.childSnapshot(forPath: "descriere").value as! String
-//                        }
-//
-//                        booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-//                        booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-//                        booking.user = bk.childSnapshot(forPath: "user").value as! String
-//                        booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
-//                        self.bookingsOfCurrentItem.append(booking)
-//
-//                        i+=1
-//                        if(i==total_bks)
-//                        {
-//                            print(self.bookingsOfCurrentItem.count)
-//                            self.calendarView.reloadData() //so that it can color the occupied cells in red
-//                        }
-//
-//
-//                } //end of observeSingleEvent
-//
-//            }
-//
-//
-//        }
    
     } //end of load_bookings_of_item()
 }

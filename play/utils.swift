@@ -144,3 +144,25 @@ extension String {
     }
 }
 
+func remove_duplicates_in_bookings_array(_ array: [Booking])->[Booking]
+{
+    var results = [Booking]()
+    
+    for bk in array
+    {
+        var isAlreadyFetched = false
+        for r in results
+        {
+            if(r.id==bk.id)
+            {
+                isAlreadyFetched=true
+            }
+        }
+        if(!isAlreadyFetched)
+        {
+            results.append(bk)
+        }
+    }
+    
+    return results
+}
