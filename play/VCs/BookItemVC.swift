@@ -428,7 +428,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let message = "Rezervarea a fost facută cu succes!"
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-            //self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
             print("Dismissing VC after adding booking")
         }))
         self.present(alert, animated: true)
@@ -518,7 +518,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             }
             
             for bk in list.children.allObjects as! [DataSnapshot] {
-                print(bk.childSnapshot(forPath: "descriere"))
+//                print(bk.childSnapshot(forPath: "descriere"))
                 
                 let booking = Booking()
                 booking.category = self.currentItem.category_id
@@ -539,7 +539,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 i+=1
                 if(i==total_bks_no)
                 {
-                    print(self.bookingsOfCurrentItem.count)
+//                    print(self.bookingsOfCurrentItem.count)
                     self.calendarView.reloadData() //so that it can color the occupied cells in red
                 }
             }

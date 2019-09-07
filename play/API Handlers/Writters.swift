@@ -35,32 +35,76 @@ func createItem(item item: Item, byCategory cat: String)
 func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int)
 {
     
+//    reference.child("Bookings").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+//        if var data = currentData.value as? [String: Any] {
+////            var count = data["count"] as? Int ?? 0
+////            count += 1
+////            data["count"] = count
+////
+////            currentData.value = data
+//
+//            let new = reference.child("Bookings").childByAutoId().key as! String
+//            let interval = {["from":sd];["till":ed]}
+//            let dict = {["cantitate":quantity];
+//                ["descriere":descr];
+//                ["itemId":id];
+//                ["categoryId":cat_id];
+//                ["categoryName":cat_name];
+//                ["itemName":itemName];
+//                ["interval":interval]
+//            }
+//
+//            data[new]=dict
+//            currentData.value=data
+//        }
+//
+//        return TransactionResult.success(withValue: currentData)
+//    }
+    
     let ref = Database.database().reference()
     var db = ref.child("Bookings")
-    
+
     let new = db.childByAutoId()
-    let interval = {["from":sd];["till":ed]}
-    new.updateChildValues(["cantitate":quantity])
-    new.updateChildValues(["descriere":descr])
-    new.updateChildValues(["itemId":id])
-    new.updateChildValues(["categoryId":cat_id])
-    new.updateChildValues(["categoryName":cat_name])
-    new.updateChildValues(["itemName":itemName])
-    new.child("interval").updateChildValues(["from":sd])
-    new.child("interval").updateChildValues(["till":ed])
-    new.updateChildValues(["user":user_id])
+//    let interval = {["from":sd];["till":ed]}
+    let interval: [String:String] = [
+        "from":sd,
+        "till":ed,
+    ]
+    let block: [String : Any] = [
+        "cantitate" : quantity,
+        "descriere" : descr,
+        "itemId": id,
+        "categoryId" : cat_id,
+        "categoryName" : cat_name,
+        "itemName": itemName,
+        "interval": ["from":sd,"till":ed],
+        "user":user_id
+    ]
+
     
+    db.updateChildValues([new.key as! String:block])
+
+//    new.updateChildValues(["cantitate":quantity])
+//    new.updateChildValues(["descriere":descr])
+//    new.updateChildValues(["itemId":id])
+//    new.updateChildValues(["categoryId":cat_id])
+//    new.updateChildValues(["categoryName":cat_name])
+//    new.updateChildValues(["itemName":itemName])
+//    new.child("interval").updateChildValues(["from":sd])
+//    new.child("interval").updateChildValues(["till":ed])
+//    new.updateChildValues(["user":user_id])
+
     let keyToBooking = new.key! as String
-    
-    
+
+
     //second block to make changes here:
     db = ref.child("Categories").child(cat_id).child("items")
     db.child(id).child("bookings").updateChildValues([keyToBooking: keyToBooking])
-    
-    
+
+
     //third block to make changes:
     db = ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
     db.updateChildValues([new.key!:new.key!])
-    
+
 
 }
