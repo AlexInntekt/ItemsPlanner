@@ -170,6 +170,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func getDateFromCalendarDate(_ date: Date)->Date
     {
+        //https://github.com/patchthecode/JTAppleCalendar/issues/252
         formatter.dateFormat="YYYY MM dd"
         let dateAsString = formatter.string(from: date)
         let result = nscalendar.date(byAdding: .day, value: 1, to: date)!
@@ -500,6 +501,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func load_bookings_of_item()
     {
+       
         reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.value) { (bookings_ids) in
             
                 self.bookingsOfCurrentItem.removeAll()
