@@ -164,6 +164,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         if(isDayFullyOccupied(getDateFromCalendarDate(cellState.date)))
         {
+            print("occupied: ", getDateFromCalendarDate(cellState.date))
             cell.layer.backgroundColor=UIColor(red:1, green:0.6, blue:0.6, alpha:1.0).cgColor
         }
     }
@@ -426,7 +427,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let message = "Rezervarea a fost facută cu succes!"
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+            //self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
             print("Dismissing VC after adding booking")
         }))
         self.present(alert, animated: true)
@@ -524,13 +525,17 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                         booking.id = id_of_booking
                         booking.itemId = self.currentItem.id
                         booking.itemName = self.currentItem.name
-                        booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+                        if(bk.childSnapshot(forPath: "descriere").exists())
+                        {
+                            booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+                        }
+                        
                         booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                         booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
                         booking.user = bk.childSnapshot(forPath: "user").value as! String
                         booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
                         self.bookingsOfCurrentItem.append(booking)
-                        
+
                         i+=1
                         if(i==total_bks)
                         {

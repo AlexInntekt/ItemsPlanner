@@ -329,17 +329,17 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentItem.category_name = category_name
                       }
                     
-                      if item.childSnapshot(forPath: "descriere").value != nil
+                      if item.hasChild("descriere")
                       {
                         currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
                      }
                     
-                      if item.childSnapshot(forPath: "name").value != nil
+                      if item.hasChild("name")
                       {
                         currentItem.name = item.childSnapshot(forPath: "name").value as! String
                       }
                     
-                     if item.childSnapshot(forPath: "cantitate").value != nil
+                     if item.hasChild("cantitate")
                      {
                         currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
                      }
