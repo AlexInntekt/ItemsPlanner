@@ -153,11 +153,28 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     func configureCell(view: JTACDayCell?, cellState: CellState) {
         guard let cell = view as? DateCell  else { return }
         cell.dateLabel.text = cellState.text
-        cell.backgroundColor=UIColor(red:0.95, green:0.95, blue:0.96, alpha:1.0)
+        //cell.backgroundColor=UIColor(red:0.95, green:0.95, blue:0.96, alpha:1.0)
         cell.layer.borderWidth=1
         cell.layer.borderColor=UIColor(red:0.8, green:0.8, blue:0.8, alpha:1.0).cgColor
         handleCellTextColor(cell: cell, cellState: cellState)
         handleCellSelected(cell: cell, cellState: cellState)
+        
+//        print("\ncellState.text: ", cellState.text)
+//        print("cellState.date: ", getDateFromCalendarDate(cellState.date))
+        
+        if(isDayFullyOccupied(getDateFromCalendarDate(cellState.date)))
+        {
+            cell.layer.backgroundColor=UIColor(red:1, green:0.6, blue:0.6, alpha:1.0).cgColor
+        }
+    }
+    
+    func getDateFromCalendarDate(_ date: Date)->Date
+    {
+        formatter.dateFormat="YYYY MM dd"
+        let dateAsString = formatter.string(from: date)
+        let result = nscalendar.date(byAdding: .day, value: 1, to: date)!
+        
+        return result
     }
     
     func handleCellTextColor(cell: DateCell, cellState: CellState) {
@@ -166,6 +183,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             cell.layer.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1.0).cgColor
         } else {
             cell.dateLabel.textColor = UIColor(red:0.7, green:0.7, blue:0.7, alpha:1.0)
+            
+           
             cell.layer.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1.0).cgColor
         }
     }
@@ -258,6 +277,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
 //        print("id: \(self.currentItem.id)")
         
         load_bookings_of_item()
+        
     }
     
     func setupUI()
@@ -373,15 +393,15 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         for day in chosenDays
         {
             let amountOccupied = find_number_of_occupied_items(day)
-            print(day,": ", amountOccupied)
+            //print(day,": ", amountOccupied)
             
             let numberOfAvailableItems = totalQuantityOfItem-amountOccupied
             
-            print("totalQuantityOfItem: ",totalQuantityOfItem)
-            print("amountOccupied: ",amountOccupied)
-            print("numberOfAvailableItems: ",numberOfAvailableItems)
-            print("desiredQuantityOfBookedItems: ",desiredQuantityOfBookedItems)
-            print("\n")
+//            print("totalQuantityOfItem: ",totalQuantityOfItem)
+//            print("amountOccupied: ",amountOccupied)
+//            print("numberOfAvailableItems: ",numberOfAvailableItems)
+//            print("desiredQuantityOfBookedItems: ",desiredQuantityOfBookedItems)
+//            print("\n")
             if(desiredQuantityOfBookedItems>numberOfAvailableItems)
             {
                 available=false
@@ -411,6 +431,18 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         self.present(alert, animated: true)
     }
     
+    func isDayFullyOccupied(_ day: Date)->Bool
+    {
+        var isFullyOccupied = false
+        
+        let no = find_number_of_occupied_items(day)
+        if(no==self.currentItem.quantity)
+        {
+            isFullyOccupied=true
+        }
+        
+        return isFullyOccupied
+    }
     
     func find_number_of_occupied_items(_ day: Date)->Int
     {
@@ -431,15 +463,18 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func getBookingsThatIntersects(day day: Date)->[Booking]
     {
-        let date1 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: startDateOfBooking)!)!
-        let date2 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: endDateOfBooking)!)!
+//        let date1 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: startDateOfBooking)!)!
+//        let date2 = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: endDateOfBooking)!)!
         
         chosenInterval = DateInterval(start: day, end: day)
 
+        
+        
         var matchedBookings=[Booking]()
         formatter.dateFormat = "YYYY MM dd"
         for booking in self.bookingsOfCurrentItem
         {
+
             let startDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.startDate)!)!
             let endDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.endDate)!)!
 //            let startDate = formatter.date(from: booking.startDate)!
@@ -467,32 +502,44 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         reference.child("Categories").child(currentItem.category_id).child("items").child(currentItem.id).child("bookings").observe(.value) { (bookings_ids) in
             
-            self.bookingsOfCurrentItem.removeAll()
+                self.bookingsOfCurrentItem.removeAll()
             
-            print("Running load_bookings_of_item()")
-            for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
-            {
-                let id_of_booking = bk_id.value as! String
-                
-                let path = reference.child("Bookings").child(id_of_booking)
-                
-                path.observeSingleEvent(of: .value) { (bk) in
+                print("Running load_bookings_of_item()")
+            
+                var i=0
+                let total_bks = bookings_ids.children.allObjects.count
+                for bk_id in bookings_ids.children.allObjects as! [DataSnapshot]
+                {
+                    let id_of_booking = bk_id.value as! String
                     
+                    let path = reference.child("Bookings").child(id_of_booking)
+                    
+                    path.observeSingleEvent(of: .value) { (bk) in
+                        
 
-                    let booking = Booking()
-                    booking.category = self.currentItem.category_id
-                    booking.id = id_of_booking
-                    booking.itemId = self.currentItem.id
-                    booking.itemName = self.currentItem.name
-                    booking.description = bk.childSnapshot(forPath: "descriere").value as! String
-                    booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                    booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                    booking.user = bk.childSnapshot(forPath: "user").value as! String
-                    booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
-                    self.bookingsOfCurrentItem.append(booking)
-                    
+                        let booking = Booking()
+                        booking.category = self.currentItem.category_id
+                        booking.id = id_of_booking
+                        booking.itemId = self.currentItem.id
+                        booking.itemName = self.currentItem.name
+                        booking.description = bk.childSnapshot(forPath: "descriere").value as! String
+                        booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                        booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                        booking.user = bk.childSnapshot(forPath: "user").value as! String
+                        booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
+                        self.bookingsOfCurrentItem.append(booking)
+                        
+                        i+=1
+                        if(i==total_bks)
+                        {
+                            self.calendarView.reloadData() //so that it can color the occupied cells in red
+                        }
+                        
+
                 } //end of observeSingleEvent
+                    
             }
+            
         
         }
    
