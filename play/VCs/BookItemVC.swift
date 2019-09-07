@@ -18,6 +18,7 @@ var reports=[FailedBookingReportModel]()
 var fetching_intersecting_bookings = [Booking]()
 var currentBookingsInCurrentInterval=[Booking]()
 var useridstofetch=[String]()
+let referenceBookings = Database.database().reference().child("Bookings").queryOrdered(byChild: "itemId")
 
 extension BookItemVC: JTACMonthViewDataSource {
     func configureCalendar(_ calendar: JTACMonthView) ->
@@ -264,6 +265,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         textfieldDescription.delegate = self
         
         setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        referenceBookings.removeAllObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -548,7 +553,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         print("Running load_bookings_of_item() \n")
         
-        reference.child("Bookings").queryOrdered(byChild: "itemId").queryEqual(toValue : currentItem.id).observe(.value) { (list) in
+        referenceBookings.queryEqual(toValue : currentItem.id).observe(.value) { (list) in
             
             self.bookingsOfCurrentItem.removeAll()
             
