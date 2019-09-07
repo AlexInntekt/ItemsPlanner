@@ -435,18 +435,28 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         reports.removeAll()
         
-        for bk in remove_duplicates_in_bookings_array(fetching_intersecting_bookings)
+        let intersecting_booking = remove_duplicates_in_bookings_array(fetching_intersecting_bookings)
+        
+        let no = intersecting_booking.count
+        var i=0
+        for bk in intersecting_booking
         {
-            let report = FailedBookingReportModel()
-            report.date = "\(bk.startDate) - \(bk.endDate)"
-            report.username = bk.user
-            report.phone = ""
+            reference.child("Users").child(bk.user).observeSingleEvent(of: .value) { (userData) in
             
-            reports.append(report)
+                let report = FailedBookingReportModel()
+                report.date = "\(bk.startDate) - \(bk.endDate)"
+                report.username = userData.childSnapshot(forPath: "name").value as! String
+                report.phone = userData.childSnapshot(forPath: "phoneNumber").value as! String
+                
+                reports.append(report)
+                i+=1
+                if(i==no)
+                {
+                    self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
+                }
+            }
         }
         
-        self.performSegue(withIdentifier: "seeFailedBookingReport", sender: reports)
-
     }
     
     func saveBooking()
