@@ -435,11 +435,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         reports.removeAll()
         
-        let intersecting_booking = remove_duplicates_in_bookings_array(fetching_intersecting_bookings)
+        //bookings that intersect the chosen interval, this array does not contain duplicates
+        let intersecting_bookings = remove_duplicates_in_bookings_array(fetching_intersecting_bookings)
         
-        let no = intersecting_booking.count
+        let no = intersecting_bookings.count
         var i=0
-        for bk in intersecting_booking
+        for bk in intersecting_bookings
         {
             reference.child("Users").child(bk.user).observeSingleEvent(of: .value) { (userData) in
             
