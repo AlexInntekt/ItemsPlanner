@@ -91,7 +91,16 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             item.description = self.textView?.text ?? "articol"
             item.name = self.itemNameLabel?.text ?? "descriere articol"
             item.quantity = Int(self.quantityTextfield.text!) ?? 1
-            self.saveItemInDB(item: item)
+            
+            if(isDeviceOnline)
+            {
+                self.saveItemInDB(item: item)
+            }
+            else
+            {
+                alert(UIVC: self, title: "Eroare de conexiune", message: "Conexiunea la internet este slabă sau inexistentă. Reîncercați.")
+            }
+            
         }
         else
         {
