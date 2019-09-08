@@ -65,11 +65,7 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
     var db = ref.child("Bookings")
 
     let new = db.childByAutoId()
-//    let interval = {["from":sd];["till":ed]}
-    let interval: [String:String] = [
-        "from":sd,
-        "till":ed,
-    ]
+
     let block: [String : Any] = [
         "cantitate" : quantity,
         "descriere" : descr,
@@ -83,16 +79,6 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
 
     
     db.updateChildValues([new.key as! String:block])
-
-//    new.updateChildValues(["cantitate":quantity])
-//    new.updateChildValues(["descriere":descr])
-//    new.updateChildValues(["itemId":id])
-//    new.updateChildValues(["categoryId":cat_id])
-//    new.updateChildValues(["categoryName":cat_name])
-//    new.updateChildValues(["itemName":itemName])
-//    new.child("interval").updateChildValues(["from":sd])
-//    new.child("interval").updateChildValues(["till":ed])
-//    new.updateChildValues(["user":user_id])
 
     let keyToBooking = new.key! as String
 
