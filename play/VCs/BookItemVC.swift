@@ -469,17 +469,24 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         let current_user_id = Auth.auth().currentUser?.uid
         
-        addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking, quantity: desiredQuantityOfBookedItems)
-        
-        
-        let title = "Rezervare efectuată"
-        let message = "Rezervarea a fost facută cu succes!"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
-            print("Dismissing VC after adding booking")
-        }))
-        self.present(alert, animated: true)
+        if(isDeviceOnline)
+        {
+            addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking, quantity: desiredQuantityOfBookedItems)
+            
+            let title = "Rezervare efectuată"
+            let message = "Rezervarea a fost facută cu succes!"
+            let calert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            calert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+                print("Dismissing VC after adding booking")
+            }))
+            self.present(calert, animated: true)
+        }
+        else
+        {
+            alert(UIVC: self, title: "Eroare de conexiune", message: "Conexiunea la internet este slabă sau inexistentă. Reîncercați.")
+        }
+
     }
     
     func isDayFullyOccupied(_ day: Date)->Bool

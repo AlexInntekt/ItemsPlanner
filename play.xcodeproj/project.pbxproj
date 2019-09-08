@@ -44,6 +44,7 @@
 		FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */; };
 		FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD176322F2B47C00881325 /* MyBookings.swift */; };
 		FAB465B22309BD7700436142 /* ModifyCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */; };
+		FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C5F2325925900DEAE6C /* InternetManager.swift */; };
 		FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFEAE722F4CB2F00270F25 /* Deleters.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 		FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9F5D722F7068A0074B36D /* AdminVC.swift */; };
@@ -118,6 +119,7 @@
 		FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
 		FAAD176322F2B47C00881325 /* MyBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookings.swift; sourceTree = "<group>"; };
 		FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryVC.swift; sourceTree = "<group>"; };
+		FAC45C5F2325925900DEAE6C /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetManager.swift; path = /Users/alex/repos/play/play/InternetManager.swift; sourceTree = "<absolute>"; };
 		FACFEAE722F4CB2F00270F25 /* Deleters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deleters.swift; path = /Users/alex/repos/play/play/Deleters.swift; sourceTree = "<absolute>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FAE9F5D722F7068A0074B36D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				FA01152222DF84E800F8234A /* Models.swift */,
 				FA13922922D8ED93006D64B4 /* AppDelegate.swift */,
 				FAD3C92322DCACAC0068E52D /* utils.swift */,
+				FAC45C5F2325925900DEAE6C /* InternetManager.swift */,
 				FA40234C2301FF2100F8B6DE /* GlobalUtils.swift */,
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
 				FA13923322D8ED94006D64B4 /* Assets.xcassets */,
@@ -534,6 +537,7 @@
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */,
+				FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */,
 				FA13923222D8ED93006D64B4 /* play.xcdatamodeld in Sources */,
 				FA142AE922F85F0800C56AA7 /* UpDownSegue.swift in Sources */,
 				FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */,

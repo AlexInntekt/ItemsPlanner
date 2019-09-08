@@ -1,0 +1,34 @@
+
+//
+//  InternetManager.swift
+//  
+//
+//  Created by Alexandru-Mihai Manolescu on 08/09/2019.
+//
+
+import Foundation
+import Network
+
+var isDeviceOnline = false
+
+func checkConnection()
+{
+    let monitor = NWPathMonitor()
+    let prntmsgg = "guqoq3ou4q34g4gheah"
+    
+    monitor.pathUpdateHandler = { path in
+        if path.status == .satisfied {
+            print("\(prntmsgg) We're connected!")
+            isDeviceOnline=true
+        } else {
+            print("\(prntmsgg) No connection.")
+            isDeviceOnline=false
+        }
+        
+        //print(path.isExpensive)
+    }
+    
+    let queue = DispatchQueue(label: "Monitor")
+    monitor.start(queue: queue)
+}
+
