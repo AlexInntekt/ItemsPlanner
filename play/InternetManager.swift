@@ -14,7 +14,7 @@ var isDeviceOnline = false
 func checkConnection()
 {
     let monitor = NWPathMonitor()
-    let prntmsgg = "guqoq3ou4q34g4gheah"
+    let prntmsgg = "CI: guqoq3ou4q34g4gheah running checkConnection()"
     
     monitor.pathUpdateHandler = { path in
         if path.status == .satisfied {

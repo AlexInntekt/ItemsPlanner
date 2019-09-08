@@ -473,8 +473,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         {
             addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking, quantity: desiredQuantityOfBookedItems)
             
-            let title = "Rezervare efectuată"
-            let message = "Rezervarea a fost facută cu succes!"
+            let title = "Rezervare trimisă"
+            let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."
             let calert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             calert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
                 self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
