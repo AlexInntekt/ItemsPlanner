@@ -41,13 +41,16 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         let cell = self.TBVAdmin.dequeueReusableCell(withIdentifier: "AdminBookingCell") as! AdminBookingCell
      
-            cell.itemNameLabel?.text=displayingBookings[indexPath.row].itemName
-            cell.userLabel?.text=displayingBookings[indexPath.row].username
-            let startDate=displayingBookings[indexPath.row].startDate
-            let endDate=displayingBookings[indexPath.row].endDate
+            let booking = displayingBookings[indexPath.row]
+        
+            cell.itemNameLabel?.text = "Articol: \(booking.itemName)"
+            cell.userLabel?.text = booking.username
+            let startDate = booking.startDate
+            let endDate = booking.endDate
             let date="\(startDate) - \(endDate)"
-            cell.phoneLabel?.text=displayingBookings[indexPath.row].phone
-            cell.dateLabel?.text=date
+            cell.phoneLabel?.text = booking.phone
+            cell.dateLabel?.text = date
+            cell.itsDescription.text = "Descriere: \(booking.description)"
         
         return cell
     }

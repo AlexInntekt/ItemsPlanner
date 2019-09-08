@@ -53,6 +53,9 @@ class AdminBookingCell: UITableViewCell
     @IBOutlet weak var phoneLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var itsDescription: UITextView!
+    
 }
 
 
