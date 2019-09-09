@@ -20,8 +20,16 @@ var displayingMenu = false
 let reference = Database.database().reference()
 let categoriesRef=reference.child("Categories")
 
-class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource
+var shouldShowSearchResults = false
+
+class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UISearchResultsUpdating, UISearchBarDelegate
 {
+    
+    
+
+    
+    
+    var searchController: UISearchController!
     
     @IBOutlet var menu: UIView!
     
@@ -37,6 +45,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet var goToSeeMyBookings: UIButton!
     @IBAction func goToSeeMyBookings(_ sender: Any)
@@ -50,6 +59,52 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         triggerMenu()
         
+    }
+    
+    
+  
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        itemsTableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    {
+        shouldShowSearchResults = true
+        itemsTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    {
+        shouldShowSearchResults = false
+        itemsTableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+            itemsTableView.reloadData()
+        }
+        
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchString = searchController.searchBar.text
+        displayingItems = items.filter({( item : Item) -> Bool in
+            return item.name.lowercased().contains(searchString!.lowercased())
+        })
+        
+        itemsTableView.reloadData()
     }
     
     func triggerMenu()
@@ -196,6 +251,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         super.viewDidLoad()
         
+        configureSearchController()
         
         self.itemsTableView.delegate = self
         self.itemsTableView.dataSource = self
