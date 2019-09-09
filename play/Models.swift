@@ -63,6 +63,7 @@ class FailedBookingReportModel {
     var date=""
     var phone=""
     var quantity=""
+    var description=""
 }
 
 
