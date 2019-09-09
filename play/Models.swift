@@ -28,6 +28,7 @@ class Booking {
 class BookingPack {
     var id = String()
     var description = String()
+    var descriptionOfItem = String()
     var category_id = String()
     var category_name = String()
     var itemId = String()

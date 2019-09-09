@@ -12,16 +12,20 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
+class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     var bookingsReference = Database.database().reference().child("Users")
     
     var displayingBookings = [BookingPack]()
+    var allBookings = [BookingPack]()
+    
+    var searchBar: UISearchBar!
     
     @IBOutlet var TBVAdmin: UITableView!
     
     override func viewDidLoad()
     {
+        configureSearchController()
         TBVAdmin.delegate = self
         TBVAdmin.dataSource = self
         
@@ -68,10 +72,54 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return [delete]
     }
     
-    func setup()
-    {
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         
+        //        searchController.dimsBackgroundDuringPresentation = false
+        searchBar.placeholder = "Search here..."
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        TBVAdmin.tableHeaderView = searchBar
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    {
+        shouldShowSearchResults = true
+        TBVAdmin.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    {
+        shouldShowSearchResults = false
+        displayingBookings = allBookings
+        TBVAdmin.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+            TBVAdmin.reloadData()
+        }
+        
+        searchBar.resignFirstResponder()
+    }
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let searchString = searchBar.text
+        displayingBookings = allBookings.filter({( booking : BookingPack) -> Bool in
+            let block = booking.itemName.lowercased().contains(searchString!.lowercased()) ||
+                        booking.description.lowercased().contains(searchString!.lowercased())
+            
+            return block
+        })
+        
+        TBVAdmin.reloadData()
+    }
+    
     
     func loadDataFromDB()
     {
@@ -125,6 +173,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             currentBooking.id = snap.key
                             currentBooking.phone=phone
                             currentBooking.username=nameOfOwner
+                            self.allBookings.append(currentBooking)
                             self.displayingBookings.append(currentBooking)
                             self.TBVAdmin.reloadData()
                             
