@@ -22,14 +22,14 @@ let categoriesRef=reference.child("Categories")
 
 var shouldShowSearchResults = false
 
-class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UISearchResultsUpdating, UISearchBarDelegate
+class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate
 {
     
     
 
     
     
-    var searchController: UISearchController!
+    var searchBar: UISearchBar!
     
     @IBOutlet var menu: UIView!
     
@@ -44,8 +44,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet var itemsTableView: UITableView!
     
     @IBOutlet weak var welcomeLabel: UILabel!
-    
-    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet var goToSeeMyBookings: UIButton!
     @IBAction func goToSeeMyBookings(_ sender: Any)
@@ -65,15 +63,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
   
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search here..."
-        searchController.searchBar.delegate = self
-        searchController.searchBar.sizeToFit()
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        
+//        searchController.dimsBackgroundDuringPresentation = false
+        searchBar.placeholder = "Search here..."
+        searchBar.delegate = self
+        searchBar.sizeToFit()
         
         // Place the search bar view to the tableview headerview.
-        itemsTableView.tableHeaderView = searchController.searchBar
+        itemsTableView.tableHeaderView = searchBar
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)
@@ -94,12 +92,12 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             itemsTableView.reloadData()
         }
         
-        searchController.searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
-
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchString = searchController.searchBar.text
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let searchString = searchBar.text
         displayingItems = items.filter({( item : Item) -> Bool in
             return item.name.lowercased().contains(searchString!.lowercased())
         })
