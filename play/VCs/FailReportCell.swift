@@ -13,5 +13,6 @@ class FailReportCell: UITableViewCell {
 
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var phoneNumberLabel: UILabel!
-    @IBOutlet var dateLabel: UILabel!
+
+    @IBOutlet weak var infoLabel: UILabel!
 }

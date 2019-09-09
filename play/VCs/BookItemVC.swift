@@ -453,7 +453,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 report.date = "\(bk.startDate) - \(bk.endDate)"
                 report.username = userData.childSnapshot(forPath: "name").value as! String
                 report.phone = userData.childSnapshot(forPath: "phoneNumber").value as! String
-                
+                report.quantity = "\(bk.quantity)"
                 reports.append(report)
                 i+=1
                 if(i==no)

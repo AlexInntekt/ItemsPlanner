@@ -33,7 +33,7 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
          let cell = self.tbv.dequeueReusableCell(withIdentifier: "FailReportCell") as! FailReportCell
              cell.usernameLabel?.text=reports[indexPath.row].username
              cell.phoneNumberLabel?.text=reports[indexPath.row].phone
-             cell.dateLabel?.text=reports[indexPath.row].date
+        cell.infoLabel?.text="\(reports[indexPath.row].date) \n Cantitate: \(reports[indexPath.row].quantity) \n Scop rezervare: \()"
         return cell
     }
     
