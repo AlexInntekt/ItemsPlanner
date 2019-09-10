@@ -2575,6 +2575,69 @@
             </objects>
             <point key="canvasLocation" x="4588" y="-1052"/>
         </scene>
+        <!--ImageVC2-->
+        <scene sceneID="ExA-cl-qIY">
+            <objects>
+                <viewController storyboardIdentifier="ImageVC2" id="gMu-wl-0VX" customClass="ImageVC2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ned-pe-Ypu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGb-H5-JDZ">
+                                <rect key="frame" x="0.0" y="129" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="cfu-Yo-QcK"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ho9-gO-f1q">
+                                <rect key="frame" x="0.0" y="159.66666666666669" width="375" height="568.33333333333326"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYG-v3-BOG">
+                                <rect key="frame" x="10" y="54" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8Hb-lg-M0n"/>
+                                    <constraint firstAttribute="width" constant="60" id="bQ8-MT-fxk"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="gMu-wl-0VX" eventType="touchUpInside" id="EZ7-11-B2W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZN8-nn-tyd">
+                                <rect key="frame" x="323" y="63" width="42" height="42"/>
+                                <state key="normal" title="Button" image="delete"/>
+                                <connections>
+                                    <action selector="deleteImage:" destination="gMu-wl-0VX" eventType="touchUpInside" id="iTL-36-naH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dYG-v3-BOG" firstAttribute="leading" secondItem="80S-tS-o3p" secondAttribute="leading" constant="10" id="6R1-Vu-qha"/>
+                            <constraint firstItem="ZN8-nn-tyd" firstAttribute="height" secondItem="dYG-v3-BOG" secondAttribute="height" multiplier="0.7" id="Fle-rj-TVx"/>
+                            <constraint firstItem="dYG-v3-BOG" firstAttribute="top" secondItem="80S-tS-o3p" secondAttribute="top" constant="10" id="IO9-pC-GNw"/>
+                            <constraint firstItem="UGb-H5-JDZ" firstAttribute="width" secondItem="ned-pe-Ypu" secondAttribute="width" id="LLA-OB-SJj"/>
+                            <constraint firstItem="80S-tS-o3p" firstAttribute="bottom" secondItem="Ho9-gO-f1q" secondAttribute="bottom" constant="50" id="N1d-cx-QC0"/>
+                            <constraint firstItem="80S-tS-o3p" firstAttribute="trailing" secondItem="ZN8-nn-tyd" secondAttribute="trailing" constant="10" id="YDR-Xc-TVz"/>
+                            <constraint firstItem="ZN8-nn-tyd" firstAttribute="width" secondItem="dYG-v3-BOG" secondAttribute="width" multiplier="0.7" id="cem-VI-JQr"/>
+                            <constraint firstItem="UGb-H5-JDZ" firstAttribute="centerX" secondItem="80S-tS-o3p" secondAttribute="centerX" id="dHz-h9-GbX"/>
+                            <constraint firstItem="80S-tS-o3p" firstAttribute="trailing" secondItem="Ho9-gO-f1q" secondAttribute="trailing" id="f5I-eI-5pL"/>
+                            <constraint firstItem="ZN8-nn-tyd" firstAttribute="centerY" secondItem="dYG-v3-BOG" secondAttribute="centerY" id="hd9-U6-HY6"/>
+                            <constraint firstItem="Ho9-gO-f1q" firstAttribute="leading" secondItem="80S-tS-o3p" secondAttribute="leading" id="kIa-im-n2Q"/>
+                            <constraint firstItem="UGb-H5-JDZ" firstAttribute="top" secondItem="dYG-v3-BOG" secondAttribute="bottom" constant="15" id="zEF-Oh-xIz"/>
+                            <constraint firstItem="Ho9-gO-f1q" firstAttribute="height" secondItem="ned-pe-Ypu" secondAttribute="height" multiplier="0.7" id="zHc-ms-vbA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="80S-tS-o3p"/>
+                    </view>
+                    <connections>
+                        <outlet property="currentImage" destination="Ho9-gO-f1q" id="wpn-pV-baw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pq6-6I-Q0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5550" y="-1052"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="512" height="512"/>
@@ -2582,7 +2645,8 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c6c-g9-YPq"/>
+        <segue reference="jNh-se-duz"/>
+        <segue reference="mrp-oW-Wuo"/>
         <segue reference="wfI-xl-UUB"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
