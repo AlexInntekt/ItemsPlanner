@@ -36,7 +36,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var indexOfSelectedCategory=0
     let reference = Database.database().reference()
     var currentItem = Item()
-    
+    var initialItem = Item()
     
     @IBOutlet weak var backButtonToFirstTextfieldConstraint: NSLayoutConstraint!
     
@@ -119,10 +119,23 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let id = item.id
         let dict = ["name": item.name,"descriere": item.description,"cantitate": item.quantity] as [String : Any]
         
+        let pathToInitialItem = reference.child("Categories").child(initialItem.category_id).child("items").child(self.currentItem.id)
+
         
         db.child(id).setValue(dict) { (error, reference) in
             if(error==nil)
             {
+                //if the category is changed, then we have to remove the old item because a new one was added under another category parent:
+                if(self.initialItem.category_id != self.selectedCategory.key)
+                {
+                    pathToInitialItem.child("images").observeSingleEvent(of: .value, with: { (snapshot) in
+                        db.child(id).updateChildValues(["images":snapshot.value]) //move images info block too
+                        pathToInitialItem.removeValue()
+                    })
+                    
+                    
+                }
+                
 
                 let title = "Modificare cu succes"
                 let message = "Obiectul a fost modificat în baza de date!"
