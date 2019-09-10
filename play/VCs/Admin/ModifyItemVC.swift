@@ -16,12 +16,14 @@ import FirebaseAuth
 class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return currentItem.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = gallery.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
-        cell!.image.image = images[indexPath.row]
+        
+        let url = URL(string: currentItem.images[indexPath.row].url)
+        cell!.image.sd_setImage(with: url, completed: nil)
         
         return cell!
     }
@@ -34,7 +36,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var displayingCategories:[(key: String, name: String)] = []
     var selectedCategory=(key:"", name:"")
     var indexOfSelectedCategory=0
-    let reference = Database.database().reference()
+    var reference = Database.database().reference()
     var currentItem = Item()
     var initialItem = Item()
     
@@ -53,6 +55,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     var imagePicker = UIImagePickerController()
     
+    var ref = Database.database().reference()
     
     @IBAction func addImage(_ sender: Any)
     {
@@ -63,17 +66,57 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
+        let imagesFolder = Storage.storage().reference().child("images")
+        let image_id="\(NSUUID().uuidString).jpg"
+        
         //let image = info[UIImagePickerController.image] as! UIImage
         guard let image = info[.originalImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        images.append(image)
         
-        cauchedImagesToCreate=images
+        let ImageData =  image.jpegData(compressionQuality: 0.5)!
+        
+        let refStorage = imagesFolder.child(image_id)
+
+        refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
+            if error != nil
+            {
+                print("\n\n! Error code f304hg93hg9 \n\n")
+                
+            }
+            else
+            {
+                
+                refStorage.downloadURL { url, error in
+                    if(error==nil)
+                    {
+                        let itsUrl = url!.absoluteString
+                        
+                        let path=self.reference.child("Categories").child(self.initialItem.category_id).child("items").child(self.initialItem.id).child("images")
+                        let autoid=path.childByAutoId()
+                        path.child(autoid.key as! String).child("url").setValue(itsUrl)
+                        path.child(autoid.key as! String).child("uid").setValue(image_id)
+                        
+                        let fbimage = FBImage()
+                            fbimage.url = itsUrl
+                            fbimage.uid = image_id
+                        self.currentItem.images.append(fbimage)
+                        self.gallery.reloadData()
+                        
+                    }
+                    else
+                    {
+                        alert(UIVC: self, title: "Eroare", message: "\(error)")
+                    }
+                    
+                }
+            }
+        })
+        
+        //cauchedImagesToCreate=images
         
         dismiss(animated: true) {
-            self.gallery.reloadData()
-            self.showOrHideGallery()
+
         }
         
         
@@ -110,24 +153,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     
-    func loadImages()
-    {
-        images.removeAll()
-        
-        for image in currentItem.images
-        {
-            print("ngfawlkgunwliGHwg ",image.url)
-            
-            var uiimageview = UIImageView()
-            //uiimageview.sd_setImage(with: URL(string: image.url), completed: nil)
-            uiimageview.sd_setImage(with: URL(string: image.url)) { (image, error, cache, url) in
-                self.images.append(uiimageview.image!)
-                self.gallery.reloadData()
-                self.showOrHideGallery()
-            }
-            
-        }
-    }
     
     func updateItemInDB(item item: Item)
     {
@@ -176,15 +201,18 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     override func viewWillAppear(_ animated: Bool)
     {
+        print("calling viewWillAppear")
         setupui()
-        
+
         loadCategoriesFromDB()
         dealWithCachedItem()
-        
-        loadImages()
-        
+
         self.gallery.reloadData()
+        
+        ref = Database.database().reference().child("Categories").child(initialItem.category_id).child("items").child(initialItem.id).child("images")
+        
     }
+    
     
     override func viewDidLoad()
     {
@@ -194,7 +222,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
 
-        
     }
     
     func loadCategoriesFromDB()
@@ -212,11 +239,14 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 //print(category.key)
             }
             
-            print(self.displayingCategories)
             
             self.categoryPicker.reloadAllComponents()
             
-            self.selectedCategory=self.displayingCategories[0]
+            if(!self.displayingCategories.isEmpty)
+            {
+                self.selectedCategory=self.displayingCategories[0]
+            }
+            
             
             if(showCachedItem)
             {

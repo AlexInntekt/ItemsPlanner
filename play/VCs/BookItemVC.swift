@@ -272,6 +272,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        
         if Auth.auth().currentUser != nil {
            
             //showSimpleAlert(message: "user")
