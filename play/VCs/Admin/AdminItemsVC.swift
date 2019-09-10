@@ -157,6 +157,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                             let fbimage = FBImage()
                             fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
                             fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                            fbimage.accesid = image.key as! String
                             currentItem.images.append(fbimage)
                         }
 

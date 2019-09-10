@@ -100,6 +100,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                         let fbimage = FBImage()
                             fbimage.url = itsUrl
                             fbimage.uid = image_id
+                            fbimage.accesid = autoid.key as! String
                 
                         self.currentItem.images.append(fbimage)
                         self.gallery.reloadData()

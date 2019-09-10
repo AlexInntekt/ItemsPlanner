@@ -71,4 +71,5 @@ class FailedBookingReportModel {
 class FBImage {
     var url = String()
     var uid = String()
+    var accesid = String()
 }
