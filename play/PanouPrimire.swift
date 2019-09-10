@@ -59,6 +59,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
     }
     
+    @IBAction func panouPrincipalButton(_ sender: Any)
+    {
+        triggerMenu()
+    }
     
   
     func configureSearchController() {
@@ -159,13 +163,21 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     {
         triggerMenu()
         
-        do{
-            try Auth.auth().signOut()
-        } catch{
+        let title = "Ieșire din cont"
+        let message = "Sigur doriți sa ieșiți din cont?"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
+        }))
+        alert.addAction(UIAlertAction(title: "Da, ies", style: UIAlertAction.Style.destructive, handler: { _ in
+            do{
+                try Auth.auth().signOut()
+            } catch{}
             
-        }
+            self.performSegue(withIdentifier: "logoutSegue", sender: nil)
+        }))
         
-        performSegue(withIdentifier: "logoutSegue", sender: nil)
+    
+        self.present(alert, animated: true)
     }
     
 
