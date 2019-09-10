@@ -86,7 +86,8 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         
         displayingItems = items.filter({( item : Item) -> Bool in
             let block = item.name.lowercased().contains(searchString!.lowercased()) ||
-                        item.description.lowercased().contains(searchString!.lowercased())
+                item.description.lowercased().contains(searchString!.lowercased()) ||
+                item.category_name.lowercased().contains(searchString!.lowercased())
             
             return block
         })

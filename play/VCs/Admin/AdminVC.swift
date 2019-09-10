@@ -104,7 +104,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                         booking.description.lowercased().contains(searchString!.lowercased()) ||
                         booking.username.lowercased().contains(searchString!.lowercased()) ||
             
-                        booking.category_name.lowercased().contains(searchString!.lowercased()) 
+                        booking.category_name.lowercased().contains(searchString!.lowercased())
             
             
             return block
@@ -160,7 +160,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                             {
                                 if(obj.id==snap.key)
                                 {
-                                    self.displayingBookings.remove(at: int)
+                                    self.allBookings.remove(at: int)
                                 }
                                 int+=1
                             }
