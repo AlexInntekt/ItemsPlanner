@@ -14,6 +14,7 @@ import FirebaseAuth
 
 class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
+
     var bookingsReference = Database.database().reference().child("Users")
     
     var displayingBookings = [BookingPack]()
@@ -85,37 +86,33 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         TBVAdmin.tableHeaderView = searchBar
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
     {
+        print("searchBarTextDidBeginEditing rgGwrgwRGHwhharga")
         shouldShowSearchResults = true
         TBVAdmin.reloadData()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar)
-    {
-        shouldShowSearchResults = false
-        displayingBookings = allBookings
-        TBVAdmin.reloadData()
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if !shouldShowSearchResults {
-            shouldShowSearchResults = true
-            TBVAdmin.reloadData()
-        }
-        
-        searchBar.resignFirstResponder()
-    }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         let searchString = searchBar.text
+
+        
         displayingBookings = allBookings.filter({( booking : BookingPack) -> Bool in
             let block = booking.itemName.lowercased().contains(searchString!.lowercased()) ||
-                        booking.description.lowercased().contains(searchString!.lowercased())
+                booking.description.lowercased().contains(searchString!.lowercased())
             
             return block
         })
+        
+        if(searchText=="")
+        {
+            displayingBookings=allBookings
+            shouldShowSearchResults=false
+        }
+
+        
         
         TBVAdmin.reloadData()
     }

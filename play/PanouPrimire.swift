@@ -97,10 +97,18 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        self.pickerCategory.selectRow(0, inComponent: 0, animated: false)
+        
         let searchString = searchBar.text
         displayingItems = items.filter({( item : Item) -> Bool in
             return item.name.lowercased().contains(searchString!.lowercased())
         })
+        
+        if(searchText=="")
+        {
+            displayingItems=items
+            shouldShowSearchResults=false
+        }
         
         itemsTableView.reloadData()
     }
