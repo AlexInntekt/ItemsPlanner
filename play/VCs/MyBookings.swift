@@ -12,12 +12,15 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
+class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     var bookingsReference = Database.database().reference().child("Users")
     var ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey()
     
     var displayingBookings = [Booking]()
+    var allBookings = [Booking]()
+    
+    var searchBar: UISearchBar!
     
     @IBOutlet var tbv: UITableView!
     
@@ -26,7 +29,50 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tbv.delegate = self
         tbv.dataSource = self
         
+        configureSearchController()
+        
         loadBookings()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {
+        shouldShowSearchResults = true
+        tbv.reloadData()
+    }
+    
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        
+        //        searchController.dimsBackgroundDuringPresentation = false
+        searchBar.placeholder = "Search here..."
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        tbv.tableHeaderView = searchBar
+    }
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let searchString = searchBar.text
+        
+        
+        displayingBookings = allBookings.filter({( booking : Booking) -> Bool in
+            let block = booking.description.lowercased().contains(searchString!.lowercased()) ||
+                        booking.itemName.lowercased().contains(searchString!.lowercased()) ||
+                        booking.category.lowercased().contains(searchString!.lowercased())
+            
+            return block
+        })
+        
+        if(searchText=="")
+        {
+            displayingBookings=allBookings
+            shouldShowSearchResults=false
+        }
+        
+        tbv.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -108,10 +154,20 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             if(obj.id==snap.key)
                             {
                                 self.displayingBookings.remove(at: int)
-                                self.tbv.reloadData()
                             }
                             int+=1
                         }
+                        int=0
+                        for obj in self.allBookings
+                        {
+                            if(obj.id==snap.key)
+                            {
+                                self.allBookings.remove(at: int)
+                            }
+                            int+=1
+                        }
+                        
+                         self.tbv.reloadData()
                 })
                 
                 self.ref2.observeSingleEvent(of: .childAdded , with:
@@ -129,6 +185,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         currentBooking.quantity = snap.childSnapshot(forPath: "cantitate").value as! Int
 
                         self.displayingBookings.append(currentBooking)
+                        self.allBookings.append(currentBooking)
                         self.tbv.reloadData()
 
                 })

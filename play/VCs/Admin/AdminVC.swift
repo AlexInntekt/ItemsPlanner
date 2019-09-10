@@ -149,10 +149,20 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                                 if(obj.id==snap.key)
                                 {
                                     self.displayingBookings.remove(at: int)
-                                    self.TBVAdmin.reloadData()
                                 }
                                 int+=1
                             }
+                            int=0;
+                            for obj in self.allBookings
+                            {
+                                if(obj.id==snap.key)
+                                {
+                                    self.displayingBookings.remove(at: int)
+                                }
+                                int+=1
+                            }
+                            
+                            self.TBVAdmin.reloadData()
                     })
                     
                     ref2.observeSingleEvent(of: .childAdded , with:

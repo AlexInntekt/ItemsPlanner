@@ -1354,7 +1354,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dg0-Lc-BnZ">
-                                <rect key="frame" x="180" y="84" width="160" height="40"/>
+                                <rect key="frame" x="180" y="84" width="160" height="43.666666666666657"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1377,7 +1377,7 @@
                             <constraint firstItem="IoX-ZT-jfM" firstAttribute="width" secondItem="hb6-oF-lc1" secondAttribute="width" id="LzQ-Ef-CWf"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="top" secondItem="EKA-OB-Bhp" secondAttribute="bottom" constant="-60" id="VGg-XT-XO6"/>
                             <constraint firstItem="j79-lD-8TB" firstAttribute="centerX" secondItem="EKA-OB-Bhp" secondAttribute="centerX" id="YTM-9i-buc"/>
-                            <constraint firstItem="ztL-sh-V0p" firstAttribute="top" secondItem="dg0-Lc-BnZ" secondAttribute="bottom" id="ZlE-vQ-zKQ"/>
+                            <constraint firstItem="dg0-Lc-BnZ" firstAttribute="height" secondItem="IoX-ZT-jfM" secondAttribute="height" multiplier="1.7" id="Ye2-AG-mBU"/>
                             <constraint firstAttribute="trailing" secondItem="ztL-sh-V0p" secondAttribute="trailing" constant="10" id="fsd-Mr-TOA"/>
                             <constraint firstItem="IoX-ZT-jfM" firstAttribute="leading" secondItem="hb6-oF-lc1" secondAttribute="trailing" constant="20" id="hFl-yK-Fdn"/>
                             <constraint firstItem="Mgd-qH-6Wz" firstAttribute="leading" secondItem="EKA-OB-Bhp" secondAttribute="leading" constant="15" id="i6b-Sj-26L"/>
@@ -2388,7 +2388,7 @@
         <segue reference="0zt-tU-UE9"/>
         <segue reference="reU-xr-CK0"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="aQY-2G-NCh"/>
+        <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
