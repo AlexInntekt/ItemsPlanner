@@ -110,6 +110,25 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     
+    func loadImages()
+    {
+        images.removeAll()
+        
+        for image in currentItem.images
+        {
+            print("ngfawlkgunwliGHwg ",image.url)
+            
+            var uiimageview = UIImageView()
+            //uiimageview.sd_setImage(with: URL(string: image.url), completed: nil)
+            uiimageview.sd_setImage(with: URL(string: image.url)) { (image, error, cache, url) in
+                self.images.append(uiimageview.image!)
+                self.gallery.reloadData()
+                self.showOrHideGallery()
+            }
+            
+        }
+    }
+    
     func updateItemInDB(item item: Item)
     {
         
@@ -161,6 +180,8 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         loadCategoriesFromDB()
         dealWithCachedItem()
+        
+        loadImages()
         
         self.gallery.reloadData()
     }
