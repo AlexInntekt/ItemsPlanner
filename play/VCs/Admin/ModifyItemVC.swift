@@ -29,7 +29,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
+        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
     }
     
     var images=[UIImage]()
@@ -100,6 +100,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                         let fbimage = FBImage()
                             fbimage.url = itsUrl
                             fbimage.uid = image_id
+                
                         self.currentItem.images.append(fbimage)
                         self.gallery.reloadData()
                         
@@ -113,7 +114,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         })
         
-        //cauchedImagesToCreate=images
+        cauchedImagesToCreate=images
         
         dismiss(animated: true) {
 
@@ -166,7 +167,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let pathToInitialItem = reference.child("Categories").child(initialItem.category_id).child("items").child(self.currentItem.id)
 
         
-        db.child(id).setValue(dict) { (error, reference) in
+        db.child(id).updateChildValues(dict) { (error, reference) in
             if(error==nil)
             {
                 //if the category is changed, then we have to remove the old item because a new one was added under another category parent:
@@ -205,11 +206,10 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         setupui()
 
         loadCategoriesFromDB()
-        dealWithCachedItem()
 
         self.gallery.reloadData()
         
-        ref = Database.database().reference().child("Categories").child(initialItem.category_id).child("items").child(initialItem.id).child("images")
+        //ref = Database.database().reference().child("Categories").child(initialItem.category_id).child("items").child(initialItem.id).child("images")
         
     }
     
@@ -248,21 +248,20 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
             
             
-            if(showCachedItem)
+
+            var index=0
+            for section in self.displayingCategories
             {
-                var index=0
-                for section in self.displayingCategories
+                
+                if(section.name==self.currentItem.category_name)
                 {
-                    
-                    if(section.name==self.currentItem.category_name)
-                    {
-                        self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
-                        self.selectedCategory=self.displayingCategories[index]
-                    }
-                    index+=1
-                    
+                    self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
+                    self.selectedCategory=self.displayingCategories[index]
                 }
+                index+=1
+                
             }
+            
         }
     }
     
@@ -329,7 +328,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         self.itemNameLabel.text = currentItem.name
         self.textView.text = currentItem.description
-        self.images = cauchedImagesToCreate
         self.quantityTextfield.text = String(self.currentItem.quantity)
 
     }
@@ -354,11 +352,13 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             currentItem.category_id=selectedCategory.key
             
             let obj = sender as! Int
-            let defVC = segue.destination as! ImageVC
+            let defVC = segue.destination as! ImageVC2
             defVC.imageIndex = obj
             defVC.currentItem = currentItem
+            defVC.initialItem = initialItem
+            let cell = gallery.cellForItem(at: IndexPath(row: obj, section: 0)) as! ImageCell
+            defVC.uiimage = cell.image.image!
             
-            showCachedItem=true
         }
     }
     

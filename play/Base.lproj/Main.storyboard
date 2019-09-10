@@ -2565,6 +2565,7 @@
                         <outlet property="quantityTextfield" destination="pNX-jB-4Ck" id="srm-ih-nkg"/>
                         <outlet property="saveItem" destination="Ktr-TJ-BYA" id="CDW-QY-pyC"/>
                         <outlet property="textView" destination="QSi-47-Gwz" id="vlb-z4-NJZ"/>
+                        <segue destination="gMu-wl-0VX" kind="custom" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="7al-AS-MwM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbw-zK-jmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2575,7 +2576,7 @@
         <!--ImageVC2-->
         <scene sceneID="ExA-cl-qIY">
             <objects>
-                <viewController storyboardIdentifier="ImageVC2" id="gMu-wl-0VX" customClass="ImageVC2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageVC2" id="gMu-wl-0VX" customClass="ImageVC2" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ned-pe-Ypu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2629,6 +2630,7 @@
                     </view>
                     <connections>
                         <outlet property="currentImage" destination="Ho9-gO-f1q" id="wpn-pV-baw"/>
+                        <segue destination="SfF-nl-YD0" kind="custom" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="E0h-lO-mfr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pq6-6I-Q0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2642,6 +2644,7 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="E0h-lO-mfr"/>
         <segue reference="mrp-oW-Wuo"/>
         <segue reference="bi7-kV-FGa"/>
         <segue reference="Urz-D9-MVr"/>
