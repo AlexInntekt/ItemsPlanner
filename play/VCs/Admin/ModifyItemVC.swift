@@ -27,7 +27,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
+        //performSegue(withIdentifier: "GoToImageVC", sender: indexPath.row)
     }
     
     var images=[UIImage]()
@@ -83,88 +83,52 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func saveItem(_ sender: Any)
     {
         
-//        if(self.quantityTextfield.text?.isInt ?? false)
-//        {
-//            let item = Item()
-//            item.category_name = selectedCategory.name
-//            item.category_id = selectedCategory.key
-//            item.description = self.textView?.text ?? "articol"
-//            item.name = self.itemNameLabel?.text ?? "descriere articol"
-//            item.quantity = Int(self.quantityTextfield.text!) ?? 1
-//
-//            if(isDeviceOnline)
-//            {
-//                self.saveItemInDB(item: item)
-//            }
-//            else
-//            {
-//                alert(UIVC: self, title: "Eroare de conexiune", message: "Conexiunea la internet este slabă sau inexistentă. Reîncercați.")
-//            }
-//
-//        }
-//        else
-//        {
-//            alert(UIVC: self, title: "Invalid", message: "Introduceți un număr întreg in câmpul de cantități.")
-//        }
+        if(self.quantityTextfield.text?.isInt ?? false)
+        {
+            let item = Item()
+            item.category_name = selectedCategory.name
+            item.category_id = selectedCategory.key
+            item.description = self.textView?.text ?? "articol"
+            item.name = self.itemNameLabel?.text ?? "descriere articol"
+            item.quantity = Int(self.quantityTextfield.text!) ?? 1
+            item.id = currentItem.id
+            
+            if(isDeviceOnline)
+            {
+                self.updateItemInDB(item: item)
+            }
+            else
+            {
+                alert(UIVC: self, title: "Eroare de conexiune", message: "Conexiunea la internet este slabă sau inexistentă. Reîncercați.")
+            }
+
+        }
+        else
+        {
+            alert(UIVC: self, title: "Invalid", message: "Introduceți un număr întreg in câmpul de cantități.")
+        }
         
     }
     
-    func saveItemInDB(item item: Item)
+    func updateItemInDB(item item: Item)
     {
         
         self.saveItem.isEnabled=false
         
         let db = reference.child("Categories").child(selectedCategory.key).child("items")
-        db.childByAutoId()
-        let id = db.childByAutoId().key as! String
+        let id = item.id
         let dict = ["name": item.name,"descriere": item.description,"cantitate": item.quantity] as [String : Any]
         
-        let imagesFolder = Storage.storage().reference().child("images")
         
         db.child(id).setValue(dict) { (error, reference) in
             if(error==nil)
             {
-                
-                for image in self.images
-                {
-                    let image_id="\(NSUUID().uuidString).jpg"
-                    let ImageData =  image.jpegData(compressionQuality: 0.5)!
-                    
-                    let refStorage = imagesFolder.child(image_id)
-                    refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
-                        if error != nil
-                        {
-                            print("\n\n! Error code f304hg93hg9 \n\n")
-                            
-                        }
-                        else
-                        {
-                            
-                            refStorage.downloadURL { url, error in
-                                if(error==nil)
-                                {
-                                    let itsUrl = url!.absoluteString
-                                    
-                                    let path=self.reference.child("Categories").child(item.category_id).child("items").child(id).child("images")
-                                    let autoid=path.childByAutoId()
-                                    path.child(autoid.key as! String).child("url").setValue(itsUrl)
-                                    path.child(autoid.key as! String).child("uid").setValue(image_id)
-                                }
-                                else
-                                {
-                                    
-                                }
-                                
-                            }
-                        }
-                    })
-                }
-                
-                let title = "Adăugare cu succes"
-                let message = "Obiectul a fost adaugat in baza de date!"
+
+                let title = "Modificare cu succes"
+                let message = "Obiectul a fost modificat în baza de date!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                    self.performSegue(withIdentifier: "backToItemsSegue", sender: nil)
+                    //self.performSegue(withIdentifier: "back", sender: nil)
                 }))
                 
                 self.present(alert, animated: true)
