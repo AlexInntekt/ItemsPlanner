@@ -101,7 +101,10 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         let searchString = searchBar.text
         displayingItems = items.filter({( item : Item) -> Bool in
-            return item.name.lowercased().contains(searchString!.lowercased())
+            let block = item.name.lowercased().contains(searchString!.lowercased()) ||
+                        item.description.lowercased().contains(searchString!.lowercased()) ||
+                        item.category_name.lowercased().contains(searchString!.lowercased())
+            return block
         })
         
         if(searchText=="")

@@ -101,7 +101,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
         displayingBookings = allBookings.filter({( booking : BookingPack) -> Bool in
             let block = booking.itemName.lowercased().contains(searchString!.lowercased()) ||
-                booking.description.lowercased().contains(searchString!.lowercased())
+                        booking.description.lowercased().contains(searchString!.lowercased()) ||
+                        booking.username.lowercased().contains(searchString!.lowercased()) 
             
             return block
         })

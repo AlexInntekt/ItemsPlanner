@@ -12,11 +12,12 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
+class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate
 {
     var displayingItems=[Item]()
     var items=[Item]()
     let ref = Database.database().reference().child("Categories")
+    var searchBar: UISearchBar!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayingItems.count
@@ -58,11 +59,52 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet weak var tbv: UITableView!
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {
+        print("searchBarTextDidBeginEditing rgGwrgwRGHwhharga")
+        shouldShowSearchResults = true
+        tbv.reloadData()
+    }
+    
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        
+        //        searchController.dimsBackgroundDuringPresentation = false
+        searchBar.placeholder = "Search here..."
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        tbv.tableHeaderView = searchBar
+    }
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let searchString = searchBar.text
+        
+        
+        displayingItems = items.filter({( item : Item) -> Bool in
+            let block = item.name.lowercased().contains(searchString!.lowercased()) ||
+                        item.description.lowercased().contains(searchString!.lowercased())
+            
+            return block
+        })
+        
+        if(searchText=="")
+        {
+            displayingItems=items
+            shouldShowSearchResults=false
+        }
+        
+        tbv.reloadData()
+    }
+    
     override func viewDidLoad()
     {
         self.tbv.delegate=self
         self.tbv.dataSource=self
-        
+        configureSearchController()
         
     }
     
@@ -78,8 +120,6 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource
     {
         
         //displayingCategories.removeAll()
-        
-        
         
         ref.observe(.value) { (allCategories) in
             self.items.removeAll()
