@@ -194,6 +194,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
 
+        
     }
     
     func loadCategoriesFromDB()
