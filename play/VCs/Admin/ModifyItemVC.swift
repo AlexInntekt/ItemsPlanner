@@ -141,7 +141,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 let message = "Obiectul a fost modificat în baza de date!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                    //self.performSegue(withIdentifier: "back", sender: nil)
+                    self.performSegue(withIdentifier: "back", sender: nil)
                 }))
                 
                 self.present(alert, animated: true)
