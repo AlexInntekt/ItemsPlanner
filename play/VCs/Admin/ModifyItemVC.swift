@@ -35,8 +35,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var selectedCategory=(key:"", name:"")
     var indexOfSelectedCategory=0
     let reference = Database.database().reference()
-    var cachingItem = Item()
-    var cachedItem = Item()
+    var currentItem = Item()
     
     
     @IBOutlet weak var backButtonToFirstTextfieldConstraint: NSLayoutConstraint!
@@ -161,8 +160,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     })
                 }
                 
-                showCachedItem=false
-                
                 let title = "Adăugare cu succes"
                 let message = "Obiectul a fost adaugat in baza de date!"
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -184,6 +181,10 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewWillAppear(_ animated: Bool)
     {
         setupui()
+        
+        loadCategoriesFromDB()
+        dealWithCachedItem()
+        
         self.gallery.reloadData()
     }
     
@@ -194,9 +195,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
-        
-        loadCategoriesFromDB()
-        dealWithCachedItem()
+
     }
     
     func loadCategoriesFromDB()
@@ -226,12 +225,13 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 for section in self.displayingCategories
                 {
                     
-                    if(section.name==self.cachedItem.category_name)
+                    if(section.name==self.currentItem.category_name)
                     {
                         self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
                         self.selectedCategory=self.displayingCategories[index]
                     }
                     index+=1
+                    
                 }
             }
         }
@@ -289,24 +289,8 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return true
     }
     
-    func loadItem()
-    {
-        self.itemNameLabel.text = self.cachedItem.name
-        self.quantityTextfield.text = String(self.cachedItem.quantity)
-        self.textView.text = self.cachedItem.description
-        
-//        for category in displayingCategories
-//        {
-//            if category.name==self.cachedItem.category_name
-//            {
-//                self.categoryPicker.selectRow(Int(category.key)!, inComponent: 0, animated: false)
-//            }
-//        }
-    }
-    
     func setupui()
     {
-        loadItem()
         dealWithCachedItem()
         showOrHideGallery()
     }
@@ -314,22 +298,11 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func dealWithCachedItem()
     {
         
-        if(showCachedItem)
-        {
-            self.itemNameLabel.text = cachedItem.name
-            self.textView.text = cachedItem.description
-            self.images = cauchedImagesToCreate
-            
-            print("showCachedItem true")
-        }
-        else
-        {
-            print("showCachedItem false")
-        }
-        
-        
-        
-        
+        self.itemNameLabel.text = currentItem.name
+        self.textView.text = currentItem.description
+        self.images = cauchedImagesToCreate
+        self.quantityTextfield.text = String(self.currentItem.quantity)
+
     }
     
     func showOrHideGallery()
@@ -347,14 +320,14 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="GoToImageVC")
         {
-            cachingItem.name=self.itemNameLabel.text ?? ""
-            cachingItem.description=self.textView.text ?? ""
-            cachingItem.category_id=selectedCategory.key
+            currentItem.name=self.itemNameLabel.text ?? ""
+            currentItem.description=self.textView.text ?? ""
+            currentItem.category_id=selectedCategory.key
             
             let obj = sender as! Int
             let defVC = segue.destination as! ImageVC
             defVC.imageIndex = obj
-            defVC.currentItem = cachingItem
+            defVC.currentItem = currentItem
             
             showCachedItem=true
         }

@@ -145,6 +145,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                     currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
                     currentItem.name = item.childSnapshot(forPath: "name").value as! String
                     currentItem.id = item.key
+                    currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
                     
                     for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
                     {
@@ -180,8 +181,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         {
             let obj = sender as! Item
             let defVC = segue.destination as! ModifyItemAdminVC
-            defVC.cachedItem = obj
-            defVC.cachingItem = obj
+            defVC.currentItem = obj
         }
     }
 

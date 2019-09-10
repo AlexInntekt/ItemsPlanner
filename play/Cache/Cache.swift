@@ -14,6 +14,6 @@ import UIKit
 let defaultNameForDefaultItem="Nume obiect"
 let defaultDescriptionForDefaultItem="Aceasta este un sablon de descriere al obiectului. Apasa pentru editare."
 
-var cachedItemToCreate = Item(name: defaultNameForDefaultItem, description: defaultDescriptionForDefaultItem)
+//var cachedItemToCreate = Item(name: defaultNameForDefaultItem, description: defaultDescriptionForDefaultItem)
 var cauchedImagesToCreate = [UIImage]()
 var showCachedItem=false
