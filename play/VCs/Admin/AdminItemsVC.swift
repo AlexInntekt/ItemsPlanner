@@ -31,6 +31,10 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         return cell;
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        performSegue(withIdentifier: "modifyItemSegue", sender: displayingItems[indexPath.row])
+    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -170,5 +174,15 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if(segue.identifier=="modifyItemSegue")
+        {
+            let obj = sender as! Item
+            let defVC = segue.destination as! ModifyItemAdminVC
+            defVC.cachedItem = obj
+            defVC.cachingItem = obj
+        }
+    }
 
 }

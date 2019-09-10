@@ -13,7 +13,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class ModifyItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource
+class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
@@ -289,8 +289,24 @@ class ModifyItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         return true
     }
     
+    func loadItem()
+    {
+        self.itemNameLabel.text = self.cachedItem.name
+        self.quantityTextfield.text = String(self.cachedItem.quantity)
+        self.textView.text = self.cachedItem.description
+        
+//        for category in displayingCategories
+//        {
+//            if category.name==self.cachedItem.category_name
+//            {
+//                self.categoryPicker.selectRow(Int(category.key)!, inComponent: 0, animated: false)
+//            }
+//        }
+    }
+    
     func setupui()
     {
+        loadItem()
         dealWithCachedItem()
         showOrHideGallery()
     }

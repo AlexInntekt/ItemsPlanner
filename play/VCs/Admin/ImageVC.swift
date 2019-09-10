@@ -45,7 +45,7 @@ class ImageVC: UIViewController
         if(segue.identifier=="back")
         {
             let defVC = segue.destination as! AddItemAdminVC
-            defVC.cachedItem=currentItem
+            defVC.currentItem=currentItem
         }
     }
     

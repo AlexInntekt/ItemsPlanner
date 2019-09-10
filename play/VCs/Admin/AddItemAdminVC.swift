@@ -34,8 +34,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var selectedCategory=(key:"", name:"")
     var indexOfSelectedCategory=0
     let reference = Database.database().reference()
-    var cachingItem = Item()
-    var cachedItem = Item()
+
+    var currentItem = Item()
 
     
     @IBOutlet weak var backButtonToFirstTextfieldConstraint: NSLayoutConstraint!
@@ -225,7 +225,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 for section in self.displayingCategories
                 {
 
-                    if(section.name==self.cachedItem.category_name)
+                    if(section.name==self.currentItem.category_name)
                     {
                         self.categoryPicker.selectRow(index, inComponent: 0, animated: false)
                         self.selectedCategory=self.displayingCategories[index]
@@ -299,8 +299,8 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
         if(showCachedItem)
         {
-            self.itemNameLabel.text = cachedItem.name
-            self.textView.text = cachedItem.description
+            self.itemNameLabel.text = currentItem.name
+            self.textView.text = currentItem.description
             self.images = cauchedImagesToCreate
             
             print("showCachedItem true")
@@ -330,14 +330,14 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="GoToImageVC")
         {
-            cachingItem.name=self.itemNameLabel.text ?? ""
-            cachingItem.description=self.textView.text ?? ""
-            cachingItem.category_id=selectedCategory.key
+            currentItem.name=self.itemNameLabel.text ?? ""
+            currentItem.description=self.textView.text ?? ""
+            currentItem.category_id=selectedCategory.key
             
             let obj = sender as! Int
             let defVC = segue.destination as! ImageVC
             defVC.imageIndex = obj
-            defVC.currentItem = cachingItem
+            defVC.currentItem = currentItem
             
             showCachedItem=true
         }

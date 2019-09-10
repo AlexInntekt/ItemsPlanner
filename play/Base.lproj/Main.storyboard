@@ -2381,7 +2381,7 @@
         <!--Modify Item AdminVC-->
         <scene sceneID="Kl0-sH-J3U">
             <objects>
-                <viewController storyboardIdentifier="ModifyItemAdminVC" id="SfF-nl-YD0" customClass="ModifyItemAdminVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModifyItemAdminVC" id="SfF-nl-YD0" customClass="ModifyItemAdminVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HA8-PV-gHO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2585,7 +2585,6 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="bi7-kV-FGa"/>
         <segue reference="Urz-D9-MVr"/>
