@@ -45,6 +45,7 @@
 		FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD176322F2B47C00881325 /* MyBookings.swift */; };
 		FAB465B22309BD7700436142 /* ModifyCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */; };
 		FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C5F2325925900DEAE6C /* InternetManager.swift */; };
+		FAC45C642327C2F700DEAE6C /* ModifyItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C632327C2F700DEAE6C /* ModifyItemVC.swift */; };
 		FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFEAE722F4CB2F00270F25 /* Deleters.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 		FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9F5D722F7068A0074B36D /* AdminVC.swift */; };
@@ -120,6 +121,7 @@
 		FAAD176322F2B47C00881325 /* MyBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookings.swift; sourceTree = "<group>"; };
 		FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryVC.swift; sourceTree = "<group>"; };
 		FAC45C5F2325925900DEAE6C /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetManager.swift; path = /Users/alex/repos/play/play/InternetManager.swift; sourceTree = "<absolute>"; };
+		FAC45C632327C2F700DEAE6C /* ModifyItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemVC.swift; sourceTree = "<group>"; };
 		FACFEAE722F4CB2F00270F25 /* Deleters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deleters.swift; path = /Users/alex/repos/play/play/Deleters.swift; sourceTree = "<absolute>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FAE9F5D722F7068A0074B36D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				FAE9F5D722F7068A0074B36D /* AdminVC.swift */,
 				FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */,
 				FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */,
+				FAC45C632327C2F700DEAE6C /* ModifyItemVC.swift */,
 				FA5A6B7822FF1DBC00F0764E /* AdminCategoriesVC.swift */,
 				FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */,
 				FA13F4B222FF2AEA0014CED5 /* AddCategoryAdminVC.swift */,
@@ -550,6 +553,7 @@
 				FA13922A22D8ED93006D64B4 /* AppDelegate.swift in Sources */,
 				FA40234D2301FF2100F8B6DE /* GlobalUtils.swift in Sources */,
 				FA01152522DF851B00F8234A /* Fetchers.swift in Sources */,
+				FAC45C642327C2F700DEAE6C /* ModifyItemVC.swift in Sources */,
 				FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */,
 				FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */,
 				FAEF5F2C22FED01C00E5AC6F /* AddItemAdminVC.swift in Sources */,
