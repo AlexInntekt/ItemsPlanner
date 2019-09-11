@@ -69,6 +69,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
     {
         print("searchBarTextDidBeginEditing rgGwrgwRGHwhharga")
         shouldShowSearchResults = true
+        displayingItems.sort(by: { $0.name < $1.name })
         tbv.reloadData()
     }
     
@@ -104,6 +105,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
             shouldShowSearchResults=false
         }
         
+        displayingItems.sort(by: { $0.name < $1.name })
         tbv.reloadData()
     }
     
@@ -182,6 +184,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                 }
             }
             
+            self.displayingItems.sort(by: { $0.name < $1.name })
             self.tbv.reloadData()
 //            scrollToFirstRow(in: self.tbv)
 //            self.pickerCategory.reloadAllComponents()
