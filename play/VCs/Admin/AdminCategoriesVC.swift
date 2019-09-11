@@ -61,8 +61,27 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
             alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
                 
                 let key = self.displayingCategories[indexPath.row].key
-                self.reference.child("Categories").child(key).removeValue()
-                self.tbv.reloadData()
+                
+                self.reference.child("Categories").child(key).child("items").observeSingleEvent(of: .value, with: { (list) in
+                    
+                    for snap in list.children.allObjects as! [DataSnapshot]
+                    {
+                        print(snap.value)
+                        
+                        let fetchedItem = Item()
+                            fetchedItem.id = snap.key as! String
+                            fetchedItem.name = snap.childSnapshot(forPath: "name").value as! String
+                            fetchedItem.description = snap.childSnapshot(forPath: "descriere").value as! String
+                            fetchedItem.category_id = key
+                        
+                        deleteItem(fetchedItem)
+                    }
+                    
+                    self.reference.child("Categories").child(key).removeValue()
+                    self.tbv.reloadData()
+                })
+                
+
             }))
 
             self.present(alert, animated: true)

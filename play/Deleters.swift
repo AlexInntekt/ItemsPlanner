@@ -66,3 +66,27 @@ func deleteAllBookingsOfItem(_ item: Item)
         
     }
 }
+
+
+
+func deleteItem(_ item: Item)
+{
+    let itemToDelete=item
+    let ref=Database.database().reference()
+    let path_to_storage = Storage.storage().reference().child("images")
+    
+    //first delete its bookings:
+    deleteAllBookingsOfItem(itemToDelete)
+    
+    //delete its images:
+    for image in itemToDelete.images
+    {
+        path_to_storage.child(image.uid).delete(completion: { (error) in
+            print(error, error.debugDescription)
+        })
+    }
+    
+    //delete its child:
+    let path_of_item=ref.child("Categories").child(itemToDelete.category_id).child("items").child(itemToDelete.id)
+    path_of_item.removeValue()
+}
