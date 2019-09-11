@@ -65,7 +65,7 @@ class ImageVC2: UIViewController
         {
             let defVC = segue.destination as! ModifyItemAdminVC
             defVC.currentItem=currentItem
-            defVC.initialItem=initialItem
+            defVC.initialItem=initialItem.copy()
         }
     }
     

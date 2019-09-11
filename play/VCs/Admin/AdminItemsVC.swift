@@ -183,7 +183,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
             let obj = sender as! Item
             let defVC = segue.destination as! ModifyItemAdminVC
             defVC.currentItem = obj
-            defVC.initialItem = obj
+            defVC.initialItem = obj.copy()
         }
     }
 

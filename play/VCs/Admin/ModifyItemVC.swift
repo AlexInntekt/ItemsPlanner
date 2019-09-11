@@ -162,6 +162,8 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         self.saveItem.isEnabled=false
         
+        print("searching cause of error, daofniwGiwgweG", item.category_name, " ", self.initialItem.category_name)
+        
         let db = reference.child("Categories").child(selectedCategory.key).child("items")
         let id = item.id
         let dict = ["name": item.name,"descriere": item.description,"cantitate": item.quantity] as [String : Any]
@@ -334,6 +336,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     func cacheItem()
     {
+        
         if(self.itemNameLabel.text != nil)
         {
             self.currentItem.name = self.itemNameLabel.text!
@@ -359,6 +362,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             }
         }
         
+        print("cacheItem() ", "currentItem: ",self.currentItem.category_name, " --- initialItem: ", self.initialItem.category_name)
     }
     
     
@@ -369,7 +373,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.textView.text = currentItem.description
         self.quantityTextfield.text = String(self.currentItem.quantity)
         
-        print("dealWithCachedItem() ", self.currentItem.category_name)
         var i=0
         for obj in displayingCategories
         {
@@ -381,6 +384,8 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             
             i+=1
         }
+        
+        print("dealWithCachedItem() ", "currentItem: ",self.currentItem.category_name, " --- initialItem: ", self.initialItem.category_name)
 
     }
     
@@ -409,7 +414,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             let defVC = segue.destination as! ImageVC2
             defVC.imageIndex = obj
             defVC.currentItem = currentItem
-            defVC.initialItem = initialItem
+            defVC.initialItem = initialItem.copy()
             let cell = gallery.cellForItem(at: IndexPath(row: obj, section: 0)) as! ImageCell
             defVC.uiimage = cell.image.image!
             
