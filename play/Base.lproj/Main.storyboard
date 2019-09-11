@@ -1354,7 +1354,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="nes-Z1-Kxb" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-6.5" width="350" height="100"/>
+                                        <rect key="frame" x="0.0" y="-6" width="350" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
@@ -1988,12 +1988,18 @@
                                     <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" id="Urz-D9-MVr"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-Iv-xLS">
+                                <rect key="frame" x="11" y="108" width="289" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vmB-EX-BNj" firstAttribute="top" secondItem="FZw-M5-CPR" secondAttribute="bottom" id="653-kK-zd5"/>
                             <constraint firstItem="ESv-lA-cI9" firstAttribute="centerX" secondItem="ez0-Nr-vSh" secondAttribute="centerX" id="7VV-AH-6qo"/>
+                            <constraint firstItem="fF7-Iv-xLS" firstAttribute="leading" secondItem="ez0-Nr-vSh" secondAttribute="leading" constant="11" id="Dra-2V-bxm"/>
                             <constraint firstItem="VDS-6x-SPJ" firstAttribute="leading" secondItem="v30-xf-Tj5" secondAttribute="trailing" constant="20" id="FbD-xn-RMu"/>
+                            <constraint firstItem="vmB-EX-BNj" firstAttribute="top" secondItem="fF7-Iv-xLS" secondAttribute="bottom" constant="7" id="GDn-mm-F2v"/>
                             <constraint firstItem="9br-Q3-dHW" firstAttribute="leading" secondItem="ez0-Nr-vSh" secondAttribute="leading" constant="5" id="HRx-Sz-qKb"/>
                             <constraint firstItem="v30-xf-Tj5" firstAttribute="centerY" secondItem="VDS-6x-SPJ" secondAttribute="centerY" id="JIj-OW-yyq"/>
                             <constraint firstItem="v30-xf-Tj5" firstAttribute="height" secondItem="VDS-6x-SPJ" secondAttribute="height" id="MOV-e2-X1J"/>
@@ -2003,17 +2009,20 @@
                             <constraint firstItem="vmB-EX-BNj" firstAttribute="centerX" secondItem="ez0-Nr-vSh" secondAttribute="centerX" id="VuB-9G-qt9"/>
                             <constraint firstItem="ez0-Nr-vSh" firstAttribute="trailing" secondItem="vmB-EX-BNj" secondAttribute="trailing" constant="10" id="YOW-qj-FbH"/>
                             <constraint firstItem="ez0-Nr-vSh" firstAttribute="bottom" secondItem="vmB-EX-BNj" secondAttribute="bottom" constant="15" id="Zu4-G6-qej"/>
+                            <constraint firstItem="fF7-Iv-xLS" firstAttribute="top" secondItem="ESv-lA-cI9" secondAttribute="bottom" constant="7" id="cYN-nf-X2G"/>
                             <constraint firstItem="VDS-6x-SPJ" firstAttribute="centerY" secondItem="MI5-pv-5VE" secondAttribute="centerY" id="dbZ-Ya-AE2"/>
                             <constraint firstItem="vmB-EX-BNj" firstAttribute="leading" secondItem="ez0-Nr-vSh" secondAttribute="leading" constant="10" id="ecX-B3-ICB"/>
                             <constraint firstItem="ESv-lA-cI9" firstAttribute="width" secondItem="U6V-Qs-3AS" secondAttribute="width" id="ehZ-ve-ZT6"/>
                             <constraint firstItem="ez0-Nr-vSh" firstAttribute="trailing" secondItem="MI5-pv-5VE" secondAttribute="trailing" constant="16" id="fw7-Ve-fv4"/>
                             <constraint firstItem="MI5-pv-5VE" firstAttribute="leading" secondItem="VDS-6x-SPJ" secondAttribute="trailing" constant="20" id="ivP-iH-Y2j"/>
                             <constraint firstItem="MI5-pv-5VE" firstAttribute="top" secondItem="ez0-Nr-vSh" secondAttribute="top" constant="5" id="juC-he-m0w"/>
+                            <constraint firstItem="FZw-M5-CPR" firstAttribute="leading" secondItem="fF7-Iv-xLS" secondAttribute="trailing" constant="5" id="vBZ-y7-PHx"/>
                             <constraint firstItem="FZw-M5-CPR" firstAttribute="top" secondItem="MI5-pv-5VE" secondAttribute="bottom" constant="20" id="wwN-Mp-mw6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ez0-Nr-vSh"/>
                     </view>
                     <connections>
+                        <outlet property="container" destination="fF7-Iv-xLS" id="x6z-Fc-ITC"/>
                         <outlet property="tbv" destination="vmB-EX-BNj" id="4KJ-Yq-Edo"/>
                         <segue destination="SfF-nl-YD0" kind="custom" identifier="modifyItemSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Orr-iI-pn6"/>
                     </connections>
@@ -2671,15 +2680,15 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E0h-lO-mfr"/>
-        <segue reference="mrp-oW-Wuo"/>
+        <segue reference="Orr-iI-pn6"/>
+        <segue reference="c6c-g9-YPq"/>
         <segue reference="bi7-kV-FGa"/>
         <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
-        <segue reference="0zt-tU-UE9"/>
+        <segue reference="oPY-KH-5YU"/>
         <segue reference="reU-xr-CK0"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="wlb-jp-kx3"/>
+        <segue reference="kNt-8W-Dcm"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

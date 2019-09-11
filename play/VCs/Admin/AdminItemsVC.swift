@@ -19,6 +19,8 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
     let ref = Database.database().reference().child("Categories")
     var searchBar: UISearchBar!
     
+    @IBOutlet weak var container: UIView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayingItems.count
     }
@@ -84,6 +86,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         
         // Place the search bar view to the tableview headerview.
         tbv.tableHeaderView = searchBar
+        //container = searchBar
     }
     
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
