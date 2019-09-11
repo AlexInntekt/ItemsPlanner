@@ -66,13 +66,23 @@ class AdminCategoriesVC: UIViewController, UITableViewDelegate, UITableViewDataS
                     
                     for snap in list.children.allObjects as! [DataSnapshot]
                     {
-                        print(snap.value)
                         
                         let fetchedItem = Item()
                             fetchedItem.id = snap.key as! String
                             fetchedItem.name = snap.childSnapshot(forPath: "name").value as! String
                             fetchedItem.description = snap.childSnapshot(forPath: "descriere").value as! String
                             fetchedItem.category_id = key
+                        
+                        for metadataimage in snap.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
+                        {
+                            let image = FBImage()
+                                image.uid = metadataimage.childSnapshot(forPath: "uid").value as! String
+                                image.url = metadataimage.childSnapshot(forPath: "url").value as! String
+                                image.accesid = metadataimage.key as! String
+                            
+                            fetchedItem.images.append(image)
+                            
+                        }
                         
                         deleteItem(fetchedItem)
                     }
