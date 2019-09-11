@@ -141,14 +141,23 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                 
                 for item in packets.children.allObjects as! [DataSnapshot]
                 {
+                    print(item)
                     let currentItem = Item()
                     currentItem.category_id = category.key as! String
                     currentItem.category_name = category_name
-                    currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
-                    currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                    if(item.childSnapshot(forPath: "descriere").exists())
+                    {
+                        currentItem.description = item.childSnapshot(forPath: "descriere").value as! String
+                    }
+                    if(item.childSnapshot(forPath: "name").exists())
+                    {
+                        currentItem.name = item.childSnapshot(forPath: "name").value as! String
+                    }
+                    if(item.childSnapshot(forPath: "cantitate").exists())
+                    {
+                        currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
+                    }
                     currentItem.id = item.key
-                    currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
-                    
                     
                     for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
                     {
@@ -163,12 +172,13 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                             fbimage.accesid = image.key as! String
                             currentItem.images.append(fbimage)
                         }
-
+                        
                     }
                     
                     
                     self.items.append(currentItem)
                     self.displayingItems.append(currentItem)
+                    
                     
                 }
             }
