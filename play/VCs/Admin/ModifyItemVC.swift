@@ -202,6 +202,13 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        print("viewWillDisappear")
+        
+        cacheItem()
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         print("calling viewWillAppear")
@@ -325,34 +332,6 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         showOrHideGallery()
     }
     
-    func dealWithCachedItem()
-    {
-        
-        self.itemNameLabel.text = currentItem.name
-        self.textView.text = currentItem.description
-        self.quantityTextfield.text = String(self.currentItem.quantity)
-
-    }
-    
-    func showOrHideGallery()
-    {
-        if(gallery.numberOfItems(inSection: 0)==0)
-        {
-            backButtonToFirstTextfieldConstraint.constant=20
-        }
-        else
-        {
-            backButtonToFirstTextfieldConstraint.constant=140
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool)
-    {
-        print("viewWillDisappear")
-        
-       cacheItem()
-    }
-    
     func cacheItem()
     {
         if(self.itemNameLabel.text != nil)
@@ -370,7 +349,54 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             self.currentItem.quantity = Int(self.quantityTextfield.text!)!
         }
         
+        let name_of_sel_categ = selectedCategory.name
+        for catg in displayingCategories
+        {
+            if(catg.name==name_of_sel_categ)
+            {
+                self.currentItem.category_name = catg.name
+                self.currentItem.category_id = catg.key
+            }
+        }
+        
     }
+    
+    
+    func dealWithCachedItem()
+    {
+        
+        self.itemNameLabel.text = currentItem.name
+        self.textView.text = currentItem.description
+        self.quantityTextfield.text = String(self.currentItem.quantity)
+        
+        print("dealWithCachedItem() ", self.currentItem.category_name)
+        var i=0
+        for obj in displayingCategories
+        {
+            if obj.name == self.currentItem.name
+            {
+                categoryPicker.selectRow(i, inComponent: 0, animated: false)
+                selectedCategory=displayingCategories[i]
+            }
+            
+            i+=1
+        }
+
+    }
+    
+    func showOrHideGallery()
+    {
+        if(gallery.numberOfItems(inSection: 0)==0)
+        {
+            backButtonToFirstTextfieldConstraint.constant=20
+        }
+        else
+        {
+            backButtonToFirstTextfieldConstraint.constant=140
+        }
+    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="GoToImageVC")
