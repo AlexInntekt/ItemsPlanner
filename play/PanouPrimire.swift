@@ -81,18 +81,21 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func searchBarTextDidBeginEditing(searchBar: UISearchBar)
     {
         shouldShowSearchResults = true
+        displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar)
     {
         shouldShowSearchResults = false
+        displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if !shouldShowSearchResults {
             shouldShowSearchResults = true
+            displayingItems.sort(by: { $0.name < $1.name })
             itemsTableView.reloadData()
         }
         
@@ -117,6 +120,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             shouldShowSearchResults=false
         }
         
+        displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
     
@@ -222,6 +226,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         UserDefaults.standard.set(String(row), forKey: "selected_category")
         
         filterDisplayingItemsByCategory(displayingCategories[row])
+        displayingItems.sort(by: { $0.name < $1.name })
         self.itemsTableView.reloadData()
         scrollToFirstRow(in: self.itemsTableView)
     }
@@ -481,6 +486,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                 
              }
             
+            displayingItems.sort(by: { $0.name < $1.name })
             self.itemsTableView.reloadData()
             scrollToFirstRow(in: self.itemsTableView)
         }
