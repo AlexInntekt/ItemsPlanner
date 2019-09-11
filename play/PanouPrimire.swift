@@ -70,7 +70,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         
 //        searchController.dimsBackgroundDuringPresentation = false
-        searchBar.placeholder = "Search here..."
+        searchBar.placeholder = "Cautare generală"
         searchBar.delegate = self
         searchBar.sizeToFit()
         
