@@ -63,11 +63,20 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             
-            let bk = self.displayingBookings[indexPath.row]
-            self.displayingBookings.remove(at: indexPath.row)
-            self.TBVAdmin.reloadData()
-            deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category_id)
+            let title = "Acțiune periculoasă"
+            let message = "Sunteți sigur de această acțiune?"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
+            }))
+            alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
+                
+                let bk = self.displayingBookings[indexPath.row]
+                self.displayingBookings.remove(at: indexPath.row)
+                self.TBVAdmin.reloadData()
+                deleteMyBookingWithId(bk_id: bk.id, item_id: bk.itemId, cat: bk.category_id)
+            }))
             
+            self.present(alert, animated: true)
         }
         
         return [delete]
