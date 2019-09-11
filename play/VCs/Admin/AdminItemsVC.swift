@@ -141,7 +141,6 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                 
                 for item in packets.children.allObjects as! [DataSnapshot]
                 {
-                    print(item)
                     let currentItem = Item()
                     currentItem.category_id = category.key as! String
                     currentItem.category_name = category_name

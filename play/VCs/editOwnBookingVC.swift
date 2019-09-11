@@ -20,6 +20,16 @@ class editOwnBookingVC: UIViewController
     
     var currentBooking=Booking()
     
+  
+    @IBOutlet weak var save: UIButton!
+    
+    @IBAction func save(_ sender: Any)
+    {
+        let newDescription = self.bookingDescr.text ?? ""
+        reference.child("Bookings").child(currentBooking.id).updateChildValues(["descriere":newDescription])
+        
+        
+    }
     @IBAction func changeDate(_ sender: Any)
     {
         self.performSegue(withIdentifier: "editDateOfOwnBookingSegue", sender: nil)
