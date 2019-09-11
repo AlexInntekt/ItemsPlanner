@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class editOwnBookingVC: UIViewController
+class editOwnBookingVC: UIViewController, UITextFieldDelegate, UITextViewDelegate
 {
     
     @IBOutlet weak var item: UILabel!
@@ -26,10 +26,9 @@ class editOwnBookingVC: UIViewController
     @IBAction func save(_ sender: Any)
     {
         let newDescription = self.bookingDescr.text ?? ""
-        reference.child("Bookings").child(currentBooking.id).updateChildValues(["descriere":newDescription])
-        
-        
+    reference.child("Bookings").child(currentBooking.id).updateChildValues(["descriere":newDescription])
     }
+    
     @IBAction func changeDate(_ sender: Any)
     {
         self.performSegue(withIdentifier: "editDateOfOwnBookingSegue", sender: nil)
@@ -37,9 +36,11 @@ class editOwnBookingVC: UIViewController
     
     override func viewDidLoad()
     {
-        item.text="Rezervare \(currentBooking.itemName)"
+        item.text="Obiect: \(currentBooking.itemName)"
         bookingDescr.text=currentBooking.description
         date.text="\(currentBooking.startDate) - \(currentBooking.endDate)"
+        
+        bookingDescr.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
@@ -51,5 +52,23 @@ class editOwnBookingVC: UIViewController
             defVC.currentBooking = self.currentBooking
             
         }
+    }
+    
+    /* Updated for Swift 4 */
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    /* Older versions of Swift */
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }
