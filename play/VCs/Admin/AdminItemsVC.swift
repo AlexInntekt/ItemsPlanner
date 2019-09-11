@@ -39,29 +39,49 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            let itemToDelete=self.displayingItems[indexPath.row]
-            let ref=Database.database().reference()
-            let path_to_storage = Storage.storage().reference().child("images")
-            
-            //first delete its bookings:
-            deleteAllBookingsOfItem(itemToDelete)
-            
-            //delete its images:
-            for image in itemToDelete.images
-            {
-                path_to_storage.child(image.uid).delete(completion: { (error) in
-                    print(error, error.debugDescription)
-                })
-            }
 
-            //delete its child:
-            let path_of_item=ref.child("Categories").child(itemToDelete.category_id).child("items").child(itemToDelete.id)
-            path_of_item.removeValue()
+            let title = "Acțiune periculoasă"
+            let message = "Ștergerea unui articol duce la ștergerea recursivă a tuturor rezervărilor ce țin de acesta. Sunteți sigur de această acțiune?"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
+            }))
+            alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
 
+                self.deleteAction(on: indexPath.row)
+            }))
+            
+            self.present(alert, animated: true)
+        }
+        
+        let edit = UITableViewRowAction(style: .normal, title: "Editează") { (action, indexPath) in
+            
+            self.performSegue(withIdentifier: "modifyItemSegue", sender: self.displayingItems[indexPath.row])
             
         }
         
-        return [delete]
+        return [delete, edit]
+    }
+    
+    func deleteAction(on index: Int)
+    {
+        let itemToDelete=self.displayingItems[index]
+        let ref=Database.database().reference()
+        let path_to_storage = Storage.storage().reference().child("images")
+        
+        //first delete its bookings:
+        deleteAllBookingsOfItem(itemToDelete)
+        
+        //delete its images:
+        for image in itemToDelete.images
+        {
+            path_to_storage.child(image.uid).delete(completion: { (error) in
+                print(error, error.debugDescription)
+            })
+        }
+        
+        //delete its child:
+        let path_of_item=ref.child("Categories").child(itemToDelete.category_id).child("items").child(itemToDelete.id)
+        path_of_item.removeValue()
     }
     
     
