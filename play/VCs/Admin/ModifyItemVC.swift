@@ -104,6 +104,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                         self.currentItem.images.append(fbimage)
                         self.gallery.reloadData()
+                        self.showOrHideGallery()
                         
                     }
                     else
@@ -343,6 +344,32 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         {
             backButtonToFirstTextfieldConstraint.constant=140
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        print("viewWillDisappear")
+        
+       cacheItem()
+    }
+    
+    func cacheItem()
+    {
+        if(self.itemNameLabel.text != nil)
+        {
+            self.currentItem.name = self.itemNameLabel.text!
+        }
+        
+        if(self.textView.text != nil)
+        {
+            self.currentItem.description = self.textView.text!
+        }
+        
+        if(self.quantityTextfield.text != nil)
+        {
+            self.currentItem.quantity = Int(self.quantityTextfield.text!)!
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
