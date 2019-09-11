@@ -26,7 +26,16 @@ class editOwnBookingVC: UIViewController, UITextFieldDelegate, UITextViewDelegat
     @IBAction func save(_ sender: Any)
     {
         let newDescription = self.bookingDescr.text ?? ""
-    reference.child("Bookings").child(currentBooking.id).updateChildValues(["descriere":newDescription])
+    reference.child("Bookings").child(currentBooking.id).updateChildValues(["descriere":newDescription]) { (error, reference) in
+            if(error != nil)
+            {
+                alert(UIVC: self, title: "Eroare", message: "\(error)")
+            }
+            else
+            {
+                self.performSegue(withIdentifier: "back", sender: nil)
+            }
+        }
     }
     
     @IBAction func changeDate(_ sender: Any)
