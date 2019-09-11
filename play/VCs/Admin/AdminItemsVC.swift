@@ -40,21 +40,25 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             let itemToDelete=self.displayingItems[indexPath.row]
-            
             let ref=Database.database().reference()
             let path_to_storage = Storage.storage().reference().child("images")
             
-            print(itemToDelete.images, " fjiohfpahwgpaw")
+            //first delete its bookings:
+            deleteAllBookingsOfItem(itemToDelete)
+            
+            //delete its images:
             for image in itemToDelete.images
             {
-                print(image)
                 path_to_storage.child(image.uid).delete(completion: { (error) in
                     print(error, error.debugDescription)
                 })
             }
-            
+
+            //delete its child:
             let path_of_item=ref.child("Categories").child(itemToDelete.category_id).child("items").child(itemToDelete.id)
             path_of_item.removeValue()
+
+            
         }
         
         return [delete]
@@ -147,6 +151,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                     currentItem.id = item.key
                     currentItem.quantity = item.childSnapshot(forPath: "cantitate").value as! Int
                     
+                    
                     for image in item.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
                     {
                         //                        currentItem.image_url = imageurl.value as! String
@@ -162,6 +167,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
                         }
 
                     }
+                    
                     
                     self.items.append(currentItem)
                     self.displayingItems.append(currentItem)
