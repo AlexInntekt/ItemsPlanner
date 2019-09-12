@@ -118,7 +118,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     
     @IBOutlet weak var quantityPicker: UIPickerView!
-    
+
+    @IBOutlet weak var staticItemDescr: UITextView!
     
     var currentItem=Item()
     var bookingsOfCurrentItem=[Booking]()
@@ -298,6 +299,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         if(self.descriptionOfBooking=="")
         {
             self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+            self.staticItemDescr.text = currentItem.description
         }
         else
         {
