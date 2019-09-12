@@ -15,6 +15,7 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
     var desiredItem = Item()
     var descriptionOfBooking = ""
     var editmode = false
+    var existingBookingToModify = Booking()
     
     @IBOutlet var tbv: UITableView!
     
@@ -58,6 +59,7 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
             defVC.currentItem = desiredItem
             defVC.descriptionOfBooking = descriptionOfBooking
             defVC.editMode = self.editmode
+            defVC.existingBookingToModify = self.existingBookingToModify
         }
         
         

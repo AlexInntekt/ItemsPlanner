@@ -303,6 +303,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             textfieldDescription.text = existingBookingToModify.description
             print("existingBookingToModify.quantity: ",existingBookingToModify.quantity)
             quantityPicker.selectRow(existingBookingToModify.quantity-1, inComponent: 0, animated: false)
+            desiredQuantityOfBookedItems=existingBookingToModify.quantity
         }
         else
         {
@@ -352,6 +353,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             defVC.desiredItem = currentItem as! Item
             defVC.descriptionOfBooking = self.descriptionOfBooking
             defVC.editmode = self.editMode
+            defVC.existingBookingToModify = self.existingBookingToModify
         }
         
         if(segue.identifier=="gallerySegue")
