@@ -126,6 +126,15 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                         localItem.quantity = fitem.childSnapshot(forPath: "cantitate").value as! Int
                         localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
                         
+                        for image in fitem.childSnapshot(forPath: "images").children.allObjects as! [DataSnapshot]
+                        {
+                            let fbimage = FBImage()
+                                fbimage.url = image.childSnapshot(forPath: "url").value as! String
+                                fbimage.uid = image.childSnapshot(forPath: "uid").value as! String
+                            
+                            localItem.images.append(fbimage)
+                        }
+                        
                         self.packItem = localItem
                         self.performSegue(withIdentifier: "goToEditVC", sender: currentBooking)
                         
