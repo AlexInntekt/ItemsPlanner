@@ -324,6 +324,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             if(editMode)
             {
                 self.cacheBooking = existingBookingToModify.copy()
+                
+                textfieldDescription.text = cacheBooking.description
+                quantityPicker.selectRow(cacheBooking.quantity-1, inComponent: 0, animated: false)
+                desiredQuantityOfBookedItems=cacheBooking.quantity
             }
             else
             {
@@ -335,7 +339,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         else
         {
             textfieldDescription.text = cacheBooking.description
-            print("existingBookingToModify.quantity: ",cacheBooking.quantity)
             quantityPicker.selectRow(cacheBooking.quantity-1, inComponent: 0, animated: false)
             desiredQuantityOfBookedItems=cacheBooking.quantity
         }
