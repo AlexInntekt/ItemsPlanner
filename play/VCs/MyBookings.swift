@@ -153,7 +153,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Șterge") { (action, indexPath) in
             
             let bk = self.displayingBookings[indexPath.row]
             self.displayingBookings.remove(at: indexPath.row)
@@ -162,13 +162,13 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
         }
         
-        let info = UITableViewRowAction(style: .normal, title: "Info") { (action, indexPath) in
+        let edit = UITableViewRowAction(style: .normal, title: "Editează") { (action, indexPath) in
             self.handleEditTap(self.displayingBookings[indexPath.row])
         }
 
         info.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
 
-        return [delete,info]
+        return [delete,edit]
     }
     
     func setup()
