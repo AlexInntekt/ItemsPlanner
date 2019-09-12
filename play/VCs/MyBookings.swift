@@ -104,11 +104,8 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell;
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
-        
-        let currentBooking = displayingBookings[indexPath.row]
-        
+    func handleEditTap(_ currentBooking: Booking)
+    {
         reference.child("Categories").observeSingleEvent(of: .value) { (pack) in
             for categ in pack.children.allObjects as! [DataSnapshot]
             {
@@ -120,14 +117,14 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 {
                     if currentBooking.itemId == fitem.key as! String
                     {
-
+                        
                         let localItem = Item()
-                            localItem.name = fitem.childSnapshot(forPath: "name").value as! String
-                            localItem.category_id = category_id
-                            localItem.category_name = categ.childSnapshot(forPath: "name").value as! String
-                            localItem.id = fitem.key as! String
-                            localItem.quantity = fitem.childSnapshot(forPath: "cantitate").value as! Int
-                            localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
+                        localItem.name = fitem.childSnapshot(forPath: "name").value as! String
+                        localItem.category_id = category_id
+                        localItem.category_name = categ.childSnapshot(forPath: "name").value as! String
+                        localItem.id = fitem.key as! String
+                        localItem.quantity = fitem.childSnapshot(forPath: "cantitate").value as! Int
+                        localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
                         
                         self.packItem = localItem
                         self.performSegue(withIdentifier: "goToEditVC", sender: currentBooking)
@@ -136,6 +133,14 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
+        
+        let currentBooking = displayingBookings[indexPath.row]
+        
+        handleEditTap(currentBooking)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -149,7 +154,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         
         let info = UITableViewRowAction(style: .normal, title: "Info") { (action, indexPath) in
-            self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
+            self.handleEditTap(self.displayingBookings[indexPath.row])
         }
 
         info.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
