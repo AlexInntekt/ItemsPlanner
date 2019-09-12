@@ -103,7 +103,34 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
+        //self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
+        
+        let currentBooking = displayingBookings[indexPath.row]
+        
+        
+        reference.child("Categories").observeSingleEvent(of: .value) { (pack) in
+            for categ in pack.children.allObjects as! [DataSnapshot]
+            {
+                let category_id = categ.key as! String
+                
+                let items = categ.childSnapshot(forPath: "items").children.allObjects as! [DataSnapshot]
+                
+                for fitem in items
+                {
+                    if currentBooking.itemId == fitem.key as! String
+                    {
+                        let localItem = Item()
+                            localItem.name = fitem.childSnapshot(forPath: "name").value as! String
+                            localItem.category_id = category_id
+                            localItem.category_name = categ.childSnapshot(forPath: "name").value as! String
+                            localItem.id = fitem.childSnapshot(forPath: "itemId").value as! String
+                            localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
+                        
+                        
+                    }
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -198,9 +225,13 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="goToEditVC")
         {
-            let obj = sender as! Booking
-            let defVC = segue.destination as! editOwnBookingVC
-            defVC.currentBooking = obj
+            let currentBooking = sender as! Booking
+            
+            
+            
+            let defVC = segue.destination as! BookItemVC
+            //defVC.currentBooking = obj
+            defVC.editMode = true
         }
     }
     
