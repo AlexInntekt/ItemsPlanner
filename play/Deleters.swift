@@ -55,14 +55,24 @@ func deleteBookingWithIdAndUser(bk_id bk_id: String, item_id item_id: String, ca
 func deleteAllBookingsOfItem(_ item: Item)
 {
         print("deleteAllBookingsOfItem() with param: ", item)
-    reference.child("Categories").child(item.category_id).child("items").child(item.id).child("bookings").observeSingleEvent(of: .value) { (list) in
+     reference.child("Categories").child(item.category_id).child("items").child(item.id).child("bookings").observeSingleEvent(of: .value) { (list) in
         
         for snap in list.children.allObjects as! [DataSnapshot]
         {
             let bid = snap.key as! String
-            print(bid)
-            reference.child("Bookings").child(bid).removeValue()
+            
+            reference.child("Bookings").child(bid).observeSingleEvent(of: .value, with: { (bk) in
+                
+                print(bk)
+                
+                let userid = bk.childSnapshot(forPath: "user").value as! String
+
+                reference.child("Bookings").child(bid).removeValue()
+            reference.child("Users").child(userid).child("bookings").child(bid).removeValue()
+            })
         }
+        
+        
         
     }
 }
