@@ -64,6 +64,13 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         triggerMenu()
     }
     
+    
+    @IBAction func myAccountButton(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "myProfile", sender: nil)
+    }
+    
+    
   
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.

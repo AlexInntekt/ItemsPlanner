@@ -36,6 +36,7 @@
 		FA40234B2301FCF400F8B6DE /* EditDateOfOwnBookingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40234A2301FCF400F8B6DE /* EditDateOfOwnBookingVC.swift */; };
 		FA40234D2301FF2100F8B6DE /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40234C2301FF2100F8B6DE /* GlobalUtils.swift */; };
 		FA5A6B7922FF1DBC00F0764E /* AdminCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5A6B7822FF1DBC00F0764E /* AdminCategoriesVC.swift */; };
+		FA82715B232AEA4500B4D626 /* myAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA82715A232AEA4500B4D626 /* myAccount.swift */; };
 		FA8396D322EDD0B800130FAF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8396D222EDD0B800130FAF /* TableViewCell.swift */; };
 		FAA6E9B522EC375B002090C3 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B422EC375B002090C3 /* ResetPassword.swift */; };
 		FAA6E9B722EC45FE002090C3 /* fetcher_testers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */; };
@@ -113,6 +114,7 @@
 		FA40234A2301FCF400F8B6DE /* EditDateOfOwnBookingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateOfOwnBookingVC.swift; sourceTree = "<group>"; };
 		FA40234C2301FF2100F8B6DE /* GlobalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
 		FA5A6B7822FF1DBC00F0764E /* AdminCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCategoriesVC.swift; sourceTree = "<group>"; };
+		FA82715A232AEA4500B4D626 /* myAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myAccount.swift; sourceTree = "<group>"; };
 		FA8396D222EDD0B800130FAF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FAA6E9B422EC375B002090C3 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPassword.swift; path = /Users/alex/repos/play/play/VCs/ResetPassword.swift; sourceTree = "<absolute>"; };
 		FAA6E9B622EC45FE002090C3 /* fetcher_testers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetcher_testers.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */,
 				FAEF5F2622FEC23100E5AC6F /* editOwnBookingVC.swift */,
 				FA40234A2301FCF400F8B6DE /* EditDateOfOwnBookingVC.swift */,
+				FA82715A232AEA4500B4D626 /* myAccount.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				FA01152322DF84E800F8234A /* Models.swift in Sources */,
 				FAC45C66232815CF00DEAE6C /* ImageVC2.swift in Sources */,
 				FA17BBA122FB3E4A00CC7803 /* FailReportCell.swift in Sources */,
+				FA82715B232AEA4500B4D626 /* myAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
