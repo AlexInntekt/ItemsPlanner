@@ -32,7 +32,7 @@ func createItem(item item: Item, byCategory cat: String)
 }
 
 
-func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int)
+func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int, editmode editmode: Bool, bookingid bookingid: Int)
 {
     
 //    reference.child("Bookings").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
@@ -64,7 +64,7 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
     let ref = Database.database().reference()
     var db = ref.child("Bookings")
 
-    let new = db.childByAutoId()
+   
 
     let block: [String : Any] = [
         "cantitate" : quantity,
@@ -77,11 +77,19 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
         "user":user_id
     ]
 
+    var keyToBooking = String()
+    if(editmode)
+    {
+        keyToBooking = String(bookingid)
+    }
+    else
+    {
+        let new = db.childByAutoId()
+        keyToBooking = new.key! as String
+    }
     
-    db.updateChildValues([new.key as! String:block])
-
-    let keyToBooking = new.key! as String
-
+    
+    db.updateChildValues([keyToBooking:block])
 
     //second block to make changes here:
     db = ref.child("Categories").child(cat_id).child("items")
@@ -90,7 +98,9 @@ func addBooking(itemName itemName: String, item id: String, of_user_id user_id: 
 
     //third block to make changes:
     db = ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("bookings")
-    db.updateChildValues([new.key!:new.key!])
+    db.updateChildValues([keyToBooking:keyToBooking])
 
 
 }
+
+

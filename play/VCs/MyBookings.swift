@@ -109,7 +109,6 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         let currentBooking = displayingBookings[indexPath.row]
         
-        
         reference.child("Categories").observeSingleEvent(of: .value) { (pack) in
             for categ in pack.children.allObjects as! [DataSnapshot]
             {
@@ -129,10 +128,6 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                             localItem.id = fitem.key as! String
                             localItem.quantity = fitem.childSnapshot(forPath: "cantitate").value as! Int
                             localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
-                        
-                        print("name: ", localItem.name)
-                        print("name: ", localItem.name)
-                        print("name: ", localItem.name)
                         
                         self.packItem = localItem
                         self.performSegue(withIdentifier: "goToEditVC", sender: currentBooking)
@@ -242,6 +237,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             defVC.editMode = true
             defVC.existingBookingToModify = currentBooking
             defVC.currentItem = packItem
+            
         }
     }
     

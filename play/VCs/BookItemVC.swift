@@ -478,7 +478,19 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         if(isDeviceOnline)
         {
-            addBooking(itemName: self.currentItem.name, item: self.currentItem.id, of_user_id: current_user_id!, description: self.textfieldDescription.text, in_category_name: self.currentItem.category_name, in_category_id: self.currentItem.category_id, startdate: self.startDateOfBooking, enddate: self.endDateOfBooking, quantity: desiredQuantityOfBookedItems)
+            
+            
+            addBooking(itemName: self.currentItem.name,
+                       item: self.currentItem.id,
+                       of_user_id: current_user_id!,
+                       description: self.textfieldDescription.text,
+                       in_category_name: self.currentItem.category_name,
+                       in_category_id: self.currentItem.category_id,
+                       startdate: self.startDateOfBooking,
+                       enddate: self.endDateOfBooking,
+                       quantity: desiredQuantityOfBookedItems,
+                       editmode: editMode,
+                       bookingid: Int(existingBookingToModify.id) ?? 1)
             
             let title = "Rezervare trimisă"
             let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."
@@ -516,8 +528,20 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         for bk in bks
         {
-            //print(bk.id)
-            amount+=bk.quantity
+            if(editMode)
+            {
+                if(bk.id != existingBookingToModify.id)
+                {
+                    //print(bk.id)
+                    amount+=bk.quantity
+                }
+            }
+            else
+            {
+                amount+=bk.quantity
+            }
+            
+            
         }
         
         //print(day,": ", amount)
