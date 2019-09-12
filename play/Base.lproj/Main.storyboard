@@ -1060,7 +1060,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" identifier="backToMainMenu" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="3EE-c4-Ell"/>
+                                    <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="TI4-tV-3UO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume articol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcD-eC-eb2">
@@ -1331,6 +1331,7 @@
                         <viewLayoutGuide key="safeArea" id="EKA-OB-Bhp"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="hb6-oF-lc1" id="4hu-Bl-g3w"/>
                         <outlet property="bookButton" destination="j79-lD-8TB" id="dQj-ub-Bzm"/>
                         <outlet property="calendarView" destination="Mgd-qH-6Wz" id="M7N-qF-mCc"/>
                         <outlet property="gallery" destination="t14-qE-o9W" id="bpW-vA-66p"/>
@@ -1341,6 +1342,7 @@
                         <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
                         <segue destination="Mzb-lP-pFS" kind="custom" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Wz4-QR-s1D"/>
                         <segue destination="HgO-6c-e7z" kind="custom" identifier="backToMyBookings" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="D5q-dX-Zq2"/>
+                        <segue destination="ez9-8c-EE8" kind="custom" identifier="backToMainMenu" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="k3Q-jk-onr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2605,7 +2607,7 @@
         <segue reference="oPY-KH-5YU"/>
         <segue reference="reU-xr-CK0"/>
         <segue reference="D5q-dX-Zq2"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="k3Q-jk-onr"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

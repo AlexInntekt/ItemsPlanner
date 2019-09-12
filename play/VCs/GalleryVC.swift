@@ -66,7 +66,6 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         {
             let defVC = segue.destination as! BookItemVC
             defVC.currentItem = self.currentItem
-            defVC.descriptionOfBooking = self.descriptionOfBooking
         }
     }
     

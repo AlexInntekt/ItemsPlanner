@@ -123,7 +123,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     var currentItem=Item()
     var bookingsOfCurrentItem=[Booking]()
-    var descriptionOfBooking = ""
     var startDateOfBooking=""
     var endDateOfBooking=""
     var chosenInterval = DateInterval()
@@ -131,6 +130,9 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     var desiredQuantityOfBookedItems = 1
     var editMode = false
     var existingBookingToModify = Booking() //this is used only when modifying an existing booking
+    var cacheBooking = Booking()
+    var cache = false
+    
     
     @IBOutlet weak var gallery: UICollectionView!
     
@@ -146,6 +148,18 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     @IBOutlet var bookButton: UIButton!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBAction func gfliuwGEHLIwhgelwejG(_ sender: Any)
+    {
+        if(editMode)
+        {
+            self.performSegue(withIdentifier: "backToMyBookings", sender: nil)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+        }
+    }
     
     func calendar(_ calendar: JTACMonthView, didSelectDate date: Date, cell: JTACDayCell?, cellState: CellState, indexPath: IndexPath) {
         configureCell(view: cell, cellState: cellState)
@@ -292,31 +306,41 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         load_bookings_of_item()
         
-        setupUI()
+        setup()
     }
     
-    func setupUI()
+    func setup()
     {
+//        var editMode = false
+//        var existingBookingToModify = Booking() //this is used only when modifying an existing booking
+//        var cacheBooking = Booking()
+//        var cache = false
         
-        if(editMode)
+        self.staticItemDescr.text = currentItem.description
+        print("setup() ", editMode, " ", cache)
+        
+        if(!cache)
         {
-            textfieldDescription.text = existingBookingToModify.description
-            print("existingBookingToModify.quantity: ",existingBookingToModify.quantity)
-            quantityPicker.selectRow(existingBookingToModify.quantity-1, inComponent: 0, animated: false)
-            desiredQuantityOfBookedItems=existingBookingToModify.quantity
-        }
-        else
-        {
-            if(self.descriptionOfBooking=="")
+            if(editMode)
             {
-                self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
-                self.staticItemDescr.text = currentItem.description
+                self.cacheBooking = existingBookingToModify.copy()
             }
             else
             {
-                self.textfieldDescription.text = self.descriptionOfBooking
+                cacheBooking.description = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+                
+                self.textfieldDescription.text = cacheBooking.description
             }
         }
+        else
+        {
+            textfieldDescription.text = cacheBooking.description
+            print("existingBookingToModify.quantity: ",cacheBooking.quantity)
+            quantityPicker.selectRow(cacheBooking.quantity-1, inComponent: 0, animated: false)
+            desiredQuantityOfBookedItems=cacheBooking.quantity
+        }
+        
+
  
 //        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
         
@@ -344,23 +368,27 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?)
     {
-        self.descriptionOfBooking = self.textfieldDescription.text
+        cache = true
         
         if(segue.identifier=="seeFailedBookingReport")
         {
+            self.cacheBooking.description = self.textfieldDescription.text
+            self.cacheBooking.quantity = self.desiredQuantityOfBookedItems
+            
             let defVC = segue.destination as! FailedBookingReport
             defVC.reports = reports
             defVC.desiredItem = currentItem as! Item
-            defVC.descriptionOfBooking = self.descriptionOfBooking
             defVC.editmode = self.editMode
-            defVC.existingBookingToModify = self.existingBookingToModify
+            defVC.existingBookingToModify = self.existingBookingToModify.copy()
+            defVC.cacheBooking = self.cacheBooking.copy()
+            defVC.cache = self.cache
+            
         }
         
         if(segue.identifier=="gallerySegue")
         {
             let defVC = segue.destination as! GalleryVC
             defVC.currentItem = self.currentItem
-            defVC.descriptionOfBooking = self.descriptionOfBooking
         }
         
         

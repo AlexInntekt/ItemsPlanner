@@ -23,6 +23,43 @@ class Booking {
     var endDate = String()
     var quantity = Int()
     
+    init(){}
+    
+    init(_ id: String,
+         _ description: String,
+         _ category: String,
+         _ itemId: String,
+         _ itemName: String,
+         _ user: String,
+         _ startDate: String,
+         _ endDate: String,
+         _ quantity: Int)
+    {
+        self.id = id;
+        self.description = description;
+        self.category = category;
+        self.itemId = itemId;
+        self.itemName = itemName;
+        self.user = user;
+        self.startDate = startDate;
+        self.endDate = endDate;
+        self.quantity = quantity
+    }
+    
+    func copy()->Booking
+    {
+        let copy = Booking(self.id,
+                        self.description,
+                        self.category,
+                        self.itemId,
+                        self.itemName,
+                        self.user,
+                        self.startDate,
+                        self.endDate,
+                        self.quantity)
+        return copy
+    }
+    
 }
 
 class BookingPack {

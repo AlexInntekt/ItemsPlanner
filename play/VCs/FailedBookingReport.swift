@@ -13,9 +13,10 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
 {
     var reports = [FailedBookingReportModel]()
     var desiredItem = Item()
-    var descriptionOfBooking = ""
     var editmode = false
     var existingBookingToModify = Booking()
+    var cacheBooking = Booking()
+    var cache = true
     
     @IBOutlet var tbv: UITableView!
     
@@ -57,9 +58,10 @@ class FailedBookingReport: UIViewController, UITableViewDelegate, UITableViewDat
            
             let defVC = segue.destination as! BookItemVC
             defVC.currentItem = desiredItem
-            defVC.descriptionOfBooking = descriptionOfBooking
             defVC.editMode = self.editmode
-            defVC.existingBookingToModify = self.existingBookingToModify
+            defVC.existingBookingToModify = self.existingBookingToModify.copy()
+            defVC.cacheBooking = self.cacheBooking.copy()
+            defVC.cache = self.cache
         }
         
         
