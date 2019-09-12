@@ -42,7 +42,11 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     
     var currentItem = Item()
     var descriptionOfBooking = ""
-    
+    var editMode = false
+    var existingBookingToModify = Booking()
+    var cacheBooking = Booking()
+    var cache = true
+
 
     @IBOutlet weak var gallery: UICollectionView!
     
@@ -66,6 +70,11 @@ class GalleryVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         {
             let defVC = segue.destination as! BookItemVC
             defVC.currentItem = self.currentItem
+            defVC.editMode = self.editMode
+            defVC.existingBookingToModify = self.existingBookingToModify.copy()
+            defVC.cacheBooking = self.cacheBooking.copy()
+            defVC.cache = self.cache
+            
         }
     }
     

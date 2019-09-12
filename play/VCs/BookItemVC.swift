@@ -381,10 +381,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         cache = true
         
+        self.cacheBooking.description = self.textfieldDescription.text
+        self.cacheBooking.quantity = self.desiredQuantityOfBookedItems
+        
         if(segue.identifier=="seeFailedBookingReport")
         {
-            self.cacheBooking.description = self.textfieldDescription.text
-            self.cacheBooking.quantity = self.desiredQuantityOfBookedItems
             
             let defVC = segue.destination as! FailedBookingReport
             defVC.reports = reports
@@ -400,6 +401,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         {
             let defVC = segue.destination as! GalleryVC
             defVC.currentItem = self.currentItem
+            defVC.editMode = self.editMode
+            defVC.existingBookingToModify = self.existingBookingToModify.copy()
+            defVC.cacheBooking = self.cacheBooking.copy()
+            defVC.cache = self.cache
+
         }
         
         
