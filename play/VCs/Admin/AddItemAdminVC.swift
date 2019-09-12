@@ -128,7 +128,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 for image in self.images
                 {
                     let image_id="\(NSUUID().uuidString).jpg"
-                    let ImageData =  image.jpegData(compressionQuality: 0.5)!
+                    let ImageData =  image.jpegData(compressionQuality: 0.1)!
                     
                     let refStorage = imagesFolder.child(image_id)
                     refStorage.putData(ImageData, metadata: nil, completion: { (metadata, error) in
