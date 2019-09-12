@@ -130,6 +130,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     let nscalendar = NSCalendar.current
     var desiredQuantityOfBookedItems = 1
     var editMode = false
+    var existingBookingToModify = Booking() //this is used only when modifying an existing booking
     
     @IBOutlet weak var gallery: UICollectionView!
     

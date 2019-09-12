@@ -20,6 +20,8 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     var displayingBookings = [Booking]()
     var allBookings = [Booking]()
     
+    var packItem = Item() //fetched item of a selected booking is saved here before triggering segue
+    
     var searchBar: UISearchBar!
     
     @IBOutlet var tbv: UITableView!
@@ -119,13 +121,21 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 {
                     if currentBooking.itemId == fitem.key as! String
                     {
+
                         let localItem = Item()
                             localItem.name = fitem.childSnapshot(forPath: "name").value as! String
                             localItem.category_id = category_id
                             localItem.category_name = categ.childSnapshot(forPath: "name").value as! String
-                            localItem.id = fitem.childSnapshot(forPath: "itemId").value as! String
+                            localItem.id = fitem.key as! String
+                            localItem.quantity = fitem.childSnapshot(forPath: "cantitate").value as! Int
                             localItem.description = fitem.childSnapshot(forPath: "descriere").value as! String
                         
+                        print("name: ", localItem.name)
+                        print("name: ", localItem.name)
+                        print("name: ", localItem.name)
+                        
+                        self.packItem = localItem
+                        self.performSegue(withIdentifier: "goToEditVC", sender: currentBooking)
                         
                     }
                 }
@@ -227,11 +237,11 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         {
             let currentBooking = sender as! Booking
             
-            
-            
             let defVC = segue.destination as! BookItemVC
-            //defVC.currentBooking = obj
+
             defVC.editMode = true
+            defVC.existingBookingToModify = currentBooking
+            defVC.currentItem = packItem
         }
     }
     
