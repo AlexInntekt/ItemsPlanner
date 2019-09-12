@@ -74,7 +74,7 @@ class ModifyItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
-        let ImageData =  image.jpegData(compressionQuality: 0.5)!
+        let ImageData =  image.jpegData(compressionQuality: 0.1)!
         
         let refStorage = imagesFolder.child(image_id)
 
