@@ -331,9 +331,11 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 quantityPicker.selectRow(cacheBooking.quantity-1, inComponent: 0, animated: false)
                 desiredQuantityOfBookedItems=cacheBooking.quantity
                 
-//                let startDate = formatter.date(from: existingBookingToModify.startDate)
-//                let endDate = formatter.date(from: existingBookingToModify.endDate)
-//                calendarView.selectDates(from: startDate!, to: endDate!)
+                //print("cacheBooking.startDate in setup: ", cacheBooking.startDate)
+                formatter.dateFormat = "yyyy MM dd"
+                let startDate = formatter.date(from: cacheBooking.startDate)
+                let endDate = formatter.date(from: cacheBooking.endDate)
+                calendarView.selectDates(from: startDate!, to: endDate!)
             }
             else
             {

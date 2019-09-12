@@ -148,7 +148,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         //self.performSegue(withIdentifier: "goToEditVC", sender: self.displayingBookings[indexPath.row])
         
         let currentBooking = displayingBookings[indexPath.row]
-        
+
         handleEditTap(currentBooking)
     }
     
@@ -179,64 +179,34 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadBookings()
     {
         let currentUserId = Auth.auth().currentUser?.uid
+
+        bookingsReference = Database.database().reference().child("Bookings")
         
-        var bookings = [Booking]()
-        
+        bookingsReference.observe(.value) { (list) in
+            for obj in list.children.allObjects as! [DataSnapshot]
+            {
+                let itsUser = obj.childSnapshot(forPath: "user").value as! String
+                if(itsUser==currentUserId)
+                {
+                    let currentBooking = Booking()
+                    currentBooking.category = obj.childSnapshot(forPath: "categoryId").value as! String
+                    currentBooking.description = obj.childSnapshot(forPath: "descriere").value as! String
+                    currentBooking.user = obj.childSnapshot(forPath: "user").value as! String
+                    currentBooking.itemId = obj.childSnapshot(forPath: "itemId").value as! String
+                    currentBooking.itemName = obj.childSnapshot(forPath: "itemName").value as! String
+                    currentBooking.startDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                    currentBooking.endDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                    currentBooking.id = obj.key
+                    currentBooking.quantity = obj.childSnapshot(forPath: "cantitate").value as! Int
+                    
+                    self.displayingBookings.append(currentBooking)
+                    self.allBookings.append(currentBooking)
+                    self.tbv.reloadData()
+                }
 
-            bookingsReference = Database.database().reference().child("Users").child(currentUserId!).child("bookings")
-            bookingsReference.observe(.childAdded) { (snap) in
-
-                
-                self.ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
-                
-                
-                self.ref2.observe(.childRemoved, with:
-                    {(snap) in print()
-                        var int=0;
-                        for obj in self.displayingBookings
-                        {
-                            if(obj.id==snap.key)
-                            {
-                                self.displayingBookings.remove(at: int)
-                            }
-                            int+=1
-                        }
-                        int=0
-                        for obj in self.allBookings
-                        {
-                            if(obj.id==snap.key)
-                            {
-                                self.allBookings.remove(at: int)
-                            }
-                            int+=1
-                        }
-                        
-                         self.tbv.reloadData()
-                })
-                
-                self.ref2.observeSingleEvent(of: .childAdded , with:
-                    {(snap) in print()
-
-                        let currentBooking = Booking()
-                        currentBooking.category = snap.childSnapshot(forPath: "categoryId").value as! String
-                        currentBooking.description = snap.childSnapshot(forPath: "descriere").value as! String
-                        currentBooking.user = snap.childSnapshot(forPath: "user").value as! String
-                        currentBooking.itemId = snap.childSnapshot(forPath: "itemId").value as! String
-                        currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
-                        currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                        currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                        currentBooking.id = snap.key
-                        currentBooking.quantity = snap.childSnapshot(forPath: "cantitate").value as! Int
-
-                        self.displayingBookings.append(currentBooking)
-                        self.allBookings.append(currentBooking)
-                        self.tbv.reloadData()
-
-                })
             }
+        }
         
-        
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
