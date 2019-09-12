@@ -652,8 +652,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8d-Zy-XFc">
-                                <rect key="frame" x="10" y="144" width="394" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date and quant" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8d-Zy-XFc">
+                                <rect key="frame" x="10" y="144" width="254" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.4823529412" green="0.49019607840000001" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -666,19 +666,19 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LxH-5T-ggC">
-                                <rect key="frame" x="5" y="162" width="404" height="493"/>
+                                <rect key="frame" x="5" y="180" width="404" height="493"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp3-wN-EC4">
-                                <rect key="frame" x="264" y="128" width="140" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bp3-wN-EC4">
+                                <rect key="frame" x="264" y="137" width="140" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5cj-cr-TtJ"/>
                                     <constraint firstAttribute="width" constant="140" id="exo-9l-Gve"/>
                                 </constraints>
-                                <state key="normal" title="Modifică data"/>
+                                <state key="normal" title="Modifică"/>
                                 <connections>
                                     <action selector="changeDate:" destination="cto-mt-vRJ" eventType="touchUpInside" id="KIv-UO-HHk"/>
                                     <segue destination="YdM-oK-PTF" kind="custom" identifier="editDateOfOwnBookingSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="iNd-zR-Ndo"/>
@@ -702,9 +702,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="K8o-Ev-oUq" firstAttribute="bottom" secondItem="m0r-51-gKH" secondAttribute="bottom" constant="40" id="4mP-MH-EJ8"/>
-                            <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="T8d-Zy-XFc" secondAttribute="trailing" constant="10" id="9A8-T7-9In"/>
+                            <constraint firstItem="Bp3-wN-EC4" firstAttribute="leading" secondItem="T8d-Zy-XFc" secondAttribute="trailing" id="9A8-T7-9In"/>
                             <constraint firstItem="K8o-Ev-oUq" firstAttribute="trailing" secondItem="Bp3-wN-EC4" secondAttribute="trailing" constant="10" id="FSy-8e-F9m"/>
-                            <constraint firstItem="T8d-Zy-XFc" firstAttribute="height" secondItem="NPj-FN-gmn" secondAttribute="height" multiplier="0.3" id="LIi-X4-jv5"/>
+                            <constraint firstItem="T8d-Zy-XFc" firstAttribute="height" secondItem="NPj-FN-gmn" secondAttribute="height" multiplier="0.6" id="LIi-X4-jv5"/>
                             <constraint firstItem="LxH-5T-ggC" firstAttribute="height" secondItem="mQN-GV-jZG" secondAttribute="height" multiplier="0.55" id="LSg-e5-dc5"/>
                             <constraint firstItem="LxH-5T-ggC" firstAttribute="leading" secondItem="K8o-Ev-oUq" secondAttribute="leading" constant="5" id="MdR-PU-ZZ7"/>
                             <constraint firstItem="LxH-5T-ggC" firstAttribute="top" secondItem="T8d-Zy-XFc" secondAttribute="bottom" id="Opg-iG-mJA"/>
@@ -1383,7 +1383,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="nes-Z1-Kxb" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="26.5" width="350" height="100"/>
+                                        <rect key="frame" x="0.0" y="27" width="350" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
@@ -2727,6 +2727,7 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="iNd-zR-Ndo"/>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="eQp-u4-bRc"/>
@@ -2734,7 +2735,7 @@
         <segue reference="tna-xz-s02"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
-        <segue reference="Rd0-jq-Ag7"/>
+        <segue reference="QQe-8j-Sh8"/>
         <segue reference="Su3-uJ-jIS"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
