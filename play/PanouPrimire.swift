@@ -185,13 +185,30 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
 
-    @IBOutlet var adminButton: UIButton!
-    @IBAction func adminButton(_ sender: Any)
+    @IBOutlet weak var adminButtonRezervari: UIButton!
+    @IBAction func adminButtonRezervari(_ sender: Any)
     {
         triggerMenu()
-        self.performSegue(withIdentifier: "adminSegue", sender: nil)
+        self.performSegue(withIdentifier: "adminBookingsSegue", sender: nil)
     }
     
+    
+    @IBOutlet weak var adminButtonCategorii: UIButton!
+    @IBAction func adminButtonCategorii(_ sender: Any)
+    {
+        triggerMenu()
+        self.performSegue(withIdentifier: "adminCategoriesSegue", sender: nil)
+    }
+    
+    
+    @IBOutlet weak var adminButtonArticole: UIButton!
+    @IBAction func adminButtonArticole(_ sender: Any)
+    {
+        triggerMenu()
+        self.performSegue(withIdentifier: "adminItemsSegue", sender: nil)
+        
+    }
+   
     
     
     func showSimpleAlert(message: String) {
@@ -363,11 +380,15 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             {
                 if(value=="true")
                 {
-                    self.adminButton.isHidden=false
+                    self.adminButtonRezervari.isHidden=false
+                    self.adminButtonCategorii.isHidden=false
+                    self.adminButtonArticole.isHidden=false
                 }
                 else
                 {
-                    self.adminButton.isHidden=true
+                    self.adminButtonRezervari.isHidden=true
+                    self.adminButtonCategorii.isHidden=true
+                    self.adminButtonArticole.isHidden=true
                 }
             }
         }
