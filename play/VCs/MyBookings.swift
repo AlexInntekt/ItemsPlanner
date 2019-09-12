@@ -187,8 +187,6 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             bookingsReference.observe(.childAdded) { (snap) in
 
                 
-                var bookings = [Booking]()
-                
                 self.ref2 = Database.database().reference(withPath: "Bookings").queryOrderedByKey().queryEqual(toValue: snap.key)
                 
                 
