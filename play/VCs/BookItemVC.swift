@@ -351,6 +351,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             defVC.reports = reports
             defVC.desiredItem = currentItem as! Item
             defVC.descriptionOfBooking = self.descriptionOfBooking
+            defVC.editmode = self.editMode
         }
         
         if(segue.identifier=="gallerySegue")
