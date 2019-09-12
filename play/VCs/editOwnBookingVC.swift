@@ -47,7 +47,9 @@ class editOwnBookingVC: UIViewController, UITextFieldDelegate, UITextViewDelegat
     {
         item.text="Obiect: \(currentBooking.itemName)"
         bookingDescr.text=currentBooking.description
-        date.text="\(currentBooking.startDate) - \(currentBooking.endDate)"
+        var text = "\(currentBooking.startDate) - \(currentBooking.endDate) \n"
+        text += "Cantitate: \(currentBooking.quantity)"
+        date.text = text
         
         bookingDescr.delegate = self
     }
