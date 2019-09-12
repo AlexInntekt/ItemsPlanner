@@ -1039,7 +1039,7 @@
                                     <constraint firstAttribute="width" constant="80" id="7ta-qB-0oE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Item-uri">
+                                <state key="normal" title="Articole">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1613,7 +1613,7 @@
                                     <constraint firstAttribute="height" constant="60" id="Haw-Aa-NwH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Item-uri">
+                                <state key="normal" title="Articole">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1909,7 +1909,7 @@
                                     <constraint firstAttribute="height" constant="60" id="ilr-YK-ghY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Item-uri">
+                                <state key="normal" title="Articole">
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -2714,13 +2714,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
-        <segue reference="Iaz-YZ-Z1X"/>
-        <segue reference="3nM-wR-yRP"/>
+        <segue reference="6W9-po-8Al"/>
+        <segue reference="Urz-D9-MVr"/>
         <segue reference="Tn8-hL-gDt"/>
-        <segue reference="0zt-tU-UE9"/>
+        <segue reference="W89-oH-rKv"/>
         <segue reference="reU-xr-CK0"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="kNt-8W-Dcm"/>
+        <segue reference="aQY-2G-NCh"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
