@@ -1252,7 +1252,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="nes-Z1-Kxb" customClass="ImageCell" customModule="play" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="26.5" width="350" height="100"/>
+                                        <rect key="frame" x="0.0" y="27" width="350" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
@@ -1340,6 +1340,7 @@
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
                         <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
                         <segue destination="Mzb-lP-pFS" kind="custom" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Wz4-QR-s1D"/>
+                        <segue destination="HgO-6c-e7z" kind="custom" identifier="backToMyBookings" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="D5q-dX-Zq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2603,7 +2604,7 @@
         <segue reference="KAr-fJ-L6u"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="reU-xr-CK0"/>
-        <segue reference="QQe-8j-Sh8"/>
+        <segue reference="D5q-dX-Zq2"/>
         <segue reference="3EE-c4-Ell"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>

@@ -267,7 +267,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         textfieldDescription.delegate = self
         
-        setupUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -293,22 +292,31 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         load_bookings_of_item()
         
+        setupUI()
     }
     
     func setupUI()
     {
         
-        if(self.descriptionOfBooking=="")
+        if(editMode)
         {
-            self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
-            self.staticItemDescr.text = currentItem.description
+            textfieldDescription.text = existingBookingToModify.description
+            print("existingBookingToModify.quantity: ",existingBookingToModify.quantity)
+            quantityPicker.selectRow(existingBookingToModify.quantity-1, inComponent: 0, animated: false)
         }
         else
         {
-            self.textfieldDescription.text = self.descriptionOfBooking
+            if(self.descriptionOfBooking=="")
+            {
+                self.textfieldDescription.text = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+                self.staticItemDescr.text = currentItem.description
+            }
+            else
+            {
+                self.textfieldDescription.text = self.descriptionOfBooking
+            }
         }
-        
-        
+ 
 //        let url=URL(string: "https://firebasestorage.googleapis.com/v0/b/items-planner.appspot.com/o/rachel%20sjet.jpg?alt=media&token=daf8ddd4-3125-48bc-bd9a-2829b552fd3c")
         
         
@@ -496,8 +504,15 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."
             let calert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             calert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
-                print("Dismissing VC after adding booking")
+                print("Dismissing VC after saving booking")
+                if(self.editMode)
+                {
+                    self.performSegue(withIdentifier: "backToMyBookings", sender: nil)
+                }
+                else
+                {
+                    self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+                }
             }))
             self.present(calert, animated: true)
         }
@@ -637,4 +652,6 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
        
    
     } //end of load_bookings_of_item()
+    
+    
 }
