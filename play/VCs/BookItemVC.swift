@@ -176,6 +176,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         //cell.backgroundColor=UIColor(red:0.95, green:0.95, blue:0.96, alpha:1.0)
         cell.layer.borderWidth=1
         cell.layer.borderColor=UIColor(red:0.8, green:0.8, blue:0.8, alpha:1.0).cgColor
+        
+        
         handleCellTextColor(cell: cell, cellState: cellState)
         handleCellSelected(cell: cell, cellState: cellState)
         
