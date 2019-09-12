@@ -175,7 +175,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         triggerMenu()
         
         let title = "Ieșire din cont"
-        let message = "Sigur doriți sa ieșiți din cont?"
+        let message = "Sigur doriți să ieșiți din cont?"
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
         }))
