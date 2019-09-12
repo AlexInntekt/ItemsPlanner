@@ -488,6 +488,18 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         if(isDeviceOnline)
         {
             
+            print("editMode: ", editMode)
+            
+            var parameter_id = String()
+            
+            if(editMode)
+            {
+                parameter_id = String(existingBookingToModify.id)
+            }
+            else
+            {
+                parameter_id = "000000000"
+            }
             
             addBooking(itemName: self.currentItem.name,
                        item: self.currentItem.id,
@@ -499,7 +511,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                        enddate: self.endDateOfBooking,
                        quantity: desiredQuantityOfBookedItems,
                        editmode: editMode,
-                       bookingid: Int(existingBookingToModify.id) ?? 1)
+                        bookingid: parameter_id)
+//                       bookingid: Int(existingBookingToModify.id) ?? 1)
             
             let title = "Rezervare trimisă"
             let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."

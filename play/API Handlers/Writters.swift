@@ -32,7 +32,7 @@ func createItem(item item: Item, byCategory cat: String)
 }
 
 
-func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int, editmode editmode: Bool, bookingid bookingid: Int)
+func addBooking(itemName itemName: String, item id: String, of_user_id user_id: String, description descr: String, in_category_name cat_name: String, in_category_id cat_id: String, startdate sd: String, enddate ed: String, quantity quantity: Int, editmode editmode: Bool, bookingid bookingid: String)
 {
     
 //    reference.child("Bookings").runTransactionBlock { (currentData: MutableData) -> TransactionResult in
