@@ -962,7 +962,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="itemName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjg-2F-BCu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="399" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="OCa-lm-ExA"/>
                                                     </constraints>
@@ -970,8 +970,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumberLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8x6-zg-GiD">
-                                                    <rect key="frame" x="159.5" y="25" width="239.5" height="25"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="phoneNumberLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8x6-zg-GiD">
+                                                    <rect key="frame" x="199.5" y="27" width="199.5" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="nLl-wh-Kla"/>
                                                     </constraints>
@@ -1007,12 +1007,9 @@
                                             <constraints>
                                                 <constraint firstItem="Cjg-2F-BCu" firstAttribute="leading" secondItem="pJl-Cp-RTK" secondAttribute="leading" id="1zZ-B8-q77"/>
                                                 <constraint firstAttribute="trailing" secondItem="8x6-zg-GiD" secondAttribute="trailing" id="795-8h-qnd"/>
-                                                <constraint firstItem="8x6-zg-GiD" firstAttribute="centerY" secondItem="1yK-en-TOY" secondAttribute="centerY" constant="-2" id="7qA-qg-AtE"/>
                                                 <constraint firstItem="1yK-en-TOY" firstAttribute="top" secondItem="Cjg-2F-BCu" secondAttribute="bottom" constant="2" id="CPT-jQ-PDy"/>
                                                 <constraint firstItem="1yK-en-TOY" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.4" id="GBx-KA-62x"/>
-                                                <constraint firstItem="Cjg-2F-BCu" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.4" id="LW9-Fm-85i"/>
                                                 <constraint firstItem="Cjg-2F-BCu" firstAttribute="top" secondItem="pJl-Cp-RTK" secondAttribute="top" id="MG4-x7-tia"/>
-                                                <constraint firstItem="8x6-zg-GiD" firstAttribute="leading" secondItem="Cjg-2F-BCu" secondAttribute="trailing" id="UHj-G2-z9o"/>
                                                 <constraint firstItem="uMg-pP-kWh" firstAttribute="top" secondItem="Y4V-4f-LWG" secondAttribute="bottom" id="UM9-t9-L0L"/>
                                                 <constraint firstAttribute="bottom" secondItem="uMg-pP-kWh" secondAttribute="bottom" id="Vij-0X-Ind"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="leading" secondItem="pJl-Cp-RTK" secondAttribute="leadingMargin" id="bTc-Sl-IAd"/>
@@ -1020,7 +1017,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="uMg-pP-kWh" secondAttribute="trailing" id="d2y-fK-JqF"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="0.9" id="jjO-8A-o9m"/>
                                                 <constraint firstItem="1yK-en-TOY" firstAttribute="leading" secondItem="pJl-Cp-RTK" secondAttribute="leadingMargin" id="jx5-iR-6Gy"/>
+                                                <constraint firstItem="8x6-zg-GiD" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" multiplier="1/2" id="lYM-55-JHS"/>
                                                 <constraint firstItem="Y4V-4f-LWG" firstAttribute="top" secondItem="1yK-en-TOY" secondAttribute="bottom" id="s4N-E1-l1R"/>
+                                                <constraint firstItem="8x6-zg-GiD" firstAttribute="centerY" secondItem="1yK-en-TOY" secondAttribute="centerY" id="xFs-WD-48I"/>
+                                                <constraint firstItem="Cjg-2F-BCu" firstAttribute="width" secondItem="pJl-Cp-RTK" secondAttribute="width" id="xqG-VX-RXP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2729,13 +2729,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
-        <segue reference="6W9-po-8Al"/>
-        <segue reference="Urz-D9-MVr"/>
+        <segue reference="eQp-u4-bRc"/>
+        <segue reference="NBO-Qa-E4w"/>
         <segue reference="tna-xz-s02"/>
         <segue reference="oPY-KH-5YU"/>
         <segue reference="g0p-4A-HcZ"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="3EE-c4-Ell"/>
+        <segue reference="Su3-uJ-jIS"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
