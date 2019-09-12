@@ -183,6 +183,9 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         bookingsReference = Database.database().reference().child("Bookings")
         
         bookingsReference.observe(.value) { (list) in
+            self.displayingBookings.removeAll()
+            self.allBookings.removeAll()
+            
             for obj in list.children.allObjects as! [DataSnapshot]
             {
                 let itsUser = obj.childSnapshot(forPath: "user").value as! String

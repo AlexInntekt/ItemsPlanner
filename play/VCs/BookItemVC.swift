@@ -697,6 +697,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 {
 //                    print(self.bookingsOfCurrentItem.count)
                     self.calendarView.reloadData() //so that it can color the occupied cells in red
+                    
                 }
             }
             
