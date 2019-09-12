@@ -129,6 +129,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     var chosenInterval = DateInterval()
     let nscalendar = NSCalendar.current
     var desiredQuantityOfBookedItems = 1
+    var editMode = false
     
     @IBOutlet weak var gallery: UICollectionView!
     
