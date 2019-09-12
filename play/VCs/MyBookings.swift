@@ -166,7 +166,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.handleEditTap(self.displayingBookings[indexPath.row])
         }
 
-        info.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
+        edit.backgroundColor = UIColor(red:0.27, green:0.43, blue:0.62, alpha:1.0)
 
         return [delete,edit]
     }
