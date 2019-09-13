@@ -71,6 +71,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
+    
   
     func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
@@ -199,6 +200,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.performSegue(withIdentifier: "adminBookingsSegue", sender: nil)
     }
     
+    @IBOutlet weak var adminTitle: UILabel!
     
     @IBOutlet weak var adminButtonCategorii: UIButton!
     @IBAction func adminButtonCategorii(_ sender: Any)
@@ -388,12 +390,14 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                     self.adminButtonRezervari.isHidden=false
                     self.adminButtonCategorii.isHidden=false
                     self.adminButtonArticole.isHidden=false
+                    self.adminTitle.isHidden=false
                 }
                 else
                 {
                     self.adminButtonRezervari.isHidden=true
                     self.adminButtonCategorii.isHidden=true
                     self.adminButtonArticole.isHidden=true
+                    self.adminTitle.isHidden=true
                 }
             }
         }

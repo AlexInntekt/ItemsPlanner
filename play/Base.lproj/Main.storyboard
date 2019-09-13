@@ -485,7 +485,7 @@
                                             <action selector="adminButtonRezervari:" destination="ez9-8c-EE8" eventType="touchUpInside" id="K9V-sc-G68"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Administrator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQf-SU-ljY">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Administrator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQf-SU-ljY">
                                         <rect key="frame" x="18" y="321" width="140" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="2pK-YM-X4I"/>
@@ -615,6 +615,7 @@
                         <outlet property="adminButtonArticole" destination="5Cl-QZ-yBQ" id="PA2-ZL-doK"/>
                         <outlet property="adminButtonCategorii" destination="YAo-SL-oyU" id="kuc-et-TF4"/>
                         <outlet property="adminButtonRezervari" destination="fdS-tN-rW0" id="8Lv-49-uEG"/>
+                        <outlet property="adminTitle" destination="DQf-SU-ljY" id="OOP-GP-dHJ"/>
                         <outlet property="faderView" destination="8bG-O2-iBy" id="7oJ-w1-8r3"/>
                         <outlet property="goToSeeMyBookings" destination="6aM-Wk-BVp" id="0xy-m9-5PG"/>
                         <outlet property="itemsTableView" destination="pJy-29-LBT" id="PVv-CC-Ldu"/>
@@ -2551,13 +2552,14 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="m40-Yq-th2"/>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="Iaz-YZ-Z1X"/>
         <segue reference="3nM-wR-yRP"/>
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="0zt-tU-UE9"/>
-        <segue reference="D5q-dX-Zq2"/>
+        <segue reference="Rd0-jq-Ag7"/>
         <segue reference="FUH-we-eag"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
