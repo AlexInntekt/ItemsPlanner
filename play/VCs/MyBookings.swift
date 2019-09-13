@@ -194,26 +194,49 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let itsUser = obj.childSnapshot(forPath: "user").value as! String
                 if(itsUser==currentUserId)
                 {
-                    let currentBooking = Booking()
-                    currentBooking.category = obj.childSnapshot(forPath: "categoryId").value as! String
-                    currentBooking.description = obj.childSnapshot(forPath: "descriere").value as! String
-                    currentBooking.user = obj.childSnapshot(forPath: "user").value as! String
-                    currentBooking.itemId = obj.childSnapshot(forPath: "itemId").value as! String
-                    currentBooking.itemName = obj.childSnapshot(forPath: "itemName").value as! String
-                    currentBooking.startDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                    currentBooking.endDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                    currentBooking.id = obj.key
-                    currentBooking.quantity = obj.childSnapshot(forPath: "cantitate").value as! Int
                     
-                    self.displayingBookings.append(currentBooking)
-                    self.allBookings.append(currentBooking)
-                    self.tbv.reloadData()
+                    if(self.isSnapComplete(obj))
+                    {
+                        let currentBooking = Booking()
+                        currentBooking.category = obj.childSnapshot(forPath: "categoryId").value as! String
+                        currentBooking.description = obj.childSnapshot(forPath: "descriere").value as! String
+                        currentBooking.user = obj.childSnapshot(forPath: "user").value as! String
+                        currentBooking.itemId = obj.childSnapshot(forPath: "itemId").value as! String
+                        currentBooking.itemName = obj.childSnapshot(forPath: "itemName").value as! String
+                        currentBooking.startDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                        currentBooking.endDate = obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                        currentBooking.id = obj.key
+                        currentBooking.quantity = obj.childSnapshot(forPath: "cantitate").value as! Int
+                        
+                        self.displayingBookings.append(currentBooking)
+                        self.allBookings.append(currentBooking)
+                        self.tbv.reloadData()
+                    }
                 }
 
             }
             
         }
         
+    }
+    
+    func isSnapComplete(_ obj: DataSnapshot)->Bool
+    {
+        var cond = false
+        
+        if(obj.childSnapshot(forPath: "categoryId").exists() &&
+            obj.childSnapshot(forPath: "descriere").exists() &&
+            obj.childSnapshot(forPath: "user").exists() &&
+            obj.childSnapshot(forPath: "itemId").exists() &&
+            obj.childSnapshot(forPath: "itemName").exists() &&
+            obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").exists() &&
+            obj.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").exists() &&
+            obj.childSnapshot(forPath: "cantitate").exists())
+        {
+            cond = true
+        }
+        
+        return cond
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
