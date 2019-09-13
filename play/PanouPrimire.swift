@@ -310,8 +310,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         print("PanouPrimire este in deschis")
         
-        loadDataFromDB()
-        
         
         // The didTap: method will be defined in Step 3 below.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(sender:)))
@@ -324,8 +322,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         faderView.addGestureRecognizer(tapGestureRecognizer)
 
         
-        
-        setupLogic()
     }
     
     
@@ -338,6 +334,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDB()
+        setupLogic()
         setupUI()
         if Auth.auth().currentUser != nil {
             welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)!"

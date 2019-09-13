@@ -186,6 +186,9 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.displayingBookings.removeAll()
             self.allBookings.removeAll()
             
+            //this is usefull if there is no booking
+            self.tbv.reloadData()
+            
             for obj in list.children.allObjects as! [DataSnapshot]
             {
                 let itsUser = obj.childSnapshot(forPath: "user").value as! String
@@ -208,6 +211,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 }
 
             }
+            
         }
         
     }
