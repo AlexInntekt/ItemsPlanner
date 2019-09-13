@@ -55,7 +55,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             let date="\(startDate) - \(endDate)"
             cell.phoneLabel?.text = booking.phone
             cell.dateLabel?.text = date
-            cell.itsDescription.text = "Descriere: \(booking.description)"
+            cell.itsDescription.text = "Descriere: \(booking.description) \nCantitate: \(booking.quantity)"
         
         return cell
     }
@@ -190,6 +190,7 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                             currentBooking.itemName = snap.childSnapshot(forPath: "itemName").value as! String
                             currentBooking.startDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
                             currentBooking.endDate = snap.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                            currentBooking.quantity = snap.childSnapshot(forPath: "cantitate").value as! Int
                             currentBooking.id = snap.key
                             currentBooking.phone=phone
                             currentBooking.username=nameOfOwner

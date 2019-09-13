@@ -75,6 +75,7 @@ class BookingPack {
     var endDate = String()
     var phone = String()
     var username = String()
+    var quantity = Int()
 }
 
 class Item {

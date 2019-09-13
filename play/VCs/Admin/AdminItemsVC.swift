@@ -27,9 +27,10 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tbv.dequeueReusableCell(withIdentifier: "AdminItemCell") as! AdminItemCell
-            cell.itemNameLabel?.text="Articol: \(displayingItems[indexPath.row].name)"
-            cell.categoryLabel?.text="Categorie: \(displayingItems[indexPath.row].category_name)"
-            cell.descriptionTextView?.text="Descriere: \(displayingItems[indexPath.row].description)"
+            let thisItem = displayingItems[indexPath.row]
+            cell.itemNameLabel?.text="Articol: \(thisItem.name)"
+            cell.categoryLabel?.text="Categorie: \(thisItem.category_name)"
+            cell.descriptionTextView?.text="Cantitate: \(thisItem.quantity) \nDescriere: \(thisItem.description)"
         return cell;
     }
     
