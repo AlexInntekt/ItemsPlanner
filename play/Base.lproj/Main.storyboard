@@ -515,6 +515,17 @@
                                             <action selector="adminButtonArticole:" destination="ez9-8c-EE8" eventType="touchUpInside" id="f9C-Gk-HiX"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7w-9K-BKc">
+                                        <rect key="frame" x="67.5" y="558" width="53" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Despre">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adminButtonArticole:" destination="ez9-8c-EE8" eventType="touchUpInside" id="Q3K-45-8vw"/>
+                                            <segue destination="ajs-Yy-Lmp" kind="custom" identifier="aboutSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="gJ5-9w-aYz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -522,6 +533,7 @@
                                     <constraint firstItem="d4g-LY-HaK" firstAttribute="width" secondItem="Ipm-9P-az7" secondAttribute="width" id="A32-zM-Bxk"/>
                                     <constraint firstItem="evs-Wc-Nab" firstAttribute="width" secondItem="Ipm-9P-az7" secondAttribute="width" id="Ayl-0j-5n2"/>
                                     <constraint firstItem="YAo-SL-oyU" firstAttribute="top" secondItem="fdS-tN-rW0" secondAttribute="bottom" constant="2" id="BGR-4e-lhT"/>
+                                    <constraint firstAttribute="bottom" secondItem="r7w-9K-BKc" secondAttribute="bottom" constant="10" id="BZm-WL-NjW"/>
                                     <constraint firstItem="YAo-SL-oyU" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="DWW-Bn-CZk"/>
                                     <constraint firstItem="Wx8-7L-Bc7" firstAttribute="top" secondItem="Ipm-9P-az7" secondAttribute="top" constant="18" id="H0k-nd-joR"/>
                                     <constraint firstItem="YAo-SL-oyU" firstAttribute="height" secondItem="fdS-tN-rW0" secondAttribute="height" id="H7y-dk-H4s"/>
@@ -543,6 +555,7 @@
                                     <constraint firstItem="evs-Wc-Nab" firstAttribute="top" secondItem="Ufp-bL-r3L" secondAttribute="bottom" constant="20" id="a9a-os-Nd4"/>
                                     <constraint firstItem="fdS-tN-rW0" firstAttribute="width" secondItem="Ufp-bL-r3L" secondAttribute="width" id="dM0-QB-W2x"/>
                                     <constraint firstItem="ELL-Q2-2Ds" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="eE3-c8-Jpb"/>
+                                    <constraint firstItem="r7w-9K-BKc" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="mhJ-Fs-z80"/>
                                     <constraint firstItem="5Cl-QZ-yBQ" firstAttribute="top" secondItem="YAo-SL-oyU" secondAttribute="bottom" constant="2" id="oLE-93-m4m"/>
                                     <constraint firstItem="fdS-tN-rW0" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="oNr-51-cby"/>
                                     <constraint firstItem="DQf-SU-ljY" firstAttribute="leading" secondItem="Ipm-9P-az7" secondAttribute="leading" constant="18" id="qe8-9D-qcV"/>
@@ -638,6 +651,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1760.8" y="132.68365817091455"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fE5-fp-NdF">
+            <objects>
+                <viewController id="ajs-Yy-Lmp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ENq-kx-QKz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5G-Tn-397">
+                                <rect key="frame" x="20" y="25" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="fRS-XM-nSn"/>
+                                    <constraint firstAttribute="height" constant="60" id="kM1-sr-knx"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="9dh-7u-T8T"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="4er-eg-96P"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxX-So-0SC">
+                                <rect key="frame" x="0.0" y="90" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Qbl-kJ-Vwx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="U5G-Tn-397" firstAttribute="leading" secondItem="BpD-vW-O3L" secondAttribute="leading" constant="20" id="2sC-nK-jFc"/>
+                            <constraint firstItem="ZxX-So-0SC" firstAttribute="top" secondItem="U5G-Tn-397" secondAttribute="bottom" constant="5" id="H9l-Qg-Q6k"/>
+                            <constraint firstItem="ZxX-So-0SC" firstAttribute="leading" secondItem="ENq-kx-QKz" secondAttribute="leading" id="Hko-Uw-bu8"/>
+                            <constraint firstAttribute="trailing" secondItem="ZxX-So-0SC" secondAttribute="trailing" id="TVi-Si-Iih"/>
+                            <constraint firstItem="U5G-Tn-397" firstAttribute="top" secondItem="BpD-vW-O3L" secondAttribute="top" constant="5" id="XyB-aq-gvK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BpD-vW-O3L"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UxI-0n-x00" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1162" y="1003"/>
         </scene>
         <!--My BookingsVC-->
         <scene sceneID="9oB-yg-0Sw">
@@ -2556,11 +2612,11 @@
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="Iaz-YZ-Z1X"/>
-        <segue reference="Urz-D9-MVr"/>
-        <segue reference="KAr-fJ-L6u"/>
-        <segue reference="oPY-KH-5YU"/>
-        <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="wlb-jp-kx3"/>
+        <segue reference="3nM-wR-yRP"/>
+        <segue reference="tna-xz-s02"/>
+        <segue reference="0zt-tU-UE9"/>
+        <segue reference="D5q-dX-Zq2"/>
+        <segue reference="4er-eg-96P"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
