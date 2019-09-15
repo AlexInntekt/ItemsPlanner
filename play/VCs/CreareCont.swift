@@ -33,6 +33,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
                 {
                     print("Error detected. Finding in console: g7i23h49fofou23go ",error)
                     alert(UIVC: self, title: "Eroare", message: "O eroare a intervenit: \(error!.localizedDescription)")
+                    self.signup.setTitle("Crează", for: .normal)
                 }
                 else
                 {
@@ -144,7 +145,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
         self.email.delegate = self
         self.password.delegate = self
         self.username.delegate = self
-       
+        self.phoneNumber.delegate = self
         setupUI()
     }
     
