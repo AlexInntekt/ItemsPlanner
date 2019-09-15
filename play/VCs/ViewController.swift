@@ -16,46 +16,60 @@ import FirebaseAuth
 
 class ViewController: UIViewController, UITextFieldDelegate{
  
+    var allowedEmails = [String]()
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
     @IBOutlet weak var login: UIButton!
     @IBAction func login(_ sender: Any)
     {
-        
+        if(isDeviceOnline)
+        {
+            processLogin()
+        }
+        else
+        {
+            alert(UIVC: self, title: "Conexiune slabă", message: "Conexiune slabă sau inexistentă.")
+        }
+    }
+    
+    func processLogin()
+    {
         if(email.text != nil && password.text != nil)
         {
-            
-            Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
-                
-                print("\n\n # Trying to sign in...\n")
-                if error != nil
-                {
-                    self.loginFeedback(error: (error?.localizedDescription)!)
-                }
-                else if let user=Auth.auth().currentUser
-                {
-                    if(!user.isEmailVerified)
+            if(isEmailAllowed(email: email.text!))
+            {
+                Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+                    
+                    print("\n\n # Trying to sign in...\n")
+                    if error != nil
                     {
-                        let unverified = UIAlertController(title: "Contul nu este validat", message: "Contul este creat, dar nu a fost verificat folosind emailul primit!", preferredStyle: UIAlertController.Style.alert)
-                        unverified.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                            //Cancel Action
-                        }))
-                        self.present(unverified, animated: true, completion: nil)
+                        self.loginFeedback(error: (error?.localizedDescription)!)
                     }
-                    else
+                    else if let user=Auth.auth().currentUser
                     {
-                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        if(!user.isEmailVerified)
+                        {
+                            let unverified = UIAlertController(title: "Contul nu este validat", message: "Contul este creat, dar nu a fost verificat folosind emailul primit!", preferredStyle: UIAlertController.Style.alert)
+                            unverified.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+                                //Cancel Action
+                            }))
+                            self.present(unverified, animated: true, completion: nil)
+                        }
+                        else
+                        {
+                            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        }
                     }
                 }
-    
-                
+            } //end of isEmailAllowed() if
+            else
+            {
+                alert(UIVC: self, title: "Permisiune respinsă", message: "Adresa de email nu a fost aprobată de către administrator.")
             }
             
-            
-            
         }
-        
     }
     
     func loginFeedback(error error: String)
@@ -117,9 +131,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     override func viewWillAppear(_ animated: Bool)
     {
-       
-        
-        
+        loadDataFromDB()
         animate_startup()
     }
     
@@ -157,6 +169,38 @@ class ViewController: UIViewController, UITextFieldDelegate{
         self.view.endEditing(true)
         return true
     }
+    
+    func loadDataFromDB()
+    {
+        let path = Database.database().reference().child("UsersEmail")
+        
+        path.observeSingleEvent(of: .value) { (list) in
+            self.allowedEmails.removeAll()
+            for snap in list.children.allObjects as! [DataSnapshot]
+            {
+                let femail = snap.value as! String
+                
+                self.allowedEmails.append(femail)
+            }
+        }
+    }
+    
+    func isEmailAllowed(email email: String)->Bool
+    {
+        var isAllowed = false
+        
+        for str in allowedEmails
+        {
+            print(str)
+            if(str.lowercased()==email.lowercased())
+            {
+                isAllowed=true
+            }
+        }
+        
+        return isAllowed
+    }
+    
     
 }
 
