@@ -851,13 +851,25 @@
                                 <rect key="frame" x="10" y="101" width="355" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Control conturi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT2-f3-cJT">
+                                <rect key="frame" x="85" y="35" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bJY-vS-qn8"/>
+                                    <constraint firstAttribute="width" constant="200" id="u6I-hb-DIo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cvo-ni-0UJ" firstAttribute="leading" secondItem="rL0-4o-mfF" secondAttribute="leading" id="Mcg-Ev-9fG"/>
                             <constraint firstItem="4rX-4F-rvV" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="20" id="N8J-aT-G5R"/>
                             <constraint firstItem="cvo-ni-0UJ" firstAttribute="top" secondItem="4rX-4F-rvV" secondAttribute="bottom" constant="5" id="Q3O-M5-58X"/>
+                            <constraint firstItem="tT2-f3-cJT" firstAttribute="centerY" secondItem="4rX-4F-rvV" secondAttribute="centerY" id="UFv-k0-gNa"/>
                             <constraint firstItem="4rX-4F-rvV" firstAttribute="top" secondItem="Wjw-Cw-VDK" secondAttribute="top" constant="5" id="brH-PZ-mhM"/>
+                            <constraint firstItem="tT2-f3-cJT" firstAttribute="leading" secondItem="4rX-4F-rvV" secondAttribute="trailing" constant="5" id="hZF-xF-Wnh"/>
                             <constraint firstItem="Wjw-Cw-VDK" firstAttribute="bottom" secondItem="GnU-Oy-fEW" secondAttribute="bottom" constant="10" id="io7-NR-84D"/>
                             <constraint firstItem="GnU-Oy-fEW" firstAttribute="top" secondItem="cvo-ni-0UJ" secondAttribute="bottom" constant="10" id="kVc-na-hIh"/>
                             <constraint firstItem="GnU-Oy-fEW" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="10" id="o3p-Tb-kty"/>
@@ -2684,7 +2696,7 @@
         <segue reference="c6c-g9-YPq"/>
         <segue reference="Iaz-YZ-Z1X"/>
         <segue reference="3nM-wR-yRP"/>
-        <segue reference="Tn8-hL-gDt"/>
+        <segue reference="KAr-fJ-L6u"/>
         <segue reference="0zt-tU-UE9"/>
         <segue reference="Rd0-jq-Ag7"/>
         <segue reference="KJw-e3-l95"/>

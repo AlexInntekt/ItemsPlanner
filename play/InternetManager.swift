@@ -8,6 +8,9 @@
 
 import Foundation
 import Network
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 var isDeviceOnline = false
 

@@ -35,7 +35,7 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Șterge") { (action, indexPath) in
             
             let title = "Confirmare"
             let message = "Această acțiune nu va șterge contul, însă va dezactiva permisiunea de logare si creare cont pe acest email. Puteți oricând readăuga adresa în această listă."

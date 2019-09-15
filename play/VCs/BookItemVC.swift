@@ -550,18 +550,36 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 parameter_id = "000000000"
             }
             
-            addBooking(itemName: self.currentItem.name,
-                       item: self.currentItem.id,
-                       of_user_id: current_user_id!,
-                       description: self.textfieldDescription.text,
-                       in_category_name: self.currentItem.category_name,
-                       in_category_id: self.currentItem.category_id,
-                       startdate: self.startDateOfBooking,
-                       enddate: self.endDateOfBooking,
-                       quantity: desiredQuantityOfBookedItems,
-                       editmode: editMode,
-                        bookingid: parameter_id)
-//                       bookingid: Int(existingBookingToModify.id) ?? 1)
+            reference.child("Users").observeSingleEvent(of: .value) { (pack) in
+                for user in pack.children.allObjects as! [DataSnapshot]
+                {
+                    let currentUserEmail = Auth.auth().currentUser!.email!
+                    var fEmail = ""
+                    if(user.childSnapshot(forPath: "email").exists())
+                    {
+                        fEmail = (user.childSnapshot(forPath: "email").value as! String).lowercased()
+                    }
+                    
+                    if(fEmail==currentUserEmail)
+                    {
+                        let phone = (user.childSnapshot(forPath: "phoneNumber").value as! String).lowercased()
+                        self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone)
+                    }
+                }
+            }
+            
+//            addBooking(itemName: self.currentItem.name,
+//                       item: self.currentItem.id,
+//                       of_user_id: current_user_id!,
+//                       description: self.textfieldDescription.text,
+//                       in_category_name: self.currentItem.category_name,
+//                       in_category_id: self.currentItem.category_id,
+//                       startdate: self.startDateOfBooking,
+//                       enddate: self.endDateOfBooking,
+//                       quantity: desiredQuantityOfBookedItems,
+//                       editmode: editMode,
+//                        bookingid: parameter_id)
+////                       bookingid: Int(existingBookingToModify.id) ?? 1)
             
             let title = "Rezervare trimisă"
             let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."
@@ -717,5 +735,53 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
    
     } //end of load_bookings_of_item()
     
+    
+    func confirmationEmailContent(descr descr: String, q q: Int, phone phone: String)->String
+    {
+        let user = Auth.auth().currentUser!.displayName!
+        let date = Date()
+        formatter.dateFormat="dd MM yyyy"
+        let ddate = formatter.string(from: date)
+        print(ddate)
+        
+        var str = "Item: \(currentItem.name) </br>"
+            str += "Scop rezervare: \(descr) </br>"
+            str += "Cantitate: \(q) </br>"
+            str += "User: \(user) </br>"
+            str += "\(phone)"
+            str += "Data: \(ddate)"
+        
+        return str
+    }
+    
+    func sendConfirmationEmail(descr descr: String, q q: Int, phone phone: String)
+    {
+        let userEmail = Auth.auth().currentUser!.email!
+        let userString = (userEmail).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let message = (confirmationEmailContent(descr: descr, q: q, phone: phone)).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        var urlString = "https://us-central1-items-planner.cloudfunctions.net/sendMail?dest=\(userString!)&mesaj=\(message!)"
+        
+        print(urlString)
+        
+        
+        let url = URL(string: urlString)!
+
+        print("fnaingkaljrgr ",url)
+
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("error: \(error)")
+            } else {
+                if let response = response as? HTTPURLResponse {
+                    print("statusCode: \(response.statusCode)")
+                }
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("data: \(dataString)")
+                }
+            }
+        }
+        task.resume()
+    }
     
 }
