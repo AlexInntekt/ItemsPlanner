@@ -20,6 +20,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var phoneNumber: UITextField!
     
     var allowedEmails = [String]()
+    let path = Database.database().reference().child("UsersEmail")
     
     func startAccountCreationProcess()
     {
@@ -184,9 +185,8 @@ class CreareCont: UIViewController, UITextFieldDelegate
     
     func loadDataFromDB()
     {
-        let path = Database.database().reference().child("UsersEmail")
-        
-        path.observeSingleEvent(of: .value) { (list) in
+
+        path.observe(.value) { (list) in
             self.allowedEmails.removeAll()
             for snap in list.children.allObjects as! [DataSnapshot]
             {
@@ -200,6 +200,11 @@ class CreareCont: UIViewController, UITextFieldDelegate
     override func viewWillAppear(_ animated: Bool)
     {
         loadDataFromDB()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        path.removeAllObservers()
     }
     
     

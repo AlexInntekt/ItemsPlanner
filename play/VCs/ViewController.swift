@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
  
     var allowedEmails = [String]()
     
+    var path = Database.database().reference().child("UsersEmail")
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -135,6 +137,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
         animate_startup()
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        path.removeAllObservers()
+    }
     
     func animate_startup()
     {
@@ -172,9 +178,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
     func loadDataFromDB()
     {
-        let path = Database.database().reference().child("UsersEmail")
-        
-        path.observeSingleEvent(of: .value) { (list) in
+        path.observe(.value) { (list) in
             self.allowedEmails.removeAll()
             for snap in list.children.allObjects as! [DataSnapshot]
             {
