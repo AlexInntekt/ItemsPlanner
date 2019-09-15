@@ -551,6 +551,8 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             }
             
             reference.child("Users").observeSingleEvent(of: .value) { (pack) in
+                let date = "\(self.startDateOfBooking) - \(self.endDateOfBooking)"
+                
                 for user in pack.children.allObjects as! [DataSnapshot]
                 {
                     let currentUserEmail = Auth.auth().currentUser!.email!
@@ -563,23 +565,23 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                     if(fEmail==currentUserEmail)
                     {
                         let phone = (user.childSnapshot(forPath: "phoneNumber").value as! String).lowercased()
-                        self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone)
+                        self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone, date: date)
                     }
                 }
             }
             
-//            addBooking(itemName: self.currentItem.name,
-//                       item: self.currentItem.id,
-//                       of_user_id: current_user_id!,
-//                       description: self.textfieldDescription.text,
-//                       in_category_name: self.currentItem.category_name,
-//                       in_category_id: self.currentItem.category_id,
-//                       startdate: self.startDateOfBooking,
-//                       enddate: self.endDateOfBooking,
-//                       quantity: desiredQuantityOfBookedItems,
-//                       editmode: editMode,
-//                        bookingid: parameter_id)
-////                       bookingid: Int(existingBookingToModify.id) ?? 1)
+            addBooking(itemName: self.currentItem.name,
+                       item: self.currentItem.id,
+                       of_user_id: current_user_id!,
+                       description: self.textfieldDescription.text,
+                       in_category_name: self.currentItem.category_name,
+                       in_category_id: self.currentItem.category_id,
+                       startdate: self.startDateOfBooking,
+                       enddate: self.endDateOfBooking,
+                       quantity: desiredQuantityOfBookedItems,
+                       editmode: editMode,
+                        bookingid: parameter_id)
+//                       bookingid: Int(existingBookingToModify.id) ?? 1)
             
             let title = "Rezervare trimisă"
             let message = "Cererea de rezervare a fost trimisă în sistem! Puteți verifica statusul în lista cu rezervări personale."
@@ -736,33 +738,31 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     } //end of load_bookings_of_item()
     
     
-    func confirmationEmailContent(descr descr: String, q q: Int, phone phone: String)->String
+    func confirmationEmailContent(descr descr: String, q q: Int, phone phone: String, date date: String)->String
     {
         let user = Auth.auth().currentUser!.displayName!
-        let date = Date()
-        formatter.dateFormat="dd MM yyyy"
-        let ddate = formatter.string(from: date)
-        print(ddate)
+//        let date = Date()
+//        formatter.dateFormat="dd MM yyyy"
+//        let ddate = formatter.string(from: date)
+//        print(ddate)
         
         var str = "Item: \(currentItem.name) <br>"
             str += "Scop rezervare: \(descr) <br>"
             str += "Cantitate: \(q) <br>"
             str += "User: \(user) <br>"
             str += "\(phone) <br>"
-            str += "Data: \(ddate) <br>"
+            str += "Data rezervării: \(date) <br>"
         
         return str
     }
     
-    func sendConfirmationEmail(descr descr: String, q q: Int, phone phone: String)
+    func sendConfirmationEmail(descr descr: String, q q: Int, phone phone: String, date date: String)
     {
         let userEmail = Auth.auth().currentUser!.email!
         let userString = (userEmail).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let message = (confirmationEmailContent(descr: descr, q: q, phone: phone)).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let message = (confirmationEmailContent(descr: descr, q: q, phone: phone, date: date)).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         var urlString = "https://us-central1-items-planner.cloudfunctions.net/sendMail?dest=\(userString!)&mesaj=\(message!)"
-        
-        print(urlString)
         
         
         let url = URL(string: urlString)!
