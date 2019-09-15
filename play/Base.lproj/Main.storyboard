@@ -861,6 +861,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lvn-Xs-r6r">
+                                <rect key="frame" x="310" y="25" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="QAw-xB-NC2"/>
+                                    <constraint firstAttribute="height" constant="60" id="aY1-rg-dqE"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="addAccount:" destination="0SG-14-Esj" eventType="touchUpInside" id="Zcg-cJ-1UC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -868,6 +878,7 @@
                             <constraint firstItem="4rX-4F-rvV" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="20" id="N8J-aT-G5R"/>
                             <constraint firstItem="cvo-ni-0UJ" firstAttribute="top" secondItem="4rX-4F-rvV" secondAttribute="bottom" constant="5" id="Q3O-M5-58X"/>
                             <constraint firstItem="tT2-f3-cJT" firstAttribute="centerY" secondItem="4rX-4F-rvV" secondAttribute="centerY" id="UFv-k0-gNa"/>
+                            <constraint firstItem="lvn-Xs-r6r" firstAttribute="top" secondItem="Wjw-Cw-VDK" secondAttribute="top" constant="5" id="Z3v-Pa-jAm"/>
                             <constraint firstItem="4rX-4F-rvV" firstAttribute="top" secondItem="Wjw-Cw-VDK" secondAttribute="top" constant="5" id="brH-PZ-mhM"/>
                             <constraint firstItem="tT2-f3-cJT" firstAttribute="leading" secondItem="4rX-4F-rvV" secondAttribute="trailing" constant="5" id="hZF-xF-Wnh"/>
                             <constraint firstItem="Wjw-Cw-VDK" firstAttribute="bottom" secondItem="GnU-Oy-fEW" secondAttribute="bottom" constant="10" id="io7-NR-84D"/>
@@ -875,10 +886,12 @@
                             <constraint firstItem="GnU-Oy-fEW" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="10" id="o3p-Tb-kty"/>
                             <constraint firstAttribute="trailing" secondItem="cvo-ni-0UJ" secondAttribute="trailing" id="tiw-Eu-7xc"/>
                             <constraint firstItem="Wjw-Cw-VDK" firstAttribute="trailing" secondItem="GnU-Oy-fEW" secondAttribute="trailing" constant="10" id="yDk-yv-gkS"/>
+                            <constraint firstItem="Wjw-Cw-VDK" firstAttribute="trailing" secondItem="lvn-Xs-r6r" secondAttribute="trailing" constant="5" id="zH6-TK-vpZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wjw-Cw-VDK"/>
                     </view>
                     <connections>
+                        <outlet property="addAccount" destination="lvn-Xs-r6r" id="iuT-D4-vn4"/>
                         <outlet property="tbv" destination="GnU-Oy-fEW" id="2H3-0k-M4b"/>
                     </connections>
                 </viewController>

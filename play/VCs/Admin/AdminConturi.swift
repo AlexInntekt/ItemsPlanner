@@ -19,6 +19,36 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBOutlet weak var tbv: UITableView!
     
+    @IBOutlet weak var addAccount: UIButton!
+    @IBAction func addAccount(_ sender: Any)
+    {
+        
+        let path = Database.database().reference().child("UsersEmail")
+        
+        //1. Create the alert controller.
+        let addalert = UIAlertController(title: "Adaugă email", message: "Introdu o adresă de email la care se poate utiliza un cont.", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        addalert.addTextField { (textField) in
+            textField.text = "exemplu@de.email"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        addalert.addAction(UIAlertAction(title: "Adaugă", style: .default, handler: { [weak addalert] (_) in
+            let textField = addalert?.textFields![0] // Force unwrapping because we know it exists.
+            
+            let autoid = path.childByAutoId()
+            
+            path.updateChildValues([autoid.key! as String: textField?.text!])
+            
+        }))
+        
+        // 4. Present the alert.
+        self.present(addalert, animated: true, completion: nil)
+    }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
