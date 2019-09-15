@@ -19,13 +19,12 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     
-    @IBOutlet weak var signup: UIButton!
-    @IBAction func signup(_ sender: Any)
+    func startAccountCreationProcess()
     {
-        self.signup.setTitle("Se procesează..", for: .normal)
-        
+
         if ((email.text != nil) &&  (password.text != nil) && (username.text != nil))
         {
+            self.signup.setTitle("Se procesează..", for: .normal)
             
             Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!, completion: { (user, error) in
                 print("\n\n # Trying to create a new user...\n")
@@ -33,6 +32,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
                 if error != nil
                 {
                     print("Error detected. Finding in console: g7i23h49fofou23go ",error)
+                    alert(UIVC: self, title: "Eroare", message: "O eroare a intervenit: \(error!.localizedDescription)")
                 }
                 else
                 {
@@ -45,7 +45,7 @@ class CreareCont: UIViewController, UITextFieldDelegate
                         let userId = Auth.auth().currentUser!.uid
                         
                         let ref = Database.database().reference().child("Users")
-//                        let values = {["name":changeRequest.displayName];["phoneNumber":"xxx-xxx-xxx"]}
+                        //                        let values = {["name":changeRequest.displayName];["phoneNumber":"xxx-xxx-xxx"]}
                         ref.updateChildValues([userId : ""])
                         let userPath = ref.child(userId)
                         userPath.updateChildValues(["name" : changeRequest.displayName])
@@ -62,11 +62,35 @@ class CreareCont: UIViewController, UITextFieldDelegate
                     
                     self.send_verification_email()
                 }
-            
+                
             })
             
         }
+    }
+    
+    @IBOutlet weak var signup: UIButton!
+    @IBAction func signup(_ sender: Any)
+    {
         
+        if(isDeviceOnline)
+        {
+            if((email.text == nil || email.text!.isEmpty) ||
+               (password.text == nil || password.text!.isEmpty) ||
+               (username.text == nil || username.text!.isEmpty))
+            {
+                alert(UIVC: self, title: "Invalid", message: "Câmpuri goale.")
+            }
+            else
+            {
+                startAccountCreationProcess()
+            }
+            
+            
+        }
+        else
+        {
+            alert(UIVC: self, title: "Eroare", message: "Conexiunea de internet este slabă sau inexistentă.")
+        }
     }
     
     
