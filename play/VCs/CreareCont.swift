@@ -19,6 +19,8 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
     
+    var allowedEmails = [String]()
+    
     func startAccountCreationProcess()
     {
 
@@ -69,6 +71,22 @@ class CreareCont: UIViewController, UITextFieldDelegate
         }
     }
     
+    func isEmailAllowed(email email: String)->Bool
+    {
+        var isAllowed = false
+        
+        for str in allowedEmails
+        {
+            print(str)
+            if(str.lowercased()==email.lowercased())
+            {
+                isAllowed=true
+            }
+        }
+        
+        return isAllowed
+    }
+    
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
     {
@@ -83,7 +101,15 @@ class CreareCont: UIViewController, UITextFieldDelegate
             }
             else
             {
-                startAccountCreationProcess()
+                if(isEmailAllowed(email: email.text!.lowercased()))
+                {
+                    startAccountCreationProcess()
+                }
+                else
+                {
+                    alert(UIVC: self, title: "Permisiune respinsă", message: "Adresa de email nu a fost aprobată de către administrator.")
+                }
+                
             }
             
             
@@ -154,6 +180,26 @@ class CreareCont: UIViewController, UITextFieldDelegate
     {
         self.view.endEditing(true)
         return true
+    }
+    
+    func loadDataFromDB()
+    {
+        let path = Database.database().reference().child("UsersEmail")
+        
+        path.observeSingleEvent(of: .value) { (list) in
+            self.allowedEmails.removeAll()
+            for snap in list.children.allObjects as! [DataSnapshot]
+            {
+                let femail = snap.value as! String
+                
+                self.allowedEmails.append(femail)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        loadDataFromDB()
     }
     
     

@@ -61,7 +61,6 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
             for snap in list.children.allObjects as! [DataSnapshot]
             {
                 let femail = snap.value as! String
-                print(femail)
                 
                 self.accountEmails.append(femail)
             }
