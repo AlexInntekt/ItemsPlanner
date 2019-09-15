@@ -217,7 +217,14 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.performSegue(withIdentifier: "adminItemsSegue", sender: nil)
         
     }
-   
+    
+    
+    @IBOutlet weak var adminConturi: UIButton!
+    @IBAction func adminConturi(_ sender: Any)
+    {
+        self.performSegue(withIdentifier: "adminConturiSegue", sender: nil)
+        
+    }
     
     
     func showSimpleAlert(message: String) {
@@ -391,6 +398,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                     self.adminButtonCategorii.isHidden=false
                     self.adminButtonArticole.isHidden=false
                     self.adminTitle.isHidden=false
+                    self.adminConturi.isHidden=false
                 }
                 else
                 {
@@ -398,6 +406,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
                     self.adminButtonCategorii.isHidden=true
                     self.adminButtonArticole.isHidden=true
                     self.adminTitle.isHidden=true
+                    self.adminConturi.isHidden=true
                 }
             }
         }

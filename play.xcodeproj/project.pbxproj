@@ -42,6 +42,7 @@
 		FAA6E9B922ED840F002090C3 /* Writters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9B822ED840F002090C3 /* Writters.swift */; };
 		FAA6E9BB22EDA9CF002090C3 /* BookItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */; };
 		FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */; };
+		FAA8B816232E5A2800C909DC /* AdminConturi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8B815232E5A2800C909DC /* AdminConturi.swift */; };
 		FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD176322F2B47C00881325 /* MyBookings.swift */; };
 		FAB465B22309BD7700436142 /* ModifyCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */; };
 		FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C5F2325925900DEAE6C /* InternetManager.swift */; };
@@ -118,6 +119,7 @@
 		FAA6E9B822ED840F002090C3 /* Writters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writters.swift; sourceTree = "<group>"; };
 		FAA6E9BA22EDA9CF002090C3 /* BookItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItemVC.swift; sourceTree = "<group>"; };
 		FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
+		FAA8B815232E5A2800C909DC /* AdminConturi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminConturi.swift; sourceTree = "<group>"; };
 		FAAD176322F2B47C00881325 /* MyBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookings.swift; sourceTree = "<group>"; };
 		FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryVC.swift; sourceTree = "<group>"; };
 		FAC45C5F2325925900DEAE6C /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetManager.swift; path = /Users/alex/repos/play/play/InternetManager.swift; sourceTree = "<absolute>"; };
@@ -297,6 +299,7 @@
 		FAEF5F2822FEC86800E5AC6F /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				FAA8B815232E5A2800C909DC /* AdminConturi.swift */,
 				FAE9F5D722F7068A0074B36D /* AdminVC.swift */,
 				FAEF5F2922FEC99800E5AC6F /* AdminItemsVC.swift */,
 				FAEF5F2B22FED01C00E5AC6F /* AddItemAdminVC.swift */,
@@ -598,6 +601,7 @@
 				FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */,
 				FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */,
 				FA5A6B7922FF1DBC00F0764E /* AdminCategoriesVC.swift in Sources */,
+				FAA8B816232E5A2800C909DC /* AdminConturi.swift in Sources */,
 				FA1C56512305AA46007F1BB9 /* Cache.swift in Sources */,
 				FAEF5F2A22FEC99800E5AC6F /* AdminItemsVC.swift in Sources */,
 				FA13F4B322FF2AEA0014CED5 /* AddCategoryAdminVC.swift in Sources */,

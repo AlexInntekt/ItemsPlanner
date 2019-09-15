@@ -529,6 +529,16 @@
                                             <segue destination="ajs-Yy-Lmp" kind="custom" identifier="aboutSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="gJ5-9w-aYz"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1q-nc-qGn">
+                                        <rect key="frame" x="67" y="464" width="54" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Conturi">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="adminConturi:" destination="ez9-8c-EE8" eventType="touchUpInside" id="GEd-Eh-v2m"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -554,10 +564,12 @@
                                     <constraint firstItem="5Cl-QZ-yBQ" firstAttribute="width" secondItem="YAo-SL-oyU" secondAttribute="width" id="Vp3-si-yQC"/>
                                     <constraint firstItem="NHn-lH-GQ2" firstAttribute="leading" secondItem="Ipm-9P-az7" secondAttribute="leading" constant="20" id="W4a-DL-csw"/>
                                     <constraint firstItem="Wx8-7L-Bc7" firstAttribute="leading" secondItem="Ipm-9P-az7" secondAttribute="leading" constant="20" id="WXk-nZ-sF6"/>
+                                    <constraint firstItem="Z1q-nc-qGn" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="X42-xC-zWR"/>
                                     <constraint firstItem="Ufp-bL-r3L" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="Xsw-94-zrg"/>
                                     <constraint firstItem="evs-Wc-Nab" firstAttribute="top" secondItem="Ufp-bL-r3L" secondAttribute="bottom" constant="20" id="a9a-os-Nd4"/>
                                     <constraint firstItem="fdS-tN-rW0" firstAttribute="width" secondItem="Ufp-bL-r3L" secondAttribute="width" id="dM0-QB-W2x"/>
                                     <constraint firstItem="ELL-Q2-2Ds" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="eE3-c8-Jpb"/>
+                                    <constraint firstItem="Z1q-nc-qGn" firstAttribute="top" secondItem="5Cl-QZ-yBQ" secondAttribute="bottom" constant="8" id="f5s-G0-36Y"/>
                                     <constraint firstItem="r7w-9K-BKc" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="mhJ-Fs-z80"/>
                                     <constraint firstItem="5Cl-QZ-yBQ" firstAttribute="top" secondItem="YAo-SL-oyU" secondAttribute="bottom" constant="2" id="oLE-93-m4m"/>
                                     <constraint firstItem="fdS-tN-rW0" firstAttribute="centerX" secondItem="Ipm-9P-az7" secondAttribute="centerX" id="oNr-51-cby"/>
@@ -631,6 +643,7 @@
                         <outlet property="adminButtonArticole" destination="5Cl-QZ-yBQ" id="PA2-ZL-doK"/>
                         <outlet property="adminButtonCategorii" destination="YAo-SL-oyU" id="kuc-et-TF4"/>
                         <outlet property="adminButtonRezervari" destination="fdS-tN-rW0" id="8Lv-49-uEG"/>
+                        <outlet property="adminConturi" destination="Z1q-nc-qGn" id="oA2-nV-Z22"/>
                         <outlet property="adminTitle" destination="DQf-SU-ljY" id="OOP-GP-dHJ"/>
                         <outlet property="faderView" destination="8bG-O2-iBy" id="7oJ-w1-8r3"/>
                         <outlet property="goToSeeMyBookings" destination="6aM-Wk-BVp" id="0xy-m9-5PG"/>
@@ -649,6 +662,7 @@
                         <segue destination="L3y-sH-PSf" kind="custom" identifier="adminItemsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Iaz-YZ-Z1X"/>
                         <segue destination="YSl-Re-JxK" kind="custom" identifier="adminCategoriesSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="3nM-wR-yRP"/>
                         <segue destination="JOo-LD-9ZB" kind="custom" identifier="myProfile" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="m40-Yq-th2"/>
+                        <segue destination="0SG-14-Esj" kind="custom" identifier="adminConturiSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="SEi-td-CH3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -805,6 +819,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2157.5999999999999" y="978.26086956521749"/>
+        </scene>
+        <!--Admin Conturi-->
+        <scene sceneID="2fh-eW-K4D">
+            <objects>
+                <viewController id="0SG-14-Esj" customClass="AdminConturi" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rL0-4o-mfF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rX-4F-rvV">
+                                <rect key="frame" x="20" y="25" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="X5z-ox-IWY"/>
+                                    <constraint firstAttribute="width" constant="60" id="nOw-iC-vdu"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="PBF-t8-kP9"/>
+                                    <segue destination="ez9-8c-EE8" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="KJw-e3-l95"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-ni-0UJ">
+                                <rect key="frame" x="0.0" y="90" width="375" height="1"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="wjY-K2-d4h"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GnU-Oy-fEW">
+                                <rect key="frame" x="10" y="101" width="355" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cvo-ni-0UJ" firstAttribute="leading" secondItem="rL0-4o-mfF" secondAttribute="leading" id="Mcg-Ev-9fG"/>
+                            <constraint firstItem="4rX-4F-rvV" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="20" id="N8J-aT-G5R"/>
+                            <constraint firstItem="cvo-ni-0UJ" firstAttribute="top" secondItem="4rX-4F-rvV" secondAttribute="bottom" constant="5" id="Q3O-M5-58X"/>
+                            <constraint firstItem="4rX-4F-rvV" firstAttribute="top" secondItem="Wjw-Cw-VDK" secondAttribute="top" constant="5" id="brH-PZ-mhM"/>
+                            <constraint firstItem="Wjw-Cw-VDK" firstAttribute="bottom" secondItem="GnU-Oy-fEW" secondAttribute="bottom" constant="10" id="io7-NR-84D"/>
+                            <constraint firstItem="GnU-Oy-fEW" firstAttribute="top" secondItem="cvo-ni-0UJ" secondAttribute="bottom" constant="10" id="kVc-na-hIh"/>
+                            <constraint firstItem="GnU-Oy-fEW" firstAttribute="leading" secondItem="Wjw-Cw-VDK" secondAttribute="leading" constant="10" id="o3p-Tb-kty"/>
+                            <constraint firstAttribute="trailing" secondItem="cvo-ni-0UJ" secondAttribute="trailing" id="tiw-Eu-7xc"/>
+                            <constraint firstItem="Wjw-Cw-VDK" firstAttribute="trailing" secondItem="GnU-Oy-fEW" secondAttribute="trailing" constant="10" id="yDk-yv-gkS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wjw-Cw-VDK"/>
+                    </view>
+                    <connections>
+                        <outlet property="tbv" destination="GnU-Oy-fEW" id="2H3-0k-M4b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2l-Fk-ieZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3243" y="1013"/>
         </scene>
         <!--AdminVC-->
         <scene sceneID="ZNP-zu-fFr">
@@ -2612,7 +2680,6 @@
         <image name="menu" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gJ5-9w-aYz"/>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
         <segue reference="Iaz-YZ-Z1X"/>
@@ -2620,7 +2687,7 @@
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="0zt-tU-UE9"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="4er-eg-96P"/>
+        <segue reference="KJw-e3-l95"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
