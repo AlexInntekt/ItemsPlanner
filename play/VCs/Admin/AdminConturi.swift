@@ -42,6 +42,9 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
             path.updateChildValues([autoid.key! as String: textField?.text!])
             
         }))
+        addalert.addAction(UIAlertAction(title: "Anulează", style: .cancel, handler: { [weak addalert] (_) in
+            
+        }))
         
         // 4. Present the alert.
         self.present(addalert, animated: true, completion: nil)
