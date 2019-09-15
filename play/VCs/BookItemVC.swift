@@ -744,12 +744,12 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         let ddate = formatter.string(from: date)
         print(ddate)
         
-        var str = "Item: \(currentItem.name) </br>"
-            str += "Scop rezervare: \(descr) </br>"
-            str += "Cantitate: \(q) </br>"
-            str += "User: \(user) </br>"
-            str += "\(phone)"
-            str += "Data: \(ddate)"
+        var str = "Item: \(currentItem.name) <br>"
+            str += "Scop rezervare: \(descr) <br>"
+            str += "Cantitate: \(q) <br>"
+            str += "User: \(user) <br>"
+            str += "\(phone) <br>"
+            str += "Data: \(ddate) <br>"
         
         return str
     }
