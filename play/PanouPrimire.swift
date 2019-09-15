@@ -309,7 +309,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        enableBodyguard(UIVC:self)
         configureSearchController()
         
         self.itemsTableView.delegate = self
