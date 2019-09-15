@@ -14,8 +14,7 @@ import FirebaseAuth
 
 class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    
-    var accountEmails = [String]()
+    var accountEmails:[(key: String, name: String)] = []
     var path = Database.database().reference()
     
     @IBOutlet weak var tbv: UITableView!
@@ -29,10 +28,32 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell()
-        cell.textLabel!.text = accountEmails[indexPath.row]
+        cell.textLabel!.text = accountEmails[indexPath.row].name
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let title = "Confirmare"
+            let message = "Această acțiune nu va șterge contul, însă va dezactiva permisiunea de logare si creare cont pe acest email. Puteți oricând readăuga adresa în această listă."
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Nu, anulează", style: UIAlertAction.Style.cancel, handler: { _ in
+            }))
+            alert.addAction(UIAlertAction(title: "Da, șterge", style: UIAlertAction.Style.destructive, handler: { _ in
+                
+                self.path.child(self.accountEmails[indexPath.row].key).removeValue()
+            }))
+            
+            self.present(alert, animated: true)
+        }
+        
+        return [delete]
+    }
+    
+    
     
     
     
@@ -60,9 +81,10 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
             self.accountEmails.removeAll()
             for snap in list.children.allObjects as! [DataSnapshot]
             {
-                let femail = snap.value as! String
+                let email = snap.value as! String
+                let key = snap.key as! String
                 
-                self.accountEmails.append(femail)
+                self.accountEmails.append((key: key, name:email))
             }
             
             self.tbv.reloadData()
