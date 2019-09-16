@@ -113,6 +113,12 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         tbv.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("searchBarSearchButtonClicked")
+        searchBar.resignFirstResponder()
+    }
+    
     override func viewDidLoad()
     {
         self.tbv.delegate=self

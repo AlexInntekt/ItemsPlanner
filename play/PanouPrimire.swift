@@ -87,26 +87,29 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         itemsTableView.tableHeaderView = searchBar
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar)
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
     {
         shouldShowSearchResults = true
         displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar)
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
     {
+        print("searchBarCancelButtonClicked")
+        searchBar.resignFirstResponder()
         shouldShowSearchResults = false
         displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !shouldShowSearchResults {
             shouldShowSearchResults = true
             displayingItems.sort(by: { $0.name < $1.name })
             itemsTableView.reloadData()
         }
+        print("searchBarSearchButtonClicked")
         
         searchBar.resignFirstResponder()
     }

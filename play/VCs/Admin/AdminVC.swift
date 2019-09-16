@@ -134,6 +134,12 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         TBVAdmin.reloadData()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("searchBarSearchButtonClicked")
+        searchBar.resignFirstResponder()
+    }
+    
     
     func loadDataFromDB()
     {

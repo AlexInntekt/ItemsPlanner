@@ -81,6 +81,18 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         tbv.reloadData()
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("searchBarCancelButtonClicked")
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        print("searchBarSearchButtonClicked")
+        searchBar.resignFirstResponder()
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         
