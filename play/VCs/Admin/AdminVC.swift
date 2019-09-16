@@ -31,6 +31,10 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         TBVAdmin.dataSource = self
         
         loadDataFromDB()
+        
+        //dismiss keyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -208,6 +212,11 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     
     override func viewWillDisappear(_ animated: Bool) {
         bookingsReference.removeAllObservers()
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
 }

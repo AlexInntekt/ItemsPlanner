@@ -119,6 +119,10 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         self.tbv.dataSource=self
         configureSearchController()
         
+
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -205,6 +209,12 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
             defVC.currentItem = obj
             defVC.initialItem = obj.copy()
         }
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
 }
