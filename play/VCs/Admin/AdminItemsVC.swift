@@ -109,6 +109,11 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
             shouldShowSearchResults=false
         }
         
+        if searchBar.text == nil || searchBar.text == ""
+        {
+            searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
+        }
+        
         displayingItems.sort(by: { $0.name < $1.name })
         tbv.reloadData()
     }
@@ -125,6 +130,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         self.tbv.dataSource=self
         configureSearchController()
         
+        //searchBar.showsCancelButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

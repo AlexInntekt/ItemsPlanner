@@ -132,6 +132,11 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             shouldShowSearchResults=false
         }
         
+        if searchBar.text == nil || searchBar.text == ""
+        {
+            searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
+        }
+        
         displayingItems.sort(by: { $0.name < $1.name })
         itemsTableView.reloadData()
     }
@@ -314,6 +319,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         enableBodyguard(UIVC:self)
         configureSearchController()
         
@@ -334,6 +340,8 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
         faderView.isUserInteractionEnabled = true
         faderView.addGestureRecognizer(tapGestureRecognizer)
+        
+        //searchBar.showsCancelButton = true
     }
     
     

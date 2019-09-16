@@ -31,10 +31,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         TBVAdmin.dataSource = self
         
         loadDataFromDB()
-        
-        //dismiss keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
+                
+        //searchBar.showsCancelButton = true
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -129,7 +127,10 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             shouldShowSearchResults=false
         }
 
-        
+        if searchBar.text == nil || searchBar.text == ""
+        {
+            searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
+        }
         
         TBVAdmin.reloadData()
     }

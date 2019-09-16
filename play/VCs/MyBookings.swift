@@ -35,6 +35,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         loadBookings()
     
+        //searchBar.showsCancelButton = true
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
@@ -73,6 +74,11 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         {
             displayingBookings=allBookings
             shouldShowSearchResults=false
+        }
+        
+        if searchBar.text == nil || searchBar.text == ""
+        {
+            searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0.1)
         }
         
         tbv.reloadData()
