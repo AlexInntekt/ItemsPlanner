@@ -52,8 +52,8 @@ class AdminVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
             cell.itemNameLabel?.text = "Articol: \(booking.itemName)"
             cell.userLabel?.text = booking.username
-            let startDate = booking.startDate
-            let endDate = booking.endDate
+            let startDate = convertEnDateToRo(booking.startDate)
+            let endDate = convertEnDateToRo(booking.endDate)
             let date="\(startDate) - \(endDate)"
             cell.phoneLabel?.text = booking.phone
             cell.dateLabel?.text = date

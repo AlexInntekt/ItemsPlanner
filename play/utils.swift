@@ -41,10 +41,10 @@ func isUserLoggedIn() -> Bool
 
 
 func convertEnDateToRo(_ date: String) -> String
-{ //"dd MM yyyy"
-    let year = "\(date[6])\(date[7])\(date[8])\(date[9])"
-    let month = "\(date[3])\(date[4])"
-    let day = "\(date[0])\(date[1])"
+{ //"yyyy MM dd"
+    let year = "\(date[0])\(date[1])\(date[2])\(date[3])"
+    let month = "\(date[5])\(date[6])"
+    let day = "\(date[8])\(date[9])"
     
     return "\(day) \(month) \(year)"
 }

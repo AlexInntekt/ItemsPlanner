@@ -27,8 +27,8 @@ extension BookItemVC: JTACMonthViewDataSource {
             let currentYear = String(Int(formatter.string(from: date))!+2)
             let startDate = Date()
             
-            formatter.dateFormat = "dd MM yyyy"
-            let endDate = formatter.date(from: "31 12 \(currentYear)")!
+            formatter.dateFormat = "yyyy MM dd"
+            let endDate = formatter.date(from: "\(currentYear) 12 31")!
             
             return ConfigurationParameters(startDate: startDate, endDate: endDate)
     }
@@ -197,7 +197,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     func getDateFromCalendarDate(_ date: Date)->Date
     {
         //https://github.com/patchthecode/JTAppleCalendar/issues/252
-        formatter.dateFormat="dd MM yyyy"
+        formatter.dateFormat="yyyy MM dd"
         let dateAsString = formatter.string(from: date)
         let result = nscalendar.date(byAdding: .day, value: 1, to: date)!
         
@@ -223,7 +223,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             cell.selectedView.layer.backgroundColor = UIColor(red:0.5, green:0.5, blue:0.55, alpha:1.0).cgColor
             cell.dateLabel.textColor = UIColor(red:0.95, green:0.99, blue:1, alpha:1.0)
             
-            formatter.dateFormat="dd MM yyyy"
+            formatter.dateFormat="yyyy MM dd"
             
             
             print("\n")
@@ -334,7 +334,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 desiredQuantityOfBookedItems=cacheBooking.quantity
                 
                 //print("cacheBooking.startDate in setup: ", cacheBooking.startDate)
-                formatter.dateFormat = "dd MM yyyy"
+                formatter.dateFormat = "yyyy MM dd"
                 let startDate = formatter.date(from: cacheBooking.startDate)
                 let endDate = formatter.date(from: cacheBooking.endDate)
                 calendarView.selectDates(from: startDate!, to: endDate!)
@@ -454,7 +454,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     func startBookingProcedure()
     {
         let dif = DateIntervalFormatter()
-        formatter.dateFormat = "dd MM yyyy"
+        formatter.dateFormat = "yyyy MM dd"
         let date1 = formatter.date(from: startDateOfBooking)!
         let date2 = formatter.date(from: endDateOfBooking)!
         let current_user_id = Auth.auth().currentUser?.uid
@@ -514,7 +514,9 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             reference.child("Users").child(bk.user).observeSingleEvent(of: .value) { (userData) in
             
                 let report = FailedBookingReportModel()
-                report.date = "\(bk.startDate) - \(bk.endDate)"
+                let startDate = convertEnDateToRo(bk.startDate)
+                let endDate = convertEnDateToRo(bk.endDate)
+                report.date = "\(startDate) - \(endDate)"
                 report.username = userData.childSnapshot(forPath: "name").value as! String
                 report.phone = userData.childSnapshot(forPath: "phoneNumber").value as! String
                 report.quantity = "\(bk.quantity)"
@@ -658,9 +660,10 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         
         var matchedBookings=[Booking]()
-        formatter.dateFormat = "dd MM yyyy"
+        formatter.dateFormat = "yyyy MM dd"
         for booking in self.bookingsOfCurrentItem
         {
+            print("adsgfsGSG ", booking.startDate)
 
             let startDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.startDate)!)!
             let endDate = nscalendar.date(byAdding: .day, value: 1, to: formatter.date(from: booking.endDate)!)!
@@ -742,7 +745,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         let user = Auth.auth().currentUser!.displayName!
 //        let date = Date()
-//        formatter.dateFormat="dd MM yyyy"
+//        formatter.dateFormat="yyyy MM dd"
 //        let ddate = formatter.string(from: date)
 //        print(ddate)
         
