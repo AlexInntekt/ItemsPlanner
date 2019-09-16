@@ -1522,7 +1522,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="usernameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mf-zb-xVM">
-                                                    <rect key="frame" x="5" y="3" width="187.5" height="20"/>
+                                                    <rect key="frame" x="5" y="3" width="111.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="5JE-xi-tgq"/>
                                                     </constraints>
@@ -1530,43 +1530,45 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneNumber" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEF-NL-HxT">
-                                                    <rect key="frame" x="172.5" y="3" width="187.5" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ro-aD-cfn">
-                                                    <rect key="frame" x="15" y="23" width="345" height="86"/>
+                                                    <rect key="frame" x="15" y="23" width="193" height="86"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="phoneNumberLabel" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cRw-dq-PH4">
+                                                    <rect key="frame" x="198" y="1" width="145" height="24"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="width" secondItem="8Mf-zb-xVM" secondAttribute="width" id="4k5-Ud-euZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="cRw-dq-PH4" secondAttribute="trailing" constant="-120" id="8JP-66-D4K"/>
+                                                <constraint firstItem="cRw-dq-PH4" firstAttribute="height" secondItem="8Mf-zb-xVM" secondAttribute="height" multiplier="1.2" id="Fiu-3g-peQ"/>
                                                 <constraint firstItem="3Ro-aD-cfn" firstAttribute="leading" secondItem="zGf-wx-YSz" secondAttribute="leadingMargin" id="JsD-kn-2XB"/>
+                                                <constraint firstItem="cRw-dq-PH4" firstAttribute="centerY" secondItem="8Mf-zb-xVM" secondAttribute="centerY" id="Jst-Tf-XQc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3Ro-aD-cfn" secondAttribute="trailing" id="NNm-ci-KE4"/>
                                                 <constraint firstItem="8Mf-zb-xVM" firstAttribute="top" secondItem="zGf-wx-YSz" secondAttribute="top" constant="3" id="SBJ-Wx-xgX"/>
-                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="centerY" secondItem="8Mf-zb-xVM" secondAttribute="centerY" id="U65-dN-W0N"/>
-                                                <constraint firstItem="vEF-NL-HxT" firstAttribute="height" secondItem="8Mf-zb-xVM" secondAttribute="height" id="cXV-Pt-gIN"/>
+                                                <constraint firstItem="cRw-dq-PH4" firstAttribute="width" secondItem="8Mf-zb-xVM" secondAttribute="width" multiplier="1.3" id="bej-nP-CXt"/>
+                                                <constraint firstAttribute="trailing" secondItem="8Mf-zb-xVM" secondAttribute="trailing" constant="20" id="eTw-yB-CsH"/>
                                                 <constraint firstItem="8Mf-zb-xVM" firstAttribute="width" secondItem="zGf-wx-YSz" secondAttribute="width" multiplier="0.5" id="j40-cg-qhv"/>
                                                 <constraint firstItem="8Mf-zb-xVM" firstAttribute="leading" secondItem="zGf-wx-YSz" secondAttribute="leading" constant="5" id="o4P-5N-wxL"/>
                                                 <constraint firstItem="3Ro-aD-cfn" firstAttribute="bottom" secondItem="zGf-wx-YSz" secondAttribute="bottomMargin" id="oTU-5W-S2r"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vEF-NL-HxT" secondAttribute="trailing" id="voZ-Zb-sI1"/>
                                                 <constraint firstItem="3Ro-aD-cfn" firstAttribute="top" secondItem="8Mf-zb-xVM" secondAttribute="bottom" id="zRi-dt-xK1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="infoLabel" destination="3Ro-aD-cfn" id="MsL-UC-ZCj"/>
-                                            <outlet property="phoneNumberLabel" destination="vEF-NL-HxT" id="UOt-fy-Jau"/>
+                                            <outlet property="phoneNumberLabel" destination="cRw-dq-PH4" id="24y-Y0-6fo"/>
                                             <outlet property="usernameLabel" destination="8Mf-zb-xVM" id="eSb-eD-PsM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Articolul selectat nu a putut fi rezervat in perioada dată datorită unor rezervări deja existente." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9HT-mG-y5A">
-                                <rect key="frame" x="5" y="110" width="365" height="75"/>
+                                <rect key="frame" x="10" y="110" width="360" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Old-QB-NVf"/>
                                 </constraints>
@@ -1598,7 +1600,7 @@
                             <constraint firstItem="Igx-0B-7gZ" firstAttribute="height" secondItem="frI-oZ-3eu" secondAttribute="height" id="u8s-hH-EhA"/>
                             <constraint firstItem="9HT-mG-y5A" firstAttribute="top" secondItem="frI-oZ-3eu" secondAttribute="bottom" constant="25" id="yfY-dR-hDC"/>
                             <constraint firstItem="VPC-qL-1YQ" firstAttribute="top" secondItem="9HT-mG-y5A" secondAttribute="bottom" constant="20" id="zrq-MJ-sTZ"/>
-                            <constraint firstItem="9HT-mG-y5A" firstAttribute="leading" secondItem="dTi-ju-6VL" secondAttribute="leading" constant="5" id="zuw-LW-BZc"/>
+                            <constraint firstItem="9HT-mG-y5A" firstAttribute="leading" secondItem="dTi-ju-6VL" secondAttribute="leading" constant="10" id="zuw-LW-BZc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dTi-ju-6VL"/>
                     </view>

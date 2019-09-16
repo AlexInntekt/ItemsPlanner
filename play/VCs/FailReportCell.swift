@@ -12,7 +12,8 @@ import UIKit
 class FailReportCell: UITableViewCell {
 
     @IBOutlet var usernameLabel: UILabel!
-    @IBOutlet var phoneNumberLabel: UILabel!
 
+    @IBOutlet weak var phoneNumberLabel: UITextView!
+    
     @IBOutlet weak var infoLabel: UILabel!
 }
