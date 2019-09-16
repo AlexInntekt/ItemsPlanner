@@ -34,10 +34,7 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         configureSearchController()
         
         loadBookings()
-        
-        //Dismiss keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
+    
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
@@ -273,10 +270,5 @@ class MyBookingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         bookingsReference.removeAllObservers()
         ref2.removeAllObservers()
     }
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
-    }
+
 }

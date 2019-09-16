@@ -334,10 +334,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Attach it to a view of your choice. If it's a UIImageView, remember to enable user interaction
         faderView.isUserInteractionEnabled = true
         faderView.addGestureRecognizer(tapGestureRecognizer)
-
-        //Dismiss keyboard
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
     }
     
     
@@ -542,12 +538,6 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewWillDisappear(_ animated: Bool) {
         reference.removeAllObservers()
         categoriesRef.removeAllObservers()
-    }
-    
-    //Calls this function when the tap is recognized.
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
     
 }
