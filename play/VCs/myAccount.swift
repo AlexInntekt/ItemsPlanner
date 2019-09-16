@@ -31,7 +31,7 @@ class MyAccount: UIViewController
         if(phoneTextField.text != nil)
         {
             let newPhone = phoneTextField.text!
-            reference.child("Users").child(thisUser.uid).child("phone").setValue(newPhone)
+            reference.child("Users").child(thisUser.uid).child("phoneNumber").setValue(newPhone)
         }
         
         if(isDeviceOnline)

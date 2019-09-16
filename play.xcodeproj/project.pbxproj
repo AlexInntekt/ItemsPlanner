@@ -44,6 +44,7 @@
 		FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */; };
 		FAA8B816232E5A2800C909DC /* AdminConturi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8B815232E5A2800C909DC /* AdminConturi.swift */; };
 		FAA8B818232E7B1600C909DC /* Bodyguard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8B817232E7B1600C909DC /* Bodyguard.swift */; };
+		FAA8B81A232F5B4C00C909DC /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA8B819232F5B4C00C909DC /* AboutVC.swift */; };
 		FAAD176422F2B47C00881325 /* MyBookings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAD176322F2B47C00881325 /* MyBookings.swift */; };
 		FAB465B22309BD7700436142 /* ModifyCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */; };
 		FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C5F2325925900DEAE6C /* InternetManager.swift */; };
@@ -122,6 +123,7 @@
 		FAA6E9BE22EDB55D002090C3 /* DateHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHeader.swift; sourceTree = "<group>"; };
 		FAA8B815232E5A2800C909DC /* AdminConturi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminConturi.swift; sourceTree = "<group>"; };
 		FAA8B817232E7B1600C909DC /* Bodyguard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bodyguard.swift; sourceTree = "<group>"; };
+		FAA8B819232F5B4C00C909DC /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		FAAD176322F2B47C00881325 /* MyBookings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookings.swift; sourceTree = "<group>"; };
 		FAB465B12309BD7700436142 /* ModifyCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryVC.swift; sourceTree = "<group>"; };
 		FAC45C5F2325925900DEAE6C /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetManager.swift; path = /Users/alex/repos/play/play/InternetManager.swift; sourceTree = "<absolute>"; };
@@ -191,6 +193,7 @@
 			children = (
 				FAEF5F2822FEC86800E5AC6F /* Admin */,
 				FAA6E9B422EC375B002090C3 /* ResetPassword.swift */,
+				FAA8B819232F5B4C00C909DC /* AboutVC.swift */,
 				FA13922B22D8ED93006D64B4 /* ViewController.swift */,
 				FA3CD83322DBA60F00BE5558 /* CreareCont.swift */,
 				FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */,
@@ -580,6 +583,7 @@
 				FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */,
 				FA142AE722F85EE600C56AA7 /* DownUpSegue.swift in Sources */,
 				FA8396D322EDD0B800130FAF /* TableViewCell.swift in Sources */,
+				FAA8B81A232F5B4C00C909DC /* AboutVC.swift in Sources */,
 				FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */,
 				FA13922C22D8ED93006D64B4 /* ViewController.swift in Sources */,
 				FAA6E9BF22EDB55D002090C3 /* DateHeader.swift in Sources */,
