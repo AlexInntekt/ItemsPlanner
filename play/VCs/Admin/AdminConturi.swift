@@ -118,6 +118,7 @@ class AdminConturi: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let key = snap.key as! String
                 
                 self.accountEmails.append((key: key, name:email))
+                self.accountEmails.sort(by: { $0.name < $1.name })
             }
             
             self.tbv.reloadData()
