@@ -67,6 +67,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func myAccountButton(_ sender: Any)
     {
+        triggerMenu()
         self.performSegue(withIdentifier: "myProfile", sender: nil)
     }
     
@@ -184,7 +185,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             do{
                 try Auth.auth().signOut()
             } catch{}
-            
+            self.triggerMenu()
             self.performSegue(withIdentifier: "logoutSegue", sender: nil)
         }))
         
@@ -222,6 +223,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var adminConturi: UIButton!
     @IBAction func adminConturi(_ sender: Any)
     {
+        triggerMenu()
         self.performSegue(withIdentifier: "adminConturiSegue", sender: nil)
         
     }
