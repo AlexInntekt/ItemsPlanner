@@ -65,6 +65,13 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
+    @IBAction func despreButton(_ sender: Any)
+    {
+        triggerMenu()
+        self.performSegue(withIdentifier: "aboutVCSegue", sender: nil)
+    }
+    
+    
     @IBAction func myAccountButton(_ sender: Any)
     {
         triggerMenu()
