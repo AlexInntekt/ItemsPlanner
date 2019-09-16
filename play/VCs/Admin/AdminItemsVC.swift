@@ -81,7 +81,7 @@ class AdminItemsVC: UIViewController,UITableViewDelegate, UITableViewDataSource,
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         
         //        searchController.dimsBackgroundDuringPresentation = false
-        searchBar.placeholder = "Cautare generală"
+        searchBar.placeholder = "Căutare generală"
         searchBar.delegate = self
         searchBar.sizeToFit()
         
