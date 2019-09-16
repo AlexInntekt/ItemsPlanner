@@ -332,7 +332,6 @@
 				FA13922422D8ED93006D64B4 /* Resources */,
 				347144D9183D06E070EE90A8 /* [CP] Embed Pods Frameworks */,
 				FA827154232A3C7E00B4D626 /* ShellScript */,
-				FA827155232A3C9300B4D626 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -553,23 +552,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
-		};
-		FA827155232A3C9300B4D626 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
