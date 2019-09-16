@@ -74,6 +74,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
+  - IQKeyboardManagerSwift (6.4.2)
   - JTAppleCalendar (8.0.0)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - IQKeyboardManagerSwift
   - JTAppleCalendar
   - SDWebImage (~> 5.0)
   - SideMenu
@@ -113,6 +115,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - JTAppleCalendar
     - leveldb-library
     - nanopb
@@ -133,12 +136,13 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  IQKeyboardManagerSwift: 79a3ec200dfb41cb66a89b8575417b5378107c5d
   JTAppleCalendar: 76ccdc5a8b236166293e50b190c5f2722c30cdcd
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
 
-PODFILE CHECKSUM: 20c038ad0a7fd2b68569d2670139eee6b707eee4
+PODFILE CHECKSUM: d0f5d545825548ed8d6292dcf92bf774ce0bb850
 
 COCOAPODS: 1.7.4

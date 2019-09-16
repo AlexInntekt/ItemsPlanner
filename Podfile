@@ -11,6 +11,7 @@ target 'play' do
   pod 'Firebase/Storage'
   pod 'JTAppleCalendar'
   pod 'SideMenu'
+  pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 5.0'
   # Pods for play
   

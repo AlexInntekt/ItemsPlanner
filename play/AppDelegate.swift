@@ -12,6 +12,7 @@ import Firebase
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         checkConnection()
+        
+        IQKeyboardManager.shared.enable = true
         
         return true
     }
