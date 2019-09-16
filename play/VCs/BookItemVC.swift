@@ -27,8 +27,8 @@ extension BookItemVC: JTACMonthViewDataSource {
             let currentYear = String(Int(formatter.string(from: date))!+2)
             let startDate = Date()
             
-            formatter.dateFormat = "yyyy MM dd"
-            let endDate = formatter.date(from: "\(currentYear) 12 31")!
+            formatter.dateFormat = "dd MM yyyy"
+            let endDate = formatter.date(from: "31 12 \(currentYear)")!
             
             return ConfigurationParameters(startDate: startDate, endDate: endDate)
     }
@@ -197,7 +197,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     func getDateFromCalendarDate(_ date: Date)->Date
     {
         //https://github.com/patchthecode/JTAppleCalendar/issues/252
-        formatter.dateFormat="YYYY MM dd"
+        formatter.dateFormat="dd MM yyyy"
         let dateAsString = formatter.string(from: date)
         let result = nscalendar.date(byAdding: .day, value: 1, to: date)!
         
@@ -223,7 +223,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             cell.selectedView.layer.backgroundColor = UIColor(red:0.5, green:0.5, blue:0.55, alpha:1.0).cgColor
             cell.dateLabel.textColor = UIColor(red:0.95, green:0.99, blue:1, alpha:1.0)
             
-            formatter.dateFormat="YYYY MM dd"
+            formatter.dateFormat="dd MM yyyy"
             
             
             print("\n")
@@ -334,7 +334,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                 desiredQuantityOfBookedItems=cacheBooking.quantity
                 
                 //print("cacheBooking.startDate in setup: ", cacheBooking.startDate)
-                formatter.dateFormat = "yyyy MM dd"
+                formatter.dateFormat = "dd MM yyyy"
                 let startDate = formatter.date(from: cacheBooking.startDate)
                 let endDate = formatter.date(from: cacheBooking.endDate)
                 calendarView.selectDates(from: startDate!, to: endDate!)
@@ -454,7 +454,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     func startBookingProcedure()
     {
         let dif = DateIntervalFormatter()
-        formatter.dateFormat = "yyyy MM dd"
+        formatter.dateFormat = "dd MM yyyy"
         let date1 = formatter.date(from: startDateOfBooking)!
         let date2 = formatter.date(from: endDateOfBooking)!
         let current_user_id = Auth.auth().currentUser?.uid
@@ -658,7 +658,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         
         
         var matchedBookings=[Booking]()
-        formatter.dateFormat = "YYYY MM dd"
+        formatter.dateFormat = "dd MM yyyy"
         for booking in self.bookingsOfCurrentItem
         {
 

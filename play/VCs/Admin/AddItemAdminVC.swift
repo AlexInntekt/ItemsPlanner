@@ -190,6 +190,7 @@ class AddItemAdminVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     {
         self.textView.delegate = self
         self.itemNameLabel.delegate = self
+        self.quantityTextfield.delegate = self
         self.categoryPicker.delegate = self
         self.categoryPicker.dataSource = self
         self.imagePicker.delegate = self
