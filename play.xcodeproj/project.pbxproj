@@ -30,7 +30,6 @@
 		FA17BBA122FB3E4A00CC7803 /* FailReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */; };
 		FA1C56512305AA46007F1BB9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C56502305AA46007F1BB9 /* Cache.swift */; };
 		FA1C56532305E71A007F1BB9 /* GalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C56522305E71A007F1BB9 /* GalleryVC.swift */; };
-		FA3CD82E22DA533800BE5558 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */; };
 		FA3CD83222DBA3FD00BE5558 /* PanouPrimire.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */; };
 		FA3CD83422DBA60F00BE5558 /* CreareCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CD83322DBA60F00BE5558 /* CreareCont.swift */; };
 		FA40234D2301FF2100F8B6DE /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA40234C2301FF2100F8B6DE /* GlobalUtils.swift */; };
@@ -50,6 +49,7 @@
 		FAC45C602325925900DEAE6C /* InternetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C5F2325925900DEAE6C /* InternetManager.swift */; };
 		FAC45C642327C2F700DEAE6C /* ModifyItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C632327C2F700DEAE6C /* ModifyItemVC.swift */; };
 		FAC45C66232815CF00DEAE6C /* ImageVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC45C65232815CF00DEAE6C /* ImageVC2.swift */; };
+		FAC8F98523301D8F008EB515 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC8F98423301D8F008EB515 /* GoogleService-Info.plist */; };
 		FACFEAE822F4CB2F00270F25 /* Deleters.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACFEAE722F4CB2F00270F25 /* Deleters.swift */; };
 		FAD3C92422DCACAC0068E52D /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3C92322DCACAC0068E52D /* utils.swift */; };
 		FAE9F5D822F7068A0074B36D /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9F5D722F7068A0074B36D /* AdminVC.swift */; };
@@ -109,7 +109,6 @@
 		FA17BBA022FB3E4A00CC7803 /* FailReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailReportCell.swift; sourceTree = "<group>"; };
 		FA1C56502305AA46007F1BB9 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		FA1C56522305E71A007F1BB9 /* GalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVC.swift; sourceTree = "<group>"; };
-		FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3CD83122DBA3FD00BE5558 /* PanouPrimire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanouPrimire.swift; path = /Users/alex/repos/play/play/PanouPrimire.swift; sourceTree = "<absolute>"; };
 		FA3CD83322DBA60F00BE5558 /* CreareCont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreareCont.swift; sourceTree = "<group>"; };
 		FA40234C2301FF2100F8B6DE /* GlobalUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		FAC45C5F2325925900DEAE6C /* InternetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetManager.swift; path = /Users/alex/repos/play/play/InternetManager.swift; sourceTree = "<absolute>"; };
 		FAC45C632327C2F700DEAE6C /* ModifyItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemVC.swift; sourceTree = "<group>"; };
 		FAC45C65232815CF00DEAE6C /* ImageVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC2.swift; sourceTree = "<group>"; };
+		FAC8F98423301D8F008EB515 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FACFEAE722F4CB2F00270F25 /* Deleters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Deleters.swift; path = /Users/alex/repos/play/play/Deleters.swift; sourceTree = "<absolute>"; };
 		FAD3C92322DCACAC0068E52D /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		FAE9F5D722F7068A0074B36D /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
@@ -237,7 +237,6 @@
 				FA142ADF22F85D0C00C56AA7 /* Segues */,
 				FA1C564F2305AA2F007F1BB9 /* Cache */,
 				FA01151F22DF845D00F8234A /* VCs */,
-				FA3CD82D22DA533800BE5558 /* GoogleService-Info.plist */,
 				FACFEAE922F4CB3500270F25 /* API Handlers */,
 				FA01152222DF84E800F8234A /* Models.swift */,
 				FA13922922D8ED93006D64B4 /* AppDelegate.swift */,
@@ -248,6 +247,7 @@
 				FA13922D22D8ED93006D64B4 /* Main.storyboard */,
 				FA13923322D8ED94006D64B4 /* Assets.xcassets */,
 				FA13923522D8ED94006D64B4 /* LaunchScreen.storyboard */,
+				FAC8F98423301D8F008EB515 /* GoogleService-Info.plist */,
 				FA13923822D8ED95006D64B4 /* Info.plist */,
 				FA13923022D8ED93006D64B4 /* play.xcdatamodeld */,
 			);
@@ -429,7 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA13923722D8ED94006D64B4 /* LaunchScreen.storyboard in Resources */,
-				FA3CD82E22DA533800BE5558 /* GoogleService-Info.plist in Resources */,
+				FAC8F98523301D8F008EB515 /* GoogleService-Info.plist in Resources */,
 				FA13923422D8ED94006D64B4 /* Assets.xcassets in Resources */,
 				FA13922F22D8ED93006D64B4 /* Main.storyboard in Resources */,
 			);
