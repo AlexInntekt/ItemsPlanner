@@ -708,27 +708,60 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
 //                print(bk.childSnapshot(forPath: "descriere"))
                 
                 let booking = Booking()
+                var isItemFullyFetched = true
                 booking.category = self.currentItem.category_id
                 booking.id = bk.key as! String
                 booking.itemId = self.currentItem.id
                 booking.itemName = self.currentItem.name
+                
                 if(bk.childSnapshot(forPath: "descriere").exists())
                 {
                     booking.description = bk.childSnapshot(forPath: "descriere").value as! String
                 }
-                
-                booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
-                booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
-                booking.user = bk.childSnapshot(forPath: "user").value as! String
-                booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
-                self.bookingsOfCurrentItem.append(booking)
-                
-                i+=1
-                if(i==total_bks_no)
+                else
                 {
-//                    print(self.bookingsOfCurrentItem.count)
-                    self.calendarView.reloadData() //so that it can color the occupied cells in red
+                    isItemFullyFetched=false
+                }
+                
+                if bk.hasChild("interval") && bk.childSnapshot(forPath: "interval").hasChild("from") && bk.childSnapshot(forPath: "interval").hasChild("till")
+                {
+                    booking.startDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "from").value as! String
+                    booking.endDate = bk.childSnapshot(forPath: "interval").childSnapshot(forPath: "till").value as! String
+                }
+                else
+                {
+                    isItemFullyFetched=false
+                }
+                
+                if bk.hasChild("user")
+                {
+                    booking.user = bk.childSnapshot(forPath: "user").value as! String
+                }
+                else
+                {
+                    isItemFullyFetched=false
+                }
+                
+                if bk.hasChild("cantitate")
+                {
+                    booking.quantity = bk.childSnapshot(forPath: "cantitate").value as! Int
+                }
+                else
+                {
+                    isItemFullyFetched=false
+                }
+                
+                if(isItemFullyFetched)
+                {
+                    self.bookingsOfCurrentItem.append(booking)
                     
+                    i+=1
+                    if(i==total_bks_no)
+                    {
+                        //                    print(self.bookingsOfCurrentItem.count)
+                        self.calendarView.reloadData() //so that it can color the occupied cells in red
+                        
+                    }
                 }
             }
             
