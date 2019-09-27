@@ -60,8 +60,20 @@ class MyAccount: UIViewController
         let path = reference.child("Users").child(Auth.auth().currentUser!.uid)
         
         path.observeSingleEvent(of: .value) { (pack) in
-            let email = pack.childSnapshot(forPath: "email").value as! String
-            let phone = pack.childSnapshot(forPath: "phoneNumber").value as! String
+            
+            var email = ""
+            var phone = ""
+            
+            if(pack.hasChild("email"))
+            {
+                email = pack.childSnapshot(forPath: "email").value as! String
+            }
+            if(pack.hasChild("email"))
+            {
+                phone = pack.childSnapshot(forPath: "phoneNumber").value as! String
+            }
+            
+            
             
             self.emailTextField.text! = email
             self.phoneTextField.text! = phone
