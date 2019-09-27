@@ -153,11 +153,16 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     {
         if(editMode)
         {
-            self.performSegue(withIdentifier: "backToMyBookings", sender: nil)
+
+                 self.performSegue(withIdentifier: "backToMyBookings", sender: nil)
+            
+           
         }
         else
         {
-            self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+                 self.performSegue(withIdentifier: "backToMainMenu", sender: nil)
+            
+            
         }
     }
     

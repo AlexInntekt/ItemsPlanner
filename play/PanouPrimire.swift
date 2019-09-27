@@ -320,6 +320,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         self.performSegue(withIdentifier: "goToCalendar", sender: displayingItems[indexPath.row])
+        
     }
     
     

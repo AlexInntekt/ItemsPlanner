@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nBd-z6-hOB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,7 +58,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qjw-0Z-cU8"/>
-                                    <segue destination="TGa-I6-QtF" kind="custom" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="KjD-em-1eO"/>
+                                    <segue destination="TGa-I6-QtF" kind="presentation" customClass="downUpSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="KjD-em-1eO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdq-Sb-Aw0">
@@ -69,7 +70,7 @@
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="lVN-IX-5Uc" kind="custom" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="sSa-kA-GUz"/>
+                                    <segue destination="lVN-IX-5Uc" kind="presentation" customClass="upDownSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="sSa-kA-GUz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -106,7 +107,7 @@
                         <outlet property="password" destination="9ip-3I-SNz" id="xRP-0r-xVK"/>
                         <outlet property="passwordReset" destination="hdq-Sb-Aw0" id="Viu-XX-jfb"/>
                         <outlet property="signup" destination="7YZ-SF-pnM" id="d7x-sF-gak"/>
-                        <segue destination="ez9-8c-EE8" kind="custom" identifier="loginSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="sSZ-AL-SgI"/>
+                        <segue destination="ez9-8c-EE8" kind="presentation" identifier="loginSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="sSZ-AL-SgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -151,7 +152,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="custom" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="QlQ-Wq-lMN"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" customClass="downUpSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="QlQ-Wq-lMN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -210,7 +211,7 @@
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
                                     <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="o7I-qR-bvN"/>
-                                    <segue destination="ez9-8c-EE8" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="FUH-we-eag"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="FUH-we-eag"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contul meu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNn-L7-b39">
@@ -299,7 +300,7 @@
         <!--Panou Primire-->
         <scene sceneID="2zz-ZH-veT">
             <objects>
-                <viewController storyboardIdentifier="welcome" id="ez9-8c-EE8" customClass="PanouPrimire" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="welcome" wantsFullScreenLayout="YES" id="ez9-8c-EE8" customClass="PanouPrimire" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5gp-lt-4WM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -632,6 +633,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="jFd-hX-AZA"/>
                     <connections>
                         <outlet property="adminButtonArticole" destination="5Cl-QZ-yBQ" id="PA2-ZL-doK"/>
                         <outlet property="adminButtonCategorii" destination="YAo-SL-oyU" id="kuc-et-TF4"/>
@@ -648,15 +650,15 @@
                         <outlet property="menuButton" destination="OEK-vq-Pmt" id="Mdw-tP-QuA"/>
                         <outlet property="pickerCategory" destination="nY3-yF-LpJ" id="DhS-4c-MhX"/>
                         <outlet property="welcomeLabel" destination="CVu-2X-HUs" id="Lvr-hi-Os4"/>
-                        <segue destination="BYZ-38-t0r" kind="custom" identifier="logoutSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Ih1-mP-Va3"/>
-                        <segue destination="nBd-z6-hOB" kind="custom" identifier="goToCalendar" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Tn8-hL-gDt"/>
-                        <segue destination="YGm-VA-4e0" kind="custom" identifier="adminBookingsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="0zt-tU-UE9"/>
-                        <segue destination="HgO-6c-e7z" kind="custom" identifier="myBookingsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Rd0-jq-Ag7"/>
-                        <segue destination="L3y-sH-PSf" kind="custom" identifier="adminItemsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Iaz-YZ-Z1X"/>
-                        <segue destination="YSl-Re-JxK" kind="custom" identifier="adminCategoriesSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="3nM-wR-yRP"/>
-                        <segue destination="JOo-LD-9ZB" kind="custom" identifier="myProfile" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="m40-Yq-th2"/>
-                        <segue destination="0SG-14-Esj" kind="custom" identifier="adminConturiSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="SEi-td-CH3"/>
-                        <segue destination="ajs-Yy-Lmp" kind="custom" identifier="aboutVCSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Ga0-pK-gr7"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logoutSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Ih1-mP-Va3"/>
+                        <segue destination="nBd-z6-hOB" kind="presentation" identifier="goToCalendar" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Tn8-hL-gDt"/>
+                        <segue destination="YGm-VA-4e0" kind="presentation" identifier="adminBookingsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="0zt-tU-UE9"/>
+                        <segue destination="HgO-6c-e7z" kind="presentation" identifier="myBookingsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Rd0-jq-Ag7"/>
+                        <segue destination="L3y-sH-PSf" kind="presentation" identifier="adminItemsSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Iaz-YZ-Z1X"/>
+                        <segue destination="YSl-Re-JxK" kind="presentation" identifier="adminCategoriesSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="3nM-wR-yRP"/>
+                        <segue destination="JOo-LD-9ZB" kind="presentation" identifier="myProfile" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="m40-Yq-th2"/>
+                        <segue destination="0SG-14-Esj" kind="presentation" identifier="adminConturiSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="SEi-td-CH3"/>
+                        <segue destination="ajs-Yy-Lmp" kind="presentation" identifier="aboutVCSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Ga0-pK-gr7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v0Y-w8-1QA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -680,7 +682,7 @@
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
                                     <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="9dh-7u-T8T"/>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="4er-eg-96P"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="4er-eg-96P"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxX-So-0SC">
@@ -755,7 +757,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wlb-jp-kx3"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="wlb-jp-kx3"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ctc-eF-61i">
@@ -833,7 +835,7 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="Ctc-eF-61i" id="VeH-4G-Kdu"/>
-                        <segue destination="nBd-z6-hOB" kind="custom" identifier="goToEditVC" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="KAr-fJ-L6u"/>
+                        <segue destination="nBd-z6-hOB" kind="presentation" identifier="goToEditVC" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="KAr-fJ-L6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncK-tp-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -857,7 +859,7 @@
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
                                     <action selector="gfliuwGEHLIwhgelwejG:" destination="nBd-z6-hOB" eventType="touchUpInside" id="PBF-t8-kP9"/>
-                                    <segue destination="ez9-8c-EE8" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="KJw-e3-l95"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="KJw-e3-l95"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvo-ni-0UJ">
@@ -924,30 +926,31 @@
             <objects>
                 <viewController storyboardIdentifier="AdminVC" id="YGm-VA-4e0" customClass="AdminVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KSj-TG-8dO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ou-hs-fh6">
-                                <rect key="frame" x="0.0" y="80" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="GYF-Uv-jad"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zit-Wm-twY">
-                                <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="aeB-VU-SmR"/>
                                     <constraint firstAttribute="width" constant="60" id="b9R-qN-yLH"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Su3-uJ-jIS"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Su3-uJ-jIS"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kcM-bi-99x">
-                                <rect key="frame" x="5" y="90" width="399" height="708"/>
+                                <rect key="frame" x="5" y="134" width="399" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="YQn-Pt-fgI"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AdminBookingCell" id="LQP-CO-pXP" customClass="AdminBookingCell" customModule="play" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="399" height="135"/>
@@ -1029,7 +1032,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KM3-3u-fWE">
-                                <rect key="frame" x="318" y="5" width="80" height="60"/>
+                                <rect key="frame" x="318" y="49" width="80" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="7ta-qB-0oE"/>
                                 </constraints>
@@ -1038,18 +1041,18 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="L3y-sH-PSf" kind="custom" identifier="" customClass="LeftToRight" customModule="play" customModuleProvider="target" animates="NO" id="eQp-u4-bRc"/>
+                                    <segue destination="L3y-sH-PSf" kind="presentation" identifier="" customClass="LeftToRight" customModule="play" customModuleProvider="target" animates="NO" modalPresentationStyle="fullScreen" id="eQp-u4-bRc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezervări" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxM-Lx-1O7">
-                                <rect key="frame" x="218" y="5" width="80" height="60"/>
+                                <rect key="frame" x="218" y="49" width="80" height="60"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0d-WP-NMa">
-                                <rect key="frame" x="118" y="5" width="80" height="60"/>
+                                <rect key="frame" x="118" y="49" width="80" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="H0U-xE-OXs"/>
                                 </constraints>
@@ -1058,7 +1061,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" id="NBO-Qa-E4w"/>
+                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="NBO-Qa-E4w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1163,7 +1166,7 @@
                         <outlet property="back" destination="9LC-N5-Bu5" id="YDn-V6-K3e"/>
                         <outlet property="backButtonTopConstraint" destination="9my-Ug-z5Y" id="249-n1-rKY"/>
                         <outlet property="gallery" destination="6Cp-sL-wve" id="zjC-Su-UWD"/>
-                        <segue destination="nBd-z6-hOB" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="tpk-he-C5L"/>
+                        <segue destination="nBd-z6-hOB" kind="presentation" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="tpk-he-C5L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PW4-qC-Lh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1173,7 +1176,7 @@
         <!--Ib Calendar Data Source-->
         <scene sceneID="IEk-dz-3km">
             <objects>
-                <viewController id="nBd-z6-hOB" customClass="BookItemVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="nBd-z6-hOB" customClass="BookItemVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DE5-df-Oa7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1465,10 +1468,10 @@
                         <outlet property="quantityPicker" destination="dg0-Lc-BnZ" id="t6a-nK-dwJ"/>
                         <outlet property="staticItemDescr" destination="Oku-no-tCp" id="nUE-gN-gKH"/>
                         <outlet property="textfieldDescription" destination="ztL-sh-V0p" id="8WA-Qa-X1D"/>
-                        <segue destination="1d1-eE-aYs" kind="custom" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Bks-UD-XfE"/>
-                        <segue destination="Mzb-lP-pFS" kind="custom" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Wz4-QR-s1D"/>
-                        <segue destination="HgO-6c-e7z" kind="custom" identifier="backToMyBookings" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="D5q-dX-Zq2"/>
-                        <segue destination="ez9-8c-EE8" kind="custom" identifier="backToMainMenu" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="k3Q-jk-onr"/>
+                        <segue destination="1d1-eE-aYs" kind="presentation" identifier="seeFailedBookingReport" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Bks-UD-XfE"/>
+                        <segue destination="Mzb-lP-pFS" kind="presentation" identifier="gallerySegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Wz4-QR-s1D"/>
+                        <segue destination="HgO-6c-e7z" kind="presentation" identifier="backToMyBookings" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="D5q-dX-Zq2"/>
+                        <segue destination="ez9-8c-EE8" kind="presentation" identifier="backToMainMenu" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="k3Q-jk-onr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rT6-N2-6VU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1599,7 +1602,7 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="VPC-qL-1YQ" id="0eP-x6-hPA"/>
-                        <segue destination="nBd-z6-hOB" kind="custom" identifier="backToCalendar" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="tna-xz-s02"/>
+                        <segue destination="nBd-z6-hOB" kind="presentation" identifier="backToCalendar" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="tna-xz-s02"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAU-Ll-IIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1611,18 +1614,18 @@
             <objects>
                 <viewController storyboardIdentifier="AdminCategoriesVC" id="YSl-Re-JxK" customClass="AdminCategoriesVC" customModule="play" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vn6-UA-ZcO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6F-jV-mFj">
-                                <rect key="frame" x="0.0" y="80" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="wgK-YR-TTj"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FU-hy-NNA">
-                                <rect key="frame" x="318" y="5" width="80" height="60"/>
+                                <rect key="frame" x="318" y="49" width="80" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="4kZ-RZ-Ez9"/>
                                     <constraint firstAttribute="height" constant="60" id="Haw-Aa-NwH"/>
@@ -1632,11 +1635,11 @@
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="L3y-sH-PSf" kind="presentation" animates="NO" id="6W9-po-8Al"/>
+                                    <segue destination="L3y-sH-PSf" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="6W9-po-8Al"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCn-gg-uYd">
-                                <rect key="frame" x="218" y="5" width="80" height="60"/>
+                                <rect key="frame" x="218" y="49" width="80" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="YKL-KG-8uM"/>
                                     <constraint firstAttribute="height" constant="60" id="b4d-7m-xrD"/>
@@ -1646,22 +1649,22 @@
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YGm-VA-4e0" kind="presentation" animates="NO" id="W89-oH-rKv"/>
+                                    <segue destination="YGm-VA-4e0" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="W89-oH-rKv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3p-NN-Tlv">
-                                <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                <rect key="frame" x="5" y="49" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="eER-4T-cSn"/>
                                     <constraint firstAttribute="width" constant="60" id="m5k-Ay-RaW"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="aQY-2G-NCh"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="aQY-2G-NCh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HR6-hx-CSg">
-                                <rect key="frame" x="118" y="5" width="80" height="60"/>
+                                <rect key="frame" x="118" y="49" width="80" height="60"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="5kv-Bk-UnE"/>
@@ -1673,17 +1676,17 @@
                                 </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zje-Ea-Kwl">
-                                <rect key="frame" x="10" y="145" width="394" height="658"/>
+                                <rect key="frame" x="10" y="189" width="394" height="668"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSa-qI-vgh">
-                                <rect key="frame" x="344" y="85" width="60" height="60"/>
+                                <rect key="frame" x="344" y="129" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="OuP-KM-Ckt"/>
                                     <constraint firstAttribute="width" constant="60" id="fZ1-QB-wgh"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="WaF-AT-0Ya" kind="custom" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="vY6-5h-6Ov"/>
+                                    <segue destination="WaF-AT-0Ya" kind="presentation" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="vY6-5h-6Ov"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1711,12 +1714,12 @@
                     </view>
                     <connections>
                         <outlet property="tbv" destination="zje-Ea-Kwl" id="xy8-EU-h1H"/>
-                        <segue destination="Rbl-z8-dbS" kind="custom" identifier="modifyCategory" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="F5X-iK-unA"/>
+                        <segue destination="Rbl-z8-dbS" kind="presentation" identifier="modifyCategory" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="F5X-iK-unA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRq-aI-kpu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3102" y="-2773"/>
+            <point key="canvasLocation" x="2201" y="-1827"/>
         </scene>
         <!--Modify CategoryVC-->
         <scene sceneID="dEy-i8-q52">
@@ -1808,7 +1811,7 @@
                         <outlet property="currentCategoryName" destination="iFT-E3-eqS" id="1xj-WR-7Lh"/>
                         <outlet property="newNameTextField" destination="m2R-Ga-C9V" id="qOc-nx-5J6"/>
                         <outlet property="saveButton" destination="G8H-lX-lBg" id="3S2-sM-LOu"/>
-                        <segue destination="YSl-Re-JxK" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="zYa-UT-4bY"/>
+                        <segue destination="YSl-Re-JxK" kind="presentation" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="zYa-UT-4bY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pkf-zU-3QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1838,7 +1841,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="YSl-Re-JxK" kind="custom" identifier="backToCategoriesSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="Gkz-Kj-MD9"/>
+                                    <segue destination="YSl-Re-JxK" kind="presentation" identifier="backToCategoriesSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Gkz-Kj-MD9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adăugare categorie nouă" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fv-VT-CSU">
@@ -1937,7 +1940,7 @@
                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YGm-VA-4e0" kind="presentation" animates="NO" id="oPY-KH-5YU"/>
+                                    <segue destination="YGm-VA-4e0" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="oPY-KH-5YU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZw-M5-CPR">
@@ -1947,7 +1950,7 @@
                                     <constraint firstAttribute="width" constant="60" id="Qfq-VD-KC7"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="1Cf-Dh-Jhx" kind="custom" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="c6c-g9-YPq"/>
+                                    <segue destination="1Cf-Dh-Jhx" kind="presentation" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="c6c-g9-YPq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9br-Q3-dHW">
@@ -1958,7 +1961,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="ez9-8c-EE8" kind="custom" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="kNt-8W-Dcm"/>
+                                    <segue destination="ez9-8c-EE8" kind="presentation" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="kNt-8W-Dcm"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vmB-EX-BNj">
@@ -2030,7 +2033,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" id="Urz-D9-MVr"/>
+                                    <segue destination="YSl-Re-JxK" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="Urz-D9-MVr"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fF7-Iv-xLS">
@@ -2069,12 +2072,12 @@
                     <connections>
                         <outlet property="container" destination="fF7-Iv-xLS" id="x6z-Fc-ITC"/>
                         <outlet property="tbv" destination="vmB-EX-BNj" id="4KJ-Yq-Edo"/>
-                        <segue destination="SfF-nl-YD0" kind="custom" identifier="modifyItemSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" id="Orr-iI-pn6"/>
+                        <segue destination="SfF-nl-YD0" kind="presentation" identifier="modifyItemSegue" customClass="LeftToRight" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="Orr-iI-pn6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIc-X0-J5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3103" y="-1652"/>
+            <point key="canvasLocation" x="3148" y="-1799"/>
         </scene>
         <!--Add Item AdminVC-->
         <scene sceneID="NkS-pm-Vbp">
@@ -2092,7 +2095,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="L3y-sH-PSf" kind="custom" identifier="backToItemsSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="wfI-xl-UUB"/>
+                                    <segue destination="L3y-sH-PSf" kind="presentation" identifier="backToItemsSegue" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="wfI-xl-UUB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adaugă un nou item " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5J-QZ-f7Q">
@@ -2263,7 +2266,7 @@
                         <outlet property="quantityTextfield" destination="hGV-Q0-ilk" id="tVK-lG-LGD"/>
                         <outlet property="saveItem" destination="HcS-Ch-pTu" id="6N7-Ni-A8X"/>
                         <outlet property="textView" destination="14y-qi-7yP" id="EzQ-B2-LyD"/>
-                        <segue destination="9fi-ZC-F2q" kind="custom" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="jNh-se-duz"/>
+                        <segue destination="9fi-ZC-F2q" kind="presentation" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="jNh-se-duz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyz-bf-6Mw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2326,7 +2329,7 @@
                                 </constraints>
                                 <state key="normal" image="back"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="K1u-WA-VCh"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="homeSegue" customClass="upDownSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="K1u-WA-VCh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nume de utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-To-gWg">
@@ -2443,7 +2446,7 @@
                     </view>
                     <connections>
                         <outlet property="currentImage" destination="VQa-k6-7os" id="3Vy-vr-xug"/>
-                        <segue destination="1Cf-Dh-Jhx" kind="custom" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="mrp-oW-Wuo"/>
+                        <segue destination="1Cf-Dh-Jhx" kind="presentation" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="mrp-oW-Wuo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxn-ee-cPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2466,7 +2469,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="back"/>
                                 <connections>
-                                    <segue destination="L3y-sH-PSf" kind="custom" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" id="bi7-kV-FGa"/>
+                                    <segue destination="L3y-sH-PSf" kind="presentation" identifier="back" customClass="RightToLeft" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="bi7-kV-FGa"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modifică un obiect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEQ-lt-lP9">
@@ -2638,7 +2641,7 @@
                         <outlet property="quantityTextfield" destination="pNX-jB-4Ck" id="srm-ih-nkg"/>
                         <outlet property="saveItem" destination="Ktr-TJ-BYA" id="CDW-QY-pyC"/>
                         <outlet property="textView" destination="QSi-47-Gwz" id="vlb-z4-NJZ"/>
-                        <segue destination="gMu-wl-0VX" kind="custom" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" id="7al-AS-MwM"/>
+                        <segue destination="gMu-wl-0VX" kind="presentation" identifier="GoToImageVC" customClass="downUpSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="7al-AS-MwM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbw-zK-jmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2703,7 +2706,7 @@
                     </view>
                     <connections>
                         <outlet property="currentImage" destination="Ho9-gO-f1q" id="wpn-pV-baw"/>
-                        <segue destination="SfF-nl-YD0" kind="custom" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" id="E0h-lO-mfr"/>
+                        <segue destination="SfF-nl-YD0" kind="presentation" identifier="back" customClass="upDownSegue" customModule="play" customModuleProvider="target" modalPresentationStyle="fullScreen" id="E0h-lO-mfr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pq6-6I-Q0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2719,12 +2722,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
-        <segue reference="wfI-xl-UUB"/>
-        <segue reference="Urz-D9-MVr"/>
-        <segue reference="tpk-he-C5L"/>
-        <segue reference="oPY-KH-5YU"/>
-        <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="kNt-8W-Dcm"/>
-        <segue reference="Ih1-mP-Va3"/>
+        <segue reference="6W9-po-8Al"/>
+        <segue reference="NBO-Qa-E4w"/>
+        <segue reference="KAr-fJ-L6u"/>
+        <segue reference="W89-oH-rKv"/>
+        <segue reference="D5q-dX-Zq2"/>
+        <segue reference="aQY-2G-NCh"/>
+        <segue reference="K1u-WA-VCh"/>
     </inferredMetricsTieBreakers>
 </document>
