@@ -91,7 +91,6 @@ class CreareCont: UIViewController, UITextFieldDelegate
     @IBOutlet weak var signup: UIButton!
     @IBAction func signup(_ sender: Any)
     {
-        
         if(isDeviceOnline)
         {
             if((email.text == nil || email.text!.isEmpty) ||
