@@ -70,8 +70,10 @@ class ViewController: UIViewController, UITextFieldDelegate{
                                 let dispName = val.childSnapshot(forPath: "name").value as! String
                                 
                                 GlobalCurrentUserName = dispName
+                                
+                                self.performSegue(withIdentifier: "loginSegue", sender: nil)
                             }
-                            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                            
                         }
                     }
                 }
