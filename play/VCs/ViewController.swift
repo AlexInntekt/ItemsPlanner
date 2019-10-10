@@ -61,7 +61,16 @@ class ViewController: UIViewController, UITextFieldDelegate{
                         }
                         else
                         {
+                            let uid = Auth.auth().currentUser?.uid as! String
                             
+                            let referenceToUsers = Database.database().reference()
+                            
+                            referenceToUsers.child("Users").child(uid).observeSingleEvent(of: .value) { (val) in
+                                
+                                let dispName = val.childSnapshot(forPath: "name").value as! String
+                                
+                                GlobalCurrentUserName = dispName
+                            }
                             self.performSegue(withIdentifier: "loginSegue", sender: nil)
                         }
                     }

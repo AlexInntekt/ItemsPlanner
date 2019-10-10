@@ -8,6 +8,6 @@
 
 import Foundation
 
-
+var GlobalCurrentUserName = ""
 let formatter = DateFormatter()  // Declare this outside, to avoid instancing this heavy class multiple times.
 let date=Date()

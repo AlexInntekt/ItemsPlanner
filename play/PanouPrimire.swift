@@ -366,7 +366,19 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupLogic()
         setupUI()
         if Auth.auth().currentUser != nil {
-            welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)!"
+            
+            let uid = Auth.auth().currentUser?.uid as! String
+            
+            let referenceToUsers = Database.database().reference()
+            
+            referenceToUsers.child("Users").child(uid).observeSingleEvent(of: .value) { (val) in
+                
+                let dispName = val.childSnapshot(forPath: "name").value as! String
+                
+                self.welcomeLabel.text="Bine ai venit, \(dispName)!"
+            }
+            
+            
             //showSimpleAlert(message: "user")
             //showSimpleAlert(message: Auth.auth().currentUser!.displayName!)
         } else {
