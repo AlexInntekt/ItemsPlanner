@@ -305,7 +305,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-2X-HUs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bine ai venit!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVu-2X-HUs">
                                 <rect key="frame" x="52" y="108" width="289.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2722,12 +2722,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="Orr-iI-pn6"/>
         <segue reference="c6c-g9-YPq"/>
-        <segue reference="6W9-po-8Al"/>
-        <segue reference="NBO-Qa-E4w"/>
-        <segue reference="KAr-fJ-L6u"/>
-        <segue reference="W89-oH-rKv"/>
-        <segue reference="D5q-dX-Zq2"/>
+        <segue reference="Iaz-YZ-Z1X"/>
+        <segue reference="3nM-wR-yRP"/>
+        <segue reference="Tn8-hL-gDt"/>
+        <segue reference="0zt-tU-UE9"/>
+        <segue reference="Rd0-jq-Ag7"/>
         <segue reference="aQY-2G-NCh"/>
-        <segue reference="K1u-WA-VCh"/>
+        <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>

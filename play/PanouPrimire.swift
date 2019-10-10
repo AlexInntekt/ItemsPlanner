@@ -200,6 +200,7 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
             do{
                 try Auth.auth().signOut()
             } catch{}
+            GlobalCurrentUserName=""
             self.triggerMenu()
             self.performSegue(withIdentifier: "logoutSegue", sender: nil)
         }))
@@ -366,7 +367,26 @@ class PanouPrimire: UIViewController, UITableViewDelegate, UITableViewDataSource
         setupLogic()
         setupUI()
         if Auth.auth().currentUser != nil {
-            welcomeLabel.text="Bine ai venit, \(Auth.auth().currentUser!.displayName!)!"
+            
+            if(GlobalCurrentUserName=="")
+            {
+                let uid = Auth.auth().currentUser?.uid as! String
+                
+                let referenceToUsers = Database.database().reference()
+                
+                referenceToUsers.child("Users").child(uid).observeSingleEvent(of: .value) { (val) in
+                    
+                    let dispName = val.childSnapshot(forPath: "name").value as! String
+                    
+                    GlobalCurrentUserName = dispName
+                    self.welcomeLabel.text="Bine ai venit, \(GlobalCurrentUserName)!"
+                }
+            }
+            else
+            {
+                self.welcomeLabel.text="Bine ai venit, \(GlobalCurrentUserName)!"
+            }
+            
             //showSimpleAlert(message: "user")
             //showSimpleAlert(message: Auth.auth().currentUser!.displayName!)
         } else {

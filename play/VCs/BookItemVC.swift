@@ -300,9 +300,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         print("viewWillAppear")
         
         if Auth.auth().currentUser != nil {
-           
-            //showSimpleAlert(message: "user")
-            //showSimpleAlert(message: Auth.auth().currentUser!.displayName!)
+        
         } else {
             showSimpleAlert(message: "error")
         }
@@ -346,7 +344,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
             }
             else
             {
-                cacheBooking.description = "Utilizatorul \(Auth.auth().currentUser!.displayName!) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
+                cacheBooking.description = "Utilizatorul \(GlobalCurrentUserName) necesită articolul \(currentItem.name) în această perioadă pentru realizarea unui eveniment. Apasă pentru a edita aceasă descriere."
                 
                 self.textfieldDescription.text = cacheBooking.description
             }
@@ -781,7 +779,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
     
     func confirmationEmailContent(descr descr: String, q q: Int, phone phone: String, date date: String)->String
     {
-        let user = Auth.auth().currentUser!.displayName!
+        let user = GlobalCurrentUserName
 //        let date = Date()
 //        formatter.dateFormat="yyyy MM dd"
 //        let ddate = formatter.string(from: date)
