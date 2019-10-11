@@ -515,13 +515,30 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
         for bk in intersecting_bookings
         {
             reference.child("Users").child(bk.user).observeSingleEvent(of: .value) { (userData) in
+                
+                print("wiafbiwgEIUEW", bk.user)
             
                 let report = FailedBookingReportModel()
                 let startDate = convertEnDateToRo(bk.startDate)
                 let endDate = convertEnDateToRo(bk.endDate)
                 report.date = "\(startDate) - \(endDate)"
-                report.username = userData.childSnapshot(forPath: "name").value as! String
-                report.phone = userData.childSnapshot(forPath: "phoneNumber").value as! String
+                if(userData.childSnapshot(forPath: "name").exists())
+                {
+                    report.username = userData.childSnapshot(forPath: "name").value as! String
+                }
+                else
+                {
+                    report.username = "Utilizator șters."
+                }
+                if(userData.childSnapshot(forPath: "phoneNumber").exists())
+                {
+                     report.phone = userData.childSnapshot(forPath: "phoneNumber").value as! String
+                }
+                else
+                {
+                     report.phone = ""
+                }
+               
                 report.quantity = "\(bk.quantity)"
                 report.description = "\(bk.description)"
                 reports.append(report)
@@ -570,7 +587,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                     if(fEmail==currentUserEmail)
                     {
                         let phone = (user.childSnapshot(forPath: "phoneNumber").value as! String).lowercased()
-                        self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone, date: date)
+                        //self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone, date: date)
                     }
                 }
             }
