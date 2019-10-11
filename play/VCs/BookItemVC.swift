@@ -587,7 +587,7 @@ class BookItemVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIC
                     if(fEmail==currentUserEmail)
                     {
                         let phone = (user.childSnapshot(forPath: "phoneNumber").value as! String).lowercased()
-                        //self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone, date: date)
+                        self.sendConfirmationEmail(descr: self.textfieldDescription.text, q: self.desiredQuantityOfBookedItems, phone: phone, date: date)
                     }
                 }
             }
