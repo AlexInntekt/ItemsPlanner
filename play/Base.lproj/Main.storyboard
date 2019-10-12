@@ -259,26 +259,47 @@
                                     <action selector="save:" destination="JOo-LD-9ZB" eventType="touchUpInside" id="jh2-Ye-zeA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nume utlizator:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdU-vf-aTL">
+                                <rect key="frame" x="29" y="306" width="120" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="EGO-jx-08P"/>
+                                    <constraint firstAttribute="height" constant="40" id="EcQ-Wn-kWT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nume utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wdp-OS-3k5">
+                                <rect key="frame" x="169" y="306" width="225" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="PtE-kH-k9g" firstAttribute="top" secondItem="DGY-D0-mw5" secondAttribute="top" constant="5" id="09G-rg-31L"/>
+                            <constraint firstItem="Wdp-OS-3k5" firstAttribute="width" secondItem="6fV-GB-IU1" secondAttribute="width" id="1yb-Sr-vFh"/>
+                            <constraint firstItem="Wdp-OS-3k5" firstAttribute="height" secondItem="6fV-GB-IU1" secondAttribute="height" id="28O-te-8gT"/>
                             <constraint firstItem="RUc-pE-UGq" firstAttribute="centerY" secondItem="enR-iX-m3B" secondAttribute="centerY" id="4vq-od-qRR"/>
                             <constraint firstItem="enR-iX-m3B" firstAttribute="top" secondItem="Dx8-7E-MOn" secondAttribute="bottom" constant="51" id="8Pa-RR-qcP"/>
                             <constraint firstItem="6fV-GB-IU1" firstAttribute="centerY" secondItem="hSZ-c4-tZe" secondAttribute="centerY" id="A7p-c5-HY9"/>
                             <constraint firstItem="RUc-pE-UGq" firstAttribute="leading" secondItem="enR-iX-m3B" secondAttribute="trailing" constant="20" id="B03-sG-2gy"/>
                             <constraint firstItem="6fV-GB-IU1" firstAttribute="height" secondItem="hSZ-c4-tZe" secondAttribute="height" id="DbU-yf-z0B"/>
+                            <constraint firstItem="Wdp-OS-3k5" firstAttribute="centerX" secondItem="6fV-GB-IU1" secondAttribute="centerX" id="Dcp-Vc-rXh"/>
                             <constraint firstItem="enR-iX-m3B" firstAttribute="leading" secondItem="DGY-D0-mw5" secondAttribute="leading" constant="29" id="F9R-yB-1GF"/>
                             <constraint firstItem="hSZ-c4-tZe" firstAttribute="centerX" secondItem="enR-iX-m3B" secondAttribute="centerX" id="FmX-lt-R0m"/>
                             <constraint firstItem="Dx8-7E-MOn" firstAttribute="top" secondItem="PtE-kH-k9g" secondAttribute="bottom" constant="5" id="GE1-hT-Wmd"/>
                             <constraint firstItem="DGY-D0-mw5" firstAttribute="trailing" secondItem="RUc-pE-UGq" secondAttribute="trailing" constant="20" id="JRc-IO-Wmv"/>
+                            <constraint firstItem="rdU-vf-aTL" firstAttribute="centerX" secondItem="hSZ-c4-tZe" secondAttribute="centerX" id="JXr-ME-eiS"/>
                             <constraint firstItem="zNn-L7-b39" firstAttribute="height" secondItem="PtE-kH-k9g" secondAttribute="height" id="N05-7h-G2x"/>
                             <constraint firstItem="PPI-4J-Hqb" firstAttribute="centerX" secondItem="DGY-D0-mw5" secondAttribute="centerX" id="NJg-Wg-VXd"/>
                             <constraint firstItem="zNn-L7-b39" firstAttribute="leading" secondItem="PtE-kH-k9g" secondAttribute="trailing" constant="20" id="RPa-e7-u8Q"/>
                             <constraint firstItem="zNn-L7-b39" firstAttribute="centerY" secondItem="PtE-kH-k9g" secondAttribute="centerY" id="ULF-1n-YGA"/>
+                            <constraint firstItem="rdU-vf-aTL" firstAttribute="top" secondItem="hSZ-c4-tZe" secondAttribute="bottom" constant="30" id="W6v-PJ-ODL"/>
                             <constraint firstItem="DGY-D0-mw5" firstAttribute="trailing" secondItem="6fV-GB-IU1" secondAttribute="trailing" constant="20" id="abT-Ha-BRP"/>
                             <constraint firstItem="6fV-GB-IU1" firstAttribute="leading" secondItem="hSZ-c4-tZe" secondAttribute="trailing" constant="20" id="eTM-Bg-gsE"/>
                             <constraint firstItem="Dx8-7E-MOn" firstAttribute="centerX" secondItem="DGY-D0-mw5" secondAttribute="centerX" id="eYS-MF-WtY"/>
+                            <constraint firstItem="Wdp-OS-3k5" firstAttribute="centerY" secondItem="rdU-vf-aTL" secondAttribute="centerY" id="iqo-ud-mTw"/>
                             <constraint firstItem="hSZ-c4-tZe" firstAttribute="top" secondItem="enR-iX-m3B" secondAttribute="bottom" constant="30" id="ktl-Re-9Y9"/>
                             <constraint firstItem="DGY-D0-mw5" firstAttribute="trailing" secondItem="zNn-L7-b39" secondAttribute="trailing" constant="20" id="m9d-NA-At9"/>
                             <constraint firstItem="RUc-pE-UGq" firstAttribute="height" secondItem="enR-iX-m3B" secondAttribute="height" id="opG-CL-3ss"/>
@@ -291,6 +312,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="RUc-pE-UGq" id="BYg-sA-dcV"/>
                         <outlet property="phoneTextField" destination="6fV-GB-IU1" id="qvk-6g-fob"/>
+                        <outlet property="usernameTextField" destination="Wdp-OS-3k5" id="A6z-TK-4hZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLx-4p-XLI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2727,7 +2749,7 @@
         <segue reference="Tn8-hL-gDt"/>
         <segue reference="0zt-tU-UE9"/>
         <segue reference="Rd0-jq-Ag7"/>
-        <segue reference="aQY-2G-NCh"/>
+        <segue reference="FUH-we-eag"/>
         <segue reference="Ih1-mP-Va3"/>
     </inferredMetricsTieBreakers>
 </document>
