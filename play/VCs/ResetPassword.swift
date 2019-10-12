@@ -32,7 +32,7 @@ class ResetPassword: UIViewController, UITextFieldDelegate{
             Auth.auth().sendPasswordReset(withEmail: email) { error in
                 if let error=error
                 {
-                    alert(UIVC: self, title: "eroare", message: error as! String)
+                    alert(UIVC: self, title: "eroare", message: error.localizedDescription as! String)
                     
                 }
             } //end Auth.auth()
