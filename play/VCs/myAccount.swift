@@ -75,6 +75,13 @@ class MyAccount: UIViewController
             {
                 email = pack.childSnapshot(forPath: "email").value as! String
             }
+            else
+            {
+                if let emailD = Auth.auth().currentUser!.email
+                {
+                    email = emailD
+                }
+            }
             if(pack.hasChild("phoneNumber"))
             {
                 phone = pack.childSnapshot(forPath: "phoneNumber").value as! String
