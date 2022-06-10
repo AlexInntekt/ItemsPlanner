@@ -392,13 +392,16 @@
 				TargetAttributes = {
 					FA13922522D8ED93006D64B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1340;
 					};
 					FA13923C22D8ED95006D64B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1340;
 						TestTargetID = FA13922522D8ED93006D64B4;
 					};
 					FA13924722D8ED95006D64B4 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1340;
 						TestTargetID = FA13922522D8ED93006D64B4;
 					};
 				};
@@ -786,7 +789,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "items-planner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -807,7 +810,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "items-planner";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -827,7 +830,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alexorgid.playTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/play.app/play";
 			};
@@ -848,7 +851,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alexorgid.playTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/play.app/play";
 			};
@@ -868,7 +871,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alexorgid.playUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = play;
 			};
@@ -888,7 +891,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = alexorgid.playUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = play;
 			};
