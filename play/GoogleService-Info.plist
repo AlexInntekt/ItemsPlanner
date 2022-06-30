@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1008227981569-o3l20s6ip6o6h45t7bivv1kh5e92216h.apps.googleusercontent.com</string>
+	<string>1008227981569-srqmpr69lsajn6g9tno9mr8fbkjqn50j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1008227981569-o3l20s6ip6o6h45t7bivv1kh5e92216h</string>
+	<string>com.googleusercontent.apps.1008227981569-srqmpr69lsajn6g9tno9mr8fbkjqn50j</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBb00hwf2d28wjyuFGGdZdfCIOXvx16Vn0</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>items-planner</string>
+	<string>com.items-planner.students</string>
 	<key>PROJECT_ID</key>
 	<string>items-planner</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1008227981569:ios:d4ae4f56d0f4f01537a300</string>
+	<string>1:1008227981569:ios:1d4d3415c9e6a1a337a300</string>
 	<key>DATABASE_URL</key>
 	<string>https://items-planner.firebaseio.com</string>
 </dict>

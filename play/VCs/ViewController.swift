@@ -51,16 +51,16 @@ class ViewController: UIViewController, UITextFieldDelegate{
                     }
                     else if let user=Auth.auth().currentUser
                     {
-                        if(!user.isEmailVerified)
-                        {
-                            let unverified = UIAlertController(title: "Contul nu este validat", message: "Contul este creat, dar nu a fost verificat folosind emailul primit!", preferredStyle: UIAlertController.Style.alert)
-                            unverified.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-                                //Cancel Action
-                            }))
-                            self.present(unverified, animated: true, completion: nil)
-                        }
-                        else
-                        {
+//                        if(!user.isEmailVerified)
+//                        {
+//                            let unverified = UIAlertController(title: "Contul nu este validat", message: "Contul este creat, dar nu a fost verificat folosind emailul primit!", preferredStyle: UIAlertController.Style.alert)
+//                            unverified.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+//                                //Cancel Action
+//                            }))
+//                            self.present(unverified, animated: true, completion: nil)
+//                        }
+//                        else
+//                        {
                             let uid = Auth.auth().currentUser?.uid as! String
                             
                             let referenceToUsers = Database.database().reference()
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                             }
                             
-                        }
+                       // }
                     }
                 }
             } //end of isEmailAllowed() if
